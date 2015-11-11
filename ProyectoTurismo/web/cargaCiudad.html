@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>ABM Cuidad - Alta</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <form method="POST">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ABM Cuidad - Alta </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><label for="nombreCuidad">Nombre: </label></td>
+                        <td><input type="text" name="nombreCuidad" id="nombreCuidad" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="Pais">Provincia: </label></td>
+                        <td><select name="Provincia" id="Provincia">
+                                <option></option>
+                                <option></option>
+                            </select></td>
+                        <td><input type="button" name="+Provincia" id="masProvincia" value="+"/></td>     
+                    </tr>
+                    <tr>
+                        <td><label for="historiaPais">Historia: </label></td>
+                        <td><textarea name="historiaPais" id="historiaPais" /></textarea></td>
+                    </tr> 
+                    <tr>
+                        <td><label for="emergenciaPais">Emergencias: </label></td>
+                        <td><textarea name="emergenciaPais" id="emergenciaPais" /></textarea></td>
+                    </tr> 
+                    <tr>
+                        <td><label>¿Es Capital?</label></td>
+                        <td><label for="esCapitalPaisSi">Si</label>
+                        <input type="radio" name="capital" id="esCapitalPaisSi" value="0" />
+                        <label for="esCapitalPaisNo">No</label>
+                        <input type="radio" name="capital" id="esCapitalPaisNo" value="1" /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="clienteCiudad">Cliente: </label></td>
+                        <td><select name="clienteCiudad" id="clienteCiudad">
+                                <option></option>
+                                <option></option>
+                            </select>
+                            <input type="text" name="idClienteCiudad" value="" />
+                        </td>
+                        <td><input type="button" name="+Cliente" id="masCliente" value="+"/></td>     
+                    </tr>                    
+                     <tr>
+                        <td><label for="pririodadCuidad">Prioridad: </label></td>
+                        <td><input type="text" name="pririodadCuidad" id="pririodadCuidad" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="ciudadObservaciones">Observaciones: </label></td>
+                        <td><textarea name="ciudadObservaciones" id="ciudadObservaciones" rows="4" cols="20">
+                            </textarea></td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" value="Enviar" name="envCiudad" /></td>
+                    </tr> 
+                </tbody>
+            </table>
+        </form>
+    </body>
+</html>

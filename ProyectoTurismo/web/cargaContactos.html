@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>ABM Contactos - Alta</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <form method="POST">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ABM Contactos - Alta</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <tr>
+                        <td><label for="tipoContacto">Tipo de Contacto: </label></td>
+                        <td><select name="tipoContacto">
+                                    
+                            </select></td>
+                        <td><input type="button" name="+tipoContacto" id="masContacto" value="+"/></td>
+                    </tr>
+                    <tr>
+                        <td><label for="detalleContacto">Detalle: </label></td>
+                        <td><input type="text" name="detalleContactos" id="detalleContactos" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="contactoObservaciones">Observaciones: </label></td>
+                        <td><textarea name="contactoObservacion" id="contactoObservacion" rows="4" cols="20">
+                            </textarea></td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" value="Enviar Contacto" name="envContacto" /></td>
+                    </tr>       
+                </tbody>
+            </table>
+        </form>
+    </body>
+</html>
+
+
