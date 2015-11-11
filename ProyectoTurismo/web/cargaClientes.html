@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>ABM Cliente - Alta</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <form method="POST">        
+            <table>
+                <thead>
+                    <tr>
+                        <th>ABM Clientes - Alta</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><label for="razonSocialCliente">Razón social: </label></td>
+                        <td><input type="text" name="razonSocialCliente" id="razonSocialCliente" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="nombrePersona">Primer nombre: </label></td>
+                        <td><input type="text" name="nombrePersona" id="nombrePersona" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="segNombrePersona">Segundo nombre: </label></td>
+                        <td><input type="text" name="segNombrePersona" id="segNombrePersona" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="apellidoPersona">Apellido: </label></td>
+                        <td><input type="text" name="apellidoPersona" id="apellidoPersona" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="fechaNacimientoPersona">Fecha nacimiento: </label></td>
+                        <td><input type="date" name="fechaNacimientoPersona" id="fechaNacimientoPersona" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="tipoDocumentoPersona">Tipo documento: </label></td>
+                        <td><select name="tipoDocumentoPersona" id="tipoDocumentoPersona">
+                               <option></option>
+                               <option></option> 
+                            </select></td>
+                            <td><input type="button" name="+TipoDocumento" id="masDocumento" value="+"/></td>
+                    </tr>
+                    <tr>
+                        <td><label for="nroDocumentoPersona">Número de Documento: </label></td>
+                        <td><input type="text" name="nroDocumentoPersona" id="nroDocumentoPersona" value="" /></td>
+                    </tr>
+                </tbody>
+            </table>
+            <br />
+            <br />
+            <table>
+                <thead>
+                    <tr>
+                        <th>ABM Clientes - Contactos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <tr>
+                        <td><label for="tipoContacto">Tipo de Contacto: </label></td>
+                        <td><select name="tipoContacto">
+                                    
+                            </select></td>
+                        <td><input type="button" name="+tipoContacto" id="masContacto" value="+"/></td>
+                    </tr>
+                    <tr>
+                        <td><label for="detalleContacto">Detalle: </label></td>
+                        <td><input type="text" name="detalleContactos" id="detalleContactos" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" value="Enviar Contacto" name="envContacto" /></td>
+                    </tr>       
+                </tbody>
+            </table>            
+            <br />
+            <br />
+            <table>
+                <thead>
+                    <tr>
+                        <th>ABM Clientes - Domicilio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><label for="Pais">Pais: </label></td>
+                        <td><select name="Pais" id="Pais">
+                                <option></option>
+                                <option></option>
+                            </select></td>
+                        <td><input type="button" name="+Pais" id="masPais" value="+"/></td>
+                    <tr>
+                        <td><label for="Provincia">Provincia: </label></td>
+                        <td><select name="Provincia" id="Provincia">
+                                <option></option>
+                                <option></option>
+                            </select></td>
+                        <td><input type="button" name="+Provincia" id="masProvincia" value="+"/></td>
+                    </tr>
+                    <tr>
+                        <td><label for="Cuidad">Cuidad: </label></td>
+                        <td><select name="Cuidad" id="Cuidad">
+                                <option></option>
+                                <option></option>
+                            </select></td>
+                        <td><input type="button" name="+Cuidad" id="masCuidad" value="+"/></td> 
+                    </tr>
+                    <tr>
+                        <td><label for="Barrio">Barrio: </label></td>
+                        <td><select name="Barrio" id="Barrio">
+                                <option></option>
+                                <option></option>
+                            </select></td>
+                        <td><input type="button" name="+Barrio" id="masBarrio" value="+"/></td>    
+                    </tr>
+                    <tr>
+                        <td><label for="calleDomicilio">Calle: </label></td>
+                        <td><input type="text" name="calleDomicilio" id="calleDomicilio" /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="nroDomicilio">Número: </label></td>
+                        <td><input type="text" name="nroDomicilio" id="nroDomicilio" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="departamentoDomicilio">Departamento: </label></td>
+                        <td><input type="text" name="departamentoDomicilio" id="departamentoDomicilio" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="torreDomicilio">Torre: </label></td>
+                        <td><input type="text" name="torreDomicilio" id="torreDomicilio" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="manzanaDomicilio">Manzana: </label></td>
+                        <td><input type="text" name="manzanaDomicilio" id="manzanaDomicilio" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="loteDomicilio">Lote: </label></td>
+                        <td><input type="text" name="loteDomicilio" id="loteDomicilio" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="codigoPostalDomicilio">Código Postal: </label></td>
+                        <td><input type="text" name="codigoPostalDomicilio" id="codigoPostalDomicilio" value="" /></td>
+                    </tr>
+                </tbody>
+            </table>
+            <br />
+            <br />
+            <table>
+                <thead>
+                    <tr>
+                        <th>ABM Clientes - Observaciones</th>
+                    </tr>
+                </thead>    
+                <tbody>
+                    <tr>
+                        <td><label for="Observacion">Observacion: </label></td>
+                        <td><textarea name="Observacion" rows="4" cols="20">
+                            </textarea></td>
+                    </tr>
+                </tbody>
+            </table>
+            <input type="submit" value="Enviar" name="envClientes" />
+        </form>
+    </body>
+</html>
