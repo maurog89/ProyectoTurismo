@@ -6,7 +6,7 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>ABM Cliente - Alta</title>
+        <title>ABM Usuario - Alta</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
@@ -15,14 +15,31 @@ and open the template in the editor.
             <table>
                 <thead>
                     <tr>
-                        <th>ABM Clientes - Alta</th>
+                        <th>ABM Usuario - Alta</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td><label for="razonSocialCliente">Razón social: </label></td>
-                        <td><input type="text" name="razonSocialCliente" id="razonSocialCliente" value="" /></td>
+                        <td><label for="nombreUsuario">Nombre de usuario: </label></td>
+                        <td><input type="text" name="nombreUsuario" id="nombreUsuario" value="" /></td>
                     </tr>
+                    <tr>
+                        <td><label for="passwordUsuario">Password: </label></td>
+                        <td><input type="text" name="passwordUsuario" id="passwordUsuario" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="linkUsuario">Link: </label></td>
+                        <td><input type="text" name="linkUsuario" id="linkUsuario" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="preguntaSecretaUsuario">Pregunta secreta: </label></td>
+                        <td><input type="text" name="preguntaSecretaUsuario" id="preguntaSecretaUsuario" value="" /></td>
+                    </tr>                    
+                    <tr>
+                        <td><label for="respuestaUsuario">Respuesta: </label></td>
+                        <td><input type="text" name="respuestaUsuario" id="respuestaUsuario" value="" /></td>                       
+                    </tr>
+                    <tr><td><br /><br /><br /></td></tr>
                     <tr>
                         <td><label for="nombrePersona">Primer nombre: </label></td>
                         <td><input type="text" name="nombrePersona" id="nombrePersona" value="" /></td>
@@ -55,36 +72,36 @@ and open the template in the editor.
             </table>
             <br />
             <br />
-                <table>
-                    <thead>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ABM Usuario - Contactos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
                         <tr>
-                            <th>ABM Clientes - Contactos</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <tr>
-                            <td><label for="tipoContacto">Tipo de Contacto: </label></td>
-                            <td><select name="tipoContacto">
-
-                                </select></td>
-                            <td><input type="button" name="+tipoContacto" id="masContacto" value="+"/></td>
-                        </tr>
-                        <tr>
-                            <td><label for="detalleContacto">Detalle: </label></td>
-                            <td><input type="text" name="detalleContactos" id="detalleContactos" value="" /></td>
-                        </tr>
-                        <tr>
-                            <td><input type="submit" value="Enviar Contacto" name="envContacto" /></td>
-                        </tr>       
-                    </tbody>
-                </table>            
+                        <td><label for="tipoContacto">Tipo de Contacto: </label></td>
+                        <td><select name="tipoContacto">
+                                    
+                            </select></td>
+                        <td><input type="button" name="+tipoContacto" id="masContacto" value="+"/></td>
+                    </tr>
+                    <tr>
+                        <td><label for="detalleContacto">Detalle: </label></td>
+                        <td><input type="text" name="detalleContactos" id="detalleContactos" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" value="Enviar Contacto" name="envContacto" /></td>
+                    </tr>       
+                </tbody>
+            </table>            
             <br />
             <br />
             <table>
                 <thead>
                     <tr>
-                        <th>ABM Clientes - Domicilio</th>
+                        <th>ABM Usuario - Domicilio</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -154,7 +171,7 @@ and open the template in the editor.
             <table>
                 <thead>
                     <tr>
-                        <th>ABM Clientes - Observaciones</th>
+                        <th>ABM Usuario - Observaciones</th>
                     </tr>
                 </thead>    
                 <tbody>

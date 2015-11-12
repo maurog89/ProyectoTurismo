@@ -56,14 +56,27 @@ and open the template in the editor.
                         </td>
                         <td><input type="button" name="+Cliente" id="masCliente" value="+"/></td>     
                     </tr>                    
-                     <tr>
+                    <tr>
                         <td><label for="pririodadCuidad">Prioridad: </label></td>
                         <td><input type="text" name="pririodadCuidad" id="pririodadCuidad" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="codigoPuntuableCuidad">Código Puntaje: </label></td>
+                        <td><input type="text" name="codigoPuntuableCuidad" id="codigoPuntuableCuidad" value="" /></td>
+                        <td><select name="codigoPuntuableNombre">
+                                <option></option>
+                                <option></option>
+                            </select></td>
                     </tr>
                     <tr>
                         <td><label for="ciudadObservaciones">Observaciones: </label></td>
                         <td><textarea name="ciudadObservaciones" id="ciudadObservaciones" rows="4" cols="20">
                             </textarea></td>
+                    </tr>
+                    <tr>                        
+                        <td><label for="imagenCiudad">Imagen: </label></td>
+                        <td><input type="file" name="imagenCiudad" id="imagenCiudad" /></td>
+                        <td><input type="button" name="subirImagenCiudad" id="subirImagenCiudad" value="Subir Otra Imagen"/></td>
                     </tr>
                     <tr>
                         <td><input type="submit" value="Enviar" name="envCiudad" /></td>

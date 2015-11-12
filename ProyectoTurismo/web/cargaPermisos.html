@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>ABM Permisos - Alta</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <form method="POST">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ABM Permisos - Alta </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><label for="TipoPermiso">Tipo Permiso: </label></td>
+                        <td><select name="TipoPermiso" id="TipoPermiso">
+                                <option></option>
+                                <option></option>
+                            </select>
+                            <input type="text" name="idPermiso" id="idPermiso" value="" />
+                        </td>
+                        <td><input type="button" name="+Cliente" id="masCliente" value="+"/></td>
+                    </tr> 
+                    <tr>
+                        <td><label for="Cliente">Cliente: </label></td>
+                        <td><select name="Cliente" id="Cliente">
+                                <option></option>
+                                <option></option>
+                            </select>
+                            <input type="text" name="idCliente" id="idCliente" value="" />
+                        </td>
+                        <td><input type="button" name="+Cliente" id="masCliente" value="+"/></td>
+                    </tr>   
+                    <tr>
+                        <td><label for="descripcionPermisos">Descripcion: </label></td>
+                        <td><textarea name="descripcionPermisos" id="descripcionProvincia" /></textarea></td>
+                    </tr>                    
+                    <tr>
+                        <td><input type="submit" value="Enviar" name="envPermisos" /></td>
+                    </tr>       
+                </tbody>
+            </table>
+        </form>
+    </body>
+</html>

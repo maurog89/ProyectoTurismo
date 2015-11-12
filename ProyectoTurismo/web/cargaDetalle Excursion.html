@@ -6,16 +6,51 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>ABM Lugar de Interes - Alta</title>
+        <title>ABM Detalle Excursion - Alta</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
         <form method="POST">
             <table>
+                <thead>
+                    <tr>
+                        <th>ABM Detalle Excursion - Alta</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><label for="fechaDetalleExcursion">Fecha: </label></td>
+                        <td><input type="date" name="fechaDetalleExcursion" id="fechaDetalleExcursion" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="duracionDetalleExcursion">Duracion: </label></td>
+                        <td><textarea name="duracionDetalleExcursion" id="duracionDetalleExcursion" /></textarea></td>
+                    </tr>                    
+                    <tr>
+                        <td><label for="Excursion">Id Excurcion: </label></td>
+                        <td><input type="text" name="Excursion" id="eExcursion" value="" /></td>
+                        <td><select name="nombreExcursion">
+                                <option></option>
+                                <option></option>
+                            </select></td>
+                    </tr>
+                    <tr>
+                        <td><label for="lugarInteres">Id Lugar Interes: </label></td>
+                        <td><input type="text" name="lugarInteres" id="lugarInteres" value="" /></td>
+                        <td><select name="nombrelugarInteres">
+                                <option></option>
+                                <option></option>
+                            </select></td>
+                    </tr>                        
+                </tbody>
+            </table>
+            <br />
+            <br />
+                <table>
                     <thead>
                         <tr>
-                            <th>ABM Lugar de Interes - Alta</th>
+                            <th>ABM Detalle Excursion - Lugar de Interes</th>
                         </tr>
                     </thead>
                     <tbody>
