@@ -24,10 +24,8 @@ public class ConexionEstado extends Conexion implements IConexiones{
         try {
             Estado es = (Estado) e;
             String sentencia = "INSERT INTO Turismo.Estado (nombre,descripcion) values ('" + es.getNombre()+"','"+es.getDescripcion()+"')";
-            if(sql.executeUpdate(sentencia) == 1)   
-                return true;
-            else
-                return false;
+            getSql().executeUpdate(sentencia); 
+            return true;
         }
         catch (Exception ex){
             return false;

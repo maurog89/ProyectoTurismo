@@ -5,6 +5,9 @@
  */
 package turismo.entidades;
 
+import turismo.conexion.Conexion;
+import turismo.conexion.IConexiones;
+
 /**
  *
  * @author matiascanodesarrollos
@@ -35,6 +38,11 @@ public class Estado implements IEntidades{
 
     public String getDescripcion() {
         return descripcion;
+    }
+
+    @Override
+    public boolean guardarEnBD() throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     

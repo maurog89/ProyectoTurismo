@@ -5,12 +5,16 @@
  */
 package turismo.entidades;
 
-import turismo.conexion.Conexion;
-
 /**
  *
  * @author matiascanodesarrollos
  */
-public interface IEntidades {
-    public boolean guardarEnBD() throws Exception;
+class Imagen {
+    private int id;
+
+    public int getId() {
+        return id;
+    }
+    
+    
 }

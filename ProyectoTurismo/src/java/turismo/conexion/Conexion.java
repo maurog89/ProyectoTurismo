@@ -1,13 +1,10 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Clase que utilizan las entidades para conectarse a las BD
  */
 package turismo.conexion;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -16,18 +13,30 @@ import java.sql.Statement;
  * @author matiascanodesarrollos
  */
 public class Conexion {
-    protected Connection conex;
-    protected Statement sql;
-    protected ResultSet rs;
-    protected String resultado = "";
+    private Connection conex;
+    private Statement sql;
+    private String resultado = "";
+    
+    /*
+    * Creo la conexion y genero un objeto Statement
+    */
     
     public Conexion(){                  
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             conex = DriverManager.getConnection("jdbc:mysql://localhost:3306/Turismo?zeroDateTimeBehavior=convertToNull","root","B1d2 Sh3kyamuni");
             sql = conex.createStatement();
-        } catch (Exception ex) {
+        } catch (ClassNotFoundException ex) {
                 // handle any errors
+            resultado += ex.toString();
+        } catch (InstantiationException ex) {
+            // handle any errors
+            resultado += ex.toString();
+        } catch (IllegalAccessException ex) {
+            // handle any errors
+            resultado += ex.toString();
+        } catch (SQLException ex) {
+            // handle any errors
             resultado += ex.toString();
         }   
     }
@@ -35,4 +44,26 @@ public class Conexion {
     public void cerrarConexion () throws SQLException {
         conex.close();
     }
+    
+    /*
+    * Gets y Sets
+    */
+
+    public Connection getConex() {
+        return conex;
+    }
+
+    public Statement getSql() {
+        return sql;
+    }
+
+    public String getResultado() {
+        return resultado;
+    }
+
+    public void setResultado(String resultado) {
+        this.resultado = resultado;
+    }
+    
+    
 }

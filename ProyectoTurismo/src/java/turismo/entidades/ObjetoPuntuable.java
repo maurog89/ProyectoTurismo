@@ -8,7 +8,7 @@ package turismo.entidades;
  * @author matiascanodesarrollos
  */
 public class ObjetoPuntuable {
-    private final int id;
+    private int id;
     private static int cantidadDeVeces;
     private static int prioridad;
     private static int puntajeTotal;
@@ -16,18 +16,17 @@ public class ObjetoPuntuable {
     /**
     * Constructor usado para inicializar por primera vez el objeto
      */
-    public ObjetoPuntuable(int id) {
-        this.id = id;
+    public ObjetoPuntuable(int cantidadDeVeces, int prioridad, int puntajeTotal) {
+        this.cantidadDeVeces = cantidadDeVeces;
+        this.prioridad = prioridad;
+        this.puntajeTotal = puntajeTotal;
     }    
     
     /**
     * Constructor usado para crear instancias de objetos ya presentes en la BD
      */
-    public ObjetoPuntuable(int id, int cantidadDeVeces, int prioridad, int puntajeTotal) {
-        this.id = id;
-        this.cantidadDeVeces = cantidadDeVeces;
+    public ObjetoPuntuable(int prioridad) {      
         this.prioridad = prioridad;
-        this.puntajeTotal = puntajeTotal;
     }
     
     /**
@@ -45,6 +44,11 @@ public class ObjetoPuntuable {
         return id;
     }
 
+    public void setIdObjeto(int id) {
+        this.id = id;
+    }
+    
+    
     public int getCantidadDeVeces() {
         return cantidadDeVeces;
     }
