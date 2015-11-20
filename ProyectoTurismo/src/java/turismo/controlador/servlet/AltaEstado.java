@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import turismo.conexion.ConexionEstado;
 import turismo.entidades.Estado;
+import turismo.entidades.Validacion;
 
 /**
  *
@@ -41,7 +42,7 @@ public class AltaEstado extends HttpServlet {
         try {
             /* TODO output your page here. You may use following sample code. */         
             if (!nombre.equals(""))
-                es = new Estado(nombre,descripcion);
+                es = new Estado(Validacion.pasarAMinusculas(nombre),Validacion.pasarAMinusculas(descripcion));
             else
                 throw new Exception();
             ConexionEstado con = new ConexionEstado();         
