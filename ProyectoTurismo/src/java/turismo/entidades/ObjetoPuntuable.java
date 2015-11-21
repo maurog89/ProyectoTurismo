@@ -14,16 +14,12 @@ public class ObjetoPuntuable {
     private static int puntajeTotal;
     
     /**
-    * Constructor usado para inicializar por primera vez el objeto
+    * Constructor usado para crear objetos ya presentes en la BD
      */
-    public ObjetoPuntuable(int cantidadDeVeces, int prioridad, int puntajeTotal) {
-        this.cantidadDeVeces = cantidadDeVeces;
-        this.prioridad = prioridad;
-        this.puntajeTotal = puntajeTotal;
-    }    
+     
     
     /**
-    * Constructor usado para crear instancias de objetos ya presentes en la BD
+    * Constructor usado para inicializar por primera vez el objeto
      */
     public ObjetoPuntuable(int prioridad) {      
         this.prioridad = prioridad;
@@ -40,7 +36,7 @@ public class ObjetoPuntuable {
     /**
     * Get y set de todos los atributos salvo id que nunca cambia.
      */
-    public int getId() {
+    public int getIdObjeto() {
         return id;
     }
 

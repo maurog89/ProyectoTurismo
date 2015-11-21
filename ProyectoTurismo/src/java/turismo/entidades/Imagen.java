@@ -9,8 +9,14 @@ package turismo.entidades;
  *
  * @author matiascanodesarrollos
  */
-class Imagen {
+public class Imagen {
     private int id;
+
+    public Imagen(int id) {
+        this.id = id;
+    }
+    
+    
 
     public int getId() {
         return id;

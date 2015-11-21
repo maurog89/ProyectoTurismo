@@ -7,21 +7,23 @@ package turismo.controlador.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import turismo.conexion.ConexionEstado;
 import turismo.entidades.Estado;
-import turismo.entidades.Validacion;
+import turismo.entidades.Fechas;
+import turismo.entidades.Noticia;
+import turismo.entidades.Imagen;
+import turismo.entidades.Observacion;
 
 /**
  *
  * @author matiascanodesarrollos
  */
-public class AltaEstado extends HttpServlet {
-    
-    private String resultado;
+public class AltaNoticia extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,30 +35,21 @@ public class AltaEstado extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        String nombre = request.getParameter("tipoEstado");
-        String descripcion = request.getParameter("descripcionEstado");        
-        Estado es;
         try {
-            /* TODO output your page here. You may use following sample code. */         
-            if (!nombre.equals(""))
-                es = new Estado(Validacion.pasarAMinusculas(nombre),Validacion.pasarAMinusculas(descripcion));
-            else
-                throw new Exception();
-            ConexionEstado con = new ConexionEstado();         
-            if(con.insertar(es))
-                resultado = "Estado Agregado";
-            else
-                resultado = "Error";
-            out.println(resultado);
-            con.cerrarConexion();           
+            /* TODO output your page here. You may use following sample code. */
+            Noticia not = new Noticia(request.getParameter("tituloNoticia"), request.getParameter("resumenNoticia"), request.getParameter("cuerpoNoticia"), request.getParameter("linkNoticia"), Fechas.fechaActual(), request.getParameter("fechaInicioNoticia"), request.getParameter("fechaFinalNoticia"), 1 , 1, 1, Integer.parseInt(request.getParameter("pririodadNoticia")));
+            out.println("OK");
         }catch (Exception ex){
-            resultado = ex.toString();
-        } finally {
-            out.close(); 
-        }        
+            out.println(ex.toString());
+        } 
+        
+        finally {
+            out.close();
+            
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -76,7 +69,7 @@ public class AltaEstado extends HttpServlet {
         out.println("<!DOCTYPE html>");
         out.println("<html>");
         out.println("<head>");
-        out.println("<title>Error de Metodo</title>");            
+        out.println("<title>Error de Metodo</title>");
         out.println("</head>");
         out.println("<body>");
         out.println("<h1>Estimado usuario, para su seguridad utilice la interfaz brindada.</h1>");
@@ -96,7 +89,11 @@ public class AltaEstado extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);        
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(AltaNoticia.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
