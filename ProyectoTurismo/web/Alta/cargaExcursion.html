@@ -11,7 +11,7 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <form method="POST">
+        <form method="POST" action="../AltaExcursion">
             <table>
                 <thead>
                     <tr>
@@ -21,39 +21,40 @@ and open the template in the editor.
                 <tbody>
                     <tr>
                         <td><label for="nombreExcursion">Nombre: </label></td>
-                        <td><input type="date" name="nombreExcursion" id="nombreExcursion" value="" /></td>
+                        <td><input type="text" name="nombreExcursion" id="nombreExcursion" value="" /></td>
                     </tr>
                     <tr>
                         <td><label for="detalleExcursion">Detalle: </label></td>
                         <td><textarea name="detalleExcursion" id="detalleExcursion" /></textarea></td>
                     </tr>
                     <tr>
+                        <td><label for="clienteExcursion">Id Cliente: </label></td>
+                        <td><input type="text" name="idClienteExcursion" id="clienteAlojamiento" value="" /></td>
+                        <td><select name="clienteExcursion" id="clienteAlojamiento">
+                                <option value="2">Torbe S.A.</option>
+                                <option></option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
                         <td><label for="inicioExcursion">Fecha Inicio: </label></td>
-                        <td><textarea name="inicioExcursion" id="inicioExcursion" /></textarea></td>
+                        <td><input type="date" name="inicioExcursion" id="inicioExcursion" /></td>
                     </tr>
                     <tr>
                         <td><label for="finExcursion">Fecha Fin: </label></td>
-                        <td><textarea name="finExcursion" id="finExcursion" /></textarea></td>
+                        <td><input type="date" name="finExcursion" id="finExcursion" /></td>
                     </tr>
                     <tr>
-                        <td><label for="añoExcursion">Año: </label></td>
-                        <td><input type="text" name="añoExcursion" id="añoExcursion" value="" /></td>
+                        <td><label for="anoExcursion">Año: </label></td>
+                        <td><input type="text" name="anoExcursion" id="anoExcursion" value="" /></td>
                     </tr>
                     <tr>
                         <td><label for="visitantesExcursion">Cantidad de personas: </label></td>
                         <td><input type="text" name="visitantesExcursion" id="visitantesExcursion" value="" /></td>
                     </tr>
                     <tr>
-                        <td><label for="codigoPuntuableExcursion">Código Puntaje: </label></td>
-                        <td><input type="text" name="codigoPuntuableExcursion" id="codigoPuntuableExcursion" value="" /></td>
-                        <td><select name="codigoPuntuableExcursion">
-                                <option></option>
-                                <option></option>
-                            </select></td>
-                    </tr>
-                    <tr>
                         <td><label for="pririodadExcursion">Prioridad: </label></td>
-                        <td><input type="text" name="pririodadExcursion" id="pririodadExcursion" value="" /></td>
+                        <td><input type="number" name="pririodadExcursion" id="pririodadExcursion" value="" /></td>
                     </tr>
                     <tr>
                         <td><label for="precioExcursion">Precio: </label></td>
@@ -62,7 +63,7 @@ and open the template in the editor.
                     <tr>
                         <td><label for="estadoExcursion">Estado: </label></td>
                         <td><select name="estadoExcursion" id="estadoExcursion">
-                                <option></option>
+                                <option value="1">Habilitado</option>
                                 <option></option>
                             </select></td>
                         <td><input type="button" name="+EstadoExcursion" id="masEstadoExcursion" value="+"/></td> 
@@ -70,7 +71,7 @@ and open the template in the editor.
                     <tr>
                         <td><label for="temporadaExcursion">Temporada: </label></td>
                         <td><select name="temporadaExcursion" id="temporadaExcursion">
-                                <option></option>
+                                <option value="1">Alta</option>
                                 <option></option>
                             </select></td>
                         <td><input type="button" name="+TemporadaExcursion" id="masTemporadaExcursion" value="+"/></td> 

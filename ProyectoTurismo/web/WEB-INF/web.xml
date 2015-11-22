@@ -4,9 +4,49 @@
         <servlet-name>AltaEstado</servlet-name>
         <servlet-class>turismo.controlador.servlet.AltaEstado</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AltaNoticia</servlet-name>
+        <servlet-class>turismo.controlador.servlet.AltaNoticia</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AltaAlojamiento</servlet-name>
+        <servlet-class>turismo.controlador.servlet.AltaAlojamiento</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AltaCiudad</servlet-name>
+        <servlet-class>turismo.controlador.servlet.AltaCiudad</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AltaEvento</servlet-name>
+        <servlet-class>turismo.controlador.servlet.AltaEvento</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AltaExcursion</servlet-name>
+        <servlet-class>turismo.controlador.servlet.AltaExcursion</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AltaEstado</servlet-name>
         <url-pattern>/AltaEstado</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AltaNoticia</servlet-name>
+        <url-pattern>/AltaNoticia</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AltaAlojamiento</servlet-name>
+        <url-pattern>/AltaAlojamiento</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AltaCiudad</servlet-name>
+        <url-pattern>/AltaCiudad</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AltaEvento</servlet-name>
+        <url-pattern>/AltaEvento</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AltaExcursion</servlet-name>
+        <url-pattern>/AltaExcursion</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

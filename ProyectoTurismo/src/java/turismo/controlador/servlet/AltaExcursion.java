@@ -7,20 +7,19 @@ package turismo.controlador.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import turismo.entidades.Excursion;
 import turismo.entidades.Fechas;
-import turismo.entidades.Noticia;
 
 /**
  *
  * @author matiascanodesarrollos
  */
-public class AltaNoticia extends HttpServlet {
+public class AltaExcursion extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,20 +31,41 @@ public class AltaNoticia extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, Exception {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        try {
-            /* TODO output your page here. You may use following sample code. */
-            new Noticia(request.getParameter("tituloNoticia"), request.getParameter("resumenNoticia"), request.getParameter("cuerpoNoticia"), request.getParameter("linkNoticia"), Fechas.fechaActual(), request.getParameter("fechaInicioNoticia"), request.getParameter("fechaFinalNoticia"), 1 , 1, 1, Integer.parseInt(request.getParameter("pririodadNoticia")));
-            out.println("OK");
-        }catch (Exception ex){
-            out.println(ex.toString());
-        } 
-        
-        finally {
-            out.close();
+        String nombre = request.getParameter("nombreExcursion");
+        String detalle = request.getParameter("detalleExcursion");
+        String fechaInicio = request.getParameter("inicioExcursion");
+        String fechaFin = request.getParameter("finExcursion");
+        String ano = request.getParameter("anoExcursion");
+        String personas = request.getParameter("visitantesExcursion");
+        String precio = request.getParameter("precioExcursion");
+        int prioridad = -1;
+        if(!request.getParameter("pririodadExcursion").isEmpty())
+           prioridad = Integer.parseInt(request.getParameter("pririodadExcursion"));
+        int estado = -1;
+        if(!request.getParameter("estadoExcursion").isEmpty())
+            estado = Integer.parseInt(request.getParameter("estadoExcursion"));
+        int temporada = -1;
+        if(!request.getParameter("temporadaExcursion").isEmpty())
+            temporada = Integer.parseInt(request.getParameter("temporadaExcursion"));
+        int imagen = 1;
+        int contacto = 2;
+        int cliente = 2;
+        int domicilio = 3;
+        try {    
+            if(!nombre.isEmpty() && !detalle.isEmpty() && !fechaInicio.isEmpty() && !fechaFin.isEmpty() && !ano.isEmpty() && !personas.isEmpty() && !precio.isEmpty() && prioridad != -1 && estado != -1 && temporada != -1 && imagen != -1 && contacto != -1 && cliente != -1 && domicilio != -1){
+                new Excursion(nombre,detalle,precio,fechaInicio,fechaFin,ano,personas,temporada,Fechas.fechaActual(),cliente,contacto,domicilio,estado,imagen,prioridad);
+                out.println("Excursion cargada");
+            }else{
+                out.println("Todos los campos son obligatorios");
+            }
             
+        } catch (SQLException ex) {
+            out.println(ex.toString());        
+        } finally {
+            out.close();
         }
     }
 
@@ -66,7 +86,7 @@ public class AltaNoticia extends HttpServlet {
         out.println("<!DOCTYPE html>");
         out.println("<html>");
         out.println("<head>");
-        out.println("<title>Error de Metodo</title>");
+        out.println("<title>Error de Metodo</title>");            
         out.println("</head>");
         out.println("<body>");
         out.println("<h1>Estimado usuario, para su seguridad utilice la interfaz brindada.</h1>");
@@ -86,11 +106,7 @@ public class AltaNoticia extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (Exception ex) {
-            Logger.getLogger(AltaNoticia.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**

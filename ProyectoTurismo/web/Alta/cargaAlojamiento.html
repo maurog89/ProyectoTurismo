@@ -11,7 +11,7 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <form method="POST">
+        <form method="POST" action="../AltaAlojamiento">
             <table>
                     <thead>
                         <tr>
@@ -26,14 +26,10 @@ and open the template in the editor.
                     <tr>
                         <td><label for="descripcionAlojamiento">Descripcion: </label></td>
                         <td><textarea name="descripcionAlojamient" id="descripcionAlojamiento" /></textarea></td>
-                    </tr>                   
-                    <tr>
-                        <td><label for="codigoAlojamiento">Código Puntaje: </label></td>
-                        <td><input type="text" name="codigoAlojamiento" id="codigoAlojamiento" value="" /></td>
-                    </tr>
+                    </tr> 
                     <tr>
                         <td><label for="pririodadAlojamiento">Prioridad: </label></td>
-                        <td><input type="text" name="pririodadAlojamiento" id="pririodadAlojamiento" value="" /></td>
+                        <td><input type="number" name="pririodadAlojamiento" id="pririodadAlojamiento" value="" /></td>
                     </tr>
                     <tr>
                         <td><label for="estadoAlojamiento">Estado: </label></td>

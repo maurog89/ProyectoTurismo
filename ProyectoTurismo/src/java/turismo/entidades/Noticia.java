@@ -3,7 +3,6 @@
  */
 package turismo.entidades;
 
-import java.sql.Date;
 import java.sql.ResultSet;
 import turismo.conexion.Conexion;
 
@@ -13,18 +12,17 @@ import turismo.conexion.Conexion;
  */
 public class Noticia extends ObjetoPuntuable implements IEntidades {
 
-    private static int id;
-    private static String titulo;
-    private static String resumen;
-    private static String cuerpo;
-    private static String link;
-    private final String fechaAlta;
-    private static String fechaInicio;
-    private static String fechaFin;
-    private static int estado;
-    private static int imagen;
-    private static int observacion;
-    private final Conexion con;
+    private final int id;
+    private String titulo;
+    private String resumen;
+    private String cuerpo;
+    private String link;
+    private String fechaAlta;
+    private String fechaInicio;
+    private String fechaFin;
+    private int estado;
+    private int imagen;
+    private int observacion;
 
     /*
     * Constructor para nuevas noticas
@@ -41,91 +39,98 @@ public class Noticia extends ObjetoPuntuable implements IEntidades {
         this.estado = estado;
         this.imagen = imagen;
         this.observacion = observacion;
-        con = new Conexion();
-        ResultSet rs = con.getSql().executeQuery("CALL Turismo.cargaObjetoPuntuable(" + prioridad + ")");
-        rs.next();
-        setIdObjeto(rs.getInt("LAST_INSERT_ID()"));        
-        ResultSet rss = con.getSql().executeQuery("CALL Turismo.cargaNoticia('" + titulo + "','" + resumen + "','" + cuerpo + "','" + link + "','" + fechaAlta + "','" + fechaInicio + "','" + fechaFin + "','" + estado + "','" + imagen + "','" + observacion + "','"+ getIdObjeto()+"')");
+        generarObjetoParaBD();        
+        ResultSet rss = getCon().getSql().executeQuery("CALL Turismo.cargaNoticia('" + titulo + "','" + resumen + "','" + cuerpo + "','" + link + "','" + fechaAlta + "','" + fechaInicio + "','" + fechaFin + "','" + estado + "','" + imagen + "','" + observacion + "','"+ getIdObjeto()+"')");
         rss.next();
         this.id = rss.getInt("LAST_INSERT_ID()");
-        con.cerrarConexion();
+        cerrarConexion();
     }
 
     /*
     * Get y sets
      */
-    public static String getTitulo() {
+
+    public String getTitulo() {
         return titulo;
     }
 
-    public static void setTitulo(String titulo) {
-        Noticia.titulo = titulo;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 
-    public static String getResumen() {
+    public String getResumen() {
         return resumen;
     }
 
-    public static void setResumen(String resumen) {
-        Noticia.resumen = resumen;
+    public void setResumen(String resumen) {
+        this.resumen = resumen;
     }
 
-    public static String getCuerpo() {
+    public String getCuerpo() {
         return cuerpo;
     }
 
-    public static void setCuerpo(String cuerpo) {
-        Noticia.cuerpo = cuerpo;
+    public void setCuerpo(String cuerpo) {
+        this.cuerpo = cuerpo;
     }
 
-    public static String getLink() {
+    public String getLink() {
         return link;
     }
 
-    public static void setLink(String link) {
-        Noticia.link = link;
+    public void setLink(String link) {
+        this.link = link;
     }
 
-    public static String getFechaInicio() {
+    public String getFechaAlta() {
+        return fechaAlta;
+    }
+
+    public void setFechaAlta(String fechaAlta) {
+        this.fechaAlta = fechaAlta;
+    }
+
+    public String getFechaInicio() {
         return fechaInicio;
     }
 
-    public static void setFechaInicio(String fechaInicio) {
-        Noticia.fechaInicio = fechaInicio;
+    public void setFechaInicio(String fechaInicio) {
+        this.fechaInicio = fechaInicio;
     }
 
-    public static String getFechaFin() {
+    public String getFechaFin() {
         return fechaFin;
     }
 
-    public static void setFechaFin(String fechaFin) {
-        Noticia.fechaFin = fechaFin;
+    public void setFechaFin(String fechaFin) {
+        this.fechaFin = fechaFin;
     }
 
-    public static int getEstado() {
+    public int getEstado() {
         return estado;
     }
 
-    public static void setEstado(int estado) {
-        Noticia.estado = estado;
+    public void setEstado(int estado) {
+        this.estado = estado;
     }
 
-    public static int getImagen() {
+    public int getImagen() {
         return imagen;
     }
 
-    public static void setImagen(int imagen) {
-        Noticia.imagen = imagen;
+    public void setImagen(int imagen) {
+        this.imagen = imagen;
     }
 
-    public static int getObservacion() {
+    public int getObservacion() {
         return observacion;
     }
 
-    public static void setObservacion(int observacion) {
-        Noticia.observacion = observacion;
+    public void setObservacion(int observacion) {
+        this.observacion = observacion;
     }
-
+    
+    
     @Override
     public boolean guardarEnBD() throws Exception {
 

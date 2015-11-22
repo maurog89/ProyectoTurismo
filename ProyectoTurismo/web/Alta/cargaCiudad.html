@@ -11,7 +11,7 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <form method="POST">
+        <form method="POST" action="../AltaCiudad">
             <table>
                 <thead>
                     <tr>
@@ -24,9 +24,9 @@ and open the template in the editor.
                         <td><input type="text" name="nombreCuidad" id="nombreCuidad" value="" /></td>
                     </tr>
                     <tr>
-                        <td><label for="Pais">Provincia: </label></td>
+                        <td><label for="Provincia">Provincia: </label></td>
                         <td><select name="Provincia" id="Provincia">
-                                <option></option>
+                                <option value="1">Cordoba</option>
                                 <option></option>
                             </select></td>
                         <td><input type="button" name="+Provincia" id="masProvincia" value="+"/></td>     
@@ -42,9 +42,9 @@ and open the template in the editor.
                     <tr>
                         <td><label>¿Es Capital?</label></td>
                         <td><label for="esCapitalPaisSi">Si</label>
-                        <input type="radio" name="capital" id="esCapitalPaisSi" value="0" />
+                        <input type="radio" name="capital" id="esCapitalPaisSi" value="1" />
                         <label for="esCapitalPaisNo">No</label>
-                        <input type="radio" name="capital" id="esCapitalPaisNo" value="1" /></td>
+                        <input type="radio" name="capital" id="esCapitalPaisNo" value="0" checked="checked" /></td>
                     </tr>
                     <tr>
                         <td><label for="clienteCiudad">Cliente: </label></td>
@@ -52,21 +52,13 @@ and open the template in the editor.
                                 <option></option>
                                 <option></option>
                             </select>
-                            <input type="text" name="idClienteCiudad" value="" />
+                            <input type="number" name="idClienteCiudad" value="" />
                         </td>
                         <td><input type="button" name="+Cliente" id="masCliente" value="+"/></td>     
                     </tr>                    
                     <tr>
                         <td><label for="pririodadCuidad">Prioridad: </label></td>
-                        <td><input type="text" name="pririodadCuidad" id="pririodadCuidad" value="" /></td>
-                    </tr>
-                    <tr>
-                        <td><label for="codigoPuntuableCuidad">Código Puntaje: </label></td>
-                        <td><input type="text" name="codigoPuntuableCuidad" id="codigoPuntuableCuidad" value="" /></td>
-                        <td><select name="codigoPuntuableNombre">
-                                <option></option>
-                                <option></option>
-                            </select></td>
+                        <td><input type="number" name="pririodadCuidad" id="pririodadCuidad" value="" /></td>
                     </tr>
                     <tr>
                         <td><label for="ciudadObservaciones">Observaciones: </label></td>

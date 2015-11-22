@@ -11,7 +11,7 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <form method="POST">
+        <form method="POST" action="../AltaNoticia">
             <table>
                     <thead>
                         <tr>
@@ -34,14 +34,10 @@ and open the template in the editor.
                     <tr>
                         <td><label for="linkNoticia">Link: </label></td>
                         <td><input type="text" name="linkNoticia" id="linkNoticia" value="" /></td>
-                    </tr>
-                    <tr>
-                        <td><label for="codigoPuntuableNoticia">Código Puntaje: </label></td>
-                        <td><input type="text" name="codigoPuntuableNoticia" id="codigoPuntuableNoticia" value="" /></td>
-                    </tr>                    
+                    </tr>             
                     <tr>
                         <td><label for="pririodadNoticia">Prioridad: </label></td>
-                        <td><input type="text" name="pririodadNoticia" id="pririodadNoticia" value="" /></td>
+                        <td><input type="number" name="pririodadNoticia" id="pririodadNoticia" value="" /></td>
                     </tr>
                     <tr>
                         <td><label for="fechaInicioNoticia">Fecha inicio: </label></td>

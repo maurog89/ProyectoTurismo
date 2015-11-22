@@ -7,12 +7,12 @@ package turismo.controlador.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import turismo.entidades.Alojamiento;
 import turismo.entidades.Fechas;
 import turismo.entidades.Noticia;
 
@@ -20,7 +20,7 @@ import turismo.entidades.Noticia;
  *
  * @author matiascanodesarrollos
  */
-public class AltaNoticia extends HttpServlet {
+public class AltaAlojamiento extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,20 +32,18 @@ public class AltaNoticia extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, Exception {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
-            /* TODO output your page here. You may use following sample code. */
-            new Noticia(request.getParameter("tituloNoticia"), request.getParameter("resumenNoticia"), request.getParameter("cuerpoNoticia"), request.getParameter("linkNoticia"), Fechas.fechaActual(), request.getParameter("fechaInicioNoticia"), request.getParameter("fechaFinalNoticia"), 1 , 1, 1, Integer.parseInt(request.getParameter("pririodadNoticia")));
+            new Alojamiento(request.getParameter("nombreAlojamiento"), request.getParameter("descripcionAlojamient"),2,2,3,1,1,1,1,Fechas.fechaActual(),Integer.parseInt(request.getParameter("pririodadAlojamiento")));
             out.println("OK");
-        }catch (Exception ex){
+        }catch (NumberFormatException ex){
+            out.println(ex.toString());        
+        } catch (SQLException ex) {
             out.println(ex.toString());
-        } 
-        
-        finally {
+        } finally {
             out.close();
-            
         }
     }
 
@@ -86,11 +84,7 @@ public class AltaNoticia extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (Exception ex) {
-            Logger.getLogger(AltaNoticia.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**

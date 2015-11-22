@@ -11,7 +11,7 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <form method="POST">
+        <form method="POST" action="../AltaEvento">
             <table>
                     <thead>
                         <tr>
@@ -30,14 +30,10 @@ and open the template in the editor.
                     <tr>
                         <td><label for="descripcionEvento">Descripcion: </label></td>
                         <td><textarea name="descripcionEvento" id="descripcionEvento" /></textarea></td>
-                    </tr>                   
-                    <tr>
-                        <td><label for="codigoPuntuableEvento">Código Puntaje: </label></td>
-                        <td><input type="text" name="codigoEvento" id="codigoPuntuableEvento" value="" /></td>
-                    </tr>
+                    </tr>   
                     <tr>
                         <td><label for="pririodadEvento">Prioridad: </label></td>
-                        <td><input type="text" name="pririodadEvento" id="pririodadEvento" value="" /></td>
+                        <td><input type="number" name="pririodadEvento" id="pririodadEvento" value="" /></td>
                     </tr>
                     <tr>
                         <td><label for="fechaInicioEvento">Fecha inicio: </label></td>
@@ -50,7 +46,7 @@ and open the template in the editor.
                     <tr>
                         <td><label for="estadoSitioParaComer">Estado: </label></td>
                         <td><select name="estadoSitioParaComer" id="estadoSitioParaComer">
-                                <option></option>
+                                <option value="1">Habilitado</option>
                                 <option></option>
                             </select></td>
                         <td><input type="button" name="+SitioParaComer" id="masSitioParaComer" value="+"/></td> 
@@ -59,7 +55,7 @@ and open the template in the editor.
                         <td><label for="clienteSitioParaComer">Id Cliente: </label></td>
                         <td><input type="text" name="clienteSitioParaComer" id="clienteSitioParaComer" value="" /></td>
                         <td><select name="clienteSitioParaComer" id="clienteSitioParaComer">
-                                <option></option>
+                                <option value="2">Torbe SA</option>
                                 <option></option>
                             </select>
                         </td>
@@ -72,7 +68,7 @@ and open the template in the editor.
                     <tr>
                         <td><label for="tipoEvento">Tipo Evento: </label></td>
                         <td><select name="tipoEvento" id="tipoEvento">
-                                <option></option>
+                                <option value="1">Recreativo</option>
                                 <option></option>
                             </select></td>
                         <td><input type="button" name="+tipoEvento" id="mastipoEvento" value="+"/></td> 
