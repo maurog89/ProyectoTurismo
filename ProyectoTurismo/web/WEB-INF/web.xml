@@ -24,6 +24,10 @@
         <servlet-name>AltaExcursion</servlet-name>
         <servlet-class>turismo.controlador.servlet.AltaExcursion</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AltaHabitacion</servlet-name>
+        <servlet-class>turismo.controlador.servlet.AltaHabitacion</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AltaEstado</servlet-name>
         <url-pattern>/AltaEstado</url-pattern>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>AltaExcursion</servlet-name>
         <url-pattern>/AltaExcursion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AltaHabitacion</servlet-name>
+        <url-pattern>/AltaHabitacion</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

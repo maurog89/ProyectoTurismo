@@ -11,7 +11,7 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <form method="POST">
+        <form method="POST" action="../AltaHabitacion">
             <table>
                 <thead>
                     <tr>
@@ -22,8 +22,7 @@ and open the template in the editor.
                     <tr>
                         <td><label for="tipoHabitacion">Tipo Habitacion: </label></td>
                         <td><select name="tipoHabitacion" id="tipoHabitacion">
-                                <option></option>
-                                <option></option>
+                                <option value="1">Simple</option>
                             </select></td>
                         <td><input type="button" name="+TipoHabitacion" id="masTipoHabitacion" value="+"/></td> 
                     </tr>
@@ -36,31 +35,22 @@ and open the template in the editor.
                         <td><textarea name="detalleHabitacion" id="detalleHabitacion" /></textarea></td>
                     </tr>
                     <tr>
-                        <td><label for="codigoPuntuableHabitacion">Código Puntaje: </label></td>
-                        <td><input type="text" name="codigoPuntuableHabitacion" id="codigoPuntuableHabitacion" value="" /></td>
-                        <td><select name="codigoPuntuableHabitacion">
-                                <option></option>
-                                <option></option>
-                            </select></td>
-                    </tr>
-                    <tr>
                         <td><label for="prioridadHabitacion">Prioridad: </label></td>
                         <td><input type="number" name="prioridadHabitacion" id="prioridadHabitacionn" value="" /></td>
                     </tr>
                     <tr>
                         <td><label for="estadoHabitacion">Estado: </label></td>
                         <td><select name="estadoHabitacion" id="estadoHabitacion">
-                                <option></option>
-                                <option></option>
+                                <option value="1">Habilitado</option>
                             </select></td>
                         <td><input type="button" name="+EstadoHabitacion" id="masEstadoHabitacion" value="+"/></td> 
                     </tr>                    
                     <tr>
                         <td><label for="alojamientoHabitacion">Alojamiento: </label></td>
                         <td><select name="alojamientoHabitacion" id="alojamientoHabitacion">
-                                <option></option>
-                                <option></option>
-                            </select></td>
+                                <option value="1">Hotel "La cañada"</option>
+                                </select>
+                        </td>
                         <td><input type="text" name="idAlojamientoHabitacion" id="idAlojamientoHabitacion" value=""/></td> 
                     </tr>
                     <tr>                        
