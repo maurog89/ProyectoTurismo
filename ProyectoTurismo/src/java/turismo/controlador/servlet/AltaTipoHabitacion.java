@@ -12,14 +12,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import turismo.entidades.Fechas;
-import turismo.entidades.SitioParaComer;
+import turismo.entidades.TipoHabitacion;
 
 /**
  *
  * @author matiascanodesarrollos
  */
-public class AltaSitioParaComer extends HttpServlet {
+public class AltaTipoHabitacion extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,49 +33,20 @@ public class AltaSitioParaComer extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        String nombre = request.getParameter("nombreSitioParaComer");
-        String precio = request.getParameter("precioSitioParaComer");
-        int observacion = 1;
-        int prioridad = -1;
-        if(!request.getParameter("pririodadSitioParaComer").isEmpty())
-            prioridad = Integer.parseInt(request.getParameter("pririodadSitioParaComer"));
-        int estado = -1;
-        if(!request.getParameter("estadoSitioParaComer").isEmpty())
-            estado = Integer.parseInt(request.getParameter("estadoSitioParaComer"));
-        int cliente = -1;
-        if(!request.getParameter("clienteSitioParaComer").isEmpty())
-            cliente = Integer.parseInt(request.getParameter("clienteSitioParaComer"));
-        int imagen = 1;
-        int tipoDeComida = -1;
-        if(!request.getParameter("tipoComidaSitioParaComer").isEmpty())
-            tipoDeComida = Integer.parseInt(request.getParameter("tipoComidaSitioParaComer"));
-        int categoriaRestaurante = -1;
-        if(!request.getParameter("categoriaRestauranteSitioParaComer").isEmpty())
-            categoriaRestaurante = Integer.parseInt(request.getParameter("categoriaRestauranteSitioParaComer"));
-        int domicilio = 2;
-        int contacto = 1;
+        String nombre = request.getParameter("tipoHabitacion");
+        String descripcion = request.getParameter("descripcionTipoHabitacion");
         try {
             /* TODO output your page here. You may use following sample code. */
-            if(observacion != -1 && !nombre.isEmpty() && prioridad != -1 && estado != -1 && imagen != -1 && tipoDeComida != -1 && categoriaRestaurante != -1 && domicilio != -1 && contacto != -1){
-                if(cliente != -1){
-                    if(!precio.isEmpty()){
-                        new SitioParaComer(nombre,precio,categoriaRestaurante,observacion,tipoDeComida,Fechas.fechaActual(),cliente,contacto,domicilio,estado,imagen,prioridad,"Completo");
-                        out.println("Sitio para comer completo cargado.");
-                    }else{
-                        new SitioParaComer(nombre,precio,categoriaRestaurante,observacion,tipoDeComida,Fechas.fechaActual(),cliente,contacto,domicilio,estado,imagen,prioridad,"Precio");
-                        out.println("Sitio para comer sin precio.");
-                    }
-                }else{
-                    if(!precio.isEmpty()){
-                        new SitioParaComer(nombre,precio,categoriaRestaurante,observacion,tipoDeComida,Fechas.fechaActual(),cliente,contacto,domicilio,estado,imagen,prioridad,"Cliente");
-                        out.println("Sitio para comer sin cliente.");
-                    }else{
-                        new SitioParaComer(nombre,precio,categoriaRestaurante,observacion,tipoDeComida,Fechas.fechaActual(),cliente,contacto,domicilio,estado,imagen,prioridad,"Minimo");
-                        out.println("Sitio para comer sin cliente y precio.");
-                    }
+            if(nombre.isEmpty())
+                out.println("El campo nombre es obligatorio.");
+            else{
+                if(descripcion.isEmpty()){
+                    new TipoHabitacion(nombre,descripcion,"Minimo");
+                    out.println("Tipo de habitacion sin descripcion cargada.");
+                }else{                    
+                    new TipoHabitacion(nombre,descripcion,"Completa");
+                    out.println("Tipo de habitacion cargada.");
                 }
-            }else{
-                out.println("Los campos nombre, prioridad, estado, imagen, tipo de comida, categoria de restaurante, domicilio y contacto son obligatorios.");
             }
         } catch (SQLException ex) {
             out.println(ex.toString());
