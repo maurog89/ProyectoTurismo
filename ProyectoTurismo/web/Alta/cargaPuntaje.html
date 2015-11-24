@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>ABM Puntaje - Alta</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <form method="POST">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ABM Puntaje - Alta</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><label for="puntaje">Puntaje: </label></td>
+                        <td><input type="number" name="puntaje" id="fechaDesdeViaje" value="" min="0" max="5" /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="usuarioPuntaje">Usuario: </label></td>
+                        <td><select name="usuarioPuntaje" id="usuarioPuntaje">
+                                <option></option>
+                                <option></option>
+                            </select></td>
+                        <td><input type="text" name="idUsuarioPuntaje" id="idUsuarioReserva" value=""/></td>
+                    </tr>
+                    <tr>
+                        <td><label for="objetoPuntaje">Objeto: </label></td>
+                        <td><select name="objetoPuntaje" id="objetoPuntaje">
+                                <option></option>
+                                <option></option>
+                            </select></td>
+                        <td><input type="text" name="idUsuarioPuntaje" id="idUsuarioPuntaje" value=""/></td>
+                    </tr>
+                    <tr>
+                        <td><label for="comentario">Comentario: </label></td>
+                        <td><textarea name="comentario" id="comentario" /></textarea></td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" value="Enviar" name="envReserva" /></td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </body>
+</html>
