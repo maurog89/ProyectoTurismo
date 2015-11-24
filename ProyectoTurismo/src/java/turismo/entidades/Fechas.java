@@ -17,8 +17,6 @@ public class Fechas {
     public static String fechaActual(){
         Date fechaActual = new Date(); 
         SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd"); 
-        String fecha = formato.format(fechaActual);
-
-        return fecha;
+        return formato.format(fechaActual);
 }
 }
