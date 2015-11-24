@@ -11,7 +11,7 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <form method="POST">
+        <form method="POST" action="../AltaLugarDeInteres">
             <table>
                     <thead>
                         <tr>
@@ -30,24 +30,15 @@ and open the template in the editor.
                     <tr>
                         <td><label for="descripcionLugarInteres">Descripcion: </label></td>
                         <td><textarea name="descripcionLugarInteres" id="descripcionLugarInteres" /></textarea></td>
-                    </tr>                   
-                    <tr>
-                        <td><label for="codigoPuntuableLugarInteres">Código Puntaje: </label></td>
-                        <td><input type="text" name="codigoPuntuableLugarInteres" id="codigoPuntuableExcursion" value="" /></td>
-                        <td><select name="codigoPuntuableExcursion">
-                                <option></option>
-                                <option></option>
-                            </select></td>
                     </tr>
                     <tr>
                         <td><label for="pririodadLugarInteres">Prioridad: </label></td>
-                        <td><input type="text" name="pririodadLugarInteres" id="pririodadLugarInteres" value="" /></td>
+                        <td><input type="number" name="pririodadLugarInteres" id="pririodadLugarInteres" value="" /></td>
                     </tr>
                     <tr>
                         <td><label for="estadoLugarInteres">Estado: </label></td>
                         <td><select name="estadoLugarInteres" id="estadoLugarInteres">
-                                <option></option>
-                                <option></option>
+                                <option value="1">Habilitado</option>
                             </select></td>
                         <td><input type="button" name="+LugarInteres" id="masLugarInteres" value="+"/></td> 
                     </tr>
@@ -55,8 +46,8 @@ and open the template in the editor.
                         <td><label for="clienteLugarInteres">Id Cliente: </label></td>
                         <td><input type="text" name="clienteLugarInteres" id="clienteLugarInteres" value="" /></td>
                         <td><select name="clienteLugarInteres" id="clienteLugarInteres">
-                                <option></option>
-                                <option></option>
+                                <option value="1">Torbe S.A</option>
+                                <option value="0">Sin cliente</option>
                             </select>
                         </td>
                     </tr>

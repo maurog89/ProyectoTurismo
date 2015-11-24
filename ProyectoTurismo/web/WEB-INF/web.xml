@@ -28,6 +28,14 @@
         <servlet-name>AltaHabitacion</servlet-name>
         <servlet-class>turismo.controlador.servlet.AltaHabitacion</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AltaLugarDeInteres</servlet-name>
+        <servlet-class>turismo.controlador.servlet.AltaLugarDeInteres</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AltaSitioParaComer</servlet-name>
+        <servlet-class>turismo.controlador.servlet.AltaSitioParaComer</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AltaEstado</servlet-name>
         <url-pattern>/AltaEstado</url-pattern>
@@ -55,6 +63,14 @@
     <servlet-mapping>
         <servlet-name>AltaHabitacion</servlet-name>
         <url-pattern>/AltaHabitacion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AltaLugarDeInteres</servlet-name>
+        <url-pattern>/AltaLugarDeInteres</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AltaSitioParaComer</servlet-name>
+        <url-pattern>/AltaSitioParaComer</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
