@@ -29,6 +29,11 @@ public class ObjetoPuntuable {
     public ObjetoPuntuable(int prioridad) {      
         this.prioridad = prioridad;
     }
+
+    public ObjetoPuntuable() {
+    }
+    
+    
     
     /**
     * Metodo utilizado para calcular el promedio de puntaje.

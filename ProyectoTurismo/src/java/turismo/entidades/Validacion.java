@@ -10,8 +10,7 @@ package turismo.entidades;
  * @author matiascanodesarrollos
  */
 public class Validacion {
-    public static String pasarAMinusculas(String a){
-        String resultado = a.toLowerCase();
-        return resultado;
+    public static String pasarAMinusculas(String a){        
+        return a.toLowerCase().trim();
     }
 }

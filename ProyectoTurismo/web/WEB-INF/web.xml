@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
     <servlet>
-        <servlet-name>AltaEstado</servlet-name>
-        <servlet-class>turismo.controlador.servlet.AltaEstado</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>AltaNoticia</servlet-name>
         <servlet-class>turismo.controlador.servlet.AltaNoticia</servlet-class>
     </servlet>
@@ -36,10 +32,26 @@
         <servlet-name>AltaSitioParaComer</servlet-name>
         <servlet-class>turismo.controlador.servlet.AltaSitioParaComer</servlet-class>
     </servlet>
-    <servlet-mapping>
+    <servlet>
+        <servlet-name>AltaTemporada</servlet-name>
+        <servlet-class>turismo.controlador.servlet.AltaTemporada</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AltaTipoHabitacion</servlet-name>
+        <servlet-class>turismo.controlador.servlet.AltaTipoHabitacion</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>AltaEstado</servlet-name>
-        <url-pattern>/AltaEstado</url-pattern>
-    </servlet-mapping>
+        <servlet-class>turismo.controlador.servlet.AltaEstado</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AltaReserva</servlet-name>
+        <servlet-class>turismo.controlador.servlet.AltaReserva</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AltaViaje</servlet-name>
+        <servlet-class>turismo.controlador.servlet.AltaViaje</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AltaNoticia</servlet-name>
         <url-pattern>/AltaNoticia</url-pattern>
@@ -71,6 +83,26 @@
     <servlet-mapping>
         <servlet-name>AltaSitioParaComer</servlet-name>
         <url-pattern>/AltaSitioParaComer</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AltaTemporada</servlet-name>
+        <url-pattern>/AltaTemporada</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AltaTipoHabitacion</servlet-name>
+        <url-pattern>/AltaTipoHabitacion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AltaEstado</servlet-name>
+        <url-pattern>/AltaEstado</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AltaReserva</servlet-name>
+        <url-pattern>/AltaReserva</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AltaViaje</servlet-name>
+        <url-pattern>/AltaViaje</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
