@@ -4,7 +4,6 @@
 package turismo.entidades;
 
 import java.sql.ResultSet;
-import turismo.conexion.Conexion;
 
 /**
  *

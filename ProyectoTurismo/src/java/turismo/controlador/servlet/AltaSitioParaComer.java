@@ -53,7 +53,7 @@ public class AltaSitioParaComer extends HttpServlet {
         int categoriaRestaurante = -1;
         if(!request.getParameter("categoriaRestauranteSitioParaComer").isEmpty())
             categoriaRestaurante = Integer.parseInt(request.getParameter("categoriaRestauranteSitioParaComer"));
-        int domicilio = 2;
+        int domicilio = 1;
         int contacto = 1;
         try {
             /* TODO output your page here. You may use following sample code. */

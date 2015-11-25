@@ -37,7 +37,7 @@ public class AltaNoticia extends HttpServlet {
         PrintWriter out = response.getWriter();
         try {
             /* TODO output your page here. You may use following sample code. */
-            new Noticia(request.getParameter("tituloNoticia"), request.getParameter("resumenNoticia"), request.getParameter("cuerpoNoticia"), request.getParameter("linkNoticia"), Fechas.fechaActual(), request.getParameter("fechaInicioNoticia"), request.getParameter("fechaFinalNoticia"), 1 , 1, 1, Integer.parseInt(request.getParameter("pririodadNoticia")));
+            new Noticia(request.getParameter("tituloNoticia"), request.getParameter("resumenNoticia"), request.getParameter("cuerpoNoticia"), request.getParameter("linkNoticia"), Fechas.fechaActual(), request.getParameter("fechaInicioNoticia"), request.getParameter("fechaFinalNoticia"), 2 , 1, 1, Integer.parseInt(request.getParameter("pririodadNoticia")));
             out.println("OK");
         }catch (Exception ex){
             out.println(ex.toString());
