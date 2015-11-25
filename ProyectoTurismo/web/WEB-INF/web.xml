@@ -52,6 +52,18 @@
         <servlet-name>AltaViaje</servlet-name>
         <servlet-class>turismo.controlador.servlet.AltaViaje</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AltaVisita</servlet-name>
+        <servlet-class>turismo.controlador.servlet.AltaVisita</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Puntaje</servlet-name>
+        <servlet-class>turismo.entidades.Puntaje</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AltaPuntaje</servlet-name>
+        <servlet-class>turismo.controlador.servlet.AltaPuntaje</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AltaNoticia</servlet-name>
         <url-pattern>/AltaNoticia</url-pattern>
@@ -103,6 +115,18 @@
     <servlet-mapping>
         <servlet-name>AltaViaje</servlet-name>
         <url-pattern>/AltaViaje</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AltaVisita</servlet-name>
+        <url-pattern>/AltaVisita</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Puntaje</servlet-name>
+        <url-pattern>/Puntaje</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AltaPuntaje</servlet-name>
+        <url-pattern>/AltaPuntaje</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
