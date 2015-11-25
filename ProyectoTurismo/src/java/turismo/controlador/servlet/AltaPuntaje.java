@@ -7,10 +7,14 @@ package turismo.controlador.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import turismo.entidades.Puntaje;
 
 /**
  *
@@ -31,9 +35,31 @@ public class AltaPuntaje extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+        int puntaje = -1;
+        if(!request.getParameter("puntaje").isEmpty())
+            puntaje = Integer.parseInt(request.getParameter("puntaje"));
+        int usuario = -1;
+        if(!request.getParameter("usuarioPuntaje").isEmpty())
+            usuario = Integer.parseInt(request.getParameter("usuarioPuntaje"));
+        int objeto = -1;
+        if(!request.getParameter("objetoPuntaje").isEmpty())
+            objeto = Integer.parseInt(request.getParameter("objetoPuntaje"));
+        String comentario = request.getParameter("comentario");        
         try {
             /* TODO output your page here. You may use following sample code. */
-            
+            if(puntaje != -1 && usuario != -1 && objeto != -1){
+                if(comentario.isEmpty()){
+                    new Puntaje(puntaje,usuario,objeto,comentario,"SinComentario");
+                    out.println("Puntaje sin comentario cargado.");
+                }else{
+                    new Puntaje(puntaje,usuario,objeto,comentario,"Completa");
+                    out.println("Puntaje cargado.");
+                }
+            }else{
+                out.println("Los campos puntaje, usuario y objeto son obigatorios.");
+            }
+        } catch (SQLException ex) {
+            out.println(ex.toString());
         } finally {
             out.close();
         }
