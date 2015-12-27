@@ -37,6 +37,16 @@ public class Excursion extends Lugar{
         getCon().getSql().executeUpdate("INSERT INTO Turismo.Excursion (nombre,detalle,precio,inicioPeriodo,finPeriodo,año,cantidadVisitantes,idDomicilio,idEstado,idImagen,idTemporada,idContacto,fechaAlta,idObjetoPuntuable) values ('" + nombre +"','" + detalle + "','" + precio +"','" + fechaInicio + "','" + fechaFin + "','" + ano + "','" + personas + "','" + domicilio +"','" + estado +  "','" + imagen + "','" + temporada + "','" + contacto + "','" + fechaAlta + "','" + getIdObjeto()+"')");
         cerrarConexion();
     }
+
+    public Excursion(int id, String nombre) {
+        super("", 0, 0, 0, 0, 0, 0);
+        this.id = id;
+        this.nombre = nombre;
+    }
+
+    
+    
+    
     
     // Get y Set
 
@@ -112,6 +122,9 @@ public class Excursion extends Lugar{
         this.temporada = temporada;
     }
     
-    
+    @Override
+    public String toString(){
+        return "{\"id\":\""+id+"\",\"nombre\":\""+nombre+"\",\"detalle\":\""+detalle+"\",\"precio\":\""+precio+"\",\"fechaInicio\":\""+fechaInicio+"\",\"fechaFin\":\""+fechaFin+"\",\"ano\":\""+ano+"\",\"personas\":\""+personas+"\",\"temporada\":\""+temporada+"\",\"fechaAlta\":\""+fechaAlta+"\",\"cliente\":\""+cliente+"\",\"contacto\":\""+contacto+"\",\"domicilio\":\""+domicilio+"\",\"estado\":\""+estado+"\",\"imagen\":\""+imagen+"\",\"prioridad\":\""+getPrioridad()+"\"}";    
+    }
     
 }

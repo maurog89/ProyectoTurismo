@@ -55,5 +55,15 @@ public class LugarDeInteres extends Lugar{
             getCon().getSql().executeUpdate("INSERT INTO Turismo.LugarDeInteres (descripcion,nombre,precio,idDomicilio,idEstado,idCliente,fechaAlta,idObjetoPuntuable) values ('" + descripcion +"','" + nombre + "','" + precio +"','" + domicilio + "','" + estado + "','" + cliente + "','" + fechaAlta + "','" + getIdObjeto()+"')");
         cerrarConexion();
     }
+
+    public LugarDeInteres(int id, String nombre) {
+        super("", 0, 0, 0, 0, 0, 0);
+        this.id = id;
+        this.nombre = nombre;
+    }
     
+    @Override
+    public String toString(){
+        return "{\"id\":\""+id+"\",\"nombre\":\""+nombre+"\",\"descripcion\":\""+descripcion+"\",\"precio\":\""+precio+"\",\"fechaAlta\":\""+fechaAlta+"\",\"cliente\":\""+cliente+"\",\"contacto\":\""+contacto+"\",\"domicilio\":\""+domicilio+"\",\"estado\":\""+estado+"\",\"imagen\":\""+imagen+"\",\"prioridad\":\""+getPrioridad()+"\"}";    
+    }
 }

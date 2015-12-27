@@ -29,5 +29,14 @@ public class Temporada {
             con.getSql().executeUpdate("INSERT INTO Turismo.Temporada (nombre) values ('" + nombre + "')");
         con.cerrarConexion();
     }
+
+    public Temporada(int id, String nombre) {
+        this.id = id;
+        this.nombre = nombre;
+    }
     
+    @Override
+    public String toString(){
+        return "{\"id\":\""+id+"\",\"nombre\":\""+nombre+"\",\"descripcion\":\""+descripcion+"\"}";    
+    }
 }

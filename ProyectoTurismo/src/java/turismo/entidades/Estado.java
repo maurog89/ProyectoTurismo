@@ -29,5 +29,17 @@ public class Estado {
             con.getSql().executeUpdate("INSERT INTO Turismo.Estado (nombre) values ('" + nombre + "')");
         con.cerrarConexion();
     }
+
+    public Estado(int id, String nombre) {
+        this.id = id;
+        this.nombre = nombre;
+    }
+
+    @Override
+    public String toString(){
+        return "{\"id\":\""+id+"\",\"nombre\":\""+nombre+"\",\"descripcion\":\""+descripcion+"\"}";    
+    }
+    
+     
     
 }

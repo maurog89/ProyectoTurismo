@@ -149,5 +149,12 @@ public class Ciudad extends ObjetoPuntuable {
         
         cerrarConexion();
     }
+
+    public Ciudad(int id, String nombre, int provincia) {
+        this.id = id;
+        this.nombre = nombre;
+        this.provincia = provincia;
+    }
    
+    
 }
