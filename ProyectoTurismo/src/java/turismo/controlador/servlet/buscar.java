@@ -39,7 +39,7 @@ public class buscar extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             
             String objeto = request.getParameter("key");
-            String id = request.getParameter("id");                      
+            String id = request.getParameter("id");
             ArrayList ls = null;
             Conexion con = new Conexion();      
             if(objeto != null){
@@ -81,9 +81,8 @@ public class buscar extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
-        //PrintWriter out = response.getWriter();
-        //out.println("Acceso no autorizado.");
+        PrintWriter out = response.getWriter();
+        out.println("Acceso no autorizado.");
     }
 
     /**

@@ -21,5 +21,8 @@ public class Barrio {
         this.idCiudad = idCiudad;
     }
     
-    
+    @Override
+    public String toString(){
+        return "{\"id\":\""+id+"\",\"nombre\":\""+nombre+"\",\"idCiudad\":\""+idCiudad+"\",\"idObservacion\":\""+idObservacion+"\"}";    
+    }
 }

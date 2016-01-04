@@ -15,7 +15,6 @@ import turismo.entidades.Ciudad;
 import turismo.entidades.Cliente;
 import turismo.entidades.Estado;
 import turismo.entidades.Excursion;
-import turismo.entidades.IEntidades;
 import turismo.entidades.LugarDeInteres;
 import turismo.entidades.Pais;
 import turismo.entidades.Provincia;
@@ -42,19 +41,14 @@ public class Conexion {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             conex = DriverManager.getConnection("jdbc:mysql://localhost:3306/Turismo?zeroDateTimeBehavior=convertToNull","root","");
             sql = conex.createStatement();
-        } catch (ClassNotFoundException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
                 // handle any errors
             resultado += ex.toString();
-        } catch (InstantiationException ex) {
-            // handle any errors
-            resultado += ex.toString();
-        } catch (IllegalAccessException ex) {
-            // handle any errors
-            resultado += ex.toString();
-        } catch (SQLException ex) {
-            // handle any errors
-            resultado += ex.toString();
-        }   
+        }
+        // handle any errors
+        // handle any errors
+        // handle any errors
+   
     }
     
     public void cerrarConexion () throws SQLException {

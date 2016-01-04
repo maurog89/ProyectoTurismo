@@ -156,5 +156,8 @@ public class Ciudad extends ObjetoPuntuable {
         this.provincia = provincia;
     }
    
-    
+    @Override
+    public String toString(){
+        return "{\"id\":\""+id+"\",\"nombre\":\""+nombre+"\",\"historia\":\""+historia+"\",\"emergencia\":\""+emergencia+"\",\"esCapital\":\""+esCapital+"\",\"observacion\":\""+observacion+"\",\"provincia\":\""+provincia+"\",\"fechaAlta\":\""+fechaAlta+"\",\"cliente\":\""+cliente+"\",\"imagen\":\""+imagen+"\",\"prioridad\":\""+getPrioridad()+"\",\"cantidadDeVeces\":\""+getCantidadDeVeces()+"\",\"puntajeTotal\":\""+getPuntajeTotal()+"\"}";    
+    }
 }

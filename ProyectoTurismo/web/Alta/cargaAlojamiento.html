@@ -9,6 +9,7 @@ and open the template in the editor.
         <title>ABM Alojamiento - Alta</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <script src="../js/buscar.js"></script>
     </head>
     <body>
         <form method="POST" action="../AltaAlojamiento">
@@ -34,38 +35,36 @@ and open the template in the editor.
                     <tr>
                         <td><label for="estadoAlojamiento">Estado: </label></td>
                         <td><select name="estadoAlojamiento" id="estadoAlojamiento">
-                                <option></option>
-                                <option></option>
+                                <option value="0"> --- </option>
                             </select></td>
                         <td><input type="button" name="+EstadoAlojamiento" id="masEstadoAlojamiento" value="+"/></td> 
+                    
                     </tr>
                     <tr>
                         <td><label for="clienteAlojamiento">Id Cliente: </label></td>
                         <td><input type="text" name="clienteAlojamientor" id="clienteAlojamiento" value="" /></td>
-                        <td><select name="clienteAlojamiento" id="clienteAlojamiento">
-                                <option></option>
-                                <option></option>
+                        <td><select name="clienteAlojamiento" id="clienteAlojamientoSel">
+                                <option value="0"> --- </option>
                             </select>
                         </td>
                     </tr>
-                    <tr>                        
+                    <tr id="imagen1">                        
                         <td><label for="imagenAlojamiento">Imagen: </label></td>
-                        <td><input type="file" name="imagenAlojamiento" id="imagenAlojamiento" /></td>
+                        <td><input type="file" name="imagenAlojamiento1" id="imagenAlojamiento1" /></td>
                         <td><input type="button" name="subirAlojamiento" id="subirAlojamiento" value="Subir Otra Imagen"/></td>
+                        <input style="display:none" id="cantidadImagenes" />
                     </tr>
                     <tr>
                         <td><label for="regimenAlimentarioAlojamiento">Regimen Alimentario: </label></td>
                         <td><select name="regimenAlimentarioAlojamiento" id="regimenAlimentarioAlojamiento">
-                                <option></option>
-                                <option></option>
+                                <option value="0"> --- </option>
                             </select></td>
                         <td><input type="button" name="+regimenAlimentarioAlojamiento" id="masregimenAlimentarioAlojamiento" value="+"/></td> 
                     </tr>
                     <tr>
                         <td><label for="temporadaAlojamiento">Temporada: </label></td>
                         <td><select name="temporadaAlojamiento" id="temporadaAlojamiento">
-                                <option></option>
-                                <option></option>
+                                <option value="0"> --- </option>
                             </select></td>
                         <td><input type="button" name="+temporadaAlojamiento" id="mastemporadaAlojamiento" value="+"/></td> 
                     </tr>
@@ -75,31 +74,27 @@ and open the template in the editor.
                     <tr>
                         <td><label for="Pais">Pais: </label></td>
                         <td><select name="Pais" id="Pais">
-                                <option></option>
-                                <option></option>
+                                <option value="0"> --- </option>
                             </select></td>
                         <td><input type="button" name="+Pais" id="masPais" value="+"/></td>
                     <tr>
                         <td><label for="Provincia">Provincia: </label></td>
                         <td><select name="Provincia" id="Provincia">
-                                <option></option>
-                                <option></option>
+                                <option value="0"> --- </option>
                             </select></td>
                         <td><input type="button" name="+Provincia" id="masProvincia" value="+"/></td>
                     </tr>
                     <tr>
                         <td><label for="Ciudad">Ciudad: </label></td>
                         <td><select name="Ciudad" id="Ciudad">
-                                <option></option>
-                                <option></option>
+                                <option value="0"> --- </option>
                             </select></td>
                         <td><input type="button" name="+Ciudad" id="masCiudad" value="+"/></td> 
                     </tr>
                     <tr>
                         <td><label for="Barrio">Barrio: </label></td>
                         <td><select name="Barrio" id="Barrio">
-                                <option></option>
-                                <option></option>
+                                <option value="0"> --- </option>
                             </select></td>
                         <td><input type="button" name="+Barrio" id="masBarrio" value="+"/></td>    
                     </tr>
@@ -142,25 +137,172 @@ and open the template in the editor.
                             <th>ABM Alojamiento - Contactos</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="contactos">
                         <tr>
-                            <tr>
                             <td><label for="tipoContacto">Tipo de Contacto: </label></td>
-                            <td><select name="tipoContacto">
-
+                            <td><select name="tipoContacto" id="tipoContacto">
+                                    <option value="0"> --- </option>
                                 </select></td>
-                            <td><input type="button" name="+tipoContacto" id="masContacto" value="+"/></td>
+                            <td><input type="button" name="+tipoContacto" id="masContacto" value="-"/></td>
                         </tr>
                         <tr>
                             <td><label for="detalleContacto">Detalle: </label></td>
                             <td><input type="text" name="detalleContactos" id="detalleContactos" value="" /></td>
                         </tr>
                         <tr>
-                            <td><input type="submit" value="Enviar Contacto" name="envContacto" /></td>
+                            <td><input type="button" value="Agregar Contacto" name="envContacto" id="envContacto" />
+                                <input style="display:none" id="cantidadContactosss" /></td>
                         </tr>       
                     </tbody>
                 </table>
             <input type="submit" value="Enviar" name="envDetalle" />
         </form>
     </body>
+    <script>
+        // Guardo en variables los elementos que necesito del DOM
+        var pais = document.getElementById("Pais");
+        var provincia = document.getElementById("Provincia");
+        var ciudad = document.getElementById("Ciudad");
+        var barrio = document.getElementById("Barrio");
+        var idCliente = document.getElementById("clienteAlojamiento");
+        var clienteSel = document.getElementById("clienteAlojamientoSel");
+        var cantidadContactos = 1;
+        var cantidadImagenes = 1;
+        var eliminarCotacto = document.getElementById("masContacto");
+        var subirAlojamiento = document.getElementById("subirAlojamiento"); 
+       
+        /* 
+         * Manejo los eventos        
+        */
+        
+        //Evento para agregar mas imagenes        
+        subirAlojamiento.onclick = function(){
+            cantidadImagenes++;
+            var fila = document.createElement("tr");
+            fila.setAttribute("id","imagen"+cantidadImagenes);
+            var campoLabel = fila.insertCell(0);
+            var campoFile = fila.insertCell(1);
+            var label = document.createElement("Label");
+            label.setAttribute("for","imagenAlojamiento"+cantidadImagenes);
+            label.innerHTML = "Imagen "+cantidadImagenes+": ";
+            campoLabel.appendChild(label);
+            var input = document.createElement("Input");
+            input.setAttribute("type","file");
+            input.setAttribute("name","imagenAlojamiento");
+            input.setAttribute("id","imagenAlojamiento");
+            campoFile.appendChild(input);
+            var bus = cantidadImagenes - 1;
+            insertAfter(document.getElementById("imagen"+bus),fila)
+            document.getElementById("cantidadImagenes").value = cantidadImagenes;
+        };
+                
+        //Eliminar Contacto
+        eliminarCotacto.onclick = function(){
+            this.parentNode.parentNode.nextSibling.nextSibling.remove();
+            this.parentNode.parentNode.remove();
+            document.getElementById("cantidadContactosss").value = --cantidadContactos;
+        };
+        
+        // Agregar contacto
+        document.getElementById("envContacto").onclick = function(){
+            var tabla = document.getElementById("contactos");
+            var filaTipoContacto = tabla.insertRow(0);
+            var filaDetalle = tabla.insertRow(1);
+            tabla.insertRow(2).appendChild(document.createElement("Br"));
+            var labelDetalle = filaDetalle.insertCell(0);
+            var inputDetalle = filaDetalle.insertCell(1);
+            var labelTipoContacto = filaTipoContacto.insertCell(0);
+            var selectTipoContacto = filaTipoContacto.insertCell(1);
+            var buttonTipoContacto = filaTipoContacto.insertCell(2);
+            var label = document.createElement("Label");            
+            cantidadContactos++;
+            label.setAttribute("for","tipoContacto"+cantidadContactos);
+            label.innerHTML = "Tipo de Contacto: ";
+            labelTipoContacto.appendChild(label);
+            var select = document.createElement("Select");
+            var option = document.createElement("Option");
+            select.setAttribute("name","tipoContacto"+cantidadContactos);
+            select.setAttribute("id","tipoContacto"+cantidadContactos);
+            option.setAttribute("value","0");
+            option.innerHTML = "---";
+            select.appendChild(option);
+            selectTipoContacto.appendChild(select);
+            buscar("TipoContacto",document.getElementById("tipoContacto"+cantidadContactos));
+            var boton = document.createElement("Input");
+            boton.setAttribute("type","button");
+            boton.setAttribute("name","+tipoContacto"+cantidadContactos);
+            boton.setAttribute("id","+tipoContacto"+cantidadContactos);
+            boton.setAttribute("value","-");
+            boton.onclick = function(){
+                this.parentNode.parentNode.nextSibling.remove();
+                this.parentNode.parentNode.nextSibling.remove();
+                this.parentNode.parentNode.remove();
+                document.getElementById("cantidadContactosss").value = --cantidadContactos;
+            };
+            buttonTipoContacto.appendChild(boton);
+            var label2 = document.createElement("Label");
+            label2.setAttribute("for","detalleContactos"+cantidadContactos);
+            label2.innerHTML = "Detalle: ";
+            labelDetalle.appendChild(label2);
+            var input = document.createElement("Input");
+            input.setAttribute("type","text");
+            input.setAttribute("name","detalleContactos"+cantidadContactos);
+            input.setAttribute("type","detalleContactos"+cantidadContactos);
+            inputDetalle.appendChild(input);                
+            document.getElementById("cantidadContactosss").value = cantidadContactos;
+        };
+        
+        // Funcion de cambia automaticamente el cliente
+        idCliente.onchange = function(){
+            clienteSel[idCliente.value].selected = true;
+        };
+        clienteSel.onchange = function(){
+            idCliente.value = clienteSel[clienteSel.selectedIndex].value;
+        };
+        
+               
+        //Funcion de cambiar provincia cuando cambia el pais
+        pais.onchange = function(){            
+            provincia.options.length = 0;
+            agregarOpcion(provincia);
+            var res = pais[pais.selectedIndex].value;
+            buscar("Provincia",provincia,res);
+        };
+        
+        //Funcion de cambiar ciudad cuando cambia la provincia
+        provincia.onchange = function(){            
+            ciudad.options.length = 0;
+            agregarOpcion(ciudad);
+            var res = provincia[provincia.selectedIndex].value;
+            buscar("Ciudad",ciudad,res);
+        };
+        
+        //Funcion de cambiar el barrio cuando cambia la ciudad
+        ciudad.onchange = function(){            
+            barrio.options.length = 0;
+            agregarOpcion(barrio);
+            var res = ciudad[ciudad.selectedIndex].value;
+            buscar("Barrio",barrio,res);
+        };
+        
+        /*
+         * Buscar elementos en la base de datos
+         * y llenar los campos
+         */
+        buscar("Estados",document.getElementById("estadoAlojamiento"));
+        buscar("RegimenAlimentario",document.getElementById("regimenAlimentarioAlojamiento"));
+        buscar("Temporadas",document.getElementById("temporadaAlojamiento"));        
+        buscar("Pais",pais);
+        buscar("Clientes",document.getElementById("clienteAlojamientoSel"),null,true);        
+        buscar("TipoContacto",document.getElementById("tipoContacto"));
+        
+        //Funcion usada para agregar una opcion ---
+        function agregarOpcion(sel){
+            var select = document.createElement("Select");
+            var option = document.createElement("Option");
+            option.setAttribute("value","0");
+            option.innerHTML = "---";
+            sel.appendChild(option);
+        };
+    </script>
 </html>
