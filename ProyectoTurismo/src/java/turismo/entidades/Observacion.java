@@ -5,15 +5,25 @@
  */
 package turismo.entidades;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import turismo.conexion.Conexion;
+
 /**
  *
  * @author matiascanodesarrollos
  */
 public class Observacion {
     private int id;
+    private String observacion;
 
-    public Observacion(int id) {
-        this.id = id;
+    public Observacion(String observacion) throws SQLException {
+        this.observacion = observacion;
+        Conexion con = new Conexion();
+        ResultSet rss = con.getSql().executeQuery("CALL Turismo.cargaObservacion('" + observacion + "')");
+        rss.next();
+        this.id = rss.getInt("LAST_INSERT_ID()");
+        con.cerrarConexion();
     }
     
     

@@ -52,6 +52,7 @@ public class Conexion {
     }
     
     public void cerrarConexion () throws SQLException {
+        sql.close();
         conex.close();
     }
     

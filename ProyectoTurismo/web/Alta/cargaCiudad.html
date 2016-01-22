@@ -9,9 +9,10 @@ and open the template in the editor.
         <title>ABM Cuidad - Alta</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="../js/buscar.js"></script>
     </head>
     <body>
-        <form method="POST" action="../AltaCiudad">
+        <form method="POST" action="../AltaCiudad" enctype="multipart/form-data">
             <table>
                 <thead>
                     <tr>
@@ -26,8 +27,7 @@ and open the template in the editor.
                     <tr>
                         <td><label for="Provincia">Provincia: </label></td>
                         <td><select name="Provincia" id="Provincia">
-                                <option value="1">Cordoba</option>
-                                <option></option>
+                                <option value="0"> --- </option>
                             </select></td>
                         <td><input type="button" name="+Provincia" id="masProvincia" value="+"/></td>     
                     </tr>
@@ -48,11 +48,10 @@ and open the template in the editor.
                     </tr>
                     <tr>
                         <td><label for="clienteCiudad">Cliente: </label></td>
-                        <td><select name="clienteCiudad" id="clienteCiudad">
-                                <option></option>
-                                <option></option>
+                        <td><select name="clienteCiudad" id="clienteCiudad">                                
+                                <option value="0"> --- </option>
                             </select>
-                            <input type="number" name="idClienteCiudad" value="" />
+                            <input type="number" name="idClienteCiudad" id="idClienteCiudad" value="" />
                         </td>
                         <td><input type="button" name="+Cliente" id="masCliente" value="+"/></td>     
                     </tr>                    
@@ -65,9 +64,10 @@ and open the template in the editor.
                         <td><textarea name="ciudadObservaciones" id="ciudadObservaciones" rows="4" cols="20">
                             </textarea></td>
                     </tr>
-                    <tr>                        
-                        <td><label for="imagenCiudad">Imagen: </label></td>
-                        <td><input type="file" name="imagenCiudad" id="imagenCiudad" /></td>
+                    <tr id="imagen1">                        
+                        <td><label for="imagenCiudad1">Imagen: </label></td>
+                        <td><input type="file" name="imagenCiudad1" id="imagenCiudad1" />
+                        <input style="display:none" name="cantidadImagenes" id="cantidadImagenes" /></td>
                         <td><input type="button" name="subirImagenCiudad" id="subirImagenCiudad" value="Subir Otra Imagen"/></td>
                     </tr>
                     <tr>
@@ -77,4 +77,54 @@ and open the template in the editor.
             </table>
         </form>
     </body>
+    <script>
+        //Declaro variables utiles
+        var provincia = document.getElementById("Provincia");
+        var clientes = document.getElementById("clienteCiudad");
+        var idCliente = document.getElementById("idClienteCiudad");
+        var cantidadImagenes = 1;
+        var subirAlojamiento = document.getElementById("subirImagenCiudad"); 
+        
+        //Traigo datos
+        buscar("Provincia",provincia);
+        buscar("Clientes",clientes,null,true);
+        
+        
+        //Manejo eventos
+        
+        // Funcion de cambia automaticamente el cliente
+        idCliente.onchange = function(){
+            clientes[idCliente.value].selected = true;
+        };
+        clientes.onchange = function(){
+            idCliente.value = clientes[clientes.selectedIndex].value;
+        };
+        
+        //Aumento el contacdor de imagenes
+        document.getElementById("imagenCiudad1").onchange = function(){
+            document.getElementById("cantidadImagenes").value = cantidadImagenes;
+        };
+        
+        //Evento para agregar mas imagenes        
+        subirAlojamiento.onclick = function(){
+            cantidadImagenes++;
+            var fila = document.createElement("tr");
+            fila.setAttribute("id","imagen"+cantidadImagenes);
+            var campoLabel = fila.insertCell(0);
+            var campoFile = fila.insertCell(1);
+            var label = document.createElement("Label");
+            label.setAttribute("for","imagenCiudad"+cantidadImagenes);
+            label.innerHTML = "Imagen "+cantidadImagenes+": ";
+            campoLabel.appendChild(label);
+            var input = document.createElement("Input");
+            input.setAttribute("type","file");
+            input.setAttribute("name","imagenCiudad"+cantidadImagenes);
+            input.setAttribute("id","imagenCiudad"+cantidadImagenes);
+            campoFile.appendChild(input);
+            var bus = cantidadImagenes - 1;
+            insertAfter(document.getElementById("imagen"+bus),fila);
+            document.getElementById("cantidadImagenes").value = cantidadImagenes;
+        };
+        
+    </script>    
 </html>

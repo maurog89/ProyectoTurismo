@@ -12,7 +12,7 @@ and open the template in the editor.
          <script src="../js/buscar.js"></script>
     </head>
     <body>
-        <form method="POST" action="../AltaAlojamiento">
+        <form method="POST" action="../AltaAlojamiento" enctype="multipart/form-data" >
             <table>
                     <thead>
                         <tr>
@@ -26,7 +26,7 @@ and open the template in the editor.
                     </tr>
                     <tr>
                         <td><label for="descripcionAlojamiento">Descripcion: </label></td>
-                        <td><textarea name="descripcionAlojamient" id="descripcionAlojamiento" /></textarea></td>
+                        <td><textarea name="descripcionAlojamiento" id="descripcionAlojamiento" /></textarea></td>
                     </tr> 
                     <tr>
                         <td><label for="pririodadAlojamiento">Prioridad: </label></td>
@@ -49,10 +49,10 @@ and open the template in the editor.
                         </td>
                     </tr>
                     <tr id="imagen1">                        
-                        <td><label for="imagenAlojamiento">Imagen: </label></td>
+                        <td><label for="imagenAlojamiento1">Imagen: </label></td>
                         <td><input type="file" name="imagenAlojamiento1" id="imagenAlojamiento1" /></td>
                         <td><input type="button" name="subirAlojamiento" id="subirAlojamiento" value="Subir Otra Imagen"/></td>
-                        <input style="display:none" id="cantidadImagenes" />
+                        <input style="display:none" name="cantidadImagenes" id="cantidadImagenes" />
                     </tr>
                     <tr>
                         <td><label for="regimenAlimentarioAlojamiento">Regimen Alimentario: </label></td>
@@ -107,6 +107,11 @@ and open the template in the editor.
                         <td><input type="text" name="nroDomicilio" id="nroDomicilio" value="" /></td>
                     </tr>
                     <tr>
+                        <td><label for="nroPiso">Piso: </label></td>
+                        <td><input type="text" name="nroPiso" id="nroPiso" value="" /></td>
+                    </tr>
+                    
+                    <tr>
                         <td><label for="departamentoDomicilio">Departamento: </label></td>
                         <td><input type="text" name="departamentoDomicilio" id="departamentoDomicilio" value="" /></td>
                     </tr>
@@ -146,12 +151,12 @@ and open the template in the editor.
                             <td><input type="button" name="+tipoContacto" id="masContacto" value="-"/></td>
                         </tr>
                         <tr>
-                            <td><label for="detalleContacto">Detalle: </label></td>
+                            <td><label for="detalleContactos">Detalle: </label></td>
                             <td><input type="text" name="detalleContactos" id="detalleContactos" value="" /></td>
                         </tr>
                         <tr>
                             <td><input type="button" value="Agregar Contacto" name="envContacto" id="envContacto" />
-                                <input style="display:none" id="cantidadContactosss" /></td>
+                                <input style="display:none" id="cantidadContactosss" name="cantidadContactosss" /></td>
                         </tr>       
                     </tbody>
                 </table>
@@ -170,10 +175,21 @@ and open the template in the editor.
         var cantidadImagenes = 1;
         var eliminarCotacto = document.getElementById("masContacto");
         var subirAlojamiento = document.getElementById("subirAlojamiento"); 
-       
+        var archivo1 = document.getElementById("imagenAlojamiento1");
         /* 
          * Manejo los eventos        
         */
+        
+        //Aumento el contacdor de imagenes
+        archivo1.onchange = function(){
+            document.getElementById("cantidadImagenes").value = cantidadImagenes;
+        };
+        
+        //Evento utilizado para saber si se cargo algun contacto
+        document.getElementById("tipoContacto").onchange = function(){
+            if(document.getElementById("cantidadContactosss").value === "") 
+                document.getElementById("cantidadContactosss").value = 1;
+        };
         
         //Evento para agregar mas imagenes        
         subirAlojamiento.onclick = function(){
@@ -188,11 +204,11 @@ and open the template in the editor.
             campoLabel.appendChild(label);
             var input = document.createElement("Input");
             input.setAttribute("type","file");
-            input.setAttribute("name","imagenAlojamiento");
-            input.setAttribute("id","imagenAlojamiento");
+            input.setAttribute("name","imagenAlojamiento"+cantidadImagenes);
+            input.setAttribute("id","imagenAlojamiento"+cantidadImagenes);
             campoFile.appendChild(input);
             var bus = cantidadImagenes - 1;
-            insertAfter(document.getElementById("imagen"+bus),fila)
+            insertAfter(document.getElementById("imagen"+bus),fila);
             document.getElementById("cantidadImagenes").value = cantidadImagenes;
         };
                 
