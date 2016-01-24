@@ -43,7 +43,6 @@ public class Ciudad extends ObjetoPuntuable {
         ResultSet rss = getCon().getSql().executeQuery("CALL Turismo.cargaCiudadCompleta('" + nombre + "','" + historia + "','" + emergencia + "'," + esCapital +",'" + observacion  + "','" + provincia + "','" + fechaAlta + "','" + cliente + "','" + imagen + "','" + getIdObjeto()+"')");
         rss.next();
         this.id = rss.getInt("LAST_INSERT_ID()");
-        rss.close();
         cerrarConexion();
     }
     

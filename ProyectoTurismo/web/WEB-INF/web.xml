@@ -68,6 +68,18 @@
         <servlet-name>buscar</servlet-name>
         <servlet-class>turismo.controlador.servlet.buscar</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AltaProvincia</servlet-name>
+        <servlet-class>turismo.controlador.servlet.AltaProvincia</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AltaPais</servlet-name>
+        <servlet-class>turismo.controlador.servlet.AltaPais</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AltaTipoDocumento</servlet-name>
+        <servlet-class>turismo.controlador.servlet.AltaTipoDocumento</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AltaNoticia</servlet-name>
         <url-pattern>/AltaNoticia</url-pattern>
@@ -135,6 +147,18 @@
     <servlet-mapping>
         <servlet-name>buscar</servlet-name>
         <url-pattern>/buscar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AltaProvincia</servlet-name>
+        <url-pattern>/AltaProvincia</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AltaPais</servlet-name>
+        <url-pattern>/AltaPais</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AltaTipoDocumento</servlet-name>
+        <url-pattern>/AltaTipoDocumento</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

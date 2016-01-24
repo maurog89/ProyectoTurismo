@@ -9,9 +9,10 @@ and open the template in the editor.
         <title>ABM Provincia - Alta</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="../js/buscar.js"></script>
     </head>
     <body>
-        <form method="POST">
+        <form method="POST" action="../AltaProvincia" id="formulario">
             <table>
                 <thead>
                     <tr>
@@ -26,10 +27,8 @@ and open the template in the editor.
                     <tr>
                         <td><label for="Pais">Pais: </label></td>
                         <td><select name="Pais" id="Pais">
-                                <option></option>
-                                <option></option>
+                                <option value="0">---</option>
                             </select></td>
-                        <td><input type="button" name="+Pais" id="masPais" value="+"/></td>
                     </tr>
                     <tr>
                         <td><label for="descripcionProvincia">Descripcion: </label></td>
@@ -38,8 +37,24 @@ and open the template in the editor.
                     <tr>
                         <td><input type="submit" value="Enviar" name="envProvincia" /></td>
                     </tr>       
-                </tbody>
+                </tbody>    
             </table>
         </form>
     </body>
+    <script>
+         //Declaro variables utiles
+         var pais = document.getElementById("Pais");
+         
+         //Traigo datos
+         buscar("Pais",pais);
+         
+         //Genero nueva ventana para cargar otra pais
+        document.getElementById("masPais").onclick = function(){
+            var ventana = window.open("cargaPais.html", "Carga de Paices", "directories=no, location=no, menubar=no, scrollbars=no, statusbar=no, tittlebar=no, width=400, height=200");
+            ventana.onbeforeunload = function(){
+                pais.options.length = 1;
+                buscar("Pais",pais);
+            };
+        };
+    </script>
 </html>

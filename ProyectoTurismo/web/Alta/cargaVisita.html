@@ -30,10 +30,8 @@ and open the template in the editor.
                     <tr>
                         <td><label for="lugarVisita">Lugar: </label></td>
                         <td><select name="lugarVisita" id="estadoVisita">
-                                <option></option>
-                                <option></option>
+                                <option value="0">---</option>
                             </select></td>
-                        <td><input type="button" name="+LugarVisita" id="masLugarVisita" value="+"/></td>
                     </tr>
                     <tr>
                         <td><label for="idViajeVisita">Id Viaje: </label></td>
@@ -42,12 +40,14 @@ and open the template in the editor.
                     <tr>
                         <td><label for="estadoVisita">Estado: </label></td>
                         <td><select name="estadoVisita" id="estadoVisita">
-                                <option value="1">Habilitado</option>
+                                <option value="0">---</option>
                             </select></td>
-                        <td><input type="button" name="+estadoVisita" id="masestadoVisita" value="+"/></td>
                     </tr>
                     <tr>
                         <td><input type="submit" value="Enviar" name="envTemporada" /></td>
                     </tr>
                 </tbody>
             </table>
+        </form>
+    </body>
+</html>
