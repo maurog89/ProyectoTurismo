@@ -12,15 +12,15 @@ import java.sql.SQLException;
  */
 public class Alojamiento extends Lugar {
     private final int id;
-    private String nombre;
-    private String descripcion;
-    private int regimenAlimentario;
-    private int temporada;
+    private final String nombre;
+    private final String descripcion;
+    private final int regimenAlimentario;
+    private final int temporada;
 
     /*
     * Constructor para nuevos alojamientos    
     */
-    public Alojamiento(String nombre, String descripcion, int cliente, int contacto, int domicilio, int estado, int imagen, int regimenAlimentario, int temporada, String fechaAlta, int prioridad) throws SQLException {
+    public Alojamiento(String nombre, String descripcion, int prioridad, int estado, int cliente, int imagen, int regimenAlimentario, int temporada, int domicilio, int contacto, String fechaAlta) throws SQLException {
         super(fechaAlta,cliente,contacto,domicilio,estado,imagen,prioridad);
         this.nombre = nombre;
         this.descripcion = descripcion;

@@ -47,8 +47,8 @@ and open the template in the editor.
                         </td>
                     </tr>
                     <tr id="imagen1">                        
-                        <td><label for="imagenAlojamiento1">Imagen: </label></td>
-                        <td><input type="file" name="imagenAlojamiento1" id="imagenAlojamiento1" /></td>
+                        <td><label for="imagen1">Imagen: </label></td>
+                        <td><input type="file" name="imagen1" id="imagenAlojamiento1" /></td>
                         <td><input type="button" name="subirAlojamiento" id="subirAlojamiento" value="Subir Otra Imagen"/></td>
                         <input style="display:none" name="cantidadImagenes" id="cantidadImagenes" />
                     </tr>
@@ -136,19 +136,19 @@ and open the template in the editor.
                     </thead>
                     <tbody id="contactos">
                         <tr>
-                            <td><label for="tipoContacto">Tipo de Contacto: </label></td>
-                            <td><select name="tipoContacto" id="tipoContacto">
+                            <td><label for="tipoContacto1">Tipo de Contacto: </label></td>
+                            <td><select name="tipoContacto1" id="tipoContacto">
                                     <option value="0"> --- </option>
                                 </select></td>
                             <td><input type="button" name="+tipoContacto" id="masContacto" value="-"/></td>
                         </tr>
                         <tr>
-                            <td><label for="detalleContactos">Detalle: </label></td>
-                            <td><input type="text" name="detalleContactos" id="detalleContactos" value="" /></td>
+                            <td><label for="detalleContactos1">Detalle: </label></td>
+                            <td><input type="text" name="detalleContactos1" id="detalleContactos" value="" /></td>
                         </tr>
                         <tr>
                             <td><input type="button" value="Agregar Contacto" name="envContacto" id="envContacto" />
-                                <input style="display:none" id="cantidadContactosss" name="cantidadContactosss" /></td>
+                                <input style="display:none" id="cantidadContactos" name="cantidadContactos" /></td>
                         </tr>       
                     </tbody>
                 </table>
@@ -164,10 +164,12 @@ and open the template in the editor.
         var idCliente = document.getElementById("clienteAlojamiento");
         var clienteSel = document.getElementById("clienteAlojamientoSel");
         var cantidadContactos = 1;
-        var cantidadImagenes = 1;
+        var cantidadImagenes = 0;
+        var camposImagen = 1;
         var eliminarCotacto = document.getElementById("masContacto");
         var subirAlojamiento = document.getElementById("subirAlojamiento"); 
         var archivo1 = document.getElementById("imagenAlojamiento1");
+        document.getElementById("cantidadImagenes").value = 0;
         /* 
          * Manejo los eventos        
         */
@@ -175,73 +177,90 @@ and open the template in the editor.
         
         //Aumento el contacdor de imagenes
         archivo1.onchange = function(){
+            if(this.files[0] == null){
+                cantidadImagenes--;
+            }else{
+                cantidadImagenes++;
+            }            
             document.getElementById("cantidadImagenes").value = cantidadImagenes;
         };
         
         //Evento utilizado para saber si se cargo algun contacto
         document.getElementById("tipoContacto").onchange = function(){
-            if(document.getElementById("cantidadContactosss").value === "") 
-                document.getElementById("cantidadContactosss").value = 1;
+            if(document.getElementById("cantidadContactos").value === "") 
+                document.getElementById("cantidadContactos").value = 1;
         };
+        
         
         //Evento para agregar mas imagenes        
         subirAlojamiento.onclick = function(){
-            cantidadImagenes++;
+            camposImagen++;
             var fila = document.createElement("tr");
-            fila.setAttribute("id","imagen"+cantidadImagenes);
+            fila.setAttribute("id","imagen"+camposImagen);
             var campoLabel = fila.insertCell(0);
             var campoFile = fila.insertCell(1);
             var campoBoton = fila.insertCell(2);
             var label = document.createElement("Label");
-            label.setAttribute("for","imagenAlojamiento"+cantidadImagenes);
-            label.setAttribute("id","labelImagenAlojamiento"+cantidadImagenes);
-            label.innerHTML = "Imagen "+cantidadImagenes+": ";
+            label.setAttribute("for","imagen"+camposImagen);
+            label.setAttribute("id","labelImagenAlojamiento"+camposImagen);
+            label.innerHTML = "Imagen "+camposImagen+": ";
             campoLabel.appendChild(label);
             var input = document.createElement("Input");
             input.setAttribute("type","file");
-            input.setAttribute("name","imagenAlojamiento"+cantidadImagenes);
-            input.setAttribute("id","imagenAlojamiento"+cantidadImagenes);
+            input.setAttribute("name","imagen"+camposImagen);
+            input.setAttribute("id","imagenAlojamiento"+camposImagen);
+            input.onchange =  function(){
+                if(this.files[0] == null){
+                    cantidadImagenes--;
+                }else{
+                    cantidadImagenes++;
+                }            
+                document.getElementById("cantidadImagenes").value = cantidadImagenes;
+            };
             campoFile.appendChild(input);
             var boton = document.createElement("Input");
             boton.setAttribute("type","button");
-            boton.setAttribute("name","sacarImagen"+cantidadImagenes);
-            boton.setAttribute("id","sacarImagen"+cantidadImagenes);
+            boton.setAttribute("name","sacarImagen"+camposImagen);
+            boton.setAttribute("id","sacarImagen"+camposImagen);
             boton.setAttribute("value","-");
             boton.onclick = function(){                
-                var borrar = parseInt(this.id[11]);                
+                var borrar = parseInt(this.id[11]);
+                if(this.parentNode.parentNode.childNodes[1].childNodes[0].files[0] != null){
+                    cantidadImagenes--;
+                    document.getElementById("cantidadImagenes").value = cantidadImagenes;
+                }
                 this.parentNode.parentNode.remove();                
-                for(var i = 1; i <= cantidadImagenes;i++){
+                for(var i = 1; i <= camposImagen;i++){
                     if(i > borrar){
                         var j = i - 1;
                         var lab = document.getElementById("labelImagenAlojamiento"+i);
                         var fil = document.getElementById("imagenAlojamiento"+i);           
                         var bot = document.getElementById("sacarImagen"+i);
                         var fila = document.getElementById("imagen"+i);
-                        lab.attributes[0] = "imagenAlojamiento"+j;
+                        lab.attributes[0] = "imagen"+j;
                         lab.innerHTML = "Imagen "+j+":";
                         lab.id = "labelImagenAlojamiento"+j;
                         fil.id = "imagenAlojamiento"+j;
-                        fil.name = "imagenAlojamiento"+j;
+                        fil.name = "imagen"+j;
                         bot.id = "sacarImagen"+j;
                         bot.name = "sacarImagen"+j;
                         fila.id = "imagen"+j;
                     }
                     
                 }
-                document.getElementById("cantidadImagenes").value = --cantidadImagenes;
+                camposImagen--;
                 
             };
             campoBoton.appendChild(boton);
-            var bus = cantidadImagenes - 1;
+            var bus = camposImagen - 1;
             insertAfter(document.getElementById("imagen"+bus),fila);
-            document.getElementById("cantidadImagenes").value = cantidadImagenes;
         };
                 
         //Eliminar Contacto
         eliminarCotacto.onclick = function(){
             this.parentNode.parentNode.nextSibling.nextSibling.remove();
             this.parentNode.parentNode.remove();
-            document.getElementById("cantidadContactosss").value = --cantidadContactos;
+            document.getElementById("cantidadContactos").value = --cantidadContactos;
         };
         
         // Agregar contacto
@@ -278,7 +297,7 @@ and open the template in the editor.
                 this.parentNode.parentNode.nextSibling.remove();
                 this.parentNode.parentNode.nextSibling.remove();
                 this.parentNode.parentNode.remove();
-                document.getElementById("cantidadContactosss").value = --cantidadContactos;
+                document.getElementById("cantidadContactos").value = --cantidadContactos;
             };
             buttonTipoContacto.appendChild(boton);
             var label2 = document.createElement("Label");
@@ -290,7 +309,7 @@ and open the template in the editor.
             input.setAttribute("name","detalleContactos"+cantidadContactos);
             input.setAttribute("type","detalleContactos"+cantidadContactos);
             inputDetalle.appendChild(input);                
-            document.getElementById("cantidadContactosss").value = cantidadContactos;
+            document.getElementById("cantidadContactos").value = cantidadContactos;
         };
         
         // Funcion de cambia automaticamente el cliente

@@ -28,7 +28,7 @@ public class Ciudad extends ObjetoPuntuable {
     /*
     * Constructor para nuevas ciudades completas
     */  
-    public Ciudad(String nombre, String historia, String emergencia, boolean esCapital, int observacion, int provincia, String fechaAlta, int cliente, int imagen, int prioridad) throws SQLException {
+    public Ciudad(String nombre, String historia, String emergencia, boolean esCapital, int observacion, int provincia, int cliente, int imagen, int prioridad, String fechaAlta) throws SQLException {
         super(prioridad);
         this.nombre = nombre;
         this.historia = historia;

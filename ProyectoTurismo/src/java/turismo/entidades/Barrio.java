@@ -11,8 +11,8 @@ package turismo.entidades;
  */
 public class Barrio {
     private int id;
-    private String nombre;
-    private int idCiudad;
+    private final String nombre;
+    private final int idCiudad;
     private int idObservacion;
 
     public Barrio(int id, String nombre, int idCiudad) {

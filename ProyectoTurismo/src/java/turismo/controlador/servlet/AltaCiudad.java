@@ -5,6 +5,7 @@
  */
 package turismo.controlador.servlet;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -20,6 +21,7 @@ import turismo.entidades.Ciudad;
 import turismo.entidades.Fechas;
 import turismo.entidades.Observacion;
 import turismo.entidades.SubirImagen;
+import turismo.entidades.ValidadorDeParametros;
 import turismo.entidades.VerificarFotos;
 
 /**
@@ -42,8 +44,39 @@ public class AltaCiudad extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         
+        out.println("<!DOCTYPE html>");
+        out.println("<html>");
+        out.println("<head>");
+        out.println("<title>Alta de Alojamientos</title>");
+        out.println("</head>");
+        out.println("<body>");
+        String[] parametros = new String[]{"nombreCuidad","historiaPais","emergenciaPais","capital","ciudadObservaciones","Provincia","clienteCiudad","cantidadImagenes","pririodadCuidad"};
+        String[] obligatorios =  new String[]{"nombreCuidad","capital","Provincia","pririodadCuidad"};
+        String[] numericos = new String[]{"capital","Provincia","clienteCiudad","cantidadImagenes","pririodadCuidad"};
         
+        boolean[] validadorVacio = ValidadorDeParametros.validarVacio(obligatorios, request);
+        boolean[] validadorNumerico = ValidadorDeParametros.validarNumerico(numericos, request);
         
+        if(ValidadorDeParametros.validar(validadorVacio,validadorNumerico)){
+            try {
+                int[] posicionNumericos = new int[]{3,5,6,7,8};
+                String[] tablasSecundarias = new String[]{"Imagen","Observacion"};
+                int[] secundarios = new int[]{7,4};
+                ValidadorDeParametros.insertar("Ciudad", parametros , posicionNumericos, tablasSecundarias, secundarios, request, out);
+                
+            } catch (FileNotFoundException ex) {
+                out.println(ex.toString());
+            } catch (SQLException ex) {
+                out.println(ex.toString());
+            }
+        }else{
+            ValidadorDeParametros.imprimirDatosFaltantes(out, validadorVacio, validadorNumerico, obligatorios, numericos);
+        }
+        
+        out.println("</body>");
+        out.println("</html>");
+        out.close();
+        /*
         try {
             // Primero valido los campos obligatorios
             
@@ -149,6 +182,9 @@ public class AltaCiudad extends HttpServlet {
         } finally {
             out.close();
         }
+        */
+        
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

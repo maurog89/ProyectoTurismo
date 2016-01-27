@@ -58,13 +58,13 @@ and open the template in the editor.
                         <td><input type="number" name="pririodadCuidad" id="pririodadCuidad" value="" /></td>
                     </tr>
                     <tr>
-                        <td><label for="ciudadObservaciones">Observaciones: </label></td>
-                        <td><textarea name="ciudadObservaciones" id="ciudadObservaciones" rows="4" cols="20">
+                        <td><label for="Observaciones">Observaciones: </label></td>
+                        <td><textarea name="Observaciones" id="ciudadObservaciones" rows="4" cols="20">
                             </textarea></td>
                     </tr>
                     <tr id="imagen1">                        
                         <td><label for="imagenCiudad1" id="labelImagenCiudad1">Imagen: </label></td>
-                        <td><input type="file" name="imagenCiudad1" id="imagenCiudad1" />
+                        <td><input type="file" name="imagen1" id="imagenCiudad1" />
                         <input style="display:none" name="cantidadImagenes" id="cantidadImagenes" /></td>
                         <td><input type="button" name="subirImagenCiudad" id="subirImagenCiudad" value="Subir Otra Imagen"/></td>
                     </tr>
@@ -80,9 +80,10 @@ and open the template in the editor.
         var provincia = document.getElementById("Provincia");
         var clientes = document.getElementById("clienteCiudad");
         var idCliente = document.getElementById("idClienteCiudad");
-        var cantidadImagenes = 1;
+        var cantidadImagenes = 0;
+        var camposImagen = 1;
         var subirAlojamiento = document.getElementById("subirImagenCiudad"); 
-        
+        document.getElementById("cantidadImagenes").value = 0;
         
         
         //Traigo datos
@@ -104,36 +105,53 @@ and open the template in the editor.
         
         //Aumento el contacdor de imagenes
         document.getElementById("imagenCiudad1").onchange = function(){
+            if(this.files[0] == null){
+                cantidadImagenes--;
+            }else{
+                cantidadImagenes++;
+            }            
             document.getElementById("cantidadImagenes").value = cantidadImagenes;
         };
         
         //Evento para agregar mas imagenes        
         subirAlojamiento.onclick = function(){
-            cantidadImagenes++;
+            camposImagen++;
             var fila = document.createElement("tr");
-            fila.setAttribute("id","imagen"+cantidadImagenes);
+            fila.setAttribute("id","imagen"+camposImagen);
             var campoLabel = fila.insertCell(0);
             var campoFile = fila.insertCell(1);
             var campoBoton = fila.insertCell(2);
             var label = document.createElement("Label");
-            label.setAttribute("for","imagenCiudad"+cantidadImagenes);
-            label.setAttribute("id","labelImagenCiudad"+cantidadImagenes);
-            label.innerHTML = "Imagen "+cantidadImagenes+": ";
+            label.setAttribute("for","imagen"+camposImagen);
+            label.setAttribute("id","labelImagenCiudad"+camposImagen);
+            label.innerHTML = "Imagen "+camposImagen+": ";
             campoLabel.appendChild(label);
             var input = document.createElement("Input");
             input.setAttribute("type","file");
-            input.setAttribute("name","imagenCiudad"+cantidadImagenes);
-            input.setAttribute("id","imagenCiudad"+cantidadImagenes);
+            input.setAttribute("name","imagen"+camposImagen);
+            input.setAttribute("id","imagenCiudad"+camposImagen);
+            input.onchange =  function(){
+                if(this.files[0] == null){
+                    cantidadImagenes--;
+                }else{
+                    cantidadImagenes++;
+                }            
+                document.getElementById("cantidadImagenes").value = cantidadImagenes;
+            };
             campoFile.appendChild(input);
             var boton = document.createElement("Input");
             boton.setAttribute("type","button");
-            boton.setAttribute("name","sacarImagen"+cantidadImagenes);
-            boton.setAttribute("id","sacarImagen"+cantidadImagenes);
-            boton.setAttribute("value","-");
+            boton.setAttribute("name","sacarImagen"+camposImagen);
+            boton.setAttribute("id","sacarImagen"+camposImagen);
+            boton.setAttribute("value","-");            
             boton.onclick = function(){                
                 var borrar = parseInt(this.id[11]);
+                if(this.parentNode.parentNode.childNodes[1].childNodes[0].files[0] != null){
+                    cantidadImagenes--;
+                    document.getElementById("cantidadImagenes").value = cantidadImagenes;
+                }
                 this.parentNode.parentNode.remove();                
-                for(var i = 1; i <= cantidadImagenes;i++){
+                for(var i = 1; i <= camposImagen;i++){
                     if(i > borrar){
                         var j = i - 1;
                         var lab = document.getElementById("labelImagenCiudad"+i);
@@ -144,20 +162,19 @@ and open the template in the editor.
                         lab.innerHTML = "Imagen "+j+":";
                         lab.id = "labelImagenCiudad"+j;
                         fil.id = "imagenCiudad"+j;
-                        fil.name = "imagenCiudad"+j;
+                        fil.name = "imagen"+j;
                         bot.id = "sacarImagen"+j;
                         bot.name = "sacarImagen"+j;
                         fila.id = "imagen"+j;
                     }
                     
                 }
-                document.getElementById("cantidadImagenes").value = --cantidadImagenes;
+                camposImagen--;
                 
             };
             campoBoton.appendChild(boton);
-            var bus = cantidadImagenes - 1;
+            var bus = camposImagen - 1;
             insertAfter(document.getElementById("imagen"+bus),fila);
-            document.getElementById("cantidadImagenes").value = cantidadImagenes;
         };
         
     </script>    
