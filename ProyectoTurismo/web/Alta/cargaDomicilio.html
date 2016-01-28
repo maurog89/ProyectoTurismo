@@ -9,9 +9,10 @@ and open the template in the editor.
         <title>ABM Domicilio - Alta</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="../js/buscar.js"></script>
     </head>
     <body>
-        <form method="POST">
+        <form method="POST" action="../AltaDomicilio">
             <table>
                 <thead>
                     <tr>
@@ -22,24 +23,24 @@ and open the template in the editor.
                     <tr>
                         <td><label for="Pais">Pais: </label></td>
                         <td><select name="Pais" id="Pais">
-                                <option value="0">---</option>
+                                <option value="x0">---</option>
                             </select></td>
                     <tr>
                         <td><label for="Provincia">Provincia: </label></td>
                         <td><select name="Provincia" id="Provincia">
-                                <option value="0">---</option>
+                                <option value="x0">---</option>
                             </select></td>
                     </tr>
                     <tr>
-                        <td><label for="Cuidad">Cuidad: </label></td>
-                        <td><select name="Cuidad" id="Cuidad">
-                                <option value="0">---</option>
+                        <td><label for="Ciudad">Cuidad: </label></td>
+                        <td><select name="Ciudad" id="Ciudad">
+                                <option value="x0">---</option>
                             </select></td>
                     </tr>
                     <tr>
                         <td><label for="Barrio">Barrio: </label></td>
                         <td><select name="Barrio" id="Barrio">
-                                <option value="0">---</option>
+                                <option value="x0">---</option>
                             </select></td>
                     </tr>
                     <tr>
@@ -49,6 +50,10 @@ and open the template in the editor.
                     <tr>
                         <td><label for="nroDomicilio">Número: </label></td>
                         <td><input type="text" name="nroDomicilio" id="nroDomicilio" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="nroPiso">Piso: </label></td>
+                        <td><input type="text" name="nroPiso" id="nroPiso" value="" /></td>
                     </tr>
                     <tr>
                         <td><label for="departamentoDomicilio">Departamento: </label></td>
@@ -77,4 +82,51 @@ and open the template in the editor.
             </table>
         </form>
     </body>
+    <script>
+        // Guardo en variables los elementos que necesito del DOM
+        var pais = document.getElementById("Pais");
+        var provincia = document.getElementById("Provincia");
+        var ciudad = document.getElementById("Ciudad");
+        var barrio = document.getElementById("Barrio");
+        
+        //Funcion de cambiar provincia cuando cambia el pais
+        pais.onchange = function(){            
+            provincia.options.length = 0;
+            agregarOpcion(provincia);
+            var res = pais[pais.selectedIndex].value;
+            buscar("Provincia",provincia,res);
+        };
+        
+        //Funcion de cambiar ciudad cuando cambia la provincia
+        provincia.onchange = function(){            
+            ciudad.options.length = 0;
+            agregarOpcion(ciudad);
+            var res = provincia[provincia.selectedIndex].value;
+            buscar("Ciudad",ciudad,res);
+        };
+        
+        //Funcion de cambiar el barrio cuando cambia la ciudad
+        ciudad.onchange = function(){            
+            barrio.options.length = 0;
+            agregarOpcion(barrio);
+            var res = ciudad[ciudad.selectedIndex].value;
+            buscar("Barrio",barrio,res);
+        };
+        
+        /*
+         * Buscar elementos en la base de datos
+         * y llenar los campos
+         */
+        buscar("Pais",pais);
+        
+        //Funcion usada para agregar una opcion ---
+        function agregarOpcion(sel){
+            var select = document.createElement("Select");
+            var option = document.createElement("Option");
+            option.setAttribute("value","x0");
+            option.innerHTML = "---";
+            sel.appendChild(option);
+        };
+        
+    </script>
 </html>

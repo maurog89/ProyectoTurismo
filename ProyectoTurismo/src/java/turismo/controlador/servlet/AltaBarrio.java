@@ -12,65 +12,59 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
-import turismo.entidades.Ciudad;
-import turismo.entidades.Fechas;
 import turismo.entidades.ImprimirHTML;
-import turismo.entidades.Observacion;
-import turismo.entidades.SubirImagen;
 import turismo.entidades.ValidadorDeParametros;
-import turismo.entidades.VerificarFotos;
 
 /**
  *
  * @author matiascanodesarrollos
  */
-@MultipartConfig
-public class AltaCiudad extends HttpServlet {
+public class AltaBarrio extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
-     * 
-     * 
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
      */
-        
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+        try  {
+            /* TODO output your page here. You may use following sample code. */
+            response.setContentType("text/html;charset=UTF-8");
         
-        ImprimirHTML.imprimirEtiquetasIniciales(out,"Alta de Ciudades");
-        String[] parametros = new String[]{"nombreCuidad","historiaPais","emergenciaPais","capital","Observaciones","Provincia","clienteCiudad","cantidadImagenes","pririodadCuidad"};
-        String[] obligatorios =  new String[]{"nombreCuidad","capital","Provincia","pririodadCuidad"};
-        String[] numericos = new String[]{"capital","Provincia","clienteCiudad","cantidadImagenes","pririodadCuidad"};
         
-        boolean[] validadorVacio = ValidadorDeParametros.validarVacio(obligatorios, request);
-        boolean[] validadorNumerico = ValidadorDeParametros.validarNumerico(numericos, request);
+            ImprimirHTML.imprimirEtiquetasIniciales(out,"Alta de Barrios");
+            String[] parametros = new String[]{"nombreBarrio","Ciudad","Observaciones"};
+            String[] obligatorios =  new String[]{"nombreBarrio","Ciudad"};
+            String[] numericos = new String[]{"Ciudad"};
         
-        if(ValidadorDeParametros.validar(validadorVacio,validadorNumerico)){
-            try {
-                int[] posicionNumericos = new int[]{3,5,6,7,8};
-                String[] tablasSecundarias = new String[]{"Imagen","Observacion"};
-                int[] secundarios = new int[]{7,4};
-                ValidadorDeParametros.insertar("Ciudad", parametros , posicionNumericos, tablasSecundarias, secundarios, request, out);
-                
-            } catch (FileNotFoundException ex) {
-                out.println(ex.toString());
-            } catch (SQLException ex) {
-                out.println(ex.toString());
+            boolean[] validadorVacio = ValidadorDeParametros.validarVacio(obligatorios, request);
+            boolean[] validadorNumerico = ValidadorDeParametros.validarNumerico(numericos, request);
+        
+            if(ValidadorDeParametros.validar(validadorVacio,validadorNumerico)){
+                int[] posicionNumericos = new int[]{1};
+                String[] tablasSecundarias = new String[]{"Observacion"};
+                int[] secundarios = new int[]{2};
+                ValidadorDeParametros.insertar("Barrio", parametros , posicionNumericos, tablasSecundarias, secundarios, request, out);
+            }else{
+                ValidadorDeParametros.imprimirDatosFaltantes(out, validadorVacio, validadorNumerico, obligatorios, numericos);
             }
-        }else{
-            ValidadorDeParametros.imprimirDatosFaltantes(out, validadorVacio, validadorNumerico, obligatorios, numericos);
+            
+            ImprimirHTML.imprimirEtiquetasFinal(out);
+        } catch (FileNotFoundException ex) {
+            out.println(ex.toString());
+        } catch (SQLException ex) {
+            out.println(ex.toString());
         }
-        
-        ImprimirHTML.imprimirEtiquetasFinal(out);        
-        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -100,9 +94,9 @@ public class AltaCiudad extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException{
-        processRequest(request, response);
+            throws ServletException, IOException {
         
+        processRequest(request, response);
     }
 
     /**

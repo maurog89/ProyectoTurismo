@@ -5,6 +5,7 @@
  */
 package turismo.controlador.servlet;
 
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -12,7 +13,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import turismo.entidades.ImprimirHTML;
 import turismo.entidades.Provincia;
+import turismo.entidades.ValidadorDeParametros;
 
 /**
  *
@@ -31,31 +34,35 @@ public class AltaProvincia extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
-            /* TODO output your page here. You may use following sample code. */
-            String nombre = request.getParameter("nombreProvincia");
-            int idPais = 0;
-            if(!request.getParameter("Pais").isEmpty())
-                idPais = Integer.parseInt(request.getParameter("Pais"));
-            String descripcion = request.getParameter("descripcionProvincia");
-            if(nombre.isEmpty())
-                out.println("El campo nombre es obligatorio.");
-            else{
-                if(idPais == 0)
-                    out.println("Debe elegir un pais.");
-                else{
-                    if(descripcion.isEmpty()){
-                        new Provincia(nombre,idPais);
-                        out.println("Provincia cargada.");                        
-                    }else{
-                        new Provincia(nombre,idPais,descripcion);
-                        out.println("Provincia cargada.");
-                    }                        
-                }
+             response.setContentType("text/html;charset=UTF-8");
+        
+        
+            ImprimirHTML.imprimirEtiquetasIniciales(out,"Alta de Provincia");
+            String[] parametros = new String[]{"nombreProvincia","Pais","descripcionProvincia"};
+            String[] obligatorios =  new String[]{"nombreProvincia","Pais"};
+            String[] numericos = new String[]{"Pais"};
+        
+            boolean[] validadorVacio = ValidadorDeParametros.validarVacio(obligatorios, request);
+            boolean[] validadorNumerico = ValidadorDeParametros.validarNumerico(numericos, request);
+        
+            if(ValidadorDeParametros.validar(validadorVacio,validadorNumerico)){
+                int[] posicionNumericos = new int[]{1};
+                String[] tablasSecundarias = new String[]{"Pais"};
+                int[] secundarios = new int[]{1};
+                ValidadorDeParametros.insertar("Provincia", parametros , posicionNumericos, tablasSecundarias, secundarios, request, out);
+            }else{
+                ValidadorDeParametros.imprimirDatosFaltantes(out, validadorVacio, validadorNumerico, obligatorios, numericos);
             }
-        } catch (SQLException ex) {
+            
+            ImprimirHTML.imprimirEtiquetasFinal(out);
+            
+        } catch(MySQLIntegrityConstraintViolationException e){
+            out.println("La provincia \"<b>"+ request.getParameter("nombreProvincia").toUpperCase()+"</b>\" ya se encuentra cargada.");
+        }catch (SQLException ex){
             out.println(ex.toString());
         }finally {
             out.close();
@@ -75,18 +82,8 @@ public class AltaProvincia extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet AltaProvincia</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Estimado usuario, por cuestiones de seguridad utilice la iterfaz brindada.</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+        PrintWriter out = response.getWriter();
+        ImprimirHTML.imprimirErrorDeMetodo(out);
     }
 
     /**

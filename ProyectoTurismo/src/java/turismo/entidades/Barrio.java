@@ -5,6 +5,10 @@
  */
 package turismo.entidades;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import turismo.conexion.Conexion;
+
 /**
  *
  * @author matiascanodesarrollos
@@ -19,6 +23,19 @@ public class Barrio {
         this.id = id;
         this.nombre = nombre;
         this.idCiudad = idCiudad;
+    }
+    
+    
+
+    public Barrio(String nombre, int idCiudad,int idObservacion) throws SQLException {        
+        this.nombre = nombre;
+        this.idCiudad = idCiudad;
+        this.idObservacion = idObservacion;
+        Conexion con = new Conexion();
+        ResultSet rss = con.getSql().executeQuery("CALL Turismo.cargaBarrio('" + nombre + "',"+ idCiudad + ","+idObservacion+")");
+        rss.next();
+        this.id = rss.getInt("LAST_INSERT_ID()");
+        con.cerrarConexion();
     }
     
     @Override

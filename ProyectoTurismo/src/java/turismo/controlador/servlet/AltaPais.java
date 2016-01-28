@@ -5,6 +5,7 @@
  */
 package turismo.controlador.servlet;
 
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -12,7 +13,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import turismo.entidades.ImprimirHTML;
 import turismo.entidades.Pais;
+import turismo.entidades.ValidadorDeParametros;
 
 /**
  *
@@ -34,21 +37,31 @@ public class AltaPais extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
-            /* TODO output your page here. You may use following sample code. */
-            String nombre = request.getParameter("nombrePais");
-            String descripcion = request.getParameter("descripcionPais");
-            if(nombre.isEmpty())
-                out.println("El campo nombre es requerido.");
-            else{
-                if(descripcion.isEmpty()){
-                    new Pais(nombre);
-                    out.println("Pais cargado.");
-                }else{
-                    new Pais(nombre,descripcion);
-                    out.println("Pais cargado.");
-                }
+             response.setContentType("text/html;charset=UTF-8");
+        
+        
+            ImprimirHTML.imprimirEtiquetasIniciales(out,"Alta de País");
+            String[] parametros = new String[]{"nombrePais","descripcionPais"};
+            String[] obligatorios =  new String[]{"nombrePais"};
+            String[] numericos = new String[]{};
+        
+            boolean[] validadorVacio = ValidadorDeParametros.validarVacio(obligatorios, request);
+            boolean[] validadorNumerico = ValidadorDeParametros.validarNumerico(numericos, request);
+        
+            if(ValidadorDeParametros.validar(validadorVacio,validadorNumerico)){
+                int[] posicionNumericos = new int[]{};
+                String[] tablasSecundarias = new String[]{};
+                int[] secundarios = new int[]{};
+                ValidadorDeParametros.insertar("Pais", parametros , posicionNumericos, tablasSecundarias, secundarios, request, out);
+            }else{
+                ValidadorDeParametros.imprimirDatosFaltantes(out, validadorVacio, validadorNumerico, obligatorios, numericos);
             }
-        } catch (SQLException ex) {
+            
+            ImprimirHTML.imprimirEtiquetasFinal(out);
+            
+        } catch(MySQLIntegrityConstraintViolationException e){
+            out.println("El país \"<b>"+ request.getParameter("nombrePais").toUpperCase()+"</b>\" ya se encuentra cargado.");
+        }catch (SQLException ex){
             out.println(ex.toString());
         }finally {
             out.close();
@@ -68,18 +81,10 @@ public class AltaPais extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Pais</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Estimado Usuario, por favor utilice la interface ofrecida.</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+        PrintWriter out = response.getWriter();
+        ImprimirHTML.imprimirErrorDeMetodo(out);
+        
+           
     }
 
     /**

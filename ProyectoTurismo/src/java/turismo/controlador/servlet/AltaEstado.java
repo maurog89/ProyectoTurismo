@@ -5,6 +5,8 @@
  */
 package turismo.controlador.servlet;
 
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -15,6 +17,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import turismo.entidades.Estado;
+import turismo.entidades.ImprimirHTML;
+import turismo.entidades.ValidadorDeParametros;
 
 /**
  *
@@ -35,26 +39,31 @@ public class AltaEstado extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        String nombre = request.getParameter("tipoEstado");
-        String descripcion = request.getParameter("descripcionEstado");
-        try {
-            /* TODO output your page here. You may use following sample code. */
-            if(nombre.isEmpty())
-                out.println("El campo nombre es obligatorio.");
-            else{
-                if(descripcion.isEmpty()){
-                    new Estado(nombre,descripcion,"Minimo");
-                    out.println("Estado sin descripcion cargada.");
-                }else{                    
-                    new Estado(nombre,descripcion,"Completa");
-                    out.println("Estado cargada.");
-                }
+        ImprimirHTML.imprimirEtiquetasIniciales(out,"Alta de Estados"); 
+        
+        String[] parametros = new String[]{"tipoEstado","descripcionEstado"};
+        String[] obligatorios =  new String[]{"tipoEstado"};
+        String[] numericos = new String[]{};
+        
+        boolean[] validadorVacio = ValidadorDeParametros.validarVacio(obligatorios, request);
+        boolean[] validadorNumerico = ValidadorDeParametros.validarNumerico(numericos, request);
+        if(ValidadorDeParametros.validar(validadorVacio,validadorNumerico)){
+            try {
+                int[] posicionNumericos = new int[]{};
+                String[] tablasSecundarias = new String[]{};
+                int[] secundarios = new int[]{};
+                ValidadorDeParametros.insertar("Estado", parametros , posicionNumericos, tablasSecundarias, secundarios, request, out);
+                
+            }catch(MySQLIntegrityConstraintViolationException e){
+            out.println("El estado \"<b>"+ request.getParameter("tipoEstado").toUpperCase()+"</b>\" ya se encuentra cargado.");
+            } catch (SQLException ex) {
+                out.println(ex.toString());
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(AltaEstado.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            out.close();
+        }else{
+            ValidadorDeParametros.imprimirDatosFaltantes(out, validadorVacio, validadorNumerico, obligatorios, numericos);
         }
+        
+        ImprimirHTML.imprimirEtiquetasFinal(out);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -71,16 +80,7 @@ public class AltaEstado extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        out.println("<!DOCTYPE html>");
-        out.println("<html>");
-        out.println("<head>");
-        out.println("<title>Error de Metodo</title>");            
-        out.println("</head>");
-        out.println("<body>");
-        out.println("<h1>Estimado usuario, para su seguridad utilice la interfaz brindada.</h1>");
-        out.println("</body>");
-        out.println("</html>");
-        out.close();
+        ImprimirHTML.imprimirErrorDeMetodo(out);
     }
 
     /**

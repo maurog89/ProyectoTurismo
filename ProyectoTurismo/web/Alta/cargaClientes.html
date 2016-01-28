@@ -12,7 +12,7 @@ and open the template in the editor.
         <script src="../js/buscar.js"></script>
     </head>
     <body>
-        <form method="POST">        
+        <form method="POST" action="../AltaCliente">        
             <table>
                 <thead>
                     <tr>
@@ -43,12 +43,18 @@ and open the template in the editor.
                     <tr>
                         <td><label for="tipoDocumentoPersona">Tipo documento: </label></td>
                         <td><select name="tipoDocumentoPersona" id="tipoDocumentoPersona">
-                               <option value="0">---</option> 
+                               <option value="x0">---</option> 
                             </select></td>
                     </tr>
                     <tr>
                         <td><label for="nroDocumentoPersona">Número de Documento: </label></td>
                         <td><input type="text" name="nroDocumentoPersona" id="nroDocumentoPersona" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="estadoCliente">Estado: </label></td>
+                        <td><select name="estadoCliente" id="estadoCliente">
+                                <option value="x0"> --- </option>
+                            </select></td>                    
                     </tr>
                 </tbody>
             </table>
@@ -60,22 +66,23 @@ and open the template in the editor.
                             <th>ABM Clientes - Contactos</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="contactos">
                         <tr>
                             <tr>
-                            <td><label for="tipoContacto">Tipo de Contacto: </label></td>
-                            <td><select name="tipoContacto">
-
+                            <td><label for="tipoContacto1">Tipo de Contacto: </label></td>
+                            <td><select name="tipoContacto1" id="tipoContacto">
+                                    <option value="x0">---</option> 
                                 </select></td>
-                            <td><input type="button" name="+tipoContacto" id="masContacto" value="+"/></td>
+                            <td><input type="button" name="+tipoContacto" id="masContacto" value="-"/></td>
                         </tr>
                         <tr>
-                            <td><label for="detalleContacto">Detalle: </label></td>
-                            <td><input type="text" name="detalleContactos" id="detalleContactos" value="" /></td>
+                            <td><label for="detalleContacto1">Detalle: </label></td>
+                            <td><input type="text" name="detalleContactos1" id="detalleContactos" value="" /></td>
                         </tr>
                         <tr>
-                            <td><input type="submit" value="Enviar Contacto" name="envContacto" /></td>
-                        </tr>       
+                            <td><input type="button" value="Agregar Contacto" name="envContacto" id="envContacto" />
+                                <input style="display:none" id="cantidadContactos" name="cantidadContactos" /></td>
+                        </tr>     
                     </tbody>
                 </table>            
             <br />
@@ -90,24 +97,24 @@ and open the template in the editor.
                     <tr>
                         <td><label for="Pais">Pais: </label></td>
                         <td><select name="Pais" id="Pais">
-                                <option value="0">---</option>
+                                <option value="x0">---</option>
                             </select></td>
                     <tr>
                         <td><label for="Provincia">Provincia: </label></td>
                         <td><select name="Provincia" id="Provincia">
-                                <option value="0">---</option>
+                                <option value="x0">---</option>
                             </select></td>
                     </tr>
                     <tr>
-                        <td><label for="Cuidad">Cuidad: </label></td>
-                        <td><select name="Cuidad" id="Cuidad">
-                                <option value="0">---</option>
+                        <td><label for="Ciudad">Cuidad: </label></td>
+                        <td><select name="Ciudad" id="Ciudad">
+                                <option value="x0">---</option>
                             </select></td>
                     </tr>
                     <tr>
                         <td><label for="Barrio">Barrio: </label></td>
                         <td><select name="Barrio" id="Barrio">
-                                <option value="0">---</option>
+                                <option value="x0">---</option>
                             </select></td>
                     </tr>
                     <tr>
@@ -117,6 +124,10 @@ and open the template in the editor.
                     <tr>
                         <td><label for="nroDomicilio">Número: </label></td>
                         <td><input type="text" name="nroDomicilio" id="nroDomicilio" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="nroPiso">Piso: </label></td>
+                        <td><input type="text" name="nroPiso" id="nroPiso" value="" /></td>
                     </tr>
                     <tr>
                         <td><label for="departamentoDomicilio">Departamento: </label></td>
@@ -150,8 +161,8 @@ and open the template in the editor.
                 </thead>    
                 <tbody>
                     <tr>
-                        <td><label for="Observacion">Observacion: </label></td>
-                        <td><textarea name="Observacion" rows="4" cols="20">
+                        <td><label for="Observaciones">Observacion: </label></td>
+                        <td><textarea name="Observaciones" rows="4" cols="20">
                             </textarea></td>
                     </tr>
                 </tbody>
@@ -162,20 +173,117 @@ and open the template in the editor.
     <script>
         //Declaro variables utiles
         var tipoDocumento = document.getElementById("tipoDocumentoPersona");
+        var cantidadContactos = 1;
+        var eliminarCotacto = document.getElementById("masContacto");
+        var pais = document.getElementById("Pais");
+        var provincia = document.getElementById("Provincia");
+        var ciudad = document.getElementById("Ciudad");
+        var barrio = document.getElementById("Barrio");
         
         //Traigo datos
         buscar("TipoDocumento",tipoDocumento);
+        buscar("Estados",document.getElementById("estadoCliente"));
+        buscar("TipoContacto",document.getElementById("tipoContacto"));
+        buscar("Pais",pais);
         
         //Manejo eventos
         
-        //Boton para cargar otro Tipo Documento
-        document.getElementById("masDocumento").onclick = function(){
-            var ventana = window.open("cargaTipoDocumento.html", "Carga de TipoDocumento", "directories=no, location=no, menubar=no, scrollbars=no, statusbar=no, tittlebar=no, width=400, height=200");
-            ventana.onbeforeonload = function(){
-                tipoDocumento.options.length = 1;
-                buscar("TipoDocumento",tipoDocumento);
-            };
+                
+        //Evento utilizado para saber si se cargo algun contacto
+        document.getElementById("tipoContacto").onchange = function(){
+            if(document.getElementById("cantidadContactos").value === "") 
+                document.getElementById("cantidadContactos").value = 1;
         };
         
+        //Eliminar Contacto
+        eliminarCotacto.onclick = function(){
+            
+            this.parentNode.parentNode.nextSibling.nextSibling.remove();
+            this.parentNode.parentNode.remove();
+            document.getElementById("cantidadContactos").value = --cantidadContactos;
+        };
+        
+        // Agregar contacto
+        document.getElementById("envContacto").onclick = function(){
+            var tabla = document.getElementById("contactos");
+            var filaTipoContacto = tabla.insertRow(0);
+            var filaDetalle = tabla.insertRow(1);
+            tabla.insertRow(2).appendChild(document.createElement("Br"));
+            var labelDetalle = filaDetalle.insertCell(0);
+            var inputDetalle = filaDetalle.insertCell(1);
+            var labelTipoContacto = filaTipoContacto.insertCell(0);
+            var selectTipoContacto = filaTipoContacto.insertCell(1);
+            var buttonTipoContacto = filaTipoContacto.insertCell(2);
+            var label = document.createElement("Label");            
+            cantidadContactos++;
+            label.setAttribute("for","tipoContacto"+cantidadContactos);
+            label.innerHTML = "Tipo de Contacto: ";
+            labelTipoContacto.appendChild(label);
+            var select = document.createElement("Select");
+            var option = document.createElement("Option");
+            select.setAttribute("name","tipoContacto"+cantidadContactos);
+            select.setAttribute("id","tipoContacto"+cantidadContactos);
+            option.setAttribute("value","0");
+            option.innerHTML = "---";
+            select.appendChild(option);
+            selectTipoContacto.appendChild(select);
+            buscar("TipoContacto",document.getElementById("tipoContacto"+cantidadContactos));
+            var boton = document.createElement("Input");
+            boton.setAttribute("type","button");
+            boton.setAttribute("name","+tipoContacto"+cantidadContactos);
+            boton.setAttribute("id","+tipoContacto"+cantidadContactos);
+            boton.setAttribute("value","-");
+            boton.onclick = function(){
+                this.parentNode.parentNode.nextSibling.remove();
+                this.parentNode.parentNode.nextSibling.remove();
+                this.parentNode.parentNode.remove();
+                document.getElementById("cantidadContactos").value = --cantidadContactos;
+            };
+            buttonTipoContacto.appendChild(boton);
+            var label2 = document.createElement("Label");
+            label2.setAttribute("for","detalleContactos"+cantidadContactos);
+            label2.innerHTML = "Detalle: ";
+            labelDetalle.appendChild(label2);
+            var input = document.createElement("Input");
+            input.setAttribute("type","text");
+            input.setAttribute("name","detalleContactos"+cantidadContactos);
+            input.setAttribute("type","detalleContactos"+cantidadContactos);
+            inputDetalle.appendChild(input);                
+            document.getElementById("cantidadContactos").value = cantidadContactos;
+        };
+        
+        //Funcion de cambiar provincia cuando cambia el pais
+        pais.onchange = function(){            
+            provincia.options.length = 0;
+            agregarOpcion(provincia);
+            var res = pais[pais.selectedIndex].value;
+            buscar("Provincia",provincia,res);
+        };
+        
+        //Funcion de cambiar ciudad cuando cambia la provincia
+        provincia.onchange = function(){            
+            ciudad.options.length = 0;
+            agregarOpcion(ciudad);
+            var res = provincia[provincia.selectedIndex].value;
+            buscar("Ciudad",ciudad,res);
+        };
+        
+        //Funcion de cambiar el barrio cuando cambia la ciudad
+        ciudad.onchange = function(){            
+            barrio.options.length = 0;
+            agregarOpcion(barrio);
+            var res = ciudad[ciudad.selectedIndex].value;
+            buscar("Barrio",barrio,res);
+        };
+        
+        
+        //Funcion usada para agregar una opcion ---
+        function agregarOpcion(sel){
+            var select = document.createElement("Select");
+            var option = document.createElement("Option");
+            option.setAttribute("value","x0");
+            option.innerHTML = "---";
+            sel.appendChild(option);
+        };
     </script>
 </html>

@@ -9,7 +9,7 @@ and open the template in the editor.
         <title>ABM Alojamiento - Alta</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-         <script src="../js/buscar.js"></script>
+        <script src="../js/buscar.js"></script>
     </head>
     <body>
         <form method="POST" action="../AltaAlojamiento" enctype="multipart/form-data" >
@@ -35,13 +35,13 @@ and open the template in the editor.
                     <tr>
                         <td><label for="estadoAlojamiento">Estado: </label></td>
                         <td><select name="estadoAlojamiento" id="estadoAlojamiento">
-                                <option value="0"> --- </option>
+                                <option value="x0"> --- </option>
                             </select></td>                    
                     </tr>
                     <tr>
                         <td><label for="clienteAlojamiento">Id Cliente: </label></td>
                         <td><select name="clienteAlojamiento" id="clienteAlojamientoSel">
-                                <option value="0"> --- </option>
+                                <option value="x0"> --- </option>
                             </select>
                             <input type="text" name="clienteAlojamientor" id="clienteAlojamiento" value="" />
                         </td>
@@ -55,13 +55,13 @@ and open the template in the editor.
                     <tr>
                         <td><label for="regimenAlimentarioAlojamiento">Regimen Alimentario: </label></td>
                         <td><select name="regimenAlimentarioAlojamiento" id="regimenAlimentarioAlojamiento">
-                                <option value="0"> --- </option>
+                                <option value="x0"> --- </option>
                             </select></td>                        
                     </tr>
                     <tr>
                         <td><label for="temporadaAlojamiento">Temporada: </label></td>
                         <td><select name="temporadaAlojamiento" id="temporadaAlojamiento">
-                                <option value="0"> --- </option>
+                                <option value="x0"> --- </option>
                             </select></td>
                     </tr>
                     <tr><td><br /></td></tr>
@@ -70,24 +70,24 @@ and open the template in the editor.
                     <tr>
                         <td><label for="Pais">Pais: </label></td>
                         <td><select name="Pais" id="Pais">
-                                <option value="0"> --- </option>
+                                <option value="x0"> --- </option>
                             </select></td>
                     <tr>
                         <td><label for="Provincia">Provincia: </label></td>
                         <td><select name="Provincia" id="Provincia">
-                                <option value="0"> --- </option>
+                                <option value="x0"> --- </option>
                             </select></td>
                     </tr>
                     <tr>
                         <td><label for="Ciudad">Ciudad: </label></td>
                         <td><select name="Ciudad" id="Ciudad">
-                                <option value="0"> --- </option>
+                                <option value="x0"> --- </option>
                             </select></td>
                     </tr>
                     <tr>
                         <td><label for="Barrio">Barrio: </label></td>
                         <td><select name="Barrio" id="Barrio">
-                                <option value="0"> --- </option>
+                                <option value="x0"> --- </option>
                             </select></td>
                     </tr>
                     <tr>
@@ -138,7 +138,7 @@ and open the template in the editor.
                         <tr>
                             <td><label for="tipoContacto1">Tipo de Contacto: </label></td>
                             <td><select name="tipoContacto1" id="tipoContacto">
-                                    <option value="0"> --- </option>
+                                    <option value="x0"> --- </option>
                                 </select></td>
                             <td><input type="button" name="+tipoContacto" id="masContacto" value="-"/></td>
                         </tr>
@@ -360,7 +360,7 @@ and open the template in the editor.
         function agregarOpcion(sel){
             var select = document.createElement("Select");
             var option = document.createElement("Option");
-            option.setAttribute("value","0");
+            option.setAttribute("value","x0");
             option.innerHTML = "---";
             sel.appendChild(option);
         };

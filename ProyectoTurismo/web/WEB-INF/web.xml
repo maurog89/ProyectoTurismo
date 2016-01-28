@@ -80,6 +80,22 @@
         <servlet-name>AltaTipoDocumento</servlet-name>
         <servlet-class>turismo.controlador.servlet.AltaTipoDocumento</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AltaBarrio</servlet-name>
+        <servlet-class>turismo.controlador.servlet.AltaBarrio</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AltaDomicilio</servlet-name>
+        <servlet-class>turismo.controlador.servlet.AltaDomicilio</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AltaObservacion</servlet-name>
+        <servlet-class>turismo.controlador.servlet.AltaObservacion</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AltaCliente</servlet-name>
+        <servlet-class>turismo.controlador.servlet.AltaCliente</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AltaNoticia</servlet-name>
         <url-pattern>/AltaNoticia</url-pattern>
@@ -159,6 +175,22 @@
     <servlet-mapping>
         <servlet-name>AltaTipoDocumento</servlet-name>
         <url-pattern>/AltaTipoDocumento</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AltaBarrio</servlet-name>
+        <url-pattern>/AltaBarrio</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AltaDomicilio</servlet-name>
+        <url-pattern>/AltaDomicilio</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AltaObservacion</servlet-name>
+        <url-pattern>/AltaObservacion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AltaCliente</servlet-name>
+        <url-pattern>/AltaCliente</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

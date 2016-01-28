@@ -27,7 +27,7 @@ and open the template in the editor.
                     <tr>
                         <td><label for="Pais">Pais: </label></td>
                         <td><select name="Pais" id="Pais">
-                                <option value="0">---</option>
+                                <option value="x0">---</option>
                             </select></td>
                     </tr>
                     <tr>
@@ -48,13 +48,8 @@ and open the template in the editor.
          //Traigo datos
          buscar("Pais",pais);
          
-         //Genero nueva ventana para cargar otra pais
-        document.getElementById("masPais").onclick = function(){
-            var ventana = window.open("cargaPais.html", "Carga de Paices", "directories=no, location=no, menubar=no, scrollbars=no, statusbar=no, tittlebar=no, width=400, height=200");
-            ventana.onbeforeunload = function(){
-                pais.options.length = 1;
-                buscar("Pais",pais);
-            };
-        };
+               
+        
+        
     </script>
 </html>

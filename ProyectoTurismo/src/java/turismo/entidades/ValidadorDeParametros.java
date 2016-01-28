@@ -25,7 +25,10 @@ public class ValidadorDeParametros {
         int contador = 0;
         for (String p : par) {
             String valor = request.getParameter(p);
-            resultado[contador] = !valor.isEmpty();
+            if(!valor.equals("x0"))
+                resultado[contador] = !valor.isEmpty();
+            else
+                resultado[contador] = false;
             contador++;
         }
         return resultado;
@@ -104,40 +107,12 @@ public class ValidadorDeParametros {
                     break;
                 case "Observacion":
                     parametros.get(secundarios[contador2]).valorNumerico = ingresarObservacion(request);
-                    break;
-            }
+                    break;              
+            }            
             contador2++;
         }
-        switch(tabla){
-            case "Alojamiento":
-                new Alojamiento(parametros.get(0).valorTextual,
-                        parametros.get(1).valorTextual,
-                        parametros.get(2).valorNumerico,
-                        parametros.get(3).valorNumerico,
-                        parametros.get(4).valorNumerico,
-                        parametros.get(5).valorNumerico,
-                        parametros.get(6).valorNumerico,
-                        parametros.get(7).valorNumerico,
-                        parametros.get(8).valorNumerico,
-                        parametros.get(9).valorNumerico,
-                        fecha
-                );              
-                break;
-            case "Ciudad":
-                new Ciudad(parametros.get(0).valorTextual,
-                        parametros.get(1).valorTextual,
-                        parametros.get(2).valorTextual,
-                        (parametros.get(3).valorNumerico == 1)?true:false,
-                        parametros.get(4).valorNumerico,
-                        parametros.get(5).valorNumerico,
-                        parametros.get(6).valorNumerico,
-                        parametros.get(7).valorNumerico,
-                        parametros.get(8).valorNumerico,
-                        fecha
-                );  
-                break;
-        }
         
+        ingresarTabla(tabla, parametros, fecha, param, request);       
         
         return true;
     }
@@ -252,6 +227,40 @@ public class ValidadorDeParametros {
             return 1;
         return resultado.getId();
     }
+    
+    private static void ingresarTabla(String tabla, ArrayList<Parametro> parametros,String fecha,String[] param,HttpServletRequest request) throws SQLException{
+        switch(tabla){
+            case "Alojamiento":
+                new Alojamiento(parametros.get(0).valorTextual,parametros.get(1).valorTextual,parametros.get(2).valorNumerico,parametros.get(3).valorNumerico,parametros.get(4).valorNumerico,parametros.get(5).valorNumerico,parametros.get(6).valorNumerico,parametros.get(7).valorNumerico,parametros.get(8).valorNumerico,parametros.get(9).valorNumerico,fecha);              
+                break;
+            case "Ciudad":
+                new Ciudad(parametros.get(0).valorTextual,parametros.get(1).valorTextual,parametros.get(2).valorTextual,(parametros.get(3).valorNumerico == 1)?true:false,parametros.get(4).valorNumerico,parametros.get(5).valorNumerico,parametros.get(6).valorNumerico,parametros.get(7).valorNumerico,parametros.get(8).valorNumerico,fecha);  
+                break;
+            case "Barrio":
+                new Barrio(parametros.get(0).valorTextual,parametros.get(1).valorNumerico,parametros.get(2).valorNumerico);
+                break;
+            case "Pais":
+                new Pais(parametros.get(0).valorTextual,parametros.get(1).valorTextual);
+               break;
+            case "Provincia":
+                new Provincia(parametros.get(0).valorTextual,parametros.get(1).valorNumerico,parametros.get(2).valorTextual);
+                break;
+            case "Domicilio":
+                String[] datosDomicilio = obtenerDatosDomicilio(param,request);
+                ingresarDomicilio(datosDomicilio[0],datosDomicilio[1],datosDomicilio[2],datosDomicilio[3],datosDomicilio[4],datosDomicilio[5],datosDomicilio[6],datosDomicilio[7],Integer.parseInt(datosDomicilio[8]));
+                break;
+            case "Estado":
+                new Estado(parametros.get(0).valorTextual,parametros.get(1).valorTextual,(parametros.get(1).valorTextual.isEmpty())?"Minimo":"Completa");
+                break;
+            case "Observacion":
+                new Observacion(parametros.get(0).valorTextual);
+                break;
+            case "Cliente":
+                new Cliente(parametros.get(0).valorTextual,parametros.get(1).valorTextual,parametros.get(2).valorTextual,parametros.get(3).valorTextual,parametros.get(4).valorTextual,parametros.get(5).valorTextual,parametros.get(6).valorNumerico,parametros.get(7).valorNumerico,parametros.get(8).valorNumerico,parametros.get(9).valorNumerico,parametros.get(10).valorNumerico,fecha);
+                break;
+        }
+    }
+    
 }
 
 class Verificador {
