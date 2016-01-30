@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import turismo.entidades.ImprimirHTML;
-import turismo.entidades.Pais;
 import turismo.entidades.ValidadorDeParametros;
 
 /**
@@ -35,6 +34,7 @@ public class AltaPais extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
         try {
              response.setContentType("text/html;charset=UTF-8");

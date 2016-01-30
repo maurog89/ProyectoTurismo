@@ -38,7 +38,7 @@ public class AltaCategoriaRestaurante extends HttpServlet {
         try  {
             /* TODO output your page here. You may use following sample code. */
             response.setContentType("text/html;charset=UTF-8");
-        
+            request.setCharacterEncoding("UTF-8");
         
             ImprimirHTML.imprimirEtiquetasIniciales(out,"Alta de Categoria Restaurante");
             String[] parametros = new String[]{"cantidadTenedoresCategoriaRestaurante","descripcionCategoriaRestaurante","nombreCategoriaRestaurante"};

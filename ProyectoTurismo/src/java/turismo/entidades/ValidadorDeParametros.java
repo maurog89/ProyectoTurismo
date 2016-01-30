@@ -113,7 +113,7 @@ public class ValidadorDeParametros {
         }
         
         ingresarTabla(tabla, parametros, fecha, param, request);       
-        
+        out.println("Nombre: " + parametros.get(0).valorTextual);
         return true;
     }
     
@@ -276,6 +276,10 @@ public class ValidadorDeParametros {
             case "TipoDocumento":
                 new TipoDocumento(parametros.get(0).valorTextual);
                 break;
+            case "TipoEvento":                
+                new TipoEvento(parametros.get(0).valorTextual,parametros.get(1).valorTextual);
+                break;
+                
         }
     }
     
