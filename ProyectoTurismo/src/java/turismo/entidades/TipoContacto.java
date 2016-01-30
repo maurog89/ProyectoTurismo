@@ -5,6 +5,10 @@
  */
 package turismo.entidades;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import turismo.conexion.Conexion;
+
 /**
  *
  * @author matiascanodesarrollos
@@ -18,6 +22,16 @@ public class TipoContacto {
         this.id = id;
         this.Nombre = Nombre;
     }
+
+    public TipoContacto(String Nombre, int idObservacion) throws SQLException {
+        this.Nombre = Nombre;
+        this.idObservacion = idObservacion;
+        Conexion con = new Conexion();
+        con.getSql().execute("INSERT INTO Turismo.TipoContacto (Nombre,IdObservacion) values ('" + Nombre + "'," + idObservacion + ")");
+        con.cerrarConexion();
+    }
+    
+    
     
     @Override
     public String toString(){

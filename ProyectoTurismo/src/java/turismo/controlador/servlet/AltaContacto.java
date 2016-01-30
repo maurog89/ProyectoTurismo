@@ -10,7 +10,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,36 +20,36 @@ import turismo.entidades.ValidadorDeParametros;
  *
  * @author matiascanodesarrollos
  */
-@MultipartConfig
-public class AltaCiudad extends HttpServlet {
+public class AltaContacto extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
-     * 
-     * 
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
      */
-        
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         
-        ImprimirHTML.imprimirEtiquetasIniciales(out,"Alta de Ciudades");
-        String[] parametros = new String[]{"nombreCuidad","historiaPais","emergenciaPais","capital","Observaciones","Provincia","clienteCiudad","cantidadImagenes","pririodadCuidad"};
-        String[] obligatorios =  new String[]{"nombreCuidad","capital","Provincia","pririodadCuidad"};
-        String[] numericos = new String[]{"capital","Provincia","clienteCiudad","cantidadImagenes","pririodadCuidad"};
+        ImprimirHTML.imprimirEtiquetasIniciales(out,"Alta de Contactos");
+        String[] parametros = new String[]{"estado","detalleContacto","tipoContacto"};
+        String[] obligatorios =  new String[]{"estado","detalleContacto","tipoContacto"};
+        String[] numericos = new String[]{"estado","tipoContacto"};
         
         boolean[] validadorVacio = ValidadorDeParametros.validarVacio(obligatorios, request);
         boolean[] validadorNumerico = ValidadorDeParametros.validarNumerico(numericos, request);
         
         if(ValidadorDeParametros.validar(validadorVacio,validadorNumerico)){
             try {
-                int[] posicionNumericos = new int[]{3,5,6,7,8};
-                String[] tablasSecundarias = new String[]{"Imagen","Observacion"};
-                int[] secundarios = new int[]{7,4};
-                ValidadorDeParametros.insertar("Ciudad", parametros , posicionNumericos, tablasSecundarias, secundarios, request, out);
+                int[] posicionNumericos = new int[]{0,2};
+                String[] tablasSecundarias = new String[]{};
+                int[] secundarios = new int[]{};
+                ValidadorDeParametros.insertar("Contacto", parametros , posicionNumericos, tablasSecundarias, secundarios, request, out);
                 
             } catch (FileNotFoundException ex) {
                 out.println(ex.toString());
@@ -61,8 +60,7 @@ public class AltaCiudad extends HttpServlet {
             ValidadorDeParametros.imprimirDatosFaltantes(out, validadorVacio, validadorNumerico, obligatorios, numericos);
         }
         
-        ImprimirHTML.imprimirEtiquetasFinal(out);        
-        
+        ImprimirHTML.imprimirEtiquetasFinal(out);    
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -92,9 +90,8 @@ public class AltaCiudad extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException{
+            throws ServletException, IOException {
         processRequest(request, response);
-        
     }
 
     /**

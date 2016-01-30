@@ -258,6 +258,12 @@ public class ValidadorDeParametros {
             case "Cliente":
                 new Cliente(parametros.get(0).valorTextual,parametros.get(1).valorTextual,parametros.get(2).valorTextual,parametros.get(3).valorTextual,parametros.get(4).valorTextual,parametros.get(5).valorTextual,parametros.get(6).valorNumerico,parametros.get(7).valorNumerico,parametros.get(8).valorNumerico,parametros.get(9).valorNumerico,parametros.get(10).valorNumerico,fecha);
                 break;
+            case "Contacto":
+                new Contacto(parametros.get(0).valorNumerico,parametros.get(1).valorTextual,parametros.get(2).valorNumerico);
+                break;
+            case "TipoContacto":
+                new TipoContacto(parametros.get(0).valorTextual,parametros.get(1).valorNumerico);
+                break;
         }
     }
     

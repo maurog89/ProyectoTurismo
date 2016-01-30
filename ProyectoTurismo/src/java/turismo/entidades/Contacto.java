@@ -30,6 +30,19 @@ public class Contacto {
         con.cerrarConexion();
     }
 
+    public Contacto(int estado, String Detalle, int tipo) throws SQLException {
+        this.estado = estado;
+        this.Detalle = Detalle;
+        this.tipo = tipo;
+        Conexion con = new Conexion();
+        ResultSet rs = con.getSql().executeQuery("CALL Turismo.cargaContacto(" + tipo + ",'" + Detalle + "'," + tipo + ")");
+        rs.next();
+        this.id = rs.getInt("LAST_INSERT_ID()");
+        con.cerrarConexion();
+    }
+    
+    
+
     public int getId() {
         return id;
     }

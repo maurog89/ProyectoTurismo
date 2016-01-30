@@ -96,6 +96,14 @@
         <servlet-name>AltaCliente</servlet-name>
         <servlet-class>turismo.controlador.servlet.AltaCliente</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AltaContacto</servlet-name>
+        <servlet-class>turismo.controlador.servlet.AltaContacto</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AltaTipoContacto</servlet-name>
+        <servlet-class>turismo.controlador.servlet.AltaTipoContacto</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AltaNoticia</servlet-name>
         <url-pattern>/AltaNoticia</url-pattern>
@@ -191,6 +199,14 @@
     <servlet-mapping>
         <servlet-name>AltaCliente</servlet-name>
         <url-pattern>/AltaCliente</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AltaContacto</servlet-name>
+        <url-pattern>/AltaContacto</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AltaTipoContacto</servlet-name>
+        <url-pattern>/AltaTipoContacto</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
