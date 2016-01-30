@@ -20,7 +20,7 @@ import turismo.entidades.ValidadorDeParametros;
  *
  * @author matiascanodesarrollos
  */
-public class AltaTemporada extends HttpServlet {
+public class AltaCategoriaRestaurante extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,19 +40,19 @@ public class AltaTemporada extends HttpServlet {
             response.setContentType("text/html;charset=UTF-8");
         
         
-            ImprimirHTML.imprimirEtiquetasIniciales(out,"Alta de Temporadas");
-            String[] parametros = new String[]{"nombreTemporada","descripcionTemporada"};
-            String[] obligatorios =  new String[]{"nombreTemporada"};
-            String[] numericos = new String[]{};
+            ImprimirHTML.imprimirEtiquetasIniciales(out,"Alta de Categoria Restaurante");
+            String[] parametros = new String[]{"cantidadTenedoresCategoriaRestaurante","descripcionCategoriaRestaurante","nombreCategoriaRestaurante"};
+            String[] obligatorios =  new String[]{"cantidadTenedoresCategoriaRestaurante"};
+            String[] numericos = new String[]{"cantidadTenedoresCategoriaRestaurante"};
         
             boolean[] validadorVacio = ValidadorDeParametros.validarVacio(obligatorios, request);
             boolean[] validadorNumerico = ValidadorDeParametros.validarNumerico(numericos, request);
         
             if(ValidadorDeParametros.validar(validadorVacio,validadorNumerico)){
-                int[] posicionNumericos = new int[]{};
+                int[] posicionNumericos = new int[]{0};
                 String[] tablasSecundarias = new String[]{};
                 int[] secundarios = new int[]{};
-                ValidadorDeParametros.insertar("Temporada", parametros , posicionNumericos, tablasSecundarias, secundarios, request, out);
+                ValidadorDeParametros.insertar("CategoriaRestaurante", parametros , posicionNumericos, tablasSecundarias, secundarios, request, out);
             }else{
                 ValidadorDeParametros.imprimirDatosFaltantes(out, validadorVacio, validadorNumerico, obligatorios, numericos);
             }

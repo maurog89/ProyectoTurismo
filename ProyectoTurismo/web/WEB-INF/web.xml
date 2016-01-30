@@ -104,6 +104,14 @@
         <servlet-name>AltaTipoContacto</servlet-name>
         <servlet-class>turismo.controlador.servlet.AltaTipoContacto</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AltaCategoriaRestaurante</servlet-name>
+        <servlet-class>turismo.controlador.servlet.AltaCategoriaRestaurante</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AltaTipoDeComida</servlet-name>
+        <servlet-class>turismo.controlador.servlet.AltaTipoDeComida</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AltaNoticia</servlet-name>
         <url-pattern>/AltaNoticia</url-pattern>
@@ -207,6 +215,14 @@
     <servlet-mapping>
         <servlet-name>AltaTipoContacto</servlet-name>
         <url-pattern>/AltaTipoContacto</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AltaCategoriaRestaurante</servlet-name>
+        <url-pattern>/AltaCategoriaRestaurante</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AltaTipoDeComida</servlet-name>
+        <url-pattern>/AltaTipoDeComida</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

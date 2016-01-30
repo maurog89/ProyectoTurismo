@@ -20,7 +20,7 @@ import turismo.entidades.ValidadorDeParametros;
  *
  * @author matiascanodesarrollos
  */
-public class AltaTemporada extends HttpServlet {
+public class AltaTipoDeComida extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,9 +40,9 @@ public class AltaTemporada extends HttpServlet {
             response.setContentType("text/html;charset=UTF-8");
         
         
-            ImprimirHTML.imprimirEtiquetasIniciales(out,"Alta de Temporadas");
-            String[] parametros = new String[]{"nombreTemporada","descripcionTemporada"};
-            String[] obligatorios =  new String[]{"nombreTemporada"};
+            ImprimirHTML.imprimirEtiquetasIniciales(out,"Alta de Tipo de Comidas");
+            String[] parametros = new String[]{"tipoComida"};
+            String[] obligatorios =  new String[]{"tipoComida"};
             String[] numericos = new String[]{};
         
             boolean[] validadorVacio = ValidadorDeParametros.validarVacio(obligatorios, request);
@@ -52,7 +52,7 @@ public class AltaTemporada extends HttpServlet {
                 int[] posicionNumericos = new int[]{};
                 String[] tablasSecundarias = new String[]{};
                 int[] secundarios = new int[]{};
-                ValidadorDeParametros.insertar("Temporada", parametros , posicionNumericos, tablasSecundarias, secundarios, request, out);
+                ValidadorDeParametros.insertar("TipoDeComida", parametros , posicionNumericos, tablasSecundarias, secundarios, request, out);
             }else{
                 ValidadorDeParametros.imprimirDatosFaltantes(out, validadorVacio, validadorNumerico, obligatorios, numericos);
             }

@@ -34,6 +34,16 @@ public class Temporada {
         this.id = id;
         this.nombre = nombre;
     }
+
+    public Temporada(String nombre, String descripcion) throws SQLException {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        Conexion con = new Conexion();
+        con.getSql().execute("INSERT INTO Turismo.Temporada (nombre,descripcion) values('" + nombre + "','" + descripcion + "')");
+        con.cerrarConexion();
+    }
+    
+    
     
     @Override
     public String toString(){

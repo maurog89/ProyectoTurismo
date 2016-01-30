@@ -5,16 +5,16 @@
  */
 package turismo.controlador.servlet;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import turismo.entidades.TipoDocumento;
+import turismo.entidades.ImprimirHTML;
+import turismo.entidades.ValidadorDeParametros;
 
 /**
  *
@@ -35,19 +35,33 @@ public class AltaTipoDocumento extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        try {
+        try  {
             /* TODO output your page here. You may use following sample code. */
-            String tipoDocumento = request.getParameter("tipoDocumento");
-            if(tipoDocumento.isEmpty())
-                out.println("El campo tipo documento es obligatorio");
-            else{
-                new TipoDocumento(tipoDocumento);
-                out.println("Tipo de Documento cargado.");
+            response.setContentType("text/html;charset=UTF-8");
+        
+        
+            ImprimirHTML.imprimirEtiquetasIniciales(out,"Alta de Tipo de Documentos");
+            String[] parametros = new String[]{"tipoDocumento"};
+            String[] obligatorios =  new String[]{"tipoDocumento"};
+            String[] numericos = new String[]{};
+        
+            boolean[] validadorVacio = ValidadorDeParametros.validarVacio(obligatorios, request);
+            boolean[] validadorNumerico = ValidadorDeParametros.validarNumerico(numericos, request);
+        
+            if(ValidadorDeParametros.validar(validadorVacio,validadorNumerico)){
+                int[] posicionNumericos = new int[]{};
+                String[] tablasSecundarias = new String[]{};
+                int[] secundarios = new int[]{};
+                ValidadorDeParametros.insertar("TipoDocumento", parametros , posicionNumericos, tablasSecundarias, secundarios, request, out);
+            }else{
+                ValidadorDeParametros.imprimirDatosFaltantes(out, validadorVacio, validadorNumerico, obligatorios, numericos);
             }
+            
+            ImprimirHTML.imprimirEtiquetasFinal(out);
+        } catch (FileNotFoundException ex) {
+            out.println(ex.toString());
         } catch (SQLException ex) {
             out.println(ex.toString());
-        }finally {
-            out.close();
         }
     }
 
@@ -63,17 +77,9 @@ public class AltaTipoDocumento extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        out.println("<!DOCTYPE html>");
-        out.println("<html>");
-        out.println("<head>");
-        out.println("<title>Error de Metodo</title>");
-        out.println("</head>");
-        out.println("<body>");
-        out.println("<h1>Estimado usuario, para su seguridad utilice la interfaz brindada.</h1>");
-        out.println("</body>");
-        out.println("</html>");
-        out.close();
+        ImprimirHTML.imprimirErrorDeMetodo(out);
     }
 
     /**

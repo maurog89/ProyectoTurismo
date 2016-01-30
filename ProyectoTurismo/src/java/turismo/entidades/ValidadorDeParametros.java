@@ -264,6 +264,18 @@ public class ValidadorDeParametros {
             case "TipoContacto":
                 new TipoContacto(parametros.get(0).valorTextual,parametros.get(1).valorNumerico);
                 break;
+            case "CategoriaRestaurante":
+                new CategoriaRestaurante(parametros.get(0).valorNumerico,parametros.get(1).valorTextual,parametros.get(2).valorTextual);
+                break;
+            case "Temporada":
+                new Temporada(parametros.get(0).valorTextual,parametros.get(1).valorTextual);
+                break;
+            case "TipoDeComida":
+                new TipoDeComida(parametros.get(0).valorTextual);
+                break;
+            case "TipoDocumento":
+                new TipoDocumento(parametros.get(0).valorTextual);
+                break;
         }
     }
     
