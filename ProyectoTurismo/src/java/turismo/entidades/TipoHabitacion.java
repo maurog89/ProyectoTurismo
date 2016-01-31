@@ -29,5 +29,14 @@ public class TipoHabitacion {
             con.getSql().executeUpdate("INSERT INTO Turismo.TipoHabitacion (nombre) values ('" + nombre + "')");
         con.cerrarConexion();
     }
+
+    public TipoHabitacion(String nombre, String descripcion) throws SQLException {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        Conexion con = new Conexion();
+        con.getSql().execute("INSERT INTO Turismo.TipoHabitacion (nombre,descripcion) values('" + nombre + "','" + descripcion + "')");
+        con.cerrarConexion();
+    }
+    
     
 }

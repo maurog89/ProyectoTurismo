@@ -13,17 +13,11 @@ import java.sql.SQLException;
  */
 public class Excursion extends Lugar{
     public int id;
-    public String nombre;    
-    public String detalle;    
-    public String precio;
-    public String fechaInicio;
-    public String fechaFin;
-    public String ano;
-    public String personas;
+    public String nombre,detalle,fechaInicio,fechaFin,ano,personas,precio;    
     public int temporada;
     
     // Costructor
-    public Excursion(String nombre, String detalle, String precio, String fechaInicio, String fechaFin, String ano, String personas, int temporada, String fechaAlta, int cliente, int contacto, int domicilio, int estado, int imagen, int prioridad) throws SQLException {
+    public Excursion(String nombre, String detalle, String precio, String fechaInicio, String fechaFin, String ano, String personas, int temporada, int cliente, int contacto, int estado, int imagen, int prioridad, int domicilio, String fechaAlta) throws SQLException {
         super(fechaAlta, cliente, contacto, domicilio, estado, imagen, prioridad);
         this.nombre = nombre;
         this.detalle = detalle;
@@ -34,7 +28,7 @@ public class Excursion extends Lugar{
         this.personas = personas;
         this.temporada = temporada;
         generarObjetoParaBD();
-        getCon().getSql().executeUpdate("INSERT INTO Turismo.Excursion (nombre,detalle,precio,inicioPeriodo,finPeriodo,año,cantidadVisitantes,idDomicilio,idEstado,idImagen,idTemporada,idContacto,fechaAlta,idObjetoPuntuable) values ('" + nombre +"','" + detalle + "','" + precio +"','" + fechaInicio + "','" + fechaFin + "','" + ano + "','" + personas + "','" + domicilio +"','" + estado +  "','" + imagen + "','" + temporada + "','" + contacto + "','" + fechaAlta + "','" + getIdObjeto()+"')");
+        getCon().getSql().execute("INSERT INTO Turismo.Excursion (nombre,detalle,inicioPeriodo,finPeriodo,año,cantidadVisitantes,precio,idDomicilio,idEstado,idImagen,idTemporada,fechaAlta,idContacto,idObjetoPuntuable,idCliente) values ('" + nombre +"','" + detalle + "','" + fechaInicio + "','" + fechaFin + "','" + ano + "','" + personas + "','" + precio + "'," + domicilio +"," + estado +  "," + imagen + "," + temporada + ",'" + fechaAlta + "'," + contacto + "," + getIdObjeto() + "," + cliente +")");
         cerrarConexion();
     }
 

@@ -116,6 +116,18 @@
         <servlet-name>AltaTipoEvento</servlet-name>
         <servlet-class>turismo.controlador.servlet.AltaTipoEvento</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AltaTipoFactura</servlet-name>
+        <servlet-class>turismo.controlador.servlet.AltaTipoFactura</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AltaTipoPermiso</servlet-name>
+        <servlet-class>turismo.controlador.servlet.AltaTipoPermiso</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AltaTipoVencimiento</servlet-name>
+        <servlet-class>turismo.controlador.servlet.AltaTipoVencimiento</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AltaNoticia</servlet-name>
         <url-pattern>/AltaNoticia</url-pattern>
@@ -231,6 +243,18 @@
     <servlet-mapping>
         <servlet-name>AltaTipoEvento</servlet-name>
         <url-pattern>/AltaTipoEvento</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AltaTipoFactura</servlet-name>
+        <url-pattern>/AltaTipoFactura</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AltaTipoPermiso</servlet-name>
+        <url-pattern>/AltaTipoPermiso</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AltaTipoVencimiento</servlet-name>
+        <url-pattern>/AltaTipoVencimiento</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

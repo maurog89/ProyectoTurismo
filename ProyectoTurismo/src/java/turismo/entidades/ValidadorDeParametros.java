@@ -94,7 +94,7 @@ public class ValidadorDeParametros {
             switch (s) {
                 case "Domicilio":
                     String[] datosDomicilio = obtenerDatosDomicilio(param,request);
-                    dom = ingresarDomicilio(datosDomicilio[0],datosDomicilio[1],datosDomicilio[2],datosDomicilio[3],datosDomicilio[4],datosDomicilio[5],datosDomicilio[6],datosDomicilio[7],Integer.parseInt(datosDomicilio[8]));
+                    dom = ingresarDomicilio(datosDomicilio[0],datosDomicilio[1],datosDomicilio[2],datosDomicilio[3],datosDomicilio[4],datosDomicilio[5],datosDomicilio[6],datosDomicilio[7],Integer.parseInt(datosDomicilio[8]));                    
                     parametros.get(secundarios[contador2]).valorNumerico = dom.getId();
                     break;
                 case "Imagen":
@@ -112,8 +112,7 @@ public class ValidadorDeParametros {
             contador2++;
         }
         
-        ingresarTabla(tabla, parametros, fecha, param, request);       
-        out.println("Nombre: " + parametros.get(0).valorTextual);
+        ingresarTabla(tabla, parametros, fecha, param, request);     
         return true;
     }
     
@@ -279,7 +278,24 @@ public class ValidadorDeParametros {
             case "TipoEvento":                
                 new TipoEvento(parametros.get(0).valorTextual,parametros.get(1).valorTextual);
                 break;
-                
+            case "TipoFactura":
+                new TipoFactura(parametros.get(0).valorTextual);
+                break;
+            case "TipoHabitacion":
+                new TipoHabitacion(parametros.get(0).valorTextual,parametros.get(1).valorTextual);
+                break;
+            case "TipoPermiso":
+                new TipoPermiso(parametros.get(0).valorTextual,parametros.get(1).valorTextual);
+                break;
+            case "TipoVencimiento":
+                new TipoVencimiento(parametros.get(0).valorTextual);
+                break;
+            case "Excursion":
+                new Excursion(parametros.get(0).valorTextual,parametros.get(1).valorTextual,parametros.get(2).valorTextual,parametros.get(3).valorTextual,parametros.get(4).valorTextual,parametros.get(5).valorTextual,parametros.get(6).valorTextual,parametros.get(7).valorNumerico,parametros.get(8).valorNumerico,parametros.get(9).valorNumerico,parametros.get(10).valorNumerico,parametros.get(11).valorNumerico,parametros.get(12).valorNumerico,parametros.get(13).valorNumerico,fecha);
+                break;
+            case "LugarDeInteres":
+                new LugarDeInteres(parametros.get(0).valorTextual,parametros.get(1).valorTextual,parametros.get(2).valorTextual,parametros.get(3).valorNumerico,parametros.get(4).valorNumerico,parametros.get(5).valorNumerico,parametros.get(6).valorNumerico,parametros.get(7).valorNumerico,parametros.get(8).valorNumerico,fecha);
+                break;
         }
     }
     

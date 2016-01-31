@@ -5,20 +5,23 @@
  */
 package turismo.controlador.servlet;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import turismo.entidades.Excursion;
-import turismo.entidades.Fechas;
+import turismo.entidades.ImprimirHTML;
+import turismo.entidades.ValidadorDeParametros;
 
 /**
  *
  * @author matiascanodesarrollos
  */
+@MultipartConfig
 public class AltaExcursion extends HttpServlet {
 
     /**
@@ -35,38 +38,31 @@ public class AltaExcursion extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
-        String nombre = request.getParameter("nombreExcursion");
-        String detalle = request.getParameter("detalleExcursion");
-        String fechaInicio = request.getParameter("inicioExcursion");
-        String fechaFin = request.getParameter("finExcursion");
-        String ano = request.getParameter("anoExcursion");
-        String personas = request.getParameter("visitantesExcursion");
-        String precio = request.getParameter("precioExcursion");
-        int prioridad = -1;
-        if(!request.getParameter("pririodadExcursion").isEmpty())
-           prioridad = Integer.parseInt(request.getParameter("pririodadExcursion"));
-        int estado = -1;
-        if(!request.getParameter("estadoExcursion").isEmpty())
-            estado = Integer.parseInt(request.getParameter("estadoExcursion"));
-        int temporada = -1;
-        if(!request.getParameter("temporadaExcursion").isEmpty())
-            temporada = Integer.parseInt(request.getParameter("temporadaExcursion"));
-        int imagen = 1;
-        int contacto = 2;
-        int cliente = 2;
-        int domicilio = 3;
-        try {    
-            if(!nombre.isEmpty() && !detalle.isEmpty() && !fechaInicio.isEmpty() && !fechaFin.isEmpty() && !ano.isEmpty() && !personas.isEmpty() && !precio.isEmpty() && prioridad != -1 && estado != -1 && temporada != -1 && imagen != -1 && contacto != -1 && cliente != -1 && domicilio != -1){
-                new Excursion(nombre,detalle,precio,fechaInicio,fechaFin,ano,personas,temporada,Fechas.fechaActual(),cliente,contacto,domicilio,estado,imagen,prioridad);
-                out.println("Excursion cargada");
+        try  {
+            /* TODO output your page here. You may use following sample code. */
+            
+            ImprimirHTML.imprimirEtiquetasIniciales(out,"Alta de Excursiones");
+            String[] parametros = new String[]{"nombreExcursion","detalleExcursion","precioExcursion","inicioExcursion","finExcursion","anoExcursion","visitantesExcursion","temporadaExcursion","clienteExcursion","cantidadContactos","estadoExcursion","cantidadImagenes","pririodadExcursion","Barrio","Pais","Provincia","Ciudad","calleDomicilio","nroDomicilio","nroPiso","departamentoDomicilio","torreDomicilio","manzanaDomicilio","loteDomicilio","codigoPostalDomicilio","tipoContacto1","detalleContactos1"};
+            String[] obligatorios =  new String[]{"nombreExcursion","detalleExcursion","precioExcursion","inicioExcursion","finExcursion","anoExcursion","visitantesExcursion","temporadaExcursion","clienteExcursion","cantidadContactos","estadoExcursion","cantidadImagenes","pririodadExcursion","Barrio","Pais","Provincia","Ciudad","calleDomicilio","nroDomicilio","codigoPostalDomicilio","tipoContacto1","detalleContactos1"};
+            String[] numericos = new String[]{"temporadaExcursion","clienteExcursion","cantidadContactos","estadoExcursion","cantidadImagenes","pririodadExcursion","Barrio","Pais","Provincia","Ciudad","tipoContacto1"};
+        
+            boolean[] validadorVacio = ValidadorDeParametros.validarVacio(obligatorios, request);
+            boolean[] validadorNumerico = ValidadorDeParametros.validarNumerico(numericos, request);
+        
+            if(ValidadorDeParametros.validar(validadorVacio,validadorNumerico)){
+                int[] posicionNumericos = new int[]{7,8,9,10,11,12,13};
+                String[] tablasSecundarias = new String[]{"Domicilio","Imagen","Contacto"};
+                int[] secundarios = new int[]{13,11,9};
+                ValidadorDeParametros.insertar("Excursion", parametros , posicionNumericos, tablasSecundarias, secundarios, request, out);
             }else{
-                out.println("Todos los campos son obligatorios");
+                ValidadorDeParametros.imprimirDatosFaltantes(out, validadorVacio, validadorNumerico, obligatorios, numericos);
             }
             
+            ImprimirHTML.imprimirEtiquetasFinal(out);
+        } catch (FileNotFoundException ex) {
+            out.println(ex.toString());
         } catch (SQLException ex) {
-            out.println(ex.toString());        
-        } finally {
-            out.close();
+            out.println(ex.toString());
         }
     }
 
@@ -84,16 +80,7 @@ public class AltaExcursion extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        out.println("<!DOCTYPE html>");
-        out.println("<html>");
-        out.println("<head>");
-        out.println("<title>Error de Metodo</title>");            
-        out.println("</head>");
-        out.println("<body>");
-        out.println("<h1>Estimado usuario, para su seguridad utilice la interfaz brindada.</h1>");
-        out.println("</body>");
-        out.println("</html>");
-        out.close();
+        ImprimirHTML.imprimirErrorDeMetodo(out);
     }
 
     /**

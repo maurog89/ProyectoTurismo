@@ -9,22 +9,13 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
-import turismo.entidades.Alojamiento;
-import turismo.entidades.Contacto;
-import turismo.entidades.Domicilio;
-import turismo.entidades.Fechas;
 import turismo.entidades.ImprimirHTML;
-import turismo.entidades.SubirImagen;
 import turismo.entidades.ValidadorDeParametros;
-import turismo.entidades.VerificarFotos;
 
 /**
  *

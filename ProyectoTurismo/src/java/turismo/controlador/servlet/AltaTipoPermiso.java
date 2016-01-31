@@ -10,7 +10,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,8 +20,7 @@ import turismo.entidades.ValidadorDeParametros;
  *
  * @author matiascanodesarrollos
  */
-@MultipartConfig
-public class AltaLugarDeInteres extends HttpServlet {
+public class AltaTipoPermiso extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,19 +38,22 @@ public class AltaLugarDeInteres extends HttpServlet {
         PrintWriter out = response.getWriter();
         try  {
             /* TODO output your page here. You may use following sample code. */
-            ImprimirHTML.imprimirEtiquetasIniciales(out,"Alta de Lugares de Interes");
-            String[] parametros = new String[]{"descripcionLugarInteres","nombreLugarInteres","precioLugarInteres","clienteLugarInteres","cantidadContactos","Barrio","estadoLugarInteres","cantidadImagenes","pririodadLugarInteres","Pais","Provincia","Ciudad","calleDomicilio","nroDomicilio","nroPiso","departamentoDomicilio","torreDomicilio","manzanaDomicilio","loteDomicilio","codigoPostalDomicilio","tipoContacto1","detalleContactos1"};
-            String[] obligatorios =  new String[]{"descripcionLugarInteres","nombreLugarInteres","precioLugarInteres","cantidadContactos","Barrio","estadoLugarInteres","pririodadLugarInteres","Pais","Provincia","Ciudad","tipoContacto1","detalleContactos1"};
-            String[] numericos = new String[]{"clienteLugarInteres","cantidadContactos","Barrio","estadoLugarInteres","cantidadImagenes","pririodadLugarInteres","Pais","Provincia","Ciudad","tipoContacto1"};
+            response.setContentType("text/html;charset=UTF-8");
+        
+        
+            ImprimirHTML.imprimirEtiquetasIniciales(out,"Alta de Tipo de Permiso");
+            String[] parametros = new String[]{"tipoPermiso","descripcionPermiso"};
+            String[] obligatorios =  new String[]{"tipoPermiso"};
+            String[] numericos = new String[]{};
         
             boolean[] validadorVacio = ValidadorDeParametros.validarVacio(obligatorios, request);
             boolean[] validadorNumerico = ValidadorDeParametros.validarNumerico(numericos, request);
         
             if(ValidadorDeParametros.validar(validadorVacio,validadorNumerico)){
-                int[] posicionNumericos = new int[]{3,4,5,6,7,8};
-                String[] tablasSecundarias = new String[]{"Domicilio","Imagen","Contacto"};
-                int[] secundarios = new int[]{5,7,4};
-                ValidadorDeParametros.insertar("LugarDeInteres", parametros , posicionNumericos, tablasSecundarias, secundarios, request, out);
+                int[] posicionNumericos = new int[]{};
+                String[] tablasSecundarias = new String[]{};
+                int[] secundarios = new int[]{};
+                ValidadorDeParametros.insertar("TipoPermiso", parametros , posicionNumericos, tablasSecundarias, secundarios, request, out);
             }else{
                 ValidadorDeParametros.imprimirDatosFaltantes(out, validadorVacio, validadorNumerico, obligatorios, numericos);
             }
@@ -76,7 +77,7 @@ public class AltaLugarDeInteres extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {        
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         ImprimirHTML.imprimirErrorDeMetodo(out);
