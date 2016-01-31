@@ -100,7 +100,11 @@ and open the template in the editor.
             clientes[idCliente.value].selected = true;
         };
         clientes.onchange = function(){
-            idCliente.value = clientes[clientes.selectedIndex].value;
+            if(this.value != "x0")
+                idCliente.value = clientes[clientes.selectedIndex].value;
+            else
+                idCliente.value = "";
+            
         };
         
         //Aumento el contacdor de imagenes

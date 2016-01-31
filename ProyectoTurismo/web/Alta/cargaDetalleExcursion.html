@@ -9,9 +9,10 @@ and open the template in the editor.
         <title>ABM Detalle Excursion - Alta</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="../js/buscar.js"></script>
     </head>
     <body>
-        <form method="POST">
+        <form method="POST" action="../AltaDetalleExcursion">
             <table>
                 <thead>
                     <tr>
@@ -25,123 +26,59 @@ and open the template in the editor.
                     </tr>
                     <tr>
                         <td><label for="duracionDetalleExcursion">Duracion: </label></td>
-                        <td><textarea name="duracionDetalleExcursion" id="duracionDetalleExcursion" /></textarea></td>
+                        <td><input type="text" name="duracionDetalleExcursion" id="duracionDetalleExcursion" /></td>
                     </tr>                    
                     <tr>
                         <td><label for="Excursion">Id Excurcion: </label></td>
                         <td><input type="text" name="Excursion" id="eExcursion" value="" /></td>
-                        <td><select name="nombreExcursion">
-                                <option value="0">---</option>
+                        <td><select name="nombreExcursion" id="Excursiones">
+                                <option value="x0">---</option>
                             </select></td>
                     </tr>
                     <tr>
                         <td><label for="lugarInteres">Id Lugar Interes: </label></td>
                         <td><input type="text" name="lugarInteres" id="lugarInteres" value="" /></td>
-                        <td><select name="nombrelugarInteres">
-                                <option value="0">---</option>
+                        <td><select name="nombrelugarInteres" id="lugaresInteres">
+                                <option value="x0">---</option>
                             </select></td>
                     </tr>                        
                 </tbody>
             </table>
             <br />
             <br />
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ABM Detalle Excursion - Lugar de Interes</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                        <td><label for="nombreLugarInteres">Nombre: </label></td>
-                        <td><input type="text" name="nombreLugarInteres" id="nombreLugarInteres" value="" /></td>
-                    </tr>
-                    <tr>
-                        <td><label for="precioLugarInteres">Precio: </label></td>
-                        <td><textarea name="precioLugarInteres" id="precioLugarInteres" /></textarea></td>
-                    </tr>
-                    <tr>
-                        <td><label for="descripcionLugarInteres">Descripcion: </label></td>
-                        <td><textarea name="descripcionLugarInteres" id="descripcionLugarInteres" /></textarea></td>
-                    </tr> 
-                    <tr>
-                        <td><label for="pririodadLugarInteres">Prioridad: </label></td>
-                        <td><input type="text" name="pririodadLugarInteres" id="pririodadLugarInteres" value="" /></td>
-                    </tr>
-                    <tr>
-                        <td><label for="estadoLugarInteres">Estado: </label></td>
-                        <td><select name="estadoLugarInteres" id="estadoLugarInteres">
-                                <option value="0">---</option>
-                            </select></td>
-                    </tr>
-                    <tr>
-                        <td><label for="clienteLugarInteres">Id Cliente: </label></td>
-                        <td><input type="text" name="clienteLugarInteres" id="clienteLugarInteres" value="" /></td>
-                        <td><select name="clienteLugarInteres" id="clienteLugarInteres">
-                                <option value="0">---</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>                        
-                        <td><label for="imagenLugarInteres">Imagen: </label></td>
-                        <td><input type="file" name="imagenLugarInteres" id="imagenLugarInteres" /></td>
-                        <td><input type="button" name="subirImagenLugarInteres" id="subirImagenLugarInteres" value="Subir Otra Imagen"/></td>
-                    </tbody>
-                    <tr><td><br /></td></tr>
-                    <tr><td><br /></td></tr>
-                    <tr><td><br /></td></tr>
-                    <tr>
-                        <td><label for="Pais">Pais: </label></td>
-                        <td><select name="Pais" id="Pais">
-                                <option value="0">---</option>
-                            </select></td>
-                        <td><label for="Provincia">Provincia: </label></td>
-                        <td><select name="Provincia" id="Provincia">
-                                <option value="0">---</option>
-                            </select></td>
-                    </tr>
-                    <tr>
-                        <td><label for="Cuidad">Cuidad: </label></td>
-                        <td><select name="Cuidad" id="Cuidad">
-                                <option value="0">---</option>
-                            </select></td>
-                    </tr>
-                    <tr>
-                        <td><label for="Barrio">Barrio: </label></td>
-                        <td><select name="Barrio" id="Barrio">
-                                <option value="0">---</option>
-                            </select></td>
-                    </tr>
-                    <tr>
-                        <td><label for="calleDomicilio">Calle: </label></td>
-                        <td><input type="text" name="calleDomicilio" id="calleDomicilio" /></td>
-                    </tr>
-                    <tr>
-                        <td><label for="nroDomicilio">Número: </label></td>
-                        <td><input type="text" name="nroDomicilio" id="nroDomicilio" value="" /></td>
-                    </tr>
-                    <tr>
-                        <td><label for="departamentoDomicilio">Departamento: </label></td>
-                        <td><input type="text" name="departamentoDomicilio" id="departamentoDomicilio" value="" /></td>
-                    </tr>
-                    <tr>
-                        <td><label for="torreDomicilio">Torre: </label></td>
-                        <td><input type="text" name="torreDomicilio" id="torreDomicilio" value="" /></td>
-                    </tr>
-                    <tr>
-                        <td><label for="manzanaDomicilio">Manzana: </label></td>
-                        <td><input type="text" name="manzanaDomicilio" id="manzanaDomicilio" value="" /></td>
-                    </tr>
-                    <tr>
-                        <td><label for="loteDomicilio">Lote: </label></td>
-                        <td><input type="text" name="loteDomicilio" id="loteDomicilio" value="" /></td>
-                    </tr>
-                    <tr>
-                        <td><label for="codigoPostalDomicilio">Código Postal: </label></td>
-                        <td><input type="text" name="codigoPostalDomicilio" id="codigoPostalDomicilio" value="" /></td>
-                    </tr>
-                </table>
             <input type="submit" value="Enviar" name="envDetalle" />
         </form>
     </body>
+    <script>
+        var idExcursion = document.getElementById("eExcursion");
+        var ExcursionSel = document.getElementById("Excursiones");
+        
+        var idLugar = document.getElementById("lugarInteres");
+        var LugarSel = document.getElementById("lugaresInteres");
+        
+        buscar("Excursion",ExcursionSel);
+        buscar("LugarDeInteres",document.getElementById("lugaresInteres"));
+        
+        // Funcion de cambia automaticamente el excursion
+        idExcursion.onchange = function(){
+            ExcursionSel[idExcursion.value].selected = true;
+        };
+        ExcursionSel.onchange = function(){
+            if(this.value != "x0")
+                idExcursion.value = ExcursionSel[ExcursionSel.selectedIndex].value;
+            else
+                idExcursion.value = "";
+        };
+        
+        // Funcion de cambia automaticamente el lugar de interes
+        idLugar.onchange = function(){
+            LugarSel[idLugar.value].selected = true;
+        };
+        LugarSel.onchange = function(){
+            if(this.value != "x0")
+                idLugar.value = LugarSel[LugarSel.selectedIndex].value;
+            else
+                idLugar.value = "";
+        };
+    </script>
 </html>

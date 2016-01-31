@@ -296,6 +296,9 @@ public class ValidadorDeParametros {
             case "LugarDeInteres":
                 new LugarDeInteres(parametros.get(0).valorTextual,parametros.get(1).valorTextual,parametros.get(2).valorTextual,parametros.get(3).valorNumerico,parametros.get(4).valorNumerico,parametros.get(5).valorNumerico,parametros.get(6).valorNumerico,parametros.get(7).valorNumerico,parametros.get(8).valorNumerico,fecha);
                 break;
+            case "DetalleExcursion":
+                new DetalleExcursion(parametros.get(0).valorNumerico,parametros.get(1).valorNumerico,parametros.get(2).valorTextual,parametros.get(3).valorTextual);
+                break;
         }
     }
     

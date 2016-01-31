@@ -128,6 +128,10 @@
         <servlet-name>AltaTipoVencimiento</servlet-name>
         <servlet-class>turismo.controlador.servlet.AltaTipoVencimiento</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AltaDetalleExcursion</servlet-name>
+        <servlet-class>turismo.controlador.servlet.AltaDetalleExcursion</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AltaNoticia</servlet-name>
         <url-pattern>/AltaNoticia</url-pattern>
@@ -255,6 +259,10 @@
     <servlet-mapping>
         <servlet-name>AltaTipoVencimiento</servlet-name>
         <url-pattern>/AltaTipoVencimiento</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AltaDetalleExcursion</servlet-name>
+        <url-pattern>/AltaDetalleExcursion</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

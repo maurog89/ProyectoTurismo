@@ -341,7 +341,10 @@ and open the template in the editor.
             clienteSel[idCliente.value].selected = true;
         };
         clienteSel.onchange = function(){
-            idCliente.value = clienteSel[clienteSel.selectedIndex].value;
+            if(this.value != "x0")
+                idCliente.value = clienteSel[clienteSel.selectedIndex].value;
+            else
+                idCliente.value = "";
         };
         
                
