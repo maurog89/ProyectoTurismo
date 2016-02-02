@@ -320,6 +320,9 @@ public class ValidadorDeParametros {
                 String latittud = parametros.get(2).valorTextual.replace(",", "."); 
                 new Mapa(parametros.get(0).valorNumerico,Float.parseFloat(longitud),Float.parseFloat(latittud));
                 break;
+            case "MedioTransporte":
+                new MedioTransporte(parametros.get(0).valorNumerico,parametros.get(1).valorNumerico,parametros.get(2).valorTextual,parametros.get(3).valorTextual);
+                break;
         }
     }
     
