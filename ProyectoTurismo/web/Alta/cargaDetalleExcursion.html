@@ -61,7 +61,12 @@ and open the template in the editor.
         
         // Funcion de cambia automaticamente el excursion
         idExcursion.onchange = function(){
-            ExcursionSel[idExcursion.value].selected = true;
+            var index = 0;
+            for(var i = 0;i<ExcursionSel.length;i++){
+                if(ExcursionSel[i].value == idExcursion.value)
+                    index = i;                             
+            }            
+            ExcursionSel[index].selected = true;
         };
         ExcursionSel.onchange = function(){
             if(this.value != "x0")
@@ -72,7 +77,12 @@ and open the template in the editor.
         
         // Funcion de cambia automaticamente el lugar de interes
         idLugar.onchange = function(){
-            LugarSel[idLugar.value].selected = true;
+            var index = 0;
+            for(var i = 0;i<LugarSel.length;i++){
+                if(LugarSel[i].value == idLugar.value)
+                    index = i;                             
+            }            
+            LugarSel[index].selected = true;
         };
         LugarSel.onchange = function(){
             if(this.value != "x0")

@@ -9,6 +9,7 @@ and open the template in the editor.
         <title>ABM Medio Transporte - Alta</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="../js/buscar.js"></script>
     </head>
     <body>
         <form method="POST">
@@ -30,16 +31,17 @@ and open the template in the editor.
                     <tr>
                         <td><label for="estadoMedioTransporte">Estado: </label></td>
                         <td><select name="estadoMedioTransporte" id="estadoMedioTransporte">
-                                <option value="0">---</option>
+                                <option value="x0">---</option>
                             </select></td>
                     </tr>
                     <tr>
                         <td><label for="EmpresaTransporte">Empresa Transporte: </label></td>
-                        <td><select name="EmpresaTransporte" id="EmpresaTransporte">
-                                <option value="0">---</option>
+                        <td>
+                            <select name="EmpresaTransporte" id="EmpresaTransporte">
+                                <option value="x0">---</option>
                             </select>
+                            <input type="text" name="idEmpresaTransporte" id="idEmpresaTransporte" value=""/>
                         </td>
-                        <td><input type="text" name="idEmpresaTransporte" id="idEmpresaTransporte" value=""/></td> 
                     </tr>
                     <tr>
                         <td><input type="submit" value="Enviar" name="envMedioTransporte" /></td>
@@ -48,4 +50,31 @@ and open the template in the editor.
             </table>
         </form>
     </body>
+    <script>
+        var idEmpresaTransporte = document.getElementById("idEmpresaTransporte");
+        var EmpresaTransporte = document.getElementById("EmpresaTransporte");
+        /*
+         * Buscar elementos en la base de datos
+         * y llenar los campos
+         */
+        buscar("Estados",document.getElementById("estadoMedioTransporte"));
+        buscar("EmpresaTransporte",document.getElementById("EmpresaTransporte"));
+        
+        //Manejo de eventos
+        // Funcion de cambia automaticamente la empresa de transporte
+        idEmpresaTransporte.onchange = function(){
+            var index = 0;
+            for(var i = 0;i<EmpresaTransporte.length;i++){
+                if(EmpresaTransporte[i].value == idEmpresaTransporte.value)
+                    index = i;                             
+            }            
+            EmpresaTransporte[index].selected = true;
+        };
+        EmpresaTransporte.onchange = function(){
+            if(this.value != "x0")
+                idEmpresaTransporte.value = EmpresaTransporte[EmpresaTransporte.selectedIndex].value;
+            else
+                idEmpresaTransporte.value = "";
+        };
+    </script>
 </html>

@@ -24,6 +24,14 @@ public class EmpresaTransporte {
         con.getSql().execute("INSERT INTO Turismo.EmpresaTransporte (RazonSocial,IdContacto,IdImagen) values('" + razonSocial + "'," + contacto + "," + imagen + ")");
         con.cerrarConexion();
     }
+
+    public EmpresaTransporte(int id, String razonSocial) {
+        this.id = id;
+        this.razonSocial = razonSocial;
+    }
     
-    
+    @Override
+    public String toString(){
+        return "{\"id\":\""+id+"\",\"nombre\":\""+razonSocial+"\"}";    
+    }
 }

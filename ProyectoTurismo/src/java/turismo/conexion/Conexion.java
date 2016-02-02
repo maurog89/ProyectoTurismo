@@ -174,6 +174,12 @@ public class Conexion {
                     result.add(new TipoHabitacion(rs.getInt("idAlojamiento"),rs.getString("nombre")));
                 }
                 return result;
+            case "EmpresaTransporte":
+                rs =  sql.executeQuery("SELECT idEmpresaTransporte,RazonSocial FROM Turismo.EmpresaTransporte");
+                while(rs.next()){
+                    result.add(new EmpresaTransporte(rs.getInt("idEmpresaTransporte"),rs.getString("RazonSocial")));
+                }
+                return result;
             default:
                 return null;
         }

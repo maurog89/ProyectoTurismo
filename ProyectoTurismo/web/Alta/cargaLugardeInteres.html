@@ -174,7 +174,12 @@ and open the template in the editor.
         //Manejo de eventos
         // Funcion de cambia automaticamente el cliente
         idCliente.onchange = function(){
-            clienteSel[idCliente.value].selected = true;
+            var index = 0;
+            for(var i = 0;i<clienteSel.length;i++){
+                if(clienteSel[i].value == idCliente.value)
+                    index = i;                             
+            }            
+            clienteSel[index].selected = true;
         };
         clienteSel.onchange = function(){
             if(this.value != "x0")
