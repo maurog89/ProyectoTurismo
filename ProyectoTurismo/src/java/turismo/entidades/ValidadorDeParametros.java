@@ -315,6 +315,11 @@ public class ValidadorDeParametros {
             case "Habitacion":
                 new Habitacion(parametros.get(0).valorTextual,parametros.get(1).valorTextual,parametros.get(2).valorNumerico,parametros.get(3).valorNumerico,parametros.get(4).valorNumerico,parametros.get(5).valorNumerico,parametros.get(6).valorNumerico,fecha);
                 break;
+            case "Mapa":
+                String longitud = parametros.get(1).valorTextual.replace(",", "."); 
+                String latittud = parametros.get(2).valorTextual.replace(",", "."); 
+                new Mapa(parametros.get(0).valorNumerico,Float.parseFloat(longitud),Float.parseFloat(latittud));
+                break;
         }
     }
     
