@@ -37,6 +37,15 @@ public class TipoHabitacion {
         con.getSql().execute("INSERT INTO Turismo.TipoHabitacion (nombre,descripcion) values('" + nombre + "','" + descripcion + "')");
         con.cerrarConexion();
     }
+
+    public TipoHabitacion(int id, String nombre) {
+        this.id = id;
+        this.nombre = nombre;
+    }
     
-    
+    @Override
+    public String toString(){
+        return "{\"id\":\""+id+"\",\"nombre\":\""+nombre+"\"}";    
+    }
+
 }

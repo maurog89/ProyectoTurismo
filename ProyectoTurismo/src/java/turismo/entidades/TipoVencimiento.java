@@ -22,6 +22,14 @@ public class TipoVencimiento {
         con.getSql().execute("INSERT INTO Turismo.TipoVencimiento (tipo) values('" + nombre + "')");
         con.cerrarConexion();
     }
+
+    public TipoVencimiento(int id, String nombre) {
+        this.id = id;
+        this.nombre = nombre;
+    }
     
-    
+    @Override
+    public String toString(){
+        return "{\"id\":\""+id+"\",\"nombre\":\""+nombre+"\"}";    
+    }
 }

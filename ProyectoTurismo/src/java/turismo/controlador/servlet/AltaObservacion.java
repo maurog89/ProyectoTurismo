@@ -5,7 +5,6 @@
  */
 package turismo.controlador.servlet;
 
-import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;

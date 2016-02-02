@@ -56,6 +56,8 @@ public class AltaContacto extends HttpServlet {
                 out.println(ex.toString());
             } catch (SQLException ex) {
                 out.println(ex.toString());
+            }finally{
+                out.close();
             }
         }else{
             ValidadorDeParametros.imprimirDatosFaltantes(out, validadorVacio, validadorNumerico, obligatorios, numericos);

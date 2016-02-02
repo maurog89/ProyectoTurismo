@@ -23,6 +23,14 @@ public class TipoEvento {
         con.getSql().execute("INSERT INTO Turismo.TipoEvento (nombre,descripcion) values('" + nombre + "','" + descripcion + "')");
         con.cerrarConexion();
     }
+
+    public TipoEvento(int id, String nombre) {
+        this.id = id;
+        this.nombre = nombre;
+    }
     
-    
+    @Override
+    public String toString(){
+        return "{\"id\":\""+id+"\",\"nombre\":\""+nombre+"\"}";    
+    }
 }

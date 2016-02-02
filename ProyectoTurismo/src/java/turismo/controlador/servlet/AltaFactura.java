@@ -20,7 +20,7 @@ import turismo.entidades.ValidadorDeParametros;
  *
  * @author matiascanodesarrollos
  */
-public class AltaTipoDeComida extends HttpServlet {
+public class AltaFactura extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,19 +41,19 @@ public class AltaTipoDeComida extends HttpServlet {
             response.setContentType("text/html;charset=UTF-8");
         
         
-            ImprimirHTML.imprimirEtiquetasIniciales(out,"Alta de Tipo de Comidas");
-            String[] parametros = new String[]{"tipoComida"};
-            String[] obligatorios =  new String[]{"tipoComida"};
-            String[] numericos = new String[]{};
+            ImprimirHTML.imprimirEtiquetasIniciales(out,"Alta de Facturas");
+            String[] parametros = new String[]{"clienteFactura","estadoFactura","tipoFactura","tipoVencimientoFactura","conceptoFactura","fechaVencimiento","precioFactura"};
+            String[] obligatorios =  new String[]{"clienteFactura","estadoFactura","tipoFactura","tipoVencimientoFactura","conceptoFactura","fechaVencimiento","precioFactura"};
+            String[] numericos = new String[]{"clienteFactura","estadoFactura","tipoFactura","tipoVencimientoFactura"};
         
             boolean[] validadorVacio = ValidadorDeParametros.validarVacio(obligatorios, request);
             boolean[] validadorNumerico = ValidadorDeParametros.validarNumerico(numericos, request);
         
             if(ValidadorDeParametros.validar(validadorVacio,validadorNumerico)){
-                int[] posicionNumericos = new int[]{};
+                int[] posicionNumericos = new int[]{0,1,2,3};
                 String[] tablasSecundarias = new String[]{};
                 int[] secundarios = new int[]{};
-                ValidadorDeParametros.insertar("TipoDeComida", parametros , posicionNumericos, tablasSecundarias, secundarios, request, out);
+                ValidadorDeParametros.insertar("Factura", parametros , posicionNumericos, tablasSecundarias, secundarios, request, out);
             }else{
                 ValidadorDeParametros.imprimirDatosFaltantes(out, validadorVacio, validadorNumerico, obligatorios, numericos);
             }

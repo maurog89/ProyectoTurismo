@@ -132,6 +132,14 @@
         <servlet-name>AltaDetalleExcursion</servlet-name>
         <servlet-class>turismo.controlador.servlet.AltaDetalleExcursion</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AltaEmpresaTransporte</servlet-name>
+        <servlet-class>turismo.controlador.servlet.AltaEmpresaTransporte</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AltaFactura</servlet-name>
+        <servlet-class>turismo.controlador.servlet.AltaFactura</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AltaNoticia</servlet-name>
         <url-pattern>/AltaNoticia</url-pattern>
@@ -263,6 +271,14 @@
     <servlet-mapping>
         <servlet-name>AltaDetalleExcursion</servlet-name>
         <url-pattern>/AltaDetalleExcursion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AltaEmpresaTransporte</servlet-name>
+        <url-pattern>/AltaEmpresaTransporte</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AltaFactura</servlet-name>
+        <url-pattern>/AltaFactura</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

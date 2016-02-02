@@ -10,18 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import turismo.entidades.Barrio;
-import turismo.entidades.Ciudad;
-import turismo.entidades.Cliente;
-import turismo.entidades.Estado;
-import turismo.entidades.Excursion;
-import turismo.entidades.LugarDeInteres;
-import turismo.entidades.Pais;
-import turismo.entidades.Provincia;
-import turismo.entidades.RegimenAlimentario;
-import turismo.entidades.Temporada;
-import turismo.entidades.TipoContacto;
-import turismo.entidades.TipoDocumento;
+import turismo.entidades.*;
 
 /**
  *
@@ -153,6 +142,36 @@ public class Conexion {
                 rs =  sql.executeQuery("SELECT idLugarDeInteres,nombre FROM Turismo.LugarDeInteres"); 
                 while(rs.next()){
                     result.add(new LugarDeInteres(rs.getInt("idLugarDeInteres"),rs.getString("nombre")));
+                }
+                return result;
+            case "TipoEvento":
+                rs =  sql.executeQuery("SELECT idTipoEvento,nombre FROM Turismo.TipoEvento");
+                while(rs.next()){
+                    result.add(new TipoEvento(rs.getInt("idTipoEvento"),rs.getString("nombre")));
+                }
+                return result;
+            case "TipoFactura":
+                rs =  sql.executeQuery("SELECT idTipoFactura,tipoObjeto FROM Turismo.TipoFactura");
+                while(rs.next()){
+                    result.add(new TipoFactura(rs.getInt("idTipoFactura"),rs.getString("tipoObjeto")));
+                }
+                return result;
+            case "TipoVencimiento":
+                rs =  sql.executeQuery("SELECT idTipoVencimiento,tipo FROM Turismo.TipoVencimiento");
+                while(rs.next()){
+                    result.add(new TipoVencimiento(rs.getInt("idTipoVencimiento"),rs.getString("tipo")));
+                }
+                return result;
+            case "TipoHabitacion":
+                rs =  sql.executeQuery("SELECT idTipoHabitacion,nombre FROM Turismo.TipoHabitacion");
+                while(rs.next()){
+                    result.add(new TipoHabitacion(rs.getInt("idTipoHabitacion"),rs.getString("nombre")));
+                }
+                return result;
+            case "Alojamientos":
+                rs =  sql.executeQuery("SELECT idAlojamiento,nombre FROM Turismo.Alojamiento");
+                while(rs.next()){
+                    result.add(new TipoHabitacion(rs.getInt("idAlojamiento"),rs.getString("nombre")));
                 }
                 return result;
             default:

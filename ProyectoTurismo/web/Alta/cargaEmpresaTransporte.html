@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>ABM Empresa Transporte - Alta</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="../js/buscar.js"></script>
+    </head>
+    <body>
+        <form method="POST" action="../AltaEmpresaTransporte" enctype="multipart/form-data">
+            <table>
+                    <thead>
+                        <tr>
+                            <th>ABM Empresa Transporte - Alta</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        <td><label for="razonSocialEmpresaTransporte">Razon Social: </label></td>
+                        <td><input type="text" name="razonSocialEmpresaTransporte" id="razonSocialEmpresaTransporte" value="" /></td>
+                    </tr>
+                    <tr id="imagen1">                        
+                        <td><label for="imagen1">Imagen: </label></td>
+                        <td><input type="file" name="imagen1" id="imagenEmpresaTransporte" /></td>
+                        <td><input type="button" name="subirImagenEmpresaTransporte" id="subirEmpresaTransporte" value="Subir Otra Imagen"/>
+                        <input style="display:none" name="cantidadImagenes" id="cantidadImagenes" />
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <br />
+                <br />
+                <br />
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ABM Empresa Transporte - Contactos</th>
+                        </tr>
+                    </thead>
+                    <tbody id="contactos">
+                        <tr>
+                            <tr>
+                            <td><label for="tipoContacto1">Tipo de Contacto: </label></td>
+                            <td><select name="tipoContacto1" id="tipoContacto">
+                                    <option value="0">---</option>
+                                </select></td>
+                            <td><input type="button" name="+tipoContacto" id="masContacto" value="-"/></td>
+                        </tr>
+                        <tr>
+                            <td><label for="detalleContactos1">Detalle: </label></td>
+                            <td><input type="text" name="detalleContactos1" id="detalleContactos" value="" /></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="button" value="Agregar Contacto" name="envContacto" id="envContacto"/>
+                                <input style="display:none" id="cantidadContactos" name="cantidadContactos" />
+                            </td>
+                        </tr>       
+                    </tbody>
+                </table>
+                <br />
+                <br />
+            <input type="submit" value="Enviar" name="envDetalle" />
+        </form>
+    </body>
+    <script>
+        var cantidadContactos = 1;
+        var cantidadImagenes = 0;
+        var camposImagen = 1;
+        var eliminarCotacto = document.getElementById("masContacto");
+        var agregarImagen = document.getElementById("subirEmpresaTransporte"); 
+        var archivo1 = document.getElementById("imagenEmpresaTransporte");
+        document.getElementById("cantidadImagenes").value = 0;
+        
+        //Aumento el contacdor de imagenes
+        archivo1.onchange = function(){
+            if(this.files[0] == null){
+                cantidadImagenes--;
+            }else{
+                cantidadImagenes++;
+            }            
+            document.getElementById("cantidadImagenes").value = cantidadImagenes;
+        };
+        
+        //Evento utilizado para saber si se cargo algun contacto
+        document.getElementById("tipoContacto").onchange = function(){
+            if(document.getElementById("cantidadContactos").value === "") 
+                document.getElementById("cantidadContactos").value = 1;
+        };
+        
+        //Evento para agregar mas imagenes        
+        agregarImagen.onclick = function(){
+            camposImagen++;
+            var fila = document.createElement("tr");
+            fila.setAttribute("id","imagen"+camposImagen);
+            var campoLabel = fila.insertCell(0);
+            var campoFile = fila.insertCell(1);
+            var campoBoton = fila.insertCell(2);
+            var label = document.createElement("Label");
+            label.setAttribute("for","imagen"+camposImagen);
+            label.setAttribute("id","labelImagenEmpresaTransporte"+camposImagen);
+            label.innerHTML = "Imagen "+camposImagen+": ";
+            campoLabel.appendChild(label);
+            var input = document.createElement("Input");
+            input.setAttribute("type","file");
+            input.setAttribute("name","imagen"+camposImagen);
+            input.setAttribute("id","imagenEmpresaTransporte"+camposImagen);
+            input.onchange =  function(){
+                if(this.files[0] == null){
+                    cantidadImagenes--;
+                }else{
+                    cantidadImagenes++;
+                }            
+                document.getElementById("cantidadImagenes").value = cantidadImagenes;
+            };
+            campoFile.appendChild(input);
+            var boton = document.createElement("Input");
+            boton.setAttribute("type","button");
+            boton.setAttribute("name","sacarImagen"+camposImagen);
+            boton.setAttribute("id","sacarImagen"+camposImagen);
+            boton.setAttribute("value","-");
+            boton.onclick = function(){                
+                var borrar = parseInt(this.id[11]);
+                if(this.parentNode.parentNode.childNodes[1].childNodes[0].files[0] != null){
+                    cantidadImagenes--;
+                    document.getElementById("cantidadImagenes").value = cantidadImagenes;
+                }
+                this.parentNode.parentNode.remove();                
+                for(var i = 1; i <= camposImagen;i++){
+                    if(i > borrar){
+                        var j = i - 1;
+                        var lab = document.getElementById("labelImagenEmpresaTransporte"+i);
+                        var fil = document.getElementById("imagenEmpresaTransporte"+i);           
+                        var bot = document.getElementById("sacarImagen"+i);
+                        var fila = document.getElementById("imagen"+i);
+                        lab.attributes[0] = "imagen"+j;
+                        lab.innerHTML = "Imagen "+j+":";
+                        lab.id = "labelImagenEmpresaTransporte"+j;
+                        fil.id = "imagenEmpresaTransporte"+j;
+                        fil.name = "imagen"+j;
+                        bot.id = "sacarImagen"+j;
+                        bot.name = "sacarImagen"+j;
+                        fila.id = "imagen"+j;
+                    }
+                    
+                }
+                camposImagen--;
+                
+            };
+            campoBoton.appendChild(boton);
+            var bus = camposImagen - 1;
+            insertAfter(document.getElementById("imagen"+bus),fila);
+        };
+        
+        
+        //Eliminar Contacto
+        eliminarCotacto.onclick = function(){
+            this.parentNode.parentNode.nextSibling.nextSibling.remove();
+            this.parentNode.parentNode.remove();
+            document.getElementById("cantidadContactos").value = --cantidadContactos;
+        };
+        
+        
+        // Agregar contacto
+        document.getElementById("envContacto").onclick = function(){
+            var tabla = document.getElementById("contactos");
+            var filaTipoContacto = tabla.insertRow(0);
+            var filaDetalle = tabla.insertRow(1);
+            tabla.insertRow(2).appendChild(document.createElement("Br"));
+            var labelDetalle = filaDetalle.insertCell(0);
+            var inputDetalle = filaDetalle.insertCell(1);
+            var labelTipoContacto = filaTipoContacto.insertCell(0);
+            var selectTipoContacto = filaTipoContacto.insertCell(1);
+            var buttonTipoContacto = filaTipoContacto.insertCell(2);
+            var label = document.createElement("Label");            
+            cantidadContactos++;
+            label.setAttribute("for","tipoContacto"+cantidadContactos);
+            label.innerHTML = "Tipo de Contacto: ";
+            labelTipoContacto.appendChild(label);
+            var select = document.createElement("Select");
+            var option = document.createElement("Option");
+            select.setAttribute("name","tipoContacto"+cantidadContactos);
+            select.setAttribute("id","tipoContacto"+cantidadContactos);
+            option.setAttribute("value","0");
+            option.innerHTML = "---";
+            select.appendChild(option);
+            selectTipoContacto.appendChild(select);
+            buscar("TipoContacto",document.getElementById("tipoContacto"+cantidadContactos));
+            var boton = document.createElement("Input");
+            boton.setAttribute("type","button");
+            boton.setAttribute("name","+tipoContacto"+cantidadContactos);
+            boton.setAttribute("id","+tipoContacto"+cantidadContactos);
+            boton.setAttribute("value","-");
+            boton.onclick = function(){
+                this.parentNode.parentNode.nextSibling.remove();
+                this.parentNode.parentNode.nextSibling.remove();
+                this.parentNode.parentNode.remove();
+                document.getElementById("cantidadContactos").value = --cantidadContactos;
+            };
+            buttonTipoContacto.appendChild(boton);
+            var label2 = document.createElement("Label");
+            label2.setAttribute("for","detalleContactos"+cantidadContactos);
+            label2.innerHTML = "Detalle: ";
+            labelDetalle.appendChild(label2);
+            var input = document.createElement("Input");
+            input.setAttribute("type","text");
+            input.setAttribute("name","detalleContactos"+cantidadContactos);
+            input.setAttribute("type","detalleContactos"+cantidadContactos);
+            inputDetalle.appendChild(input);                
+            document.getElementById("cantidadContactos").value = cantidadContactos;
+        };
+        
+        //Funcion usada para agregar una opcion ---
+        function agregarOpcion(sel){
+            var select = document.createElement("Select");
+            var option = document.createElement("Option");
+            option.setAttribute("value","x0");
+            option.innerHTML = "---";
+            sel.appendChild(option);
+        };
+        
+        /*
+         * Buscar elementos en la base de datos
+         * y llenar los campos
+         */
+        buscar("TipoContacto",document.getElementById("tipoContacto"));
+    </script>
+</html>

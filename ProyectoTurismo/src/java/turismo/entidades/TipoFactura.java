@@ -22,6 +22,16 @@ public class TipoFactura {
         con.getSql().execute("INSERT INTO Turismo.TipoFactura (tipoObjeto) values('" + nombre + "')");
         con.cerrarConexion();
     }
+
+    public TipoFactura(int id, String nombre) {
+        this.id = id;
+        this.nombre = nombre;
+    }
     
     
+    
+    @Override
+    public String toString(){
+        return "{\"id\":\""+id+"\",\"nombre\":\""+nombre+"\"}";    
+    }
 }

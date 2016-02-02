@@ -5,14 +5,16 @@
  */
 package turismo.controlador.servlet;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import turismo.entidades.Evento;
-import turismo.entidades.Fechas;
+import turismo.entidades.ImprimirHTML;
+import turismo.entidades.ValidadorDeParametros;
 
 /**
  *
@@ -35,72 +37,33 @@ public class AltaEvento extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
         
-        //Guardo los parametros en variables
+        ImprimirHTML.imprimirEtiquetasIniciales(out,"Alta de Evento");
+        String[] parametros = new String[]{"clienteSitioParaComer","cantidadContactos","Barrio","estadoSitioParaComer","cantidadImagenes","tipoEvento","pririodadEvento","tituloEvento","descripcionEvento","precioEvento","fechaInicioEvento","fechaFinalEvento","Pais","Provincia","Ciudad","calleDomicilio","nroDomicilio","nroPiso","departamentoDomicilio","torreDomicilio","manzanaDomicilio","loteDomicilio","codigoPostalDomicilio","tipoContacto1","detalleContactos1"};
+        String[] obligatorios =  new String[]{"clienteSitioParaComer","cantidadContactos","Barrio","estadoSitioParaComer","cantidadImagenes","tipoEvento","pririodadEvento","tituloEvento","descripcionEvento","precioEvento","fechaInicioEvento","fechaFinalEvento","Pais","Provincia","Ciudad","calleDomicilio","nroDomicilio", "codigoPostalDomicilio","tipoContacto1","detalleContactos1"};
+        String[] numericos = new String[]{"clienteSitioParaComer","Barrio","estadoSitioParaComer","cantidadImagenes","tipoEvento","pririodadEvento","Pais","Provincia","Ciudad","tipoContacto1"};
         
-        String titulo = request.getParameter("tituloEvento");
-        String precio = request.getParameter("precioEvento");        
-        String descripcion = request.getParameter("descripcionEvento");        
-        int prioridad = -1;
-        if(!request.getParameter("pririodadEvento").isEmpty())
-            prioridad = Integer.parseInt(request.getParameter("pririodadEvento"));        
-        String fechaInicio = request.getParameter("fechaInicioEvento");
-        String fechaFin = request.getParameter("fechaFinalEvento");        
-        int estado = -1;
-        if(!request.getParameter("estadoSitioParaComer").isEmpty())
-            estado = Integer.parseInt(request.getParameter("estadoSitioParaComer"));
-        int cliente = -1;
-        if(!request.getParameter("clienteSitioParaComer").isEmpty())
-            cliente = Integer.parseInt(request.getParameter("clienteSitioParaComer"));
-        int imagen = 1;
-        int tipoEvento = -1;        
-        if(!request.getParameter("tipoEvento").isEmpty())
-            tipoEvento = Integer.parseInt(request.getParameter("tipoEvento"));        
-        int domicilio = 3;
-        int contacto = 2;
+        boolean[] validadorVacio = ValidadorDeParametros.validarVacio(obligatorios, request);
+        boolean[] validadorNumerico = ValidadorDeParametros.validarNumerico(numericos, request);
         
-        
-        
-        try {
-           //Validaciones
-            if(titulo.isEmpty()){
-                out.println("El campo título es obligatorio");
-                if(precio.isEmpty()){
-                    out.println("El campo precio es obligatorio");
-                    if(prioridad == -1){
-                        out.println("El campo prioridad es obligatorio");
-                        if(fechaInicio.isEmpty()){
-                            out.println("El campo fecha de inicio es obligatorio");
-                            if(fechaFin.isEmpty()){
-                                out.println("El campo fecha de fin es obligatorio");
-                                if(estado == -1){
-                                    out.println("El campo estado es obligatorio");
-                                    if(tipoEvento == -1){
-                                        out.println("El campo tipo de evento es obligatorio");
-                                    }                                      
-                                    
-                                }
-                            }
-                        }  
-                    }
-                }               
-            }else{
-                if(descripcion.isEmpty()){
-                    new Evento(titulo,precio,Fechas.fechaActual(),fechaInicio,fechaFin,cliente,contacto,domicilio,estado,imagen,tipoEvento,prioridad);
-                    out.println("Evento sin descripcion cargado");
-                }else{
-                    new Evento(titulo,descripcion,precio,Fechas.fechaActual(),fechaInicio,fechaFin,cliente,contacto,domicilio,estado,imagen,tipoEvento,prioridad);
-                    out.println("Evento cargado");
-                }
+        if(ValidadorDeParametros.validar(validadorVacio,validadorNumerico)){
+            try {
+                int[] posicionNumericos = new int[]{0,1,2,3,4,5,6};
+                String[] tablasSecundarias = new String[]{"Domicilio","Imagen","Contacto"};
+                int[] secundarios = new int[]{2,4,1};
+                ValidadorDeParametros.insertar("Evento", parametros , posicionNumericos, tablasSecundarias, secundarios, request, out);
                 
-            }  
-               
-           
-        } catch (Exception ex) {
-            out.println(ex.toString());
-        } finally {
-            out.close();
+            } catch (FileNotFoundException ex) {
+                out.println(ex.toString());
+            } catch (SQLException ex) {
+                out.println(ex.toString());
+            }finally{
+                out.close();
+            }
+        }else{
+            ValidadorDeParametros.imprimirDatosFaltantes(out, validadorVacio, validadorNumerico, obligatorios, numericos);
         }
         
+        ImprimirHTML.imprimirEtiquetasFinal(out);  
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -117,16 +80,7 @@ public class AltaEvento extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        out.println("<!DOCTYPE html>");
-        out.println("<html>");
-        out.println("<head>");
-        out.println("<title>Error de Metodo</title>");            
-        out.println("</head>");
-        out.println("<body>");
-        out.println("<h1>Estimado usuario, para su seguridad utilice la interfaz brindada.</h1>");
-        out.println("</body>");
-        out.println("</html>");
-        out.close();
+        ImprimirHTML.imprimirErrorDeMetodo(out);
     }
 
     /**

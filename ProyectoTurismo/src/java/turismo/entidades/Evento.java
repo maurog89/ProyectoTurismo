@@ -18,23 +18,11 @@ public class Evento extends Lugar {
     public String fechaFin;
     public int tipoEvento;
     
-    //Constructor minimo
     
-    public Evento(String titulo, String precio, String fechaAlta, String fechaInicio, String fechaFin, int cliente, int contacto, int domicilio, int estado, int imagen, int tipoEvento, int prioridad) throws SQLException {
-        super(fechaAlta,cliente,contacto,domicilio,estado,imagen,prioridad);
-        this.titulo = titulo;
-        this.precio = precio;
-        this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
-        this.tipoEvento = tipoEvento;
-        generarObjetoParaBD();
-        getCon().getSql().executeUpdate("INSERT INTO Turismo.Evento (titulo,precio,fechaAlta,fechaInicio,fechaFin,IdCliente,IdContacto,IdDomicilio,IdEstado,IdImagen,IdTipoEvento,idObjetoPuntuable) values ('" + titulo +"','" + precio + "','" + fechaAlta +"','" + fechaInicio + "','" + fechaFin + "','" + cliente + "','" + contacto + "','" + domicilio +"','" + estado +  "','" + imagen + "','" + tipoEvento + "','" + getIdObjeto()+"')");
-        cerrarConexion();
-    }
     
     //Constructor con descripcion
     
-    public Evento(String titulo, String descripcion , String precio, String fechaAlta, String fechaInicio, String fechaFin, int cliente, int contacto, int domicilio, int estado, int imagen, int tipoEvento, int prioridad) throws SQLException {
+    public Evento(int cliente, int contacto, int domicilio, int estado, int imagen, int tipoEvento, int prioridad,String titulo, String descripcion , String precio, String fechaInicio, String fechaFin, String fechaAlta) throws SQLException {
         super(fechaAlta,cliente,contacto,domicilio,estado,imagen,prioridad);
         this.titulo = titulo;
         this.descripcion = descripcion;

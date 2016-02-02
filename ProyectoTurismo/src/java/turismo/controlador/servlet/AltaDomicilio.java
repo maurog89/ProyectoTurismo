@@ -63,6 +63,8 @@ public class AltaDomicilio extends HttpServlet {
             out.println(ex.toString());
         } catch (SQLException ex) {
             out.println(ex.toString());
+        }finally{
+            out.close();
         }
     }
 

@@ -62,6 +62,8 @@ public class AltaDetalleExcursion extends HttpServlet {
             out.println(ex.toString());
         } catch (SQLException ex) {
             out.println(ex.toString());
+        }finally{
+            out.close();
         }
     }
 

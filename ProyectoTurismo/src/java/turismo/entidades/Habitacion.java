@@ -21,24 +21,10 @@ public class Habitacion extends ObjetoPuntuable {
     private int estado;
     private String fechaAlta;
 
-    //Constructor sin descripcion
-
-    public Habitacion(String precio, int imagen, int tipoHabitacion, int alojamiento, int estado, String fechaAlta, int prioridad) throws SQLException {
-        super(prioridad);
-        this.precio = precio;
-        this.imagen = imagen;
-        this.tipoHabitacion = tipoHabitacion;
-        this.alojamiento = alojamiento;
-        this.estado = estado;
-        this.fechaAlta = fechaAlta;
-        generarObjetoParaBD();
-        getCon().getSql().executeUpdate("INSERT INTO Turismo.Habitacion (precio,idImagen,IdTipoHabitacion,idAlojamiento,idEstado,fechaAlta,idObjetoPuntuable) values ('" + precio +"','" + imagen + "','" + tipoHabitacion +"','" + alojamiento + "','" + estado + "','" + fechaAlta + "','" + getIdObjeto()+"')");
-        cerrarConexion();
-    }
-    
+        
     //Constructor con descripcion
 
-    public Habitacion(String descripcion, String precio, int imagen, int tipoHabitacion, int alojamiento, int estado, String fechaAlta, int prioridad) throws SQLException {
+    public Habitacion(String descripcion, String precio, int imagen, int tipoHabitacion, int alojamiento, int estado, int prioridad, String fechaAlta) throws SQLException {
         super(prioridad);
         this.descripcion = descripcion;
         this.precio = precio;

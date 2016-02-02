@@ -34,4 +34,6 @@ public class Alojamiento extends Lugar {
     }
 
     
+
+    
 }

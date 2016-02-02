@@ -23,11 +23,14 @@ public class ValidadorDeParametros {
     public static boolean[] validarVacio(String[] par, HttpServletRequest request) {
         boolean[] resultado = new boolean[par.length];
         int contador = 0;
-        for (String p : par) {
+        for (String p : par) {            
             String valor = request.getParameter(p);
-            if(!valor.equals("x0"))
-                resultado[contador] = !valor.isEmpty();
-            else
+            if(valor != null){
+                if(!valor.equals("x0"))
+                    resultado[contador] = !valor.isEmpty();
+                else
+                    resultado[contador] = false;
+            }else
                 resultado[contador] = false;
             contador++;
         }
@@ -107,7 +110,7 @@ public class ValidadorDeParametros {
                     break;
                 case "Observacion":
                     parametros.get(secundarios[contador2]).valorNumerico = ingresarObservacion(request);
-                    break;              
+                    break;
             }            
             contador2++;
         }
@@ -298,6 +301,19 @@ public class ValidadorDeParametros {
                 break;
             case "DetalleExcursion":
                 new DetalleExcursion(parametros.get(0).valorNumerico,parametros.get(1).valorNumerico,parametros.get(2).valorTextual,parametros.get(3).valorTextual);
+                break;
+            case "EmpresaTransporte":
+                new EmpresaTransporte(parametros.get(0).valorNumerico,parametros.get(1).valorNumerico,parametros.get(2).valorTextual);
+                break;
+            case "Evento":
+                new Evento(parametros.get(0).valorNumerico,parametros.get(1).valorNumerico,parametros.get(2).valorNumerico,parametros.get(3).valorNumerico,parametros.get(4).valorNumerico,parametros.get(5).valorNumerico,parametros.get(6).valorNumerico,parametros.get(7).valorTextual,parametros.get(8).valorTextual,parametros.get(9).valorTextual,parametros.get(10).valorTextual,parametros.get(11).valorTextual,fecha);
+                break;
+            case "Factura":
+                String precio = request.getParameter("precioFactura").replace(",", ".");                
+                new Factura(parametros.get(0).valorNumerico,parametros.get(1).valorNumerico,parametros.get(2).valorNumerico,parametros.get(3).valorNumerico,parametros.get(4).valorTextual,parametros.get(5).valorTextual,Float.parseFloat(precio),fecha);
+                break;
+            case "Habitacion":
+                new Habitacion(parametros.get(0).valorTextual,parametros.get(1).valorTextual,parametros.get(2).valorNumerico,parametros.get(3).valorNumerico,parametros.get(4).valorNumerico,parametros.get(5).valorNumerico,parametros.get(6).valorNumerico,fecha);
                 break;
         }
     }

@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,7 +21,8 @@ import turismo.entidades.ValidadorDeParametros;
  *
  * @author matiascanodesarrollos
  */
-public class AltaTipoDeComida extends HttpServlet {
+@MultipartConfig
+public class AltaEmpresaTransporte extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,19 +33,18 @@ public class AltaTipoDeComida extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
         try  {
-            /* TODO output your page here. You may use following sample code. */
-            response.setContentType("text/html;charset=UTF-8");
+            /* TODO output your page here. You may use following sample code. */       
         
-        
-            ImprimirHTML.imprimirEtiquetasIniciales(out,"Alta de Tipo de Comidas");
-            String[] parametros = new String[]{"tipoComida"};
-            String[] obligatorios =  new String[]{"tipoComida"};
+            ImprimirHTML.imprimirEtiquetasIniciales(out,"Alta de Empresas de Transporte");
+            String[] parametros = new String[]{"cantidadContactos","cantidadImagenes","razonSocialEmpresaTransporte"};
+            String[] obligatorios =  new String[]{"cantidadContactos","cantidadImagenes","razonSocialEmpresaTransporte"};
             String[] numericos = new String[]{};
         
             boolean[] validadorVacio = ValidadorDeParametros.validarVacio(obligatorios, request);
@@ -51,9 +52,9 @@ public class AltaTipoDeComida extends HttpServlet {
         
             if(ValidadorDeParametros.validar(validadorVacio,validadorNumerico)){
                 int[] posicionNumericos = new int[]{};
-                String[] tablasSecundarias = new String[]{};
-                int[] secundarios = new int[]{};
-                ValidadorDeParametros.insertar("TipoDeComida", parametros , posicionNumericos, tablasSecundarias, secundarios, request, out);
+                String[] tablasSecundarias = new String[]{"Contacto","Imagen"};
+                int[] secundarios = new int[]{0,1};
+                ValidadorDeParametros.insertar("EmpresaTransporte", parametros , posicionNumericos, tablasSecundarias, secundarios, request, out);
             }else{
                 ValidadorDeParametros.imprimirDatosFaltantes(out, validadorVacio, validadorNumerico, obligatorios, numericos);
             }
@@ -80,9 +81,7 @@ public class AltaTipoDeComida extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        ImprimirHTML.imprimirErrorDeMetodo(out);
+        processRequest(request, response);
     }
 
     /**

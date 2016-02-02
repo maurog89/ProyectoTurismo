@@ -5,14 +5,18 @@
  */
 package turismo.controlador.servlet;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import turismo.entidades.Fechas;
 import turismo.entidades.Habitacion;
+import turismo.entidades.ImprimirHTML;
+import turismo.entidades.ValidadorDeParametros;
 
 /**
  *
@@ -34,39 +38,34 @@ public class AltaHabitacion extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
-        int tipoHabitacion = -1;
-        if(!request.getParameter("tipoHabitacion").isEmpty())
-            tipoHabitacion = Integer.parseInt(request.getParameter("tipoHabitacion"));
-        String precio = request.getParameter("precioHabitacion");
-        String descripcion = request.getParameter("detalleHabitacion");
-        int prioridad = -1;
-        if(!request.getParameter("prioridadHabitacion").isEmpty())
-            prioridad = Integer.parseInt(request.getParameter("prioridadHabitacion"));
-        int estado = -1;
-        if(!request.getParameter("estadoHabitacion").isEmpty())
-            estado = Integer.parseInt(request.getParameter("estadoHabitacion"));
-        int alojamiento = -1;
-        if(!request.getParameter("alojamientoHabitacion").isEmpty())
-            alojamiento = Integer.parseInt(request.getParameter("alojamientoHabitacion"));
-        int imagen = 1;
+        try  {
+            /* TODO output your page here. You may use following sample code. */
+            response.setContentType("text/html;charset=UTF-8");
         
-       
-        try {
-            /* TODO output your page here. You may use following sample code.     */        
-            if(tipoHabitacion != -1 && !precio.isEmpty() && prioridad != -1 && estado != -1 && alojamiento != -1 && imagen != -1){
-                if(descripcion.isEmpty()){
-                    new Habitacion(precio,imagen,tipoHabitacion,alojamiento,estado,Fechas.fechaActual(),prioridad);
-                    out.println("Habitacion cargada correctamente.");
-                }else{
-                    new Habitacion(descripcion,precio,imagen,tipoHabitacion,alojamiento,estado,Fechas.fechaActual(),prioridad);
-                    out.println("Habitacion cargada correctamente.");
-                }       
+        
+            ImprimirHTML.imprimirEtiquetasIniciales(out,"Alta de Habitaciones");
+            String[] parametros = new String[]{"detalleHabitacion","precioHabitacion","cantidadImagenes","tipoHabitacion","alojamientoHabitacion","estadoHabitacion","prioridadHabitacion"};
+            String[] obligatorios =  new String[]{"precioHabitacion","cantidadImagenes","tipoHabitacion","alojamientoHabitacion","estadoHabitacion","prioridadHabitacion"};
+            String[] numericos = new String[]{"cantidadImagenes","tipoHabitacion","alojamientoHabitacion","estadoHabitacion","prioridadHabitacion"};
+        
+            boolean[] validadorVacio = ValidadorDeParametros.validarVacio(obligatorios, request);
+            boolean[] validadorNumerico = ValidadorDeParametros.validarNumerico(numericos, request);
+        
+            if(ValidadorDeParametros.validar(validadorVacio,validadorNumerico)){
+                int[] posicionNumericos = new int[]{2,3,4,5,6};
+                String[] tablasSecundarias = new String[]{"Imagen"};
+                int[] secundarios = new int[]{2};
+                ValidadorDeParametros.insertar("Habitacion", parametros , posicionNumericos, tablasSecundarias, secundarios, request, out);
             }else{
-                out.println("Los campos tipo habitacion, precio, prioridad, estado, alojamiento e imagen son obligatorios.");
+                ValidadorDeParametros.imprimirDatosFaltantes(out, validadorVacio, validadorNumerico, obligatorios, numericos);
             }
-        } catch (Exception ex) {
+            
+            ImprimirHTML.imprimirEtiquetasFinal(out);
+        } catch (FileNotFoundException ex) {
             out.println(ex.toString());
-        } finally {
+        } catch (SQLException ex) {
+            out.println(ex.toString());
+        }finally{
             out.close();
         }
     }
@@ -85,16 +84,7 @@ public class AltaHabitacion extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        out.println("<!DOCTYPE html>");
-        out.println("<html>");
-        out.println("<head>");
-        out.println("<title>Error de Metodo</title>");
-        out.println("</head>");
-        out.println("<body>");
-        out.println("<h1>Estimado usuario, para su seguridad utilice la interfaz brindada.</h1>");
-        out.println("</body>");
-        out.println("</html>");
-        out.close();
+        ImprimirHTML.imprimirErrorDeMetodo(out);
     }
 
     /**

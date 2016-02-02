@@ -42,11 +42,8 @@ public class AltaNoticia extends HttpServlet {
             out.println("OK");
         }catch (Exception ex){
             out.println(ex.toString());
-        } 
-        
-        finally {
-            out.close();
-            
+        }finally {
+            out.close();            
         }
     }
 
