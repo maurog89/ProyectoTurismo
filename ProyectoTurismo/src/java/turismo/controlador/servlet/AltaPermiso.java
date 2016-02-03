@@ -9,10 +9,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,8 +20,7 @@ import turismo.entidades.ValidadorDeParametros;
  *
  * @author matiascanodesarrollos
  */
-@MultipartConfig
-public class AltaNoticia extends HttpServlet {
+public class AltaPermiso extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,25 +32,25 @@ public class AltaNoticia extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, Exception {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
         try  {
             /* TODO output your page here. You may use following sample code. */
-            ImprimirHTML.imprimirEtiquetasIniciales(out,"Alta de Noticias");
-            String[] parametros = new String[]{"estadoSitioParaComer","cantidadImagenes","Observaciones","pririodadNoticia","tituloNoticia","resumenNoticia","cuerpoNoticia","linkNoticia","fechaInicioNoticia","fechaFinalNoticia"};
-            String[] obligatorios =  new String[]{"estadoSitioParaComer","cantidadImagenes","Observaciones","pririodadNoticia","tituloNoticia","resumenNoticia","cuerpoNoticia","linkNoticia","fechaInicioNoticia","fechaFinalNoticia"};
-            String[] numericos = new String[]{"estadoSitioParaComer","cantidadImagenes","pririodadNoticia"};
+            ImprimirHTML.imprimirEtiquetasIniciales(out,"Alta de Permisos");
+            String[] parametros = new String[]{"TipoPermiso","Cliente","descripcionPermisos"};
+            String[] obligatorios =  new String[]{"TipoPermiso","Cliente"};
+            String[] numericos = new String[]{"TipoPermiso","Cliente"};
         
             boolean[] validadorVacio = ValidadorDeParametros.validarVacio(obligatorios, request);
             boolean[] validadorNumerico = ValidadorDeParametros.validarNumerico(numericos, request);
         
             if(ValidadorDeParametros.validar(validadorVacio,validadorNumerico)){
-                int[] posicionNumericos = new int[]{0,3};
-                String[] tablasSecundarias = new String[]{"Imagen","Observacion"};
-                int[] secundarios = new int[]{1,2};
-                ValidadorDeParametros.insertar("Noticia", parametros , posicionNumericos, tablasSecundarias, secundarios, request, out);
+                int[] posicionNumericos = new int[]{0,1};
+                String[] tablasSecundarias = new String[]{};
+                int[] secundarios = new int[]{};
+                ValidadorDeParametros.insertar("Permiso", parametros , posicionNumericos, tablasSecundarias, secundarios, request, out);
             }else{
                 ValidadorDeParametros.imprimirDatosFaltantes(out, validadorVacio, validadorNumerico, obligatorios, numericos);
             }
@@ -97,11 +93,7 @@ public class AltaNoticia extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (Exception ex) {
-            Logger.getLogger(AltaNoticia.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**

@@ -63,8 +63,10 @@ and open the template in the editor.
         idExcursion.onchange = function(){
             var index = 0;
             for(var i = 0;i<ExcursionSel.length;i++){
-                if(ExcursionSel[i].value == idExcursion.value)
-                    index = i;                             
+                if(ExcursionSel[i].value == idExcursion.value){
+                    index = i;
+                    break;
+                }
             }            
             ExcursionSel[index].selected = true;
         };
@@ -79,8 +81,10 @@ and open the template in the editor.
         idLugar.onchange = function(){
             var index = 0;
             for(var i = 0;i<LugarSel.length;i++){
-                if(LugarSel[i].value == idLugar.value)
-                    index = i;                             
+                if(LugarSel[i].value == idLugar.value){
+                    index = i;
+                    break;
+                }   
             }            
             LugarSel[index].selected = true;
         };

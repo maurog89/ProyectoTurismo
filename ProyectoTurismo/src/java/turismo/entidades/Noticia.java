@@ -4,6 +4,7 @@
 package turismo.entidades;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
@@ -26,7 +27,7 @@ public class Noticia extends ObjetoPuntuable implements IEntidades {
     /*
     * Constructor para nuevas noticas
      */
-    public Noticia(String titulo, String resumen, String cuerpo, String link, String fechaAlta, String fechaInicio, String fechaFin, int estado, int imagen, int observacion, int prioridad) throws Exception {
+    public Noticia(int estado, int imagen, int observacion, int prioridad,String titulo, String resumen, String cuerpo, String link, String fechaInicio, String fechaFin, String fechaAlta) throws SQLException {
         super(prioridad);
         this.titulo = titulo;
         this.resumen = resumen;

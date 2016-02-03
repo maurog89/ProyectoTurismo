@@ -148,6 +148,10 @@
         <servlet-name>AltaMedioTransporte</servlet-name>
         <servlet-class>turismo.controlador.servlet.AltaMedioTransporte</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AltaPermiso</servlet-name>
+        <servlet-class>turismo.controlador.servlet.AltaPermiso</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AltaNoticia</servlet-name>
         <url-pattern>/AltaNoticia</url-pattern>
@@ -295,6 +299,10 @@
     <servlet-mapping>
         <servlet-name>AltaMedioTransporte</servlet-name>
         <url-pattern>/AltaMedioTransporte</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AltaPermiso</servlet-name>
+        <url-pattern>/AltaPermiso</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

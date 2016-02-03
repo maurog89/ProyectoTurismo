@@ -338,7 +338,15 @@ and open the template in the editor.
         
         // Funcion de cambia automaticamente el cliente
         idCliente.onchange = function(){
-            clienteSel[idCliente.value].selected = true;
+            var index = 0;
+            for(var i = 0;i<clienteSel.length;i++){
+                if(clienteSel[i].value == idCliente.value){
+                    index = i;
+                    break;
+                }
+                                               
+            }            
+            clienteSel[index].selected = true;
         };
         clienteSel.onchange = function(){
             if(this.value != "x0")

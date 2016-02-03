@@ -9,9 +9,10 @@ and open the template in the editor.
         <title>ABM Permisos - Alta</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="../js/buscar.js"></script>
     </head>
     <body>
-        <form method="POST">
+        <form method="POST" action="../AltaPermiso">
             <table>
                 <thead>
                     <tr>
@@ -22,17 +23,17 @@ and open the template in the editor.
                     <tr>
                         <td><label for="TipoPermiso">Tipo Permiso: </label></td>
                         <td><select name="TipoPermiso" id="TipoPermiso">
-                                <option value="0">---</option>
+                                <option value="x0">---</option>
                             </select>
                             <input type="text" name="idPermiso" id="idPermiso" value="" />
                         </td>
                     </tr> 
                     <tr>
-                        <td><label for="Cliente">Cliente: </label></td>
-                        <td><select name="Cliente" id="Cliente">
-                                <option value="0">---</option>
+                        <td><label for="Usuario:">Usuario: </label></td>
+                        <td><select name="Usuario:" id="Usuario:">
+                                <option value="x0">---</option>
                             </select>
-                            <input type="text" name="idCliente" id="idCliente" value="" />
+                            <input type="text" name="idUsuario" id="idUsuario" value="" />
                         </td>
                     </tr>   
                     <tr>
@@ -46,4 +47,52 @@ and open the template in the editor.
             </table>
         </form>
     </body>
+    <script>
+        var idUsuario = document.getElementById("idUsuario");
+        var UsuarioSel = document.getElementById("Usuario");
+        var TipoPermiso = document.getElementById("TipoPermiso");
+        var idTipoPermiso = document.getElementById("idPermiso");
+        
+        buscar("Usuarios",UsuarioSel);
+        buscar("TipoPermiso",TipoPermiso); 
+        
+        /* 
+         * Manejo los eventos        
+        */
+       
+       // Funcion de cambia automaticamente el cliente
+        idUsuario.onchange = function(){
+            var index = 0;
+            for(var i = 0;i<UsuarioSel.length;i++){
+                if(UsuarioSel[i].value == idUsuario.value)
+                    index = i;                             
+            }            
+            UsuarioSel[index].selected = true;
+        };
+        UsuarioSel.onchange = function(){
+            if(this.value != "x0")
+                idUsuario.value = UsuarioSel[UsuarioSel.selectedIndex].value;
+            else
+                idUsuario.value = "";
+        };
+        
+        // Funcion de cambia automaticamente de Tipo Permiso
+        idTipoPermiso.onchange = function(){
+            var index = 0;
+            for(var i = 0;i<TipoPermiso.length;i++){
+                if(TipoPermiso[i].value == idTipoPermiso.value){
+                    index = i;
+                    break;
+                }
+                                               
+            }            
+            TipoPermiso[index].selected = true;
+        };
+        TipoPermiso.onchange = function(){
+            if(this.value != "x0")
+                idTipoPermiso.value = TipoPermiso[TipoPermiso.selectedIndex].value;
+            else
+                idTipoPermiso.value = "";
+        };
+    </script>
 </html>

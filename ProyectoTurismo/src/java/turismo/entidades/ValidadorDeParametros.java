@@ -323,6 +323,12 @@ public class ValidadorDeParametros {
             case "MedioTransporte":
                 new MedioTransporte(parametros.get(0).valorNumerico,parametros.get(1).valorNumerico,parametros.get(2).valorTextual,parametros.get(3).valorTextual);
                 break;
+            case "Noticia":
+                new Noticia(parametros.get(0).valorNumerico,parametros.get(1).valorNumerico,parametros.get(2).valorNumerico,parametros.get(3).valorNumerico,parametros.get(4).valorTextual,parametros.get(5).valorTextual,parametros.get(6).valorTextual,parametros.get(7).valorTextual,parametros.get(8).valorTextual,parametros.get(9).valorTextual,fecha);
+                break;
+            case "Permiso":
+                new Permiso(parametros.get(0).valorNumerico,parametros.get(1).valorNumerico,parametros.get(2).valorTextual);
+                break;
         }
     }
     

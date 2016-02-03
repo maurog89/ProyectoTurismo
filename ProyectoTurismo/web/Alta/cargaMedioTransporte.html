@@ -65,8 +65,10 @@ and open the template in the editor.
         idEmpresaTransporte.onchange = function(){
             var index = 0;
             for(var i = 0;i<EmpresaTransporte.length;i++){
-                if(EmpresaTransporte[i].value == idEmpresaTransporte.value)
-                    index = i;                             
+                if(EmpresaTransporte[i].value == idEmpresaTransporte.value){
+                    index = i;
+                    break;
+                }
             }            
             EmpresaTransporte[index].selected = true;
         };

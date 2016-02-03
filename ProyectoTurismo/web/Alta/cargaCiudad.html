@@ -99,8 +99,10 @@ and open the template in the editor.
         idCliente.onchange = function(){
             var index = 0;
             for(var i = 0;i<clientes.length;i++){
-                if(clientes[i].value == idCliente.value)
-                    index = i;                             
+                if(clientes[i].value == idCliente.value){
+                    index = i;
+                    break;
+                }  
             }            
             clientes[index].selected = true;
         };

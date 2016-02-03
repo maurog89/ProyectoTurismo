@@ -180,6 +180,18 @@ public class Conexion {
                     result.add(new EmpresaTransporte(rs.getInt("idEmpresaTransporte"),rs.getString("RazonSocial")));
                 }
                 return result;
+            case "TipoPermiso":
+                rs =  sql.executeQuery("SELECT idTipoPermiso,nombre FROM Turismo.TipoPermiso");
+                while(rs.next()){
+                    result.add(new TipoPermiso(rs.getInt("idTipoPermiso"),rs.getString("nombre")));
+                }
+                return result;
+            case "Usuarios":
+                rs =  sql.executeQuery("SELECT idUsuario,nombre FROM Turismo.Usuario");
+                while(rs.next()){
+                    result.add(new Usuario(rs.getInt("idUsuario"),rs.getString("nombre")));
+                }
+                return result;
             default:
                 return null;
         }
