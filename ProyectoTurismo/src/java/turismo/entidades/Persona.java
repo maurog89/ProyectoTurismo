@@ -9,7 +9,7 @@ package turismo.entidades;
  *
  * @author matiascanodesarrollos
  */
-public class Persona {    
+public abstract class Persona {    
     protected String nombre,segundoNombre,apellido,fechaCreacion,fechaNacimiento,nroDocumento;
     protected int idPersona,idTipoDocumento,idContacto,idDomicilio,idEstado;
     

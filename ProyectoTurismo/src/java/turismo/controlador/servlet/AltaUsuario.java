@@ -10,7 +10,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,8 +20,7 @@ import turismo.entidades.ValidadorDeParametros;
  *
  * @author matiascanodesarrollos
  */
-@MultipartConfig
-public class AltaAlojamiento extends HttpServlet {
+public class AltaUsuario extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,20 +36,20 @@ public class AltaAlojamiento extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
-        ImprimirHTML.imprimirEtiquetasIniciales(out,"Alta de Alojamientos"); 
+        ImprimirHTML.imprimirEtiquetasIniciales(out,"Alta de Usuarios"); 
         
-        String[] parametros = new String[]{"nombreAlojamiento","descripcionAlojamiento","pririodadAlojamiento","estadoAlojamiento","clienteAlojamientor","cantidadImagenes","regimenAlimentarioAlojamiento","temporadaAlojamiento","Barrio","cantidadContactos","Pais","Provincia","Ciudad","calleDomicilio","nroDomicilio","nroPiso","departamentoDomicilio","torreDomicilio","manzanaDomicilio","loteDomicilio","codigoPostalDomicilio","tipoContacto1","detalleContactos1"};
-        String[] obligatorios =  new String[]{"nombreAlojamiento","pririodadAlojamiento","estadoAlojamiento","clienteAlojamientor","cantidadImagenes","regimenAlimentarioAlojamiento","temporadaAlojamiento","Pais","Provincia","Ciudad","Barrio","calleDomicilio","nroDomicilio","codigoPostalDomicilio","cantidadContactos","tipoContacto1","detalleContactos1","Pais","Provincia","Ciudad","calleDomicilio","nroDomicilio","codigoPostalDomicilio","tipoContacto1","detalleContactos1"};
-        String[] numericos = new String[]{"pririodadAlojamiento","estadoAlojamiento","clienteAlojamientor","cantidadImagenes","regimenAlimentarioAlojamiento","temporadaAlojamiento","Pais","Provincia","Ciudad","Barrio","cantidadContactos","tipoContacto1"};
+        String[] parametros = new String[]{"Observaciones","tipoDocumentoPersona","cantidadContactos","Barrio","estado","nombreUsuario","passwordUsuario","linkUsuario","preguntaSecretaUsuario","respuestaUsuario","nombrePersona","segNombrePersona","apellidoPersona","fechaNacimientoPersona","nroDocumentoPersona","Pais","Provincia","Ciudad","calleDomicilio","nroDomicilio","nroPiso","departamentoDomicilio","torreDomicilio","manzanaDomicilio","loteDomicilio","codigoPostalDomicilio","tipoContacto1","detalleContactos1"};
+        String[] obligatorios =  new String[]{"tipoDocumentoPersona","cantidadContactos","Barrio","estado","nombreUsuario","passwordUsuario","preguntaSecretaUsuario","respuestaUsuario","nombrePersona","segNombrePersona","apellidoPersona","fechaNacimientoPersona","nroDocumentoPersona"};
+        String[] numericos = new String[]{"tipoDocumentoPersona","cantidadContactos","Barrio","estado"};
         
         boolean[] validadorVacio = ValidadorDeParametros.validarVacio(obligatorios, request);
         boolean[] validadorNumerico = ValidadorDeParametros.validarNumerico(numericos, request);
         if(ValidadorDeParametros.validar(validadorVacio,validadorNumerico)){
             try {
-                int[] posicionNumericos = new int[]{2,3,4,5,6,7,8,9};
-                String[] tablasSecundarias = new String[]{"Domicilio","Imagen","Contacto"};
-                int[] secundarios = new int[]{8,5,9};
-                ValidadorDeParametros.insertar("Alojamiento", parametros , posicionNumericos, tablasSecundarias, secundarios, request, out);
+                int[] posicionNumericos = new int[]{1,2,3,4};
+                String[] tablasSecundarias = new String[]{"Domicilio","Contacto","Observacion"};
+                int[] secundarios = new int[]{3,2,0};
+                ValidadorDeParametros.insertar("Usuario", parametros , posicionNumericos, tablasSecundarias, secundarios, request, out);
                 
             } catch (FileNotFoundException ex) {
                 out.println(ex.toString());
@@ -93,7 +91,7 @@ public class AltaAlojamiento extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, FileNotFoundException {
+            throws ServletException, IOException {
         processRequest(request, response);
     }
 
@@ -106,6 +104,5 @@ public class AltaAlojamiento extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-    
-    
+
 }

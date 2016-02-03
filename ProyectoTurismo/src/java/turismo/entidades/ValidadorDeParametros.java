@@ -329,6 +329,10 @@ public class ValidadorDeParametros {
             case "Permiso":
                 new Permiso(parametros.get(0).valorNumerico,parametros.get(1).valorNumerico,parametros.get(2).valorTextual);
                 break;
+            case "Usuario":
+                new Usuario(parametros.get(0).valorNumerico,parametros.get(1).valorNumerico,parametros.get(2).valorNumerico,parametros.get(3).valorNumerico,parametros.get(4).valorNumerico,parametros.get(5).valorTextual,parametros.get(6).valorTextual,parametros.get(7).valorTextual,parametros.get(8).valorTextual,parametros.get(9).valorTextual,parametros.get(10).valorTextual,parametros.get(11).valorTextual,parametros.get(12).valorTextual,parametros.get(13).valorTextual,parametros.get(14).valorTextual,fecha);
+                break;
+                
         }
     }
     
