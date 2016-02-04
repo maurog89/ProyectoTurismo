@@ -156,6 +156,10 @@
         <servlet-name>AltaUsuario</servlet-name>
         <servlet-class>turismo.controlador.servlet.AltaUsuario</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AltaRegimenAlimentario</servlet-name>
+        <servlet-class>turismo.controlador.servlet.AltaRegimenAlimentario</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AltaNoticia</servlet-name>
         <url-pattern>/AltaNoticia</url-pattern>
@@ -311,6 +315,10 @@
     <servlet-mapping>
         <servlet-name>AltaUsuario</servlet-name>
         <url-pattern>/AltaUsuario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AltaRegimenAlimentario</servlet-name>
+        <url-pattern>/AltaRegimenAlimentario</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

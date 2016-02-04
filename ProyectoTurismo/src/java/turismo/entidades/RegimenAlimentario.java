@@ -5,6 +5,9 @@
  */
 package turismo.entidades;
 
+import java.sql.SQLException;
+import turismo.conexion.Conexion;
+
 /**
  *
  * @author matiascanodesarrollos
@@ -18,6 +21,16 @@ public class RegimenAlimentario {
         this.id = id;
         this.nombre = nombre;
     }
+
+    public RegimenAlimentario(String nombre, String descripcion) throws SQLException {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        Conexion con = new Conexion();
+        con.getSql().execute("INSERT INTO Turismo.RegimenAlimentario (nombre,descripcion) values('" + nombre + "','" + descripcion + "')");
+        con.cerrarConexion();
+    }
+    
+    
     
     @Override
     public String toString(){

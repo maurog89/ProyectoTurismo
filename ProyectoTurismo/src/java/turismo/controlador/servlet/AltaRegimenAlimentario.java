@@ -5,6 +5,7 @@
  */
 package turismo.controlador.servlet;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -12,14 +13,14 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import turismo.entidades.Puntaje;
-
+import turismo.entidades.ImprimirHTML;
+import turismo.entidades.ValidadorDeParametros;
 
 /**
  *
  * @author matiascanodesarrollos
  */
-public class AltaPuntaje extends HttpServlet {
+public class AltaRegimenAlimentario extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,32 +36,31 @@ public class AltaPuntaje extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
-        int puntaje = -1;
-        if(!request.getParameter("puntaje").isEmpty())
-            puntaje = Integer.parseInt(request.getParameter("puntaje"));
-        int usuario = -1;
-        if(!request.getParameter("usuarioPuntaje").isEmpty())
-            usuario = Integer.parseInt(request.getParameter("usuarioPuntaje"));
-        int objeto = -1;
-        if(!request.getParameter("objetoPuntaje").isEmpty())
-            objeto = Integer.parseInt(request.getParameter("objetoPuntaje"));
-        String comentario = request.getParameter("comentario");        
-        try {
+        try  {
             /* TODO output your page here. You may use following sample code. */
-            if(puntaje != -1 && usuario != -1 && objeto != -1){
-                if(comentario.isEmpty()){
-                    new Puntaje(puntaje,usuario,objeto,comentario,"SinComentario");
-                    out.println("Puntaje sin comentario cargado.");
-                }else{
-                    new Puntaje(puntaje,usuario,objeto,comentario,"Completa");
-                    out.println("Puntaje cargado.");
-                }
+            ImprimirHTML.imprimirEtiquetasIniciales(out,"Alta de Regimenes Alimentarios");
+            String[] parametros = new String[]{"nombreRegimenAlimentario","descripcionRegimenAlimentario"};
+            String[] obligatorios =  new String[]{"nombreRegimenAlimentario"};
+            String[] numericos = new String[]{};
+        
+            boolean[] validadorVacio = ValidadorDeParametros.validarVacio(obligatorios, request);
+            boolean[] validadorNumerico = ValidadorDeParametros.validarNumerico(numericos, request);
+        
+            if(ValidadorDeParametros.validar(validadorVacio,validadorNumerico)){
+                int[] posicionNumericos = new int[]{};
+                String[] tablasSecundarias = new String[]{};
+                int[] secundarios = new int[]{};
+                ValidadorDeParametros.insertar("RegimenAlimentario", parametros , posicionNumericos, tablasSecundarias, secundarios, request, out);
             }else{
-                out.println("Los campos puntaje, usuario y objeto son obigatorios.");
+                ValidadorDeParametros.imprimirDatosFaltantes(out, validadorVacio, validadorNumerico, obligatorios, numericos);
             }
+            
+            ImprimirHTML.imprimirEtiquetasFinal(out);
+        } catch (FileNotFoundException ex) {
+            out.println(ex.toString());
         } catch (SQLException ex) {
             out.println(ex.toString());
-        } finally {
+        }finally{
             out.close();
         }
     }
@@ -77,17 +77,9 @@ public class AltaPuntaje extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        out.println("<!DOCTYPE html>");
-        out.println("<html>");
-        out.println("<head>");
-        out.println("<title>Error de Metodo</title>");
-        out.println("</head>");
-        out.println("<body>");
-        out.println("<h1>Estimado usuario, para su seguridad utilice la interfaz brindada.</h1>");
-        out.println("</body>");
-        out.println("</html>");
-        out.close();
+        ImprimirHTML.imprimirErrorDeMetodo(out);
     }
 
     /**

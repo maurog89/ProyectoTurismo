@@ -39,9 +39,9 @@ public class AltaPermiso extends HttpServlet {
         try  {
             /* TODO output your page here. You may use following sample code. */
             ImprimirHTML.imprimirEtiquetasIniciales(out,"Alta de Permisos");
-            String[] parametros = new String[]{"TipoPermiso","Cliente","descripcionPermisos"};
-            String[] obligatorios =  new String[]{"TipoPermiso","Cliente"};
-            String[] numericos = new String[]{"TipoPermiso","Cliente"};
+            String[] parametros = new String[]{"TipoPermiso","Usuario","descripcionPermisos"};
+            String[] obligatorios =  new String[]{"TipoPermiso","Usuario"};
+            String[] numericos = new String[]{"TipoPermiso","Usuario"};
         
             boolean[] validadorVacio = ValidadorDeParametros.validarVacio(obligatorios, request);
             boolean[] validadorNumerico = ValidadorDeParametros.validarNumerico(numericos, request);
