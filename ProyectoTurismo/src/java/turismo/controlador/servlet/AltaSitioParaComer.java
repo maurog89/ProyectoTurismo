@@ -5,6 +5,7 @@
  */
 package turismo.controlador.servlet;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -13,7 +14,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import turismo.entidades.Fechas;
+import turismo.entidades.ImprimirHTML;
 import turismo.entidades.SitioParaComer;
+import turismo.entidades.ValidadorDeParametros;
 
 /**
  *
@@ -35,53 +38,31 @@ public class AltaSitioParaComer extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
-        String nombre = request.getParameter("nombreSitioParaComer");
-        String precio = request.getParameter("precioSitioParaComer");
-        int observacion = 1;
-        int prioridad = -1;
-        if(!request.getParameter("pririodadSitioParaComer").isEmpty())
-            prioridad = Integer.parseInt(request.getParameter("pririodadSitioParaComer"));
-        int estado = -1;
-        if(!request.getParameter("estadoSitioParaComer").isEmpty())
-            estado = Integer.parseInt(request.getParameter("estadoSitioParaComer"));
-        int cliente = -1;
-        if(!request.getParameter("clienteSitioParaComer").isEmpty())
-            cliente = Integer.parseInt(request.getParameter("clienteSitioParaComer"));
-        int imagen = 1;
-        int tipoDeComida = -1;
-        if(!request.getParameter("tipoComidaSitioParaComer").isEmpty())
-            tipoDeComida = Integer.parseInt(request.getParameter("tipoComidaSitioParaComer"));
-        int categoriaRestaurante = -1;
-        if(!request.getParameter("categoriaRestauranteSitioParaComer").isEmpty())
-            categoriaRestaurante = Integer.parseInt(request.getParameter("categoriaRestauranteSitioParaComer"));
-        int domicilio = 1;
-        int contacto = 1;
-        try {
+        try  {
             /* TODO output your page here. You may use following sample code. */
-            if(observacion != -1 && !nombre.isEmpty() && prioridad != -1 && estado != -1 && imagen != -1 && tipoDeComida != -1 && categoriaRestaurante != -1 && domicilio != -1 && contacto != -1){
-                if(cliente != -1){
-                    if(!precio.isEmpty()){
-                        new SitioParaComer(nombre,precio,categoriaRestaurante,observacion,tipoDeComida,Fechas.fechaActual(),cliente,contacto,domicilio,estado,imagen,prioridad,"Completo");
-                        out.println("Sitio para comer completo cargado.");
-                    }else{
-                        new SitioParaComer(nombre,precio,categoriaRestaurante,observacion,tipoDeComida,Fechas.fechaActual(),cliente,contacto,domicilio,estado,imagen,prioridad,"Precio");
-                        out.println("Sitio para comer sin precio.");
-                    }
-                }else{
-                    if(!precio.isEmpty()){
-                        new SitioParaComer(nombre,precio,categoriaRestaurante,observacion,tipoDeComida,Fechas.fechaActual(),cliente,contacto,domicilio,estado,imagen,prioridad,"Cliente");
-                        out.println("Sitio para comer sin cliente.");
-                    }else{
-                        new SitioParaComer(nombre,precio,categoriaRestaurante,observacion,tipoDeComida,Fechas.fechaActual(),cliente,contacto,domicilio,estado,imagen,prioridad,"Minimo");
-                        out.println("Sitio para comer sin cliente y precio.");
-                    }
-                }
+            ImprimirHTML.imprimirEtiquetasIniciales(out,"Alta de Sitios para Comer");
+            String[] parametros = new String[]{"categoriaRestauranteSitioParaComer","Observaciones","tipoComidaSitioParaComer","clienteSitioParaComer","cantidadContactos","Barrio","estadoSitioParaComer","cantidadImagenes","pririodadSitioParaComer","nombreSitioParaComer","precioSitioParaComer","Pais","Provincia","Ciudad","calleDomicilio","nroDomicilio","nroPiso","departamentoDomicilio","torreDomicilio","manzanaDomicilio","loteDomicilio","codigoPostalDomicilio","tipoContacto1","detalleContactos1"};
+            String[] obligatorios =  new String[]{"categoriaRestauranteSitioParaComer","Observaciones","tipoComidaSitioParaComer","cantidadContactos","Barrio","estadoSitioParaComer","cantidadImagenes","pririodadSitioParaComer","nombreSitioParaComer","Pais","Provincia","Ciudad","calleDomicilio","nroDomicilio","codigoPostalDomicilio","tipoContacto1","detalleContactos1"};
+            String[] numericos = new String[]{"categoriaRestauranteSitioParaComer","tipoComidaSitioParaComer","clienteSitioParaComer","cantidadContactos","Barrio","estadoSitioParaComer","cantidadImagenes","pririodadSitioParaComer","Pais","Provincia","Ciudad","tipoContacto1"};
+        
+            boolean[] validadorVacio = ValidadorDeParametros.validarVacio(obligatorios, request);
+            boolean[] validadorNumerico = ValidadorDeParametros.validarNumerico(numericos, request);
+        
+            if(ValidadorDeParametros.validar(validadorVacio,validadorNumerico)){
+                int[] posicionNumericos = new int[]{0,2,3,4,5,6,7,8};
+                String[] tablasSecundarias = new String[]{"Observacion","Imagen","Domicilio","Contacto"};
+                int[] secundarios = new int[]{1,7,5,4};
+                ValidadorDeParametros.insertar("SitioParaComer", parametros , posicionNumericos, tablasSecundarias, secundarios, request, out);
             }else{
-                out.println("Los campos nombre, prioridad, estado, imagen, tipo de comida, categoria de restaurante, domicilio y contacto son obligatorios.");
+                ValidadorDeParametros.imprimirDatosFaltantes(out, validadorVacio, validadorNumerico, obligatorios, numericos);
             }
+            
+            ImprimirHTML.imprimirEtiquetasFinal(out);
+        } catch (FileNotFoundException ex) {
+            out.println(ex.toString());
         } catch (SQLException ex) {
             out.println(ex.toString());
-        } finally {
+        }finally{
             out.close();
         }
     }
@@ -98,17 +79,9 @@ public class AltaSitioParaComer extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        out.println("<!DOCTYPE html>");
-        out.println("<html>");
-        out.println("<head>");
-        out.println("<title>Error de Metodo</title>");
-        out.println("</head>");
-        out.println("<body>");
-        out.println("<h1>Estimado usuario, para su seguridad utilice la interfaz brindada.</h1>");
-        out.println("</body>");
-        out.println("</html>");
-        out.close();
+        ImprimirHTML.imprimirErrorDeMetodo(out);
     }
 
     /**

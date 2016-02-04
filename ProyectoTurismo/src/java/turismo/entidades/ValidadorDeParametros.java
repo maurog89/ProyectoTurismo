@@ -335,6 +335,9 @@ public class ValidadorDeParametros {
             case "RegimenAlimentario":
                 new RegimenAlimentario(parametros.get(0).valorTextual,parametros.get(1).valorTextual);
                 break;
+            case "SitioParaComer":
+                new SitioParaComer(parametros.get(0).valorNumerico,parametros.get(1).valorNumerico,parametros.get(2).valorNumerico,parametros.get(3).valorNumerico,parametros.get(4).valorNumerico,parametros.get(5).valorNumerico,parametros.get(6).valorNumerico,parametros.get(7).valorNumerico,parametros.get(8).valorNumerico,parametros.get(9).valorTextual,parametros.get(10).valorTextual,fecha);
+                break;
         }
     }
     

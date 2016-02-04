@@ -25,6 +25,14 @@ public class CategoriaRestaurante {
         con.getSql().execute("INSERT INTO Turismo.CategoriaRestaurante (nombre,cantidadDeTenedores,descripcion) values('" + nombre + "'," + cantidadDeTenedores + ",'" + descripcion + "')");
         con.cerrarConexion();
     }
+
+    public CategoriaRestaurante(int id, String nombre) {
+        this.id = id;
+        this.nombre = nombre;
+    }
     
-    
+    @Override
+    public String toString(){
+        return "{\"id\":\""+id+"\",\"nombre\":\""+nombre+"\"}";    
+    }
 }

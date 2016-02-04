@@ -192,6 +192,18 @@ public class Conexion {
                     result.add(new Usuario(rs.getInt("idUsuario"),rs.getString("nombre")));
                 }
                 return result;
+            case "TipoComida":
+                rs =  sql.executeQuery("SELECT idTipoDeComida,nombre FROM Turismo.TipoDeComida");
+                while(rs.next()){
+                    result.add(new TipoDeComida(rs.getInt("idTipoDeComida"),rs.getString("nombre")));
+                }
+                return result;
+            case "CategoriaRestaurante":
+                rs =  sql.executeQuery("SELECT idCategoriaRestaurante,nombre FROM Turismo.CategoriaRestaurante");
+                while(rs.next()){
+                    result.add(new CategoriaRestaurante(rs.getInt("idCategoriaRestaurante"),rs.getString("nombre")));
+                }
+                return result;
             default:
                 return null;
         }

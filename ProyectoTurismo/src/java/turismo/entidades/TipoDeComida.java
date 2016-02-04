@@ -22,6 +22,14 @@ public class TipoDeComida {
         con.getSql().execute("INSERT INTO Turismo.TipoDeComida (nombre) values('" + nombre + "')");
         con.cerrarConexion();
     }
+
+    public TipoDeComida(int id, String nombre) {
+        this.id = id;
+        this.nombre = nombre;
+    }
     
-    
+    @Override
+    public String toString(){
+        return "{\"id\":\""+id+"\",\"nombre\":\""+nombre+"\"}";    
+    }
 }

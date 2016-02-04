@@ -6,6 +6,7 @@
 package turismo.entidades;
 
 import java.sql.SQLException;
+import turismo.conexion.Conexion;
 
 /**
  *
@@ -21,24 +22,20 @@ public class SitioParaComer extends Lugar{
     
     // Constructor completo
 
-    public SitioParaComer(String nombre, String precio, int categoriaRestaurante, int observacion, int tipoDeComida, String fechaAlta, int cliente, int contacto, int domicilio, int estado, int imagen, int prioridad,String opcionales) throws SQLException {
+    public SitioParaComer(int categoriaRestaurante, int observacion, int tipoDeComida, int cliente, int contacto, int domicilio, int estado, int imagen, int prioridad, String nombre, String precio, String fechaAlta) throws SQLException {
         super(fechaAlta, cliente, contacto, domicilio, estado, imagen, prioridad);
+        generarObjetoParaBD();
         this.nombre = nombre;
         this.precio = precio;
         this.categoriaRestaurante = categoriaRestaurante;
         this.observacion = observacion;
         this.tipoDeComida = tipoDeComida;
-        generarObjetoParaBD();
-        if(opcionales.equals("Completo"))
-            getCon().getSql().executeUpdate("INSERT INTO Turismo.SitioParaComer (idCliente,nombre,precio,idCategoriaRestaurante,IdContacto,idDomicilio,idEstado,IdImagen,IdObservacion,IdTipoDeComida,fechaAlta,idObjetoPuntuable) values ('" + cliente +"','" + nombre + "','" + precio +"','" + categoriaRestaurante +"','" + contacto +  "','" + domicilio + "','" + estado + "','" + imagen + "','" + observacion + "','" + tipoDeComida + "','" + fechaAlta + "','" + getIdObjeto()+"')");
-        if(opcionales.equals("Precio"))
-            getCon().getSql().executeUpdate("INSERT INTO Turismo.SitioParaComer (idCliente,nombre,idCategoriaRestaurante,IdContacto,idDomicilio,idEstado,IdImagen,IdObservacion,IdTipoDeComida,fechaAlta,idObjetoPuntuable) values ('" + cliente +"','" + nombre + "','" + categoriaRestaurante +"','" + contacto +  "','" + domicilio + "','" + estado + "','" + imagen + "','" + observacion + "','" + tipoDeComida + "','" + fechaAlta + "','" + getIdObjeto()+"')");
-        if(opcionales.equals("Cliente"))
-            getCon().getSql().executeUpdate("INSERT INTO Turismo.SitioParaComer (nombre,precio,idCategoriaRestaurante,IdContacto,idDomicilio,idEstado,IdImagen,IdObservacion,IdTipoDeComida,fechaAlta,idObjetoPuntuable) values ('" + nombre + "','" + precio +"','" + categoriaRestaurante +"','" + contacto +  "','" + domicilio + "','" + estado + "','" + imagen + "','" + observacion + "','" + tipoDeComida + "','" + fechaAlta + "','" + getIdObjeto()+"')");
-        if(opcionales.equals("Minimo"))
-           getCon().getSql().executeUpdate("INSERT INTO Turismo.SitioParaComer (nombre,idCategoriaRestaurante,IdContacto,idDomicilio,idEstado,IdImagen,IdObservacion,IdTipoDeComida,fechaAlta,idObjetoPuntuable) values ('" + nombre + "','" + categoriaRestaurante +"','" + contacto +  "','" + domicilio + "','" + estado + "','" + imagen + "','" + observacion + "','" + tipoDeComida + "','" + fechaAlta + "','" + getIdObjeto()+"')");
-        cerrarConexion();
+        Conexion con = new Conexion();
+        con.getSql().execute("INSERT INTO Turismo.SitioParaComer (idCliente,nombre,precio,idCategoriaRestaurante,IdContacto,idDomicilio,idEstado,IdImagen,IdObservacion,IdTipoDeComida,fechaAlta,idObjetoPuntuable) values ('" + cliente +"','" + nombre + "','" + precio +"','" + categoriaRestaurante +"','" + contacto +  "','" + domicilio + "','" + estado + "','" + imagen + "','" + observacion + "','" + tipoDeComida + "','" + fechaAlta + "','" + getIdObjeto()+"')");
+        con.cerrarConexion();
     }
+
+    
 
     
     
