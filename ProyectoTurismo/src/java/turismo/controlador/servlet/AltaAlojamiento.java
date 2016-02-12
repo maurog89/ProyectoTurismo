@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import turismo.entidades.ImprimirHTML;
 import turismo.entidades.ValidadorDeParametros;
+import turismo.entidades.ValidadorDeSession;
 
 /**
  *
@@ -38,32 +39,37 @@ public class AltaAlojamiento extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
-        ImprimirHTML.imprimirEtiquetasIniciales(out,"Alta de Alojamientos"); 
-        
-        String[] parametros = new String[]{"nombreAlojamiento","descripcionAlojamiento","pririodadAlojamiento","estadoAlojamiento","clienteAlojamientor","cantidadImagenes","regimenAlimentarioAlojamiento","temporadaAlojamiento","Barrio","cantidadContactos","Pais","Provincia","Ciudad","calleDomicilio","nroDomicilio","nroPiso","departamentoDomicilio","torreDomicilio","manzanaDomicilio","loteDomicilio","codigoPostalDomicilio","tipoContacto1","detalleContactos1"};
-        String[] obligatorios =  new String[]{"nombreAlojamiento","pririodadAlojamiento","estadoAlojamiento","clienteAlojamientor","cantidadImagenes","regimenAlimentarioAlojamiento","temporadaAlojamiento","Pais","Provincia","Ciudad","Barrio","calleDomicilio","nroDomicilio","codigoPostalDomicilio","cantidadContactos","tipoContacto1","detalleContactos1","Pais","Provincia","Ciudad","calleDomicilio","nroDomicilio","codigoPostalDomicilio","tipoContacto1","detalleContactos1"};
-        String[] numericos = new String[]{"pririodadAlojamiento","estadoAlojamiento","clienteAlojamientor","cantidadImagenes","regimenAlimentarioAlojamiento","temporadaAlojamiento","Pais","Provincia","Ciudad","Barrio","cantidadContactos","tipoContacto1"};
-        
-        boolean[] validadorVacio = ValidadorDeParametros.validarVacio(obligatorios, request);
-        boolean[] validadorNumerico = ValidadorDeParametros.validarNumerico(numericos, request);
-        if(ValidadorDeParametros.validar(validadorVacio,validadorNumerico)){
-            try {
-                int[] posicionNumericos = new int[]{2,3,4,5,6,7,8,9};
-                String[] tablasSecundarias = new String[]{"Domicilio","Imagen","Contacto"};
-                int[] secundarios = new int[]{8,5,9};
-                ValidadorDeParametros.insertar("Alojamiento", parametros , posicionNumericos, tablasSecundarias, secundarios, request, out);
-                
-            } catch (FileNotFoundException ex) {
-                out.println(ex.toString());
-            } catch (SQLException ex) {
-                out.println(ex.toString());
-            }finally{
-                out.close();
+        if (ValidadorDeSession.validarSession(request)) {
+            ImprimirHTML.imprimirEtiquetasIniciales(out, "Alta de Alojamientos");
+
+            String[] parametros = new String[]{"nombreAlojamiento", "descripcionAlojamiento", "pririodadAlojamiento", "estadoAlojamiento", "clienteAlojamientor", "cantidadImagenes", "regimenAlimentarioAlojamiento", "temporadaAlojamiento", "Barrio", "cantidadContactos", "Pais", "Provincia", "Ciudad", "calleDomicilio", "nroDomicilio", "nroPiso", "departamentoDomicilio", "torreDomicilio", "manzanaDomicilio", "loteDomicilio", "codigoPostalDomicilio", "tipoContacto1", "detalleContactos1"};
+            String[] obligatorios = new String[]{"nombreAlojamiento", "pririodadAlojamiento", "estadoAlojamiento", "clienteAlojamientor", "cantidadImagenes", "regimenAlimentarioAlojamiento", "temporadaAlojamiento", "Pais", "Provincia", "Ciudad", "Barrio", "calleDomicilio", "nroDomicilio", "codigoPostalDomicilio", "cantidadContactos", "tipoContacto1", "detalleContactos1", "Pais", "Provincia", "Ciudad", "calleDomicilio", "nroDomicilio", "codigoPostalDomicilio", "tipoContacto1", "detalleContactos1"};
+            String[] numericos = new String[]{"pririodadAlojamiento", "estadoAlojamiento", "clienteAlojamientor", "cantidadImagenes", "regimenAlimentarioAlojamiento", "temporadaAlojamiento", "Pais", "Provincia", "Ciudad", "Barrio", "cantidadContactos", "tipoContacto1"};
+
+            boolean[] validadorVacio = ValidadorDeParametros.validarVacio(obligatorios, request);
+            boolean[] validadorNumerico = ValidadorDeParametros.validarNumerico(numericos, request);
+            if (ValidadorDeParametros.validar(validadorVacio, validadorNumerico)) {
+                try {
+                    int[] posicionNumericos = new int[]{2, 3, 4, 5, 6, 7, 8, 9};
+                    String[] tablasSecundarias = new String[]{"Domicilio", "Imagen", "Contacto"};
+                    int[] secundarios = new int[]{8, 5, 9};
+                    ValidadorDeParametros.insertar("Alojamiento", parametros, posicionNumericos, tablasSecundarias, secundarios, request, out);
+
+                } catch (FileNotFoundException ex) {
+                    out.println(ex.toString());
+                } catch (SQLException ex) {
+                    out.println(ex.toString());
+                } finally {
+                    out.close();
+                }
+            } else {
+                ValidadorDeParametros.imprimirDatosFaltantes(out, validadorVacio, validadorNumerico, obligatorios, numericos);
             }
-        }else{
-            ValidadorDeParametros.imprimirDatosFaltantes(out, validadorVacio, validadorNumerico, obligatorios, numericos);
-        }        
-        ImprimirHTML.imprimirEtiquetasFinal(out);
+            ImprimirHTML.imprimirEtiquetasFinal(out);
+        } else {
+            ImprimirHTML.InterfaceDeGestionError(out, "Debe estar logeado para ingresar a esta página.");
+        }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -106,6 +112,5 @@ public class AltaAlojamiento extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-    
-    
+
 }

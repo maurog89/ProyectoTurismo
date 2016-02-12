@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import turismo.entidades.ImprimirHTML;
+import turismo.entidades.ValidadorDeSession;
 import turismo.entidades.ValidadorDeUsuario;
 
 /**
@@ -35,30 +36,30 @@ public class ABM extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        HttpSession sesion = request.getSession();
+        response.setContentType("text/html;charset=UTF-8");        
         PrintWriter out = response.getWriter();
         response.setContentType("text/html;charset=UTF-8");
-        Boolean aut = (Boolean)sesion.getAttribute("autentificado");
-        if(aut != null){
-            if(aut == true){
-                switch(request.getParameter("boton")){
-                    case "Alta":
-                        cargarAltas(request,out);
-                        break;
-                    case "Modificación":
+        if(ValidadorDeSession.validarSession(request)){
+            switch(request.getParameter("boton")){
+                case "Alta":
+                    cargarAltas(request,out);
+                    break;
+                case "Modificación":
+                    
+                    break;    
+                case "Baja":
                         
-                        break;
-                    case "Baja":
-                        
-                        break;
-                }
-            }else{
-                ImprimirHTML.InterfaceDeGestionError(out,"Debe estar logeado para ingresar a esta página.");
-                sesion.invalidate();
+                    break;
             }
-        }else
-            ImprimirHTML.InterfaceDeGestionError(out,"Debe estar logeado para ingresar a esta pagina.");
+        }else{
+            ImprimirHTML.InterfaceDeGestionError(out,"Debe estar logeado para ingresar a esta página.");                
+        }
+        
+        if(ValidadorDeSession.validarSession(request)){
+            
+        }else{
+            ImprimirHTML.InterfaceDeGestionError(out,"Debe estar logeado para ingresar a esta página.");                
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -109,6 +110,9 @@ public class ABM extends HttpServlet {
                 break;
             case "Barrio":
                 ImprimirHTML.cargaBarrio(out);
+                break;
+            case "Ciudad":
+                ImprimirHTML.cargaCiudad(out);
                 break;
         }
     }

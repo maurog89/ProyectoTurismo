@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import turismo.entidades.ImprimirHTML;
 import turismo.entidades.ValidadorDeParametros;
+import turismo.entidades.ValidadorDeSession;
 
 /**
  *
@@ -38,34 +39,40 @@ public class AltaExcursion extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
-        try  {
-            /* TODO output your page here. You may use following sample code. */
-            
-            ImprimirHTML.imprimirEtiquetasIniciales(out,"Alta de Excursiones");
-            String[] parametros = new String[]{"nombreExcursion","detalleExcursion","precioExcursion","inicioExcursion","finExcursion","anoExcursion","visitantesExcursion","temporadaExcursion","clienteExcursion","cantidadContactos","estadoExcursion","cantidadImagenes","pririodadExcursion","Barrio","Pais","Provincia","Ciudad","calleDomicilio","nroDomicilio","nroPiso","departamentoDomicilio","torreDomicilio","manzanaDomicilio","loteDomicilio","codigoPostalDomicilio","tipoContacto1","detalleContactos1"};
-            String[] obligatorios =  new String[]{"nombreExcursion","detalleExcursion","precioExcursion","inicioExcursion","finExcursion","anoExcursion","visitantesExcursion","temporadaExcursion","clienteExcursion","cantidadContactos","estadoExcursion","cantidadImagenes","pririodadExcursion","Barrio","Pais","Provincia","Ciudad","calleDomicilio","nroDomicilio","codigoPostalDomicilio","tipoContacto1","detalleContactos1"};
-            String[] numericos = new String[]{"temporadaExcursion","clienteExcursion","cantidadContactos","estadoExcursion","cantidadImagenes","pririodadExcursion","Barrio","Pais","Provincia","Ciudad","tipoContacto1"};
-        
-            boolean[] validadorVacio = ValidadorDeParametros.validarVacio(obligatorios, request);
-            boolean[] validadorNumerico = ValidadorDeParametros.validarNumerico(numericos, request);
-        
-            if(ValidadorDeParametros.validar(validadorVacio,validadorNumerico)){
-                int[] posicionNumericos = new int[]{7,8,9,10,11,12,13};
-                String[] tablasSecundarias = new String[]{"Domicilio","Imagen","Contacto"};
-                int[] secundarios = new int[]{13,11,9};
-                ValidadorDeParametros.insertar("Excursion", parametros , posicionNumericos, tablasSecundarias, secundarios, request, out);
-            }else{
-                ValidadorDeParametros.imprimirDatosFaltantes(out, validadorVacio, validadorNumerico, obligatorios, numericos);
+
+        if (ValidadorDeSession.validarSession(request)) {
+            try {
+                /* TODO output your page here. You may use following sample code. */
+
+                ImprimirHTML.imprimirEtiquetasIniciales(out, "Alta de Excursiones");
+                String[] parametros = new String[]{"nombreExcursion", "detalleExcursion", "precioExcursion", "inicioExcursion", "finExcursion", "anoExcursion", "visitantesExcursion", "temporadaExcursion", "clienteExcursion", "cantidadContactos", "estadoExcursion", "cantidadImagenes", "pririodadExcursion", "Barrio", "Pais", "Provincia", "Ciudad", "calleDomicilio", "nroDomicilio", "nroPiso", "departamentoDomicilio", "torreDomicilio", "manzanaDomicilio", "loteDomicilio", "codigoPostalDomicilio", "tipoContacto1", "detalleContactos1"};
+                String[] obligatorios = new String[]{"nombreExcursion", "detalleExcursion", "precioExcursion", "inicioExcursion", "finExcursion", "anoExcursion", "visitantesExcursion", "temporadaExcursion", "clienteExcursion", "cantidadContactos", "estadoExcursion", "cantidadImagenes", "pririodadExcursion", "Barrio", "Pais", "Provincia", "Ciudad", "calleDomicilio", "nroDomicilio", "codigoPostalDomicilio", "tipoContacto1", "detalleContactos1"};
+                String[] numericos = new String[]{"temporadaExcursion", "clienteExcursion", "cantidadContactos", "estadoExcursion", "cantidadImagenes", "pririodadExcursion", "Barrio", "Pais", "Provincia", "Ciudad", "tipoContacto1"};
+
+                boolean[] validadorVacio = ValidadorDeParametros.validarVacio(obligatorios, request);
+                boolean[] validadorNumerico = ValidadorDeParametros.validarNumerico(numericos, request);
+
+                if (ValidadorDeParametros.validar(validadorVacio, validadorNumerico)) {
+                    int[] posicionNumericos = new int[]{7, 8, 9, 10, 11, 12, 13};
+                    String[] tablasSecundarias = new String[]{"Domicilio", "Imagen", "Contacto"};
+                    int[] secundarios = new int[]{13, 11, 9};
+                    ValidadorDeParametros.insertar("Excursion", parametros, posicionNumericos, tablasSecundarias, secundarios, request, out);
+                } else {
+                    ValidadorDeParametros.imprimirDatosFaltantes(out, validadorVacio, validadorNumerico, obligatorios, numericos);
+                }
+
+                ImprimirHTML.imprimirEtiquetasFinal(out);
+            } catch (FileNotFoundException ex) {
+                out.println(ex.toString());
+            } catch (SQLException ex) {
+                out.println(ex.toString());
+            } finally {
+                out.close();
             }
-            
-            ImprimirHTML.imprimirEtiquetasFinal(out);
-        } catch (FileNotFoundException ex) {
-            out.println(ex.toString());
-        } catch (SQLException ex) {
-            out.println(ex.toString());
-        }finally{
-            out.close();
+        } else {
+            ImprimirHTML.InterfaceDeGestionError(out, "Debe estar logeado para ingresar a esta página.");
         }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

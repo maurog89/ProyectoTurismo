@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import turismo.entidades.ImprimirHTML;
 import turismo.entidades.ValidadorDeParametros;
+import turismo.entidades.ValidadorDeSession;
 
 /**
  *
@@ -36,36 +37,41 @@ public class AltaDomicilio extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
-        try  {
-            /* TODO output your page here. You may use following sample code. */
-            response.setContentType("text/html;charset=UTF-8");
-        
-        
-            ImprimirHTML.imprimirEtiquetasIniciales(out,"Alta de Domicilios");
-            String[] parametros = new String[]{"calleDomicilio","nroDomicilio","nroPiso","departamentoDomicilio","torreDomicilio","manzanaDomicilio","loteDomicilio","codigoPostalDomicilio","Barrio","Ciudad","Provincia","Pais"};
-            String[] obligatorios =  new String[]{"calleDomicilio","nroDomicilio","codigoPostalDomicilio","Barrio","Ciudad","Provincia","Pais"};
-            String[] numericos = new String[]{"Barrio","Ciudad","Provincia","Pais"};
-        
-            boolean[] validadorVacio = ValidadorDeParametros.validarVacio(obligatorios, request);
-            boolean[] validadorNumerico = ValidadorDeParametros.validarNumerico(numericos, request);
-        
-            if(ValidadorDeParametros.validar(validadorVacio,validadorNumerico)){
-                int[] posicionNumericos = new int[]{8};
-                String[] tablasSecundarias = new String[]{};
-                int[] secundarios = new int[]{};
-                ValidadorDeParametros.insertar("Domicilio", parametros , posicionNumericos, tablasSecundarias, secundarios, request, out);
-            }else{
-                ValidadorDeParametros.imprimirDatosFaltantes(out, validadorVacio, validadorNumerico, obligatorios, numericos);
+
+        if (ValidadorDeSession.validarSession(request)) {
+            try {
+                /* TODO output your page here. You may use following sample code. */
+                response.setContentType("text/html;charset=UTF-8");
+
+                ImprimirHTML.imprimirEtiquetasIniciales(out, "Alta de Domicilios");
+                String[] parametros = new String[]{"calleDomicilio", "nroDomicilio", "nroPiso", "departamentoDomicilio", "torreDomicilio", "manzanaDomicilio", "loteDomicilio", "codigoPostalDomicilio", "Barrio", "Ciudad", "Provincia", "Pais"};
+                String[] obligatorios = new String[]{"calleDomicilio", "nroDomicilio", "codigoPostalDomicilio", "Barrio", "Ciudad", "Provincia", "Pais"};
+                String[] numericos = new String[]{"Barrio", "Ciudad", "Provincia", "Pais"};
+
+                boolean[] validadorVacio = ValidadorDeParametros.validarVacio(obligatorios, request);
+                boolean[] validadorNumerico = ValidadorDeParametros.validarNumerico(numericos, request);
+
+                if (ValidadorDeParametros.validar(validadorVacio, validadorNumerico)) {
+                    int[] posicionNumericos = new int[]{8};
+                    String[] tablasSecundarias = new String[]{};
+                    int[] secundarios = new int[]{};
+                    ValidadorDeParametros.insertar("Domicilio", parametros, posicionNumericos, tablasSecundarias, secundarios, request, out);
+                } else {
+                    ValidadorDeParametros.imprimirDatosFaltantes(out, validadorVacio, validadorNumerico, obligatorios, numericos);
+                }
+
+                ImprimirHTML.imprimirEtiquetasFinal(out);
+            } catch (FileNotFoundException ex) {
+                out.println(ex.toString());
+            } catch (SQLException ex) {
+                out.println(ex.toString());
+            } finally {
+                out.close();
             }
-            
-            ImprimirHTML.imprimirEtiquetasFinal(out);
-        } catch (FileNotFoundException ex) {
-            out.println(ex.toString());
-        } catch (SQLException ex) {
-            out.println(ex.toString());
-        }finally{
-            out.close();
+        } else {
+            ImprimirHTML.InterfaceDeGestionError(out, "Debe estar logeado para ingresar a esta página.");
         }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

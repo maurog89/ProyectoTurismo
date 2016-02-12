@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import turismo.entidades.ImprimirHTML;
 import turismo.entidades.ValidadorDeParametros;
+import turismo.entidades.ValidadorDeSession;
 
 /**
  *
@@ -38,33 +39,39 @@ public class AltaLugarDeInteres extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
-        try  {
-            /* TODO output your page here. You may use following sample code. */
-            ImprimirHTML.imprimirEtiquetasIniciales(out,"Alta de Lugares de Interes");
-            String[] parametros = new String[]{"descripcionLugarInteres","nombreLugarInteres","precioLugarInteres","clienteLugarInteres","cantidadContactos","Barrio","estadoLugarInteres","cantidadImagenes","pririodadLugarInteres","Pais","Provincia","Ciudad","calleDomicilio","nroDomicilio","nroPiso","departamentoDomicilio","torreDomicilio","manzanaDomicilio","loteDomicilio","codigoPostalDomicilio","tipoContacto1","detalleContactos1"};
-            String[] obligatorios =  new String[]{"descripcionLugarInteres","nombreLugarInteres","precioLugarInteres","cantidadContactos","Barrio","estadoLugarInteres","pririodadLugarInteres","Pais","Provincia","Ciudad","tipoContacto1","detalleContactos1"};
-            String[] numericos = new String[]{"clienteLugarInteres","cantidadContactos","Barrio","estadoLugarInteres","cantidadImagenes","pririodadLugarInteres","Pais","Provincia","Ciudad","tipoContacto1"};
-        
-            boolean[] validadorVacio = ValidadorDeParametros.validarVacio(obligatorios, request);
-            boolean[] validadorNumerico = ValidadorDeParametros.validarNumerico(numericos, request);
-        
-            if(ValidadorDeParametros.validar(validadorVacio,validadorNumerico)){
-                int[] posicionNumericos = new int[]{3,4,5,6,7,8};
-                String[] tablasSecundarias = new String[]{"Domicilio","Imagen","Contacto"};
-                int[] secundarios = new int[]{5,7,4};
-                ValidadorDeParametros.insertar("LugarDeInteres", parametros , posicionNumericos, tablasSecundarias, secundarios, request, out);
-            }else{
-                ValidadorDeParametros.imprimirDatosFaltantes(out, validadorVacio, validadorNumerico, obligatorios, numericos);
+
+        if (ValidadorDeSession.validarSession(request)) {
+            try {
+                /* TODO output your page here. You may use following sample code. */
+                ImprimirHTML.imprimirEtiquetasIniciales(out, "Alta de Lugares de Interes");
+                String[] parametros = new String[]{"descripcionLugarInteres", "nombreLugarInteres", "precioLugarInteres", "clienteLugarInteres", "cantidadContactos", "Barrio", "estadoLugarInteres", "cantidadImagenes", "pririodadLugarInteres", "Pais", "Provincia", "Ciudad", "calleDomicilio", "nroDomicilio", "nroPiso", "departamentoDomicilio", "torreDomicilio", "manzanaDomicilio", "loteDomicilio", "codigoPostalDomicilio", "tipoContacto1", "detalleContactos1"};
+                String[] obligatorios = new String[]{"descripcionLugarInteres", "nombreLugarInteres", "precioLugarInteres", "cantidadContactos", "Barrio", "estadoLugarInteres", "pririodadLugarInteres", "Pais", "Provincia", "Ciudad", "tipoContacto1", "detalleContactos1"};
+                String[] numericos = new String[]{"clienteLugarInteres", "cantidadContactos", "Barrio", "estadoLugarInteres", "cantidadImagenes", "pririodadLugarInteres", "Pais", "Provincia", "Ciudad", "tipoContacto1"};
+
+                boolean[] validadorVacio = ValidadorDeParametros.validarVacio(obligatorios, request);
+                boolean[] validadorNumerico = ValidadorDeParametros.validarNumerico(numericos, request);
+
+                if (ValidadorDeParametros.validar(validadorVacio, validadorNumerico)) {
+                    int[] posicionNumericos = new int[]{3, 4, 5, 6, 7, 8};
+                    String[] tablasSecundarias = new String[]{"Domicilio", "Imagen", "Contacto"};
+                    int[] secundarios = new int[]{5, 7, 4};
+                    ValidadorDeParametros.insertar("LugarDeInteres", parametros, posicionNumericos, tablasSecundarias, secundarios, request, out);
+                } else {
+                    ValidadorDeParametros.imprimirDatosFaltantes(out, validadorVacio, validadorNumerico, obligatorios, numericos);
+                }
+
+                ImprimirHTML.imprimirEtiquetasFinal(out);
+            } catch (FileNotFoundException ex) {
+                out.println(ex.toString());
+            } catch (SQLException ex) {
+                out.println(ex.toString());
+            } finally {
+                out.close();
             }
-            
-            ImprimirHTML.imprimirEtiquetasFinal(out);
-        } catch (FileNotFoundException ex) {
-            out.println(ex.toString());
-        } catch (SQLException ex) {
-            out.println(ex.toString());
-        }finally{
-            out.close();
+        } else {
+            ImprimirHTML.InterfaceDeGestionError(out, "Debe estar logeado para ingresar a esta página.");
         }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -78,7 +85,7 @@ public class AltaLugarDeInteres extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {        
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         ImprimirHTML.imprimirErrorDeMetodo(out);

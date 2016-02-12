@@ -6,19 +6,16 @@
 package turismo.controlador.servlet;
 
 import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import turismo.entidades.Estado;
 import turismo.entidades.ImprimirHTML;
 import turismo.entidades.ValidadorDeParametros;
+import turismo.entidades.ValidadorDeSession;
 
 /**
  *
@@ -40,31 +37,36 @@ public class AltaEstado extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
-        ImprimirHTML.imprimirEtiquetasIniciales(out,"Alta de Estados"); 
-        
-        String[] parametros = new String[]{"tipoEstado","descripcionEstado"};
-        String[] obligatorios =  new String[]{"tipoEstado"};
-        String[] numericos = new String[]{};
-        
-        boolean[] validadorVacio = ValidadorDeParametros.validarVacio(obligatorios, request);
-        boolean[] validadorNumerico = ValidadorDeParametros.validarNumerico(numericos, request);
-        if(ValidadorDeParametros.validar(validadorVacio,validadorNumerico)){
-            try {
-                int[] posicionNumericos = new int[]{};
-                String[] tablasSecundarias = new String[]{};
-                int[] secundarios = new int[]{};
-                ValidadorDeParametros.insertar("Estado", parametros , posicionNumericos, tablasSecundarias, secundarios, request, out);
-                
-            }catch(MySQLIntegrityConstraintViolationException e){
-            out.println("El estado \"<b>"+ request.getParameter("tipoEstado").toUpperCase()+"</b>\" ya se encuentra cargado.");
-            } catch (SQLException ex) {
-                out.println(ex.toString());
+        if (ValidadorDeSession.validarSession(request)) {
+            ImprimirHTML.imprimirEtiquetasIniciales(out, "Alta de Estados");
+
+            String[] parametros = new String[]{"tipoEstado", "descripcionEstado"};
+            String[] obligatorios = new String[]{"tipoEstado"};
+            String[] numericos = new String[]{};
+
+            boolean[] validadorVacio = ValidadorDeParametros.validarVacio(obligatorios, request);
+            boolean[] validadorNumerico = ValidadorDeParametros.validarNumerico(numericos, request);
+            if (ValidadorDeParametros.validar(validadorVacio, validadorNumerico)) {
+                try {
+                    int[] posicionNumericos = new int[]{};
+                    String[] tablasSecundarias = new String[]{};
+                    int[] secundarios = new int[]{};
+                    ValidadorDeParametros.insertar("Estado", parametros, posicionNumericos, tablasSecundarias, secundarios, request, out);
+
+                } catch (MySQLIntegrityConstraintViolationException e) {
+                    out.println("El estado \"<b>" + request.getParameter("tipoEstado").toUpperCase() + "</b>\" ya se encuentra cargado.");
+                } catch (SQLException ex) {
+                    out.println(ex.toString());
+                }
+            } else {
+                ValidadorDeParametros.imprimirDatosFaltantes(out, validadorVacio, validadorNumerico, obligatorios, numericos);
             }
-        }else{
-            ValidadorDeParametros.imprimirDatosFaltantes(out, validadorVacio, validadorNumerico, obligatorios, numericos);
+
+            ImprimirHTML.imprimirEtiquetasFinal(out);
+        } else {
+            ImprimirHTML.InterfaceDeGestionError(out, "Debe estar logeado para ingresar a esta página.");
         }
-        
-        ImprimirHTML.imprimirEtiquetasFinal(out);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

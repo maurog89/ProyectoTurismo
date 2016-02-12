@@ -17,6 +17,7 @@ import turismo.entidades.Fechas;
 import turismo.entidades.ImprimirHTML;
 import turismo.entidades.SitioParaComer;
 import turismo.entidades.ValidadorDeParametros;
+import turismo.entidades.ValidadorDeSession;
 
 /**
  *
@@ -38,33 +39,38 @@ public class AltaSitioParaComer extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
-        try  {
-            /* TODO output your page here. You may use following sample code. */
-            ImprimirHTML.imprimirEtiquetasIniciales(out,"Alta de Sitios para Comer");
-            String[] parametros = new String[]{"categoriaRestauranteSitioParaComer","Observaciones","tipoComidaSitioParaComer","clienteSitioParaComer","cantidadContactos","Barrio","estadoSitioParaComer","cantidadImagenes","pririodadSitioParaComer","nombreSitioParaComer","precioSitioParaComer","Pais","Provincia","Ciudad","calleDomicilio","nroDomicilio","nroPiso","departamentoDomicilio","torreDomicilio","manzanaDomicilio","loteDomicilio","codigoPostalDomicilio","tipoContacto1","detalleContactos1"};
-            String[] obligatorios =  new String[]{"categoriaRestauranteSitioParaComer","Observaciones","tipoComidaSitioParaComer","cantidadContactos","Barrio","estadoSitioParaComer","cantidadImagenes","pririodadSitioParaComer","nombreSitioParaComer","Pais","Provincia","Ciudad","calleDomicilio","nroDomicilio","codigoPostalDomicilio","tipoContacto1","detalleContactos1"};
-            String[] numericos = new String[]{"categoriaRestauranteSitioParaComer","tipoComidaSitioParaComer","clienteSitioParaComer","cantidadContactos","Barrio","estadoSitioParaComer","cantidadImagenes","pririodadSitioParaComer","Pais","Provincia","Ciudad","tipoContacto1"};
-        
-            boolean[] validadorVacio = ValidadorDeParametros.validarVacio(obligatorios, request);
-            boolean[] validadorNumerico = ValidadorDeParametros.validarNumerico(numericos, request);
-        
-            if(ValidadorDeParametros.validar(validadorVacio,validadorNumerico)){
-                int[] posicionNumericos = new int[]{0,2,3,4,5,6,7,8};
-                String[] tablasSecundarias = new String[]{"Observacion","Imagen","Domicilio","Contacto"};
-                int[] secundarios = new int[]{1,7,5,4};
-                ValidadorDeParametros.insertar("SitioParaComer", parametros , posicionNumericos, tablasSecundarias, secundarios, request, out);
-            }else{
-                ValidadorDeParametros.imprimirDatosFaltantes(out, validadorVacio, validadorNumerico, obligatorios, numericos);
+        if (ValidadorDeSession.validarSession(request)) {
+            try {
+                /* TODO output your page here. You may use following sample code. */
+                ImprimirHTML.imprimirEtiquetasIniciales(out, "Alta de Sitios para Comer");
+                String[] parametros = new String[]{"categoriaRestauranteSitioParaComer", "Observaciones", "tipoComidaSitioParaComer", "clienteSitioParaComer", "cantidadContactos", "Barrio", "estadoSitioParaComer", "cantidadImagenes", "pririodadSitioParaComer", "nombreSitioParaComer", "precioSitioParaComer", "Pais", "Provincia", "Ciudad", "calleDomicilio", "nroDomicilio", "nroPiso", "departamentoDomicilio", "torreDomicilio", "manzanaDomicilio", "loteDomicilio", "codigoPostalDomicilio", "tipoContacto1", "detalleContactos1"};
+                String[] obligatorios = new String[]{"categoriaRestauranteSitioParaComer", "Observaciones", "tipoComidaSitioParaComer", "cantidadContactos", "Barrio", "estadoSitioParaComer", "cantidadImagenes", "pririodadSitioParaComer", "nombreSitioParaComer", "Pais", "Provincia", "Ciudad", "calleDomicilio", "nroDomicilio", "codigoPostalDomicilio", "tipoContacto1", "detalleContactos1"};
+                String[] numericos = new String[]{"categoriaRestauranteSitioParaComer", "tipoComidaSitioParaComer", "clienteSitioParaComer", "cantidadContactos", "Barrio", "estadoSitioParaComer", "cantidadImagenes", "pririodadSitioParaComer", "Pais", "Provincia", "Ciudad", "tipoContacto1"};
+
+                boolean[] validadorVacio = ValidadorDeParametros.validarVacio(obligatorios, request);
+                boolean[] validadorNumerico = ValidadorDeParametros.validarNumerico(numericos, request);
+
+                if (ValidadorDeParametros.validar(validadorVacio, validadorNumerico)) {
+                    int[] posicionNumericos = new int[]{0, 2, 3, 4, 5, 6, 7, 8};
+                    String[] tablasSecundarias = new String[]{"Observacion", "Imagen", "Domicilio", "Contacto"};
+                    int[] secundarios = new int[]{1, 7, 5, 4};
+                    ValidadorDeParametros.insertar("SitioParaComer", parametros, posicionNumericos, tablasSecundarias, secundarios, request, out);
+                } else {
+                    ValidadorDeParametros.imprimirDatosFaltantes(out, validadorVacio, validadorNumerico, obligatorios, numericos);
+                }
+
+                ImprimirHTML.imprimirEtiquetasFinal(out);
+            } catch (FileNotFoundException ex) {
+                out.println(ex.toString());
+            } catch (SQLException ex) {
+                out.println(ex.toString());
+            } finally {
+                out.close();
             }
-            
-            ImprimirHTML.imprimirEtiquetasFinal(out);
-        } catch (FileNotFoundException ex) {
-            out.println(ex.toString());
-        } catch (SQLException ex) {
-            out.println(ex.toString());
-        }finally{
-            out.close();
+        } else {
+            ImprimirHTML.InterfaceDeGestionError(out, "Debe estar logeado para ingresar a esta página.");
         }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

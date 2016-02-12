@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import turismo.entidades.ImprimirHTML;
 import turismo.entidades.ValidadorDeParametros;
+import turismo.entidades.ValidadorDeSession;
 
 /**
  *
@@ -36,34 +37,39 @@ public class AltaContacto extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
-        
-        ImprimirHTML.imprimirEtiquetasIniciales(out,"Alta de Contactos");
-        String[] parametros = new String[]{"estado","detalleContacto","tipoContacto"};
-        String[] obligatorios =  new String[]{"estado","detalleContacto","tipoContacto"};
-        String[] numericos = new String[]{"estado","tipoContacto"};
-        
-        boolean[] validadorVacio = ValidadorDeParametros.validarVacio(obligatorios, request);
-        boolean[] validadorNumerico = ValidadorDeParametros.validarNumerico(numericos, request);
-        
-        if(ValidadorDeParametros.validar(validadorVacio,validadorNumerico)){
-            try {
-                int[] posicionNumericos = new int[]{0,2};
-                String[] tablasSecundarias = new String[]{};
-                int[] secundarios = new int[]{};
-                ValidadorDeParametros.insertar("Contacto", parametros , posicionNumericos, tablasSecundarias, secundarios, request, out);
-                
-            } catch (FileNotFoundException ex) {
-                out.println(ex.toString());
-            } catch (SQLException ex) {
-                out.println(ex.toString());
-            }finally{
-                out.close();
+
+        if (ValidadorDeSession.validarSession(request)) {
+            ImprimirHTML.imprimirEtiquetasIniciales(out, "Alta de Contactos");
+            String[] parametros = new String[]{"estado", "detalleContacto", "tipoContacto"};
+            String[] obligatorios = new String[]{"estado", "detalleContacto", "tipoContacto"};
+            String[] numericos = new String[]{"estado", "tipoContacto"};
+
+            boolean[] validadorVacio = ValidadorDeParametros.validarVacio(obligatorios, request);
+            boolean[] validadorNumerico = ValidadorDeParametros.validarNumerico(numericos, request);
+
+            if (ValidadorDeParametros.validar(validadorVacio, validadorNumerico)) {
+                try {
+                    int[] posicionNumericos = new int[]{0, 2};
+                    String[] tablasSecundarias = new String[]{};
+                    int[] secundarios = new int[]{};
+                    ValidadorDeParametros.insertar("Contacto", parametros, posicionNumericos, tablasSecundarias, secundarios, request, out);
+
+                } catch (FileNotFoundException ex) {
+                    out.println(ex.toString());
+                } catch (SQLException ex) {
+                    out.println(ex.toString());
+                } finally {
+                    out.close();
+                }
+            } else {
+                ValidadorDeParametros.imprimirDatosFaltantes(out, validadorVacio, validadorNumerico, obligatorios, numericos);
             }
-        }else{
-            ValidadorDeParametros.imprimirDatosFaltantes(out, validadorVacio, validadorNumerico, obligatorios, numericos);
+
+            ImprimirHTML.imprimirEtiquetasFinal(out);
+        } else {
+            ImprimirHTML.InterfaceDeGestionError(out, "Debe estar logeado para ingresar a esta página.");
         }
-        
-        ImprimirHTML.imprimirEtiquetasFinal(out);    
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

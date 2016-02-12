@@ -35,9 +35,10 @@ public class gestion extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession sesion = request.getSession();
+        
         PrintWriter out = response.getWriter();
         response.setContentType("text/html;charset=UTF-8");
+        HttpSession sesion = request.getSession();
         Boolean aut = (Boolean)sesion.getAttribute("autentificado");
         if(aut != null){
             if(aut == true){

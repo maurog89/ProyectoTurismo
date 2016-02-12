@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import turismo.entidades.ImprimirHTML;
 import turismo.entidades.ValidadorDeParametros;
+import turismo.entidades.ValidadorDeSession;
 
 /**
  *
@@ -28,44 +29,47 @@ public class AltaCiudad extends HttpServlet {
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
-     * 
-     * 
+     *
+     *
      */
-        
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
-        
-        ImprimirHTML.imprimirEtiquetasIniciales(out,"Alta de Ciudades");
-        String[] parametros = new String[]{"nombreCuidad","historiaPais","emergenciaPais","capital","Observaciones","Provincia","clienteCiudad","cantidadImagenes","pririodadCuidad"};
-        String[] obligatorios =  new String[]{"nombreCuidad","capital","Provincia","pririodadCuidad"};
-        String[] numericos = new String[]{"capital","Provincia","clienteCiudad","cantidadImagenes","pririodadCuidad"};
-        
-        boolean[] validadorVacio = ValidadorDeParametros.validarVacio(obligatorios, request);
-        boolean[] validadorNumerico = ValidadorDeParametros.validarNumerico(numericos, request);
-        
-        if(ValidadorDeParametros.validar(validadorVacio,validadorNumerico)){
-            try {
-                int[] posicionNumericos = new int[]{3,5,6,7,8};
-                String[] tablasSecundarias = new String[]{"Imagen","Observacion"};
-                int[] secundarios = new int[]{7,4};
-                ValidadorDeParametros.insertar("Ciudad", parametros , posicionNumericos, tablasSecundarias, secundarios, request, out);
-                
-            } catch (FileNotFoundException ex) {
-                out.println(ex.toString());
-            } catch (SQLException ex) {
-                out.println(ex.toString());
-            }finally{
-                out.close();
+
+        if (ValidadorDeSession.validarSession(request)) {
+            ImprimirHTML.imprimirEtiquetasIniciales(out, "Alta de Ciudades");
+            String[] parametros = new String[]{"nombreCuidad", "historiaPais", "emergenciaPais", "capital", "Observaciones", "Provincia", "clienteCiudad", "cantidadImagenes", "pririodadCuidad"};
+            String[] obligatorios = new String[]{"nombreCuidad", "capital", "Provincia", "pririodadCuidad"};
+            String[] numericos = new String[]{"capital", "Provincia", "clienteCiudad", "cantidadImagenes", "pririodadCuidad"};
+
+            boolean[] validadorVacio = ValidadorDeParametros.validarVacio(obligatorios, request);
+            boolean[] validadorNumerico = ValidadorDeParametros.validarNumerico(numericos, request);
+
+            if (ValidadorDeParametros.validar(validadorVacio, validadorNumerico)) {
+                try {
+                    int[] posicionNumericos = new int[]{3, 5, 6, 7, 8};
+                    String[] tablasSecundarias = new String[]{"Imagen", "Observacion"};
+                    int[] secundarios = new int[]{7, 4};
+                    ValidadorDeParametros.insertar("Ciudad", parametros, posicionNumericos, tablasSecundarias, secundarios, request, out);
+
+                } catch (FileNotFoundException ex) {
+                    out.println(ex.toString());
+                } catch (SQLException ex) {
+                    out.println(ex.toString());
+                } finally {
+                    out.close();
+                }
+            } else {
+                ValidadorDeParametros.imprimirDatosFaltantes(out, validadorVacio, validadorNumerico, obligatorios, numericos);
             }
-        }else{
-            ValidadorDeParametros.imprimirDatosFaltantes(out, validadorVacio, validadorNumerico, obligatorios, numericos);
+
+            ImprimirHTML.imprimirEtiquetasFinal(out);
+        } else {
+            ImprimirHTML.InterfaceDeGestionError(out, "Debe estar logeado para ingresar a esta página.");
         }
-        
-        ImprimirHTML.imprimirEtiquetasFinal(out);        
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -95,9 +99,9 @@ public class AltaCiudad extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException{
+            throws ServletException, IOException {
         processRequest(request, response);
-        
+
     }
 
     /**

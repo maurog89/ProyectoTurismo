@@ -726,4 +726,186 @@ public class ImprimirHTML {
         imprimirEtiquetasFinal(out);
     }
     
+    public static void cargaCiudad(PrintWriter out){
+        imprimirEtiquetasIniciales(out,"ABM Barrio - Alta");
+        out.write("<script src=\"js/buscar.js\"></script>\n" +
+"        <form method=\"POST\" action=\"AltaCiudad\" enctype=\"multipart/form-data\">\n" +
+"            <table>\n" +
+"                <thead>\n" +
+"                    <tr>\n" +
+"                        <th>ABM Cuidad - Alta </th>\n" +
+"                    </tr>\n" +
+"                </thead>\n" +
+"                <tbody>\n" +
+"                    <tr>\n" +
+"                        <td><label for=\"nombreCuidad\">Nombre: </label></td>\n" +
+"                        <td><input type=\"text\" name=\"nombreCuidad\" id=\"nombreCuidad\" value=\"\" /></td>\n" +
+"                    </tr>\n" +
+"                    <tr>\n" +
+"                        <td><label for=\"Provincia\">Provincia: </label></td>\n" +
+"                        <td><select name=\"Provincia\" id=\"Provincia\">\n" +
+"                                <option value=\"x0\"> --- </option>\n" +
+"                            </select></td>\n" +
+"                    </tr>\n" +
+"                    <tr>\n" +
+"                        <td><label for=\"historiaPais\">Historia: </label></td>\n" +
+"                        <td><textarea name=\"historiaPais\" id=\"historiaPais\" /></textarea></td>\n" +
+"                    </tr> \n" +
+"                    <tr>\n" +
+"                        <td><label for=\"emergenciaPais\">Emergencias: </label></td>\n" +
+"                        <td><textarea name=\"emergenciaPais\" id=\"emergenciaPais\" /></textarea></td>\n" +
+"                    </tr> \n" +
+"                    <tr>\n" +
+"                        <td><label>¿Es Capital?</label></td>\n" +
+"                        <td><label for=\"esCapitalPaisSi\">Si</label>\n" +
+"                        <input type=\"radio\" name=\"capital\" id=\"esCapitalPaisSi\" value=\"1\" />\n" +
+"                        <label for=\"esCapitalPaisNo\">No</label>\n" +
+"                        <input type=\"radio\" name=\"capital\" id=\"esCapitalPaisNo\" value=\"0\" checked=\"checked\" /></td>\n" +
+"                    </tr>\n" +
+"                    <tr>\n" +
+"                        <td><label for=\"clienteCiudad\">Cliente: </label></td>\n" +
+"                        <td><select name=\"clienteCiudad\" id=\"clienteCiudad\">                                \n" +
+"                                <option value=\"x0\"> --- </option>\n" +
+"                            </select>\n" +
+"                            <input type=\"number\" name=\"idClienteCiudad\" id=\"idClienteCiudad\" value=\"\" />\n" +
+"                        </td>\n" +
+"                    </tr>                    \n" +
+"                    <tr>\n" +
+"                        <td><label for=\"pririodadCuidad\">Prioridad: </label></td>\n" +
+"                        <td><input type=\"number\" name=\"pririodadCuidad\" id=\"pririodadCuidad\" value=\"\" /></td>\n" +
+"                    </tr>\n" +
+"                    <tr>\n" +
+"                        <td><label for=\"Observaciones\">Observaciones: </label></td>\n" +
+"                        <td><textarea name=\"Observaciones\" id=\"ciudadObservaciones\" rows=\"4\" cols=\"20\">\n" +
+"                            </textarea></td>\n" +
+"                    </tr>\n" +
+"                    <tr id=\"imagen1\">                        \n" +
+"                        <td><label for=\"imagenCiudad1\" id=\"labelImagenCiudad1\">Imagen: </label></td>\n" +
+"                        <td><input type=\"file\" name=\"imagen1\" id=\"imagenCiudad1\" />\n" +
+"                        <input style=\"display:none\" name=\"cantidadImagenes\" id=\"cantidadImagenes\" /></td>\n" +
+"                        <td><input type=\"button\" name=\"subirImagenCiudad\" id=\"subirImagenCiudad\" value=\"Subir Otra Imagen\"/></td>\n" +
+"                    </tr>\n" +
+"                    <tr>\n" +
+"                        <td><input type=\"submit\" value=\"Enviar\" name=\"envCiudad\" /></td>\n" +
+"                    </tr> \n" +
+"                </tbody>\n" +
+"            </table>\n" +
+"        </form>\n" +
+"        <script>\n" +
+"        //Declaro variables utiles\n" +
+"        var provincia = document.getElementById(\"Provincia\");\n" +
+"        var clientes = document.getElementById(\"clienteCiudad\");\n" +
+"        var idCliente = document.getElementById(\"idClienteCiudad\");\n" +
+"        var cantidadImagenes = 0;\n" +
+"        var camposImagen = 1;\n" +
+"        var subirAlojamiento = document.getElementById(\"subirImagenCiudad\"); \n" +
+"        document.getElementById(\"cantidadImagenes\").value = 0;\n" +
+"        \n" +
+"        \n" +
+"        //Traigo datos\n" +
+"        buscarServlet(\"Provincia\",provincia);\n" +
+"        buscarServlet(\"Clientes\",clientes,null,true);\n" +
+"        \n" +
+"        \n" +
+"        //Manejo eventos\n" +
+"        \n" +
+"               \n" +
+"                \n" +
+"        // Funcion de cambia automaticamente el cliente\n" +
+"        idCliente.onchange = function(){\n" +
+"            var index = 0;\n" +
+"            for(var i = 0;i<clientes.length;i++){\n" +
+"                if(clientes[i].value == idCliente.value){\n" +
+"                    index = i;\n" +
+"                    break;\n" +
+"                }  \n" +
+"            }            \n" +
+"            clientes[index].selected = true;\n" +
+"        };\n" +
+"        clientes.onchange = function(){\n" +
+"            if(this.value != \"x0\")\n" +
+"                idCliente.value = clientes[clientes.selectedIndex].value;\n" +
+"            else\n" +
+"                idCliente.value = \"\";\n" +
+"            \n" +
+"        };\n" +
+"        \n" +
+"        //Aumento el contacdor de imagenes\n" +
+"        document.getElementById(\"imagenCiudad1\").onchange = function(){\n" +
+"            if(this.files[0] == null){\n" +
+"                cantidadImagenes--;\n" +
+"            }else{\n" +
+"                cantidadImagenes++;\n" +
+"            }            \n" +
+"            document.getElementById(\"cantidadImagenes\").value = cantidadImagenes;\n" +
+"        };\n" +
+"        \n" +
+"        //Evento para agregar mas imagenes        \n" +
+"        subirAlojamiento.onclick = function(){\n" +
+"            camposImagen++;\n" +
+"            var fila = document.createElement(\"tr\");\n" +
+"            fila.setAttribute(\"id\",\"imagen\"+camposImagen);\n" +
+"            var campoLabel = fila.insertCell(0);\n" +
+"            var campoFile = fila.insertCell(1);\n" +
+"            var campoBoton = fila.insertCell(2);\n" +
+"            var label = document.createElement(\"Label\");\n" +
+"            label.setAttribute(\"for\",\"imagen\"+camposImagen);\n" +
+"            label.setAttribute(\"id\",\"labelImagenCiudad\"+camposImagen);\n" +
+"            label.innerHTML = \"Imagen \"+camposImagen+\": \";\n" +
+"            campoLabel.appendChild(label);\n" +
+"            var input = document.createElement(\"Input\");\n" +
+"            input.setAttribute(\"type\",\"file\");\n" +
+"            input.setAttribute(\"name\",\"imagen\"+camposImagen);\n" +
+"            input.setAttribute(\"id\",\"imagenCiudad\"+camposImagen);\n" +
+"            input.onchange =  function(){\n" +
+"                if(this.files[0] == null){\n" +
+"                    cantidadImagenes--;\n" +
+"                }else{\n" +
+"                    cantidadImagenes++;\n" +
+"                }            \n" +
+"                document.getElementById(\"cantidadImagenes\").value = cantidadImagenes;\n" +
+"            };\n" +
+"            campoFile.appendChild(input);\n" +
+"            var boton = document.createElement(\"Input\");\n" +
+"            boton.setAttribute(\"type\",\"button\");\n" +
+"            boton.setAttribute(\"name\",\"sacarImagen\"+camposImagen);\n" +
+"            boton.setAttribute(\"id\",\"sacarImagen\"+camposImagen);\n" +
+"            boton.setAttribute(\"value\",\"-\");            \n" +
+"            boton.onclick = function(){                \n" +
+"                var borrar = parseInt(this.id[11]);\n" +
+"                if(this.parentNode.parentNode.childNodes[1].childNodes[0].files[0] != null){\n" +
+"                    cantidadImagenes--;\n" +
+"                    document.getElementById(\"cantidadImagenes\").value = cantidadImagenes;\n" +
+"                }\n" +
+"                this.parentNode.parentNode.remove();                \n" +
+"                for(var i = 1; i <= camposImagen;i++){\n" +
+"                    if(i > borrar){\n" +
+"                        var j = i - 1;\n" +
+"                        var lab = document.getElementById(\"labelImagenCiudad\"+i);\n" +
+"                        var fil = document.getElementById(\"imagenCiudad\"+i);           \n" +
+"                        var bot = document.getElementById(\"sacarImagen\"+i);\n" +
+"                        var fila = document.getElementById(\"imagen\"+i);\n" +
+"                        lab.attributes[0] = \"imagenCiudad\"+j;\n" +
+"                        lab.innerHTML = \"Imagen \"+j+\":\";\n" +
+"                        lab.id = \"labelImagenCiudad\"+j;\n" +
+"                        fil.id = \"imagenCiudad\"+j;\n" +
+"                        fil.name = \"imagen\"+j;\n" +
+"                        bot.id = \"sacarImagen\"+j;\n" +
+"                        bot.name = \"sacarImagen\"+j;\n" +
+"                        fila.id = \"imagen\"+j;\n" +
+"                    }\n" +
+"                    \n" +
+"                }\n" +
+"                camposImagen--;\n" +
+"                \n" +
+"            };\n" +
+"            campoBoton.appendChild(boton);\n" +
+"            var bus = camposImagen - 1;\n" +
+"            insertAfter(document.getElementById(\"imagen\"+bus),fila);\n" +
+"        };\n" +
+"        \n" +
+"    </script>");
+        imprimirEtiquetasFinal(out);
+    }
+    
 }
