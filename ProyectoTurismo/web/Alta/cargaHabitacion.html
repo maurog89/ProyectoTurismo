@@ -8,10 +8,10 @@ and open the template in the editor.
     <head>
         <title>ABM Habitacion - Alta</title>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="../js/buscar.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">        
     </head>
     <body>
+        <script src="../js/buscar.js"></script>
         <form method="POST" action="../AltaHabitacion">
             <table>
                 <thead>
@@ -22,7 +22,7 @@ and open the template in the editor.
                 <tbody>
                     <tr>
                         <td><label for="tipoHabitacion">Tipo Habitacion: </label></td>
-                            <td><select name="tipoHabitacion" id="tipoHabitacion">
+                        <td><select name="tipoHabitacion" id="tipoHabitacion">
                                 <option value="0">---</option>
                             </select></td>
                     </tr>
@@ -57,134 +57,136 @@ and open the template in the editor.
                         <td><label for="imagenExcursion">Imagen: </label></td>
                         <td><input type="file" name="imagenExcursion" id="imagenExcursion" /></td>
                         <td><input type="button" name="subirImagenExcursion" id="subirImagenExcursion" value="Subir Otra Imagen"/></td>
-                        <input style="display:none" name="cantidadImagenes" id="cantidadImagenes" />
-                    </tr>
+                <input style="display:none" name="cantidadImagenes" id="cantidadImagenes" />
+                </tr>
                 </tbody>
             </table>
             <br/>
             <br/>
             <input type="submit" value="Enviar" name="envExcurcion" />
         </form>
-    </body>
-    <script>
-        var idAlojamientos = document.getElementById("idAlojamientoHabitacion");
-        var AlojamientosSel = document.getElementById("alojamientoHabitacion");
-        var cantidadImagenes = 0;
-        var camposImagen = 1;
-        var subirAlojamiento = document.getElementById("subirImagenExcursion"); 
-        var archivo1 = document.getElementById("imagenExcursion");
-        document.getElementById("cantidadImagenes").value = 0;
-        
-        /*
-         * Buscar elementos en la base de datos
-         * y llenar los campos
-         */
-        buscar("Estados",document.getElementById("estadoHabitacion"));
-        buscar("TipoHabitacion",document.getElementById("tipoHabitacion"));
-        buscar("Alojamientos",document.getElementById("alojamientoHabitacion"));
-        
-        
-        // Funcion de cambia automaticamente el cliente
-        idAlojamientos.onchange = function(){
-            var index = 0;
-            for(var i = 0;i<AlojamientosSel.length;i++){
-                if(AlojamientosSel[i].value == idAlojamientos.value){
-                    index = i;
-                    break;
+        <script>
+            var idAlojamientos = document.getElementById("idAlojamientoHabitacion");
+            var AlojamientosSel = document.getElementById("alojamientoHabitacion");
+            var cantidadImagenes = 0;
+            var camposImagen = 1;
+            var subirAlojamiento = document.getElementById("subirImagenExcursion");
+            var archivo1 = document.getElementById("imagenExcursion");
+            document.getElementById("cantidadImagenes").value = 0;
+
+            /*
+             * Buscar elementos en la base de datos
+             * y llenar los campos
+             */
+            buscar("Estados", document.getElementById("estadoHabitacion"));
+            buscar("TipoHabitacion", document.getElementById("tipoHabitacion"));
+            buscar("Alojamientos", document.getElementById("alojamientoHabitacion"));
+
+
+            // Funcion de cambia automaticamente el cliente
+            idAlojamientos.onchange = function () {
+                var index = 0;
+                for (var i = 0; i < AlojamientosSel.length; i++) {
+                    if (AlojamientosSel[i].value == idAlojamientos.value) {
+                        index = i;
+                        break;
+                    }
+
                 }
-                                               
-            }            
-            AlojamientosSel[index].selected = true;
-        };
-        AlojamientosSel.onchange = function(){
-            if(this.value != "x0")
-                idAlojamientos.value = AlojamientosSel[AlojamientosSel.selectedIndex].value;
-            else
-                idAlojamientos.value = "";
-        };
-        
-        
-        //Aumento el contacdor de imagenes
-        archivo1.onchange = function(){
-            if(this.files[0] == null){
-                cantidadImagenes--;
-            }else{
-                cantidadImagenes++;
-            }            
-            document.getElementById("cantidadImagenes").value = cantidadImagenes;
-        };
-        
-        //Evento para agregar mas imagenes        
-        subirAlojamiento.onclick = function(){
-            camposImagen++;
-            var fila = document.createElement("tr");
-            fila.setAttribute("id","imagen"+camposImagen);
-            var campoLabel = fila.insertCell(0);
-            var campoFile = fila.insertCell(1);
-            var campoBoton = fila.insertCell(2);
-            var label = document.createElement("Label");
-            label.setAttribute("for","imagen"+camposImagen);
-            label.setAttribute("id","labelImagenExcursion"+camposImagen);
-            label.innerHTML = "Imagen "+camposImagen+": ";
-            campoLabel.appendChild(label);
-            var input = document.createElement("Input");
-            input.setAttribute("type","file");
-            input.setAttribute("name","imagen"+camposImagen);
-            input.setAttribute("id","imagenExcursion"+camposImagen);
-            input.onchange =  function(){
-                if(this.files[0] == null){
+                AlojamientosSel[index].selected = true;
+            };
+            AlojamientosSel.onchange = function () {
+                if (this.value != "x0")
+                    idAlojamientos.value = AlojamientosSel[AlojamientosSel.selectedIndex].value;
+                else
+                    idAlojamientos.value = "";
+            };
+
+
+            //Aumento el contacdor de imagenes
+            archivo1.onchange = function () {
+                if (this.files[0] == null) {
                     cantidadImagenes--;
-                }else{
+                } else {
                     cantidadImagenes++;
-                }            
+                }
                 document.getElementById("cantidadImagenes").value = cantidadImagenes;
             };
-            campoFile.appendChild(input);
-            var boton = document.createElement("Input");
-            boton.setAttribute("type","button");
-            boton.setAttribute("name","sacarImagen"+camposImagen);
-            boton.setAttribute("id","sacarImagen"+camposImagen);
-            boton.setAttribute("value","-");
-            boton.onclick = function(){                
-                var borrar = parseInt(this.id[11]);
-                if(this.parentNode.parentNode.childNodes[1].childNodes[0].files[0] != null){
-                    cantidadImagenes--;
-                    document.getElementById("cantidadImagenes").value = cantidadImagenes;
-                }
-                this.parentNode.parentNode.remove();                
-                for(var i = 1; i <= camposImagen;i++){
-                    if(i > borrar){
-                        var j = i - 1;
-                        var lab = document.getElementById("labelImagenExcursion"+i);
-                        var fil = document.getElementById("imagenExcursion"+i);           
-                        var bot = document.getElementById("sacarImagen"+i);
-                        var fila = document.getElementById("imagen"+i);
-                        lab.attributes[0] = "imagen"+j;
-                        lab.innerHTML = "Imagen "+j+":";
-                        lab.id = "labelImagenExcursion"+j;
-                        fil.id = "imagenExcursion"+j;
-                        fil.name = "imagen"+j;
-                        bot.id = "sacarImagen"+j;
-                        bot.name = "sacarImagen"+j;
-                        fila.id = "imagen"+j;
+
+            //Evento para agregar mas imagenes        
+            subirAlojamiento.onclick = function () {
+                camposImagen++;
+                var fila = document.createElement("tr");
+                fila.setAttribute("id", "imagen" + camposImagen);
+                var campoLabel = fila.insertCell(0);
+                var campoFile = fila.insertCell(1);
+                var campoBoton = fila.insertCell(2);
+                var label = document.createElement("Label");
+                label.setAttribute("for", "imagen" + camposImagen);
+                label.setAttribute("id", "labelImagenExcursion" + camposImagen);
+                label.innerHTML = "Imagen " + camposImagen + ": ";
+                campoLabel.appendChild(label);
+                var input = document.createElement("Input");
+                input.setAttribute("type", "file");
+                input.setAttribute("name", "imagen" + camposImagen);
+                input.setAttribute("id", "imagenExcursion" + camposImagen);
+                input.onchange = function () {
+                    if (this.files[0] == null) {
+                        cantidadImagenes--;
+                    } else {
+                        cantidadImagenes++;
                     }
-                    
-                }
-                camposImagen--;
-                
+                    document.getElementById("cantidadImagenes").value = cantidadImagenes;
+                };
+                campoFile.appendChild(input);
+                var boton = document.createElement("Input");
+                boton.setAttribute("type", "button");
+                boton.setAttribute("name", "sacarImagen" + camposImagen);
+                boton.setAttribute("id", "sacarImagen" + camposImagen);
+                boton.setAttribute("value", "-");
+                boton.onclick = function () {
+                    var borrar = parseInt(this.id[11]);
+                    if (this.parentNode.parentNode.childNodes[1].childNodes[0].files[0] != null) {
+                        cantidadImagenes--;
+                        document.getElementById("cantidadImagenes").value = cantidadImagenes;
+                    }
+                    this.parentNode.parentNode.remove();
+                    for (var i = 1; i <= camposImagen; i++) {
+                        if (i > borrar) {
+                            var j = i - 1;
+                            var lab = document.getElementById("labelImagenExcursion" + i);
+                            var fil = document.getElementById("imagenExcursion" + i);
+                            var bot = document.getElementById("sacarImagen" + i);
+                            var fila = document.getElementById("imagen" + i);
+                            lab.attributes[0] = "imagen" + j;
+                            lab.innerHTML = "Imagen " + j + ":";
+                            lab.id = "labelImagenExcursion" + j;
+                            fil.id = "imagenExcursion" + j;
+                            fil.name = "imagen" + j;
+                            bot.id = "sacarImagen" + j;
+                            bot.name = "sacarImagen" + j;
+                            fila.id = "imagen" + j;
+                        }
+
+                    }
+                    camposImagen--;
+
+                };
+                campoBoton.appendChild(boton);
+                var bus = camposImagen - 1;
+                insertAfter(document.getElementById("imagen" + bus), fila);
             };
-            campoBoton.appendChild(boton);
-            var bus = camposImagen - 1;
-            insertAfter(document.getElementById("imagen"+bus),fila);
-        };
-        
-        //Funcion usada para agregar una opcion ---
-        function agregarOpcion(sel){
-            var select = document.createElement("Select");
-            var option = document.createElement("Option");
-            option.setAttribute("value","x0");
-            option.innerHTML = "---";
-            sel.appendChild(option);
-        };
-    </script>
+
+            //Funcion usada para agregar una opcion ---
+            function agregarOpcion(sel) {
+                var select = document.createElement("Select");
+                var option = document.createElement("Option");
+                option.setAttribute("value", "x0");
+                option.innerHTML = "---";
+                sel.appendChild(option);
+            }
+            ;
+        </script>
+    </body>
+
 </html>

@@ -36,6 +36,7 @@ public class buscar extends HttpServlet {
         response.setContentType("application/json");
         request.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
+        
         try {
             /* TODO output your page here. You may use following sample code. */
             

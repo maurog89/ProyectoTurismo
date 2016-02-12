@@ -42,277 +42,7 @@ public class ImprimirHTML {
     
     public static void InterfaceDeGestion(PrintWriter out){
         imprimirEtiquetasIniciales(out,"Interfaz de Gestión");
-        out.write("<form method=\"post\" action=\"ABM\">\n" +
-"            <h1>Interface de gestión: </h1>               \n" +
-"            <table>\n" +
-"                <tr>\n" +
-"                    <td>\n" +
-"                        <p>Alojamiento</p>\n" +
-"                        <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                    </td>\n" +
-"                    <td>\n" +
-"                        <p>Barrio</p>\n" +
-"                        <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                    </td>\n" +
-"                </tr>\n" +
-"                <tr>\n" +
-"                    <td>\n" +
-"                        <p>Ciudad</p>\n" +
-"                        <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                    </td>\n" +
-"                    <td>\n" +
-"                        <p>Categoria Restaurante</p>\n" +
-"                        <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                    </td>\n" +
-"                </tr>\n" +
-"                <tr>\n" +
-"                    <td>\n" +
-"                        <p>Clintes</p>\n" +
-"                        <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                    </td>\n" +
-"                    <td>\n" +
-"                        <p>Contactos</p>\n" +
-"                        <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                    </td>\n" +
-"                </tr>\n" +
-"                <tr>\n" +
-"                    <td>\n" +
-"                        <p>Detalle Excursión</p>\n" +
-"                        <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                    </td>\n" +
-"                    <td>\n" +
-"                        <p>Domicilio</p>\n" +
-"                        <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                    </td>\n" +
-"                </tr>\n" +
-"                <tr>\n" +
-"                    <td>\n" +
-"                        <p>Empresa De Transporte</p>\n" +
-"                        <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                    </td>\n" +
-"                    <td>\n" +
-"                        <p>Estado</p>\n" +
-"                        <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                    </td>\n" +
-"                </tr>\n" +
-"                <tr>\n" +
-"                    <td>\n" +
-"                        <p>Eventos</p>\n" +
-"                        <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                    </td>\n" +
-"                    <td>\n" +
-"                        <p>Excursiones</p>\n" +
-"                        <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                    </td>\n" +
-"                </tr>\n" +
-"                <tr>\n" +
-"                    <td>\n" +
-"                        <p>Facturas</p>\n" +
-"                        <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                    </td>\n" +
-"                    <td>\n" +
-"                        <p>Habitación</p>\n" +
-"                        <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                    </td>\n" +
-"                </tr>\n" +
-"                <tr>\n" +
-"                    <td>\n" +
-"                        <p>Immagen</p>\n" +
-"                        <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                    </td>\n" +
-"                    <td>\n" +
-"                        <p>Lugares de Interes</p>\n" +
-"                        <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                    </td>\n" +
-"                </tr>\n" +
-"                <tr>\n" +
-"                    <td>\n" +
-"                        <p>Mapa</p>\n" +
-"                        <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                    </td>\n" +
-"                    <td>\n" +
-"                        <p>Medio de Transporte</p>\n" +
-"                        <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                    </td>\n" +
-"                </tr>\n" +
-"                <tr>\n" +
-"                    <td>\n" +
-"                        <p>Noticias</p>\n" +
-"                        <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                    </td>\n" +
-"                    <td>\n" +
-"                        <p>Observaciones</p>\n" +
-"                        <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                    </td>\n" +
-"                </tr>\n" +
-"                <tr>\n" +
-"                    <td>\n" +
-"                        <p>Paises</p>\n" +
-"                        <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                    </td>\n" +
-"                    <td>\n" +
-"                        <p>Permisos</p>\n" +
-"                        <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                    </td>\n" +
-"                </tr>\n" +
-"                <tr>\n" +
-"                    <td>\n" +
-"                        <p>Provincias</p>\n" +
-"                        <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                    </td>\n" +
-"                    <td>\n" +
-"                        <p>Regimenes Alimentarios</p>\n" +
-"                        <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                    </td>\n" +
-"                </tr>\n" +
-"                <tr>\n" +
-"                    <td>\n" +
-"                        <p>Sitios para comer</p>\n" +
-"                        <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                    </td>\n" +
-"                    <td>\n" +
-"                        <p>Temporadas</p>\n" +
-"                        <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                    </td>\n" +
-"                </tr>\n" +
-"                <tr>\n" +
-"                    <td>\n" +
-"                        <p>Tipos de Comida</p>\n" +
-"                        <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                    </td>\n" +
-"                    <td>\n" +
-"                        <p>Tipos de Contacto</p>\n" +
-"                        <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                    </td>\n" +
-"                </tr>\n" +
-"                <tr>\n" +
-"                    <td>\n" +
-"                        <p>Tipos de Contacto</p>\n" +
-"                        <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                    </td>\n" +
-"                    <td>\n" +
-"                        <p>Tipos de Documento</p>\n" +
-"                        <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                    </td>\n" +
-"                </tr>\n" +
-"                <tr>\n" +
-"                    <td>\n" +
-"                        <p>Tipos de Eventos</p>\n" +
-"                        <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                    </td>\n" +
-"                    <td>\n" +
-"                        <p>Tipos de Factura</p>\n" +
-"                        <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                    </td>\n" +
-"                </tr>\n" +
-"                <tr>\n" +
-"                    <td>\n" +
-"                        <p>Tipos de Habitación</p>\n" +
-"                        <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                    </td>\n" +
-"                    <td>\n" +
-"                        <p>Tipos de Permiso</p>\n" +
-"                        <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                    </td>\n" +
-"                </tr>\n" +
-"                <tr>\n" +
-"                    <td>\n" +
-"                        <p>Tipos de Venimiento</p>\n" +
-"                        <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                    </td>\n" +
-"                    <td>\n" +
-"                        <p>Usuarios</p>\n" +
-"                        <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                        <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" />\n" +
-"                    </td>\n" +
-"                </tr>\n" +
-"            </table>\n" +
-"            <br/>\n" +
-"            <br/>\n" +
-"            <input type=\"button\" value=\"Cerrar Sesion\" id=\"cerrarSesion\"/>\n" +
-"            <input type=\"text\" name=\"valor\" style=\"display:none;\" id=\"bot\"/>\n" +
-"            <input type=\"text\" name=\"boton\" style=\"display:none;\" id=\"boton\"/>\n" +
-"        </form>\n" +
-"        <script type=\"text/javascript\">\n" +
-"            document.getElementById(\"cerrarSesion\").onclick = function(){\n" +
-"                location.href = \"cerrarSesion\";\n" +
-"            };\n" +
-"            function procesarSolicitud(botonPresionado){\n" +
-"                document.getElementById(\"bot\").value = botonPresionado.parentNode.childNodes[1].innerHTML;\n" +
-"                document.getElementById(\"boton\").value = botonPresionado.value;\n" +
-"            };\n" +
-"        </script>");
+        out.write("<form method=\"post\" action=\"ABM\"> <h1>Interface de gestión: </h1> <table> <tr> <td> <p>Alojamiento</p> <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" /> </td> <td> <p>Barrio</p> <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" /> </td> </tr> <tr> <td> <p>Ciudad</p> <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" /> </td> <td> <p>Categoria Restaurante</p> <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" /> </td> </tr> <tr> <td> <p>Clientes</p> <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" /> </td> <td> <p>Contactos</p> <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" /> </td> </tr> <tr> <td> <p>Detalle Excursión</p> <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" /> </td> <td> <p>Domicilio</p> <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" /> </td> </tr> <tr> <td> <p>Empresa De Transporte</p> <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" /> </td> <td> <p>Estado</p> <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" /> </td> </tr> <tr> <td> <p>Eventos</p> <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" /> </td> <td> <p>Excursiones</p> <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" /> </td> </tr> <tr> <td> <p>Facturas</p> <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" /> </td> <td> <p>Habitación</p> <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" /> </td> </tr> <tr> <td> <p>Mapa</p> <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" /> </td> <td> <p>Medio de Transporte</p> <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" /> </td> </tr> <tr> <td> <p>Noticias</p> <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" /> </td> <td> <p>Observaciones</p> <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" /> </td> </tr> <tr> <td> <p>Paises</p> <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" /> </td> <td> <p>Permisos</p> <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" /> </td> </tr> <tr> <td> <p>Provincias</p> <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" /> </td> <td> <p>Regimenes Alimentarios</p> <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" /> </td> </tr> <tr> <td> <p>Sitios para comer</p> <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" /> </td> <td> <p>Temporadas</p> <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" /> </td> </tr> <tr> <td> <p>Tipos de Comida</p> <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" /> </td> <td> <p>Tipos de Contacto</p> <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" /> </td> </tr> <tr> <td> <p>Tipos de Contacto</p> <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" /> </td> <td> <p>Tipos de Documento</p> <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" /> </td> </tr> <tr> <td> <p>Tipos de Eventos</p> <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" /> </td> <td> <p>Tipos de Factura</p> <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" /> </td> </tr> <tr> <td> <p>Tipos de Habitación</p> <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" /> </td> <td> <p>Tipos de Permiso</p> <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" /> </td> </tr> <tr> <td> <p>Tipos de Vencimiento</p> <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" /> </td> <td> <p>Usuarios</p> <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" /> </td> </tr> <tr> <td> <p>Lugares de Interes</p> <input type=\"submit\" value=\"Alta\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Modificación\" onclick=\"procesarSolicitud(this);\" /> <input type=\"submit\" value=\"Baja\" onclick=\"procesarSolicitud(this);\" /> </td> </tr> </table> <br/> <br/> <input type=\"button\" value=\"Cerrar Sesion\" id=\"cerrarSesion\"/> <input type=\"text\" name=\"valor\" style=\"display:none;\" id=\"bot\"/> <input type=\"text\" name=\"boton\" style=\"display:none;\" id=\"boton\"/> </form> <script type=\"text/javascript\"> function procesarSolicitud(e){document.getElementById(\"bot\").value=e.parentNode.childNodes[1].innerHTML,document.getElementById(\"boton\").value=e.value}document.getElementById(\"cerrarSesion\").onclick=function(){location.href=\"cerrarSesion\"};</script>");
         imprimirEtiquetasFinal(out);
     }
     
@@ -324,588 +54,93 @@ public class ImprimirHTML {
     
     public static void cargaAlojamiento(PrintWriter out){
         imprimirEtiquetasIniciales(out,"ABM Alojamiento - Alta");
-        out.write("<script src=\"js/buscar.js\"></script><form method=\"POST\" action=\"AltaAlojamiento\" enctype=\"multipart/form-data\" >\n" +
-"            <table>\n" +
-"                    <thead>\n" +
-"                        <tr>\n" +
-"                            <th>ABM Alojamiento - Alta</th>\n" +
-"                        </tr>\n" +
-"                    </thead>\n" +
-"                    <tbody>\n" +
-"                        <tr>\n" +
-"                        <td><label for=\"nombreAlojamiento\">Nombre: </label></td>\n" +
-"                        <td><input type=\"text\" name=\"nombreAlojamiento\" id=\"nombreAlojamiento\" value=\"\" /></td>\n" +
-"                    </tr>\n" +
-"                    <tr>\n" +
-"                        <td><label for=\"descripcionAlojamiento\">Descripcion: </label></td>\n" +
-"                        <td><textarea name=\"descripcionAlojamiento\" id=\"descripcionAlojamiento\" /></textarea></td>\n" +
-"                    </tr> \n" +
-"                    <tr>\n" +
-"                        <td><label for=\"pririodadAlojamiento\">Prioridad: </label></td>\n" +
-"                        <td><input type=\"number\" name=\"pririodadAlojamiento\" id=\"pririodadAlojamiento\" value=\"\" /></td>\n" +
-"                    </tr>\n" +
-"                    <tr>\n" +
-"                        <td><label for=\"estadoAlojamiento\">Estado: </label></td>\n" +
-"                        <td><select name=\"estadoAlojamiento\" id=\"estadoAlojamiento\">\n" +
-"                                <option value=\"x0\"> --- </option>\n" +
-"                            </select></td>                    \n" +
-"                    </tr>\n" +
-"                    <tr>\n" +
-"                        <td><label for=\"clienteAlojamiento\">Id Cliente: </label></td>\n" +
-"                        <td><select name=\"clienteAlojamiento\" id=\"clienteAlojamientoSel\">\n" +
-"                                <option value=\"x0\"> --- </option>\n" +
-"                            </select>\n" +
-"                            <input type=\"text\" name=\"clienteAlojamientor\" id=\"clienteAlojamiento\" value=\"\" />\n" +
-"                        </td>\n" +
-"                    </tr>\n" +
-"                    <tr id=\"imagen1\">                        \n" +
-"                        <td><label for=\"imagen1\">Imagen: </label></td>\n" +
-"                        <td><input type=\"file\" name=\"imagen1\" id=\"imagenAlojamiento1\" /></td>\n" +
-"                        <td><input type=\"button\" name=\"subirAlojamiento\" id=\"subirAlojamiento\" value=\"Subir Otra Imagen\"/></td>\n" +
-"                        <input style=\"display:none\" name=\"cantidadImagenes\" id=\"cantidadImagenes\" />\n" +
-"                    </tr>\n" +
-"                    <tr>\n" +
-"                        <td><label for=\"regimenAlimentarioAlojamiento\">Regimen Alimentario: </label></td>\n" +
-"                        <td><select name=\"regimenAlimentarioAlojamiento\" id=\"regimenAlimentarioAlojamiento\">\n" +
-"                                <option value=\"x0\"> --- </option>\n" +
-"                            </select></td>                        \n" +
-"                    </tr>\n" +
-"                    <tr>\n" +
-"                        <td><label for=\"temporadaAlojamiento\">Temporada: </label></td>\n" +
-"                        <td><select name=\"temporadaAlojamiento\" id=\"temporadaAlojamiento\">\n" +
-"                                <option value=\"x0\"> --- </option>\n" +
-"                            </select></td>\n" +
-"                    </tr>\n" +
-"                    <tr><td><br /></td></tr>\n" +
-"                    <tr><td><br /></td></tr>\n" +
-"                    <tr><td><br /></td></tr>\n" +
-"                    <tr>\n" +
-"                        <td><label for=\"Pais\">Pais: </label></td>\n" +
-"                        <td><select name=\"Pais\" id=\"Pais\">\n" +
-"                                <option value=\"x0\"> --- </option>\n" +
-"                            </select></td>\n" +
-"                    <tr>\n" +
-"                        <td><label for=\"Provincia\">Provincia: </label></td>\n" +
-"                        <td><select name=\"Provincia\" id=\"Provincia\">\n" +
-"                                <option value=\"x0\"> --- </option>\n" +
-"                            </select></td>\n" +
-"                    </tr>\n" +
-"                    <tr>\n" +
-"                        <td><label for=\"Ciudad\">Ciudad: </label></td>\n" +
-"                        <td><select name=\"Ciudad\" id=\"Ciudad\">\n" +
-"                                <option value=\"x0\"> --- </option>\n" +
-"                            </select></td>\n" +
-"                    </tr>\n" +
-"                    <tr>\n" +
-"                        <td><label for=\"Barrio\">Barrio: </label></td>\n" +
-"                        <td><select name=\"Barrio\" id=\"Barrio\">\n" +
-"                                <option value=\"x0\"> --- </option>\n" +
-"                            </select></td>\n" +
-"                    </tr>\n" +
-"                    <tr>\n" +
-"                        <td><label for=\"calleDomicilio\">Calle: </label></td>\n" +
-"                        <td><input type=\"text\" name=\"calleDomicilio\" id=\"calleDomicilio\" /></td>\n" +
-"                    </tr>\n" +
-"                    <tr>\n" +
-"                        <td><label for=\"nroDomicilio\">Número: </label></td>\n" +
-"                        <td><input type=\"text\" name=\"nroDomicilio\" id=\"nroDomicilio\" value=\"\" /></td>\n" +
-"                    </tr>\n" +
-"                    <tr>\n" +
-"                        <td><label for=\"nroPiso\">Piso: </label></td>\n" +
-"                        <td><input type=\"text\" name=\"nroPiso\" id=\"nroPiso\" value=\"\" /></td>\n" +
-"                    </tr>                    \n" +
-"                    <tr>\n" +
-"                        <td><label for=\"departamentoDomicilio\">Departamento: </label></td>\n" +
-"                        <td><input type=\"text\" name=\"departamentoDomicilio\" id=\"departamentoDomicilio\" value=\"\" /></td>\n" +
-"                    </tr>\n" +
-"                    <tr>\n" +
-"                        <td><label for=\"torreDomicilio\">Torre: </label></td>\n" +
-"                        <td><input type=\"text\" name=\"torreDomicilio\" id=\"torreDomicilio\" value=\"\" /></td>\n" +
-"                    </tr>\n" +
-"                    <tr>\n" +
-"                        <td><label for=\"manzanaDomicilio\">Manzana: </label></td>\n" +
-"                        <td><input type=\"text\" name=\"manzanaDomicilio\" id=\"manzanaDomicilio\" value=\"\" /></td>\n" +
-"                    </tr>\n" +
-"                    <tr>\n" +
-"                        <td><label for=\"loteDomicilio\">Lote: </label></td>\n" +
-"                        <td><input type=\"text\" name=\"loteDomicilio\" id=\"loteDomicilio\" value=\"\" /></td>\n" +
-"                    </tr>\n" +
-"                    <tr>\n" +
-"                        <td><label for=\"codigoPostalDomicilio\">Código Postal: </label></td>\n" +
-"                        <td><input type=\"text\" name=\"codigoPostalDomicilio\" id=\"codigoPostalDomicilio\" value=\"\" /></td>\n" +
-"                    </tr>\n" +
-"                    </tbody>\n" +
-"                </table>\n" +
-"                <br />\n" +
-"                <br />\n" +
-"                <br />\n" +
-"                <table>\n" +
-"                    <thead>\n" +
-"                        <tr>\n" +
-"                            <th>ABM Alojamiento - Contactos</th>\n" +
-"                        </tr>\n" +
-"                    </thead>\n" +
-"                    <tbody id=\"contactos\">\n" +
-"                        <tr>\n" +
-"                            <td><label for=\"tipoContacto1\">Tipo de Contacto: </label></td>\n" +
-"                            <td><select name=\"tipoContacto1\" id=\"tipoContacto\">\n" +
-"                                    <option value=\"x0\"> --- </option>\n" +
-"                                </select></td>\n" +
-"                            <td><input type=\"button\" name=\"+tipoContacto\" id=\"masContacto\" value=\"-\"/></td>\n" +
-"                        </tr>\n" +
-"                        <tr>\n" +
-"                            <td><label for=\"detalleContactos1\">Detalle: </label></td>\n" +
-"                            <td><input type=\"text\" name=\"detalleContactos1\" id=\"detalleContactos\" value=\"\" /></td>\n" +
-"                        </tr>\n" +
-"                        <tr>\n" +
-"                            <td><input type=\"button\" value=\"Agregar Contacto\" name=\"envContacto\" id=\"envContacto\" />\n" +
-"                                <input style=\"display:none\" id=\"cantidadContactos\" name=\"cantidadContactos\" /></td>\n" +
-"                        </tr>       \n" +
-"                    </tbody>\n" +
-"                </table>\n" +
-"            <input type=\"submit\" value=\"Enviar\" name=\"envDetalle\" />\n" +
-"        </form>\n" +
-"        <script>\n" +
-"        // Guardo en variables los elementos que necesito del DOM\n" +
-"        var pais = document.getElementById(\"Pais\");\n" +
-"        var provincia = document.getElementById(\"Provincia\");\n" +
-"        var ciudad = document.getElementById(\"Ciudad\");\n" +
-"        var barrio = document.getElementById(\"Barrio\");\n" +
-"        var idCliente = document.getElementById(\"clienteAlojamiento\");\n" +
-"        var clienteSel = document.getElementById(\"clienteAlojamientoSel\");\n" +
-"        var cantidadContactos = 1;\n" +
-"        var cantidadImagenes = 0;\n" +
-"        var camposImagen = 1;\n" +
-"        var eliminarCotacto = document.getElementById(\"masContacto\");\n" +
-"        var subirAlojamiento = document.getElementById(\"subirAlojamiento\"); \n" +
-"        var archivo1 = document.getElementById(\"imagenAlojamiento1\");\n" +
-"        document.getElementById(\"cantidadImagenes\").value = 0;\n" +
-"        /* \n" +
-"         * Manejo los eventos        \n" +
-"        */\n" +
-"        \n" +
-"        \n" +
-"        //Aumento el contacdor de imagenes\n" +
-"        archivo1.onchange = function(){\n" +
-"            if(this.files[0] == null){\n" +
-"                cantidadImagenes--;\n" +
-"            }else{\n" +
-"                cantidadImagenes++;\n" +
-"            }            \n" +
-"            document.getElementById(\"cantidadImagenes\").value = cantidadImagenes;\n" +
-"        };\n" +
-"        \n" +
-"        //Evento utilizado para saber si se cargo algun contacto\n" +
-"        document.getElementById(\"tipoContacto\").onchange = function(){\n" +
-"            if(document.getElementById(\"cantidadContactos\").value === \"\") \n" +
-"                document.getElementById(\"cantidadContactos\").value = 1;\n" +
-"        };\n" +
-"        \n" +
-"        \n" +
-"        //Evento para agregar mas imagenes        \n" +
-"        subirAlojamiento.onclick = function(){\n" +
-"            camposImagen++;\n" +
-"            var fila = document.createElement(\"tr\");\n" +
-"            fila.setAttribute(\"id\",\"imagen\"+camposImagen);\n" +
-"            var campoLabel = fila.insertCell(0);\n" +
-"            var campoFile = fila.insertCell(1);\n" +
-"            var campoBoton = fila.insertCell(2);\n" +
-"            var label = document.createElement(\"Label\");\n" +
-"            label.setAttribute(\"for\",\"imagen\"+camposImagen);\n" +
-"            label.setAttribute(\"id\",\"labelImagenAlojamiento\"+camposImagen);\n" +
-"            label.innerHTML = \"Imagen \"+camposImagen+\": \";\n" +
-"            campoLabel.appendChild(label);\n" +
-"            var input = document.createElement(\"Input\");\n" +
-"            input.setAttribute(\"type\",\"file\");\n" +
-"            input.setAttribute(\"name\",\"imagen\"+camposImagen);\n" +
-"            input.setAttribute(\"id\",\"imagenAlojamiento\"+camposImagen);\n" +
-"            input.onchange =  function(){\n" +
-"                if(this.files[0] == null){\n" +
-"                    cantidadImagenes--;\n" +
-"                }else{\n" +
-"                    cantidadImagenes++;\n" +
-"                }            \n" +
-"                document.getElementById(\"cantidadImagenes\").value = cantidadImagenes;\n" +
-"            };\n" +
-"            campoFile.appendChild(input);\n" +
-"            var boton = document.createElement(\"Input\");\n" +
-"            boton.setAttribute(\"type\",\"button\");\n" +
-"            boton.setAttribute(\"name\",\"sacarImagen\"+camposImagen);\n" +
-"            boton.setAttribute(\"id\",\"sacarImagen\"+camposImagen);\n" +
-"            boton.setAttribute(\"value\",\"-\");\n" +
-"            boton.onclick = function(){                \n" +
-"                var borrar = parseInt(this.id[11]);\n" +
-"                if(this.parentNode.parentNode.childNodes[1].childNodes[0].files[0] != null){\n" +
-"                    cantidadImagenes--;\n" +
-"                    document.getElementById(\"cantidadImagenes\").value = cantidadImagenes;\n" +
-"                }\n" +
-"                this.parentNode.parentNode.remove();                \n" +
-"                for(var i = 1; i <= camposImagen;i++){\n" +
-"                    if(i > borrar){\n" +
-"                        var j = i - 1;\n" +
-"                        var lab = document.getElementById(\"labelImagenAlojamiento\"+i);\n" +
-"                        var fil = document.getElementById(\"imagenAlojamiento\"+i);           \n" +
-"                        var bot = document.getElementById(\"sacarImagen\"+i);\n" +
-"                        var fila = document.getElementById(\"imagen\"+i);\n" +
-"                        lab.attributes[0] = \"imagen\"+j;\n" +
-"                        lab.innerHTML = \"Imagen \"+j+\":\";\n" +
-"                        lab.id = \"labelImagenAlojamiento\"+j;\n" +
-"                        fil.id = \"imagenAlojamiento\"+j;\n" +
-"                        fil.name = \"imagen\"+j;\n" +
-"                        bot.id = \"sacarImagen\"+j;\n" +
-"                        bot.name = \"sacarImagen\"+j;\n" +
-"                        fila.id = \"imagen\"+j;\n" +
-"                    }\n" +
-"                    \n" +
-"                }\n" +
-"                camposImagen--;\n" +
-"                \n" +
-"            };\n" +
-"            campoBoton.appendChild(boton);\n" +
-"            var bus = camposImagen - 1;\n" +
-"            insertAfter(document.getElementById(\"imagen\"+bus),fila);\n" +
-"        };\n" +
-"                \n" +
-"        //Eliminar Contacto\n" +
-"        eliminarCotacto.onclick = function(){\n" +
-"            this.parentNode.parentNode.nextSibling.nextSibling.remove();\n" +
-"            this.parentNode.parentNode.remove();\n" +
-"            document.getElementById(\"cantidadContactos\").value = --cantidadContactos;\n" +
-"        };\n" +
-"        \n" +
-"        // Agregar contacto\n" +
-"        document.getElementById(\"envContacto\").onclick = function(){\n" +
-"            var tabla = document.getElementById(\"contactos\");\n" +
-"            var filaTipoContacto = tabla.insertRow(0);\n" +
-"            var filaDetalle = tabla.insertRow(1);\n" +
-"            tabla.insertRow(2).appendChild(document.createElement(\"Br\"));\n" +
-"            var labelDetalle = filaDetalle.insertCell(0);\n" +
-"            var inputDetalle = filaDetalle.insertCell(1);\n" +
-"            var labelTipoContacto = filaTipoContacto.insertCell(0);\n" +
-"            var selectTipoContacto = filaTipoContacto.insertCell(1);\n" +
-"            var buttonTipoContacto = filaTipoContacto.insertCell(2);\n" +
-"            var label = document.createElement(\"Label\");            \n" +
-"            cantidadContactos++;\n" +
-"            label.setAttribute(\"for\",\"tipoContacto\"+cantidadContactos);\n" +
-"            label.innerHTML = \"Tipo de Contacto: \";\n" +
-"            labelTipoContacto.appendChild(label);\n" +
-"            var select = document.createElement(\"Select\");\n" +
-"            var option = document.createElement(\"Option\");\n" +
-"            select.setAttribute(\"name\",\"tipoContacto\"+cantidadContactos);\n" +
-"            select.setAttribute(\"id\",\"tipoContacto\"+cantidadContactos);\n" +
-"            option.setAttribute(\"value\",\"0\");\n" +
-"            option.innerHTML = \"---\";\n" +
-"            select.appendChild(option);\n" +
-"            selectTipoContacto.appendChild(select);\n" +
-"            buscarServlet(\"TipoContacto\",document.getElementById(\"tipoContacto\"+cantidadContactos));\n" +
-"            var boton = document.createElement(\"Input\");\n" +
-"            boton.setAttribute(\"type\",\"button\");\n" +
-"            boton.setAttribute(\"name\",\"+tipoContacto\"+cantidadContactos);\n" +
-"            boton.setAttribute(\"id\",\"+tipoContacto\"+cantidadContactos);\n" +
-"            boton.setAttribute(\"value\",\"-\");\n" +
-"            boton.onclick = function(){\n" +
-"                this.parentNode.parentNode.nextSibling.remove();\n" +
-"                this.parentNode.parentNode.nextSibling.remove();\n" +
-"                this.parentNode.parentNode.remove();\n" +
-"                document.getElementById(\"cantidadContactos\").value = --cantidadContactos;\n" +
-"            };\n" +
-"            buttonTipoContacto.appendChild(boton);\n" +
-"            var label2 = document.createElement(\"Label\");\n" +
-"            label2.setAttribute(\"for\",\"detalleContactos\"+cantidadContactos);\n" +
-"            label2.innerHTML = \"Detalle: \";\n" +
-"            labelDetalle.appendChild(label2);\n" +
-"            var input = document.createElement(\"Input\");\n" +
-"            input.setAttribute(\"type\",\"text\");\n" +
-"            input.setAttribute(\"name\",\"detalleContactos\"+cantidadContactos);\n" +
-"            input.setAttribute(\"type\",\"detalleContactos\"+cantidadContactos);\n" +
-"            inputDetalle.appendChild(input);                \n" +
-"            document.getElementById(\"cantidadContactos\").value = cantidadContactos;\n" +
-"        };\n" +
-"        \n" +
-"        // Funcion de cambia automaticamente el cliente\n" +
-"        idCliente.onchange = function(){\n" +
-"            var index = 0;\n" +
-"            for(var i = 0;i<clienteSel.length;i++){\n" +
-"                if(clienteSel[i].value == idCliente.value){\n" +
-"                    index = i;\n" +
-"                    break;\n" +
-"                }\n" +
-"            }            \n" +
-"            clienteSel[index].selected = true;\n" +
-"        };\n" +
-"        clienteSel.onchange = function(){\n" +
-"            if(this.value != \"x0\")\n" +
-"                idCliente.value = clienteSel[clienteSel.selectedIndex].value;\n" +
-"            else\n" +
-"                idCliente.value = \"\";\n" +
-"        };\n" +
-"        \n" +
-"               \n" +
-"        //Funcion de cambiar provincia cuando cambia el pais\n" +
-"        pais.onchange = function(){            \n" +
-"            provincia.options.length = 0;\n" +
-"            agregarOpcion(provincia);\n" +
-"            var res = pais[pais.selectedIndex].value;\n" +
-"            buscarServlet(\"Provincia\",provincia,res);\n" +
-"        };\n" +
-"        \n" +
-"        //Funcion de cambiar ciudad cuando cambia la provincia\n" +
-"        provincia.onchange = function(){            \n" +
-"            ciudad.options.length = 0;\n" +
-"            agregarOpcion(ciudad);\n" +
-"            var res = provincia[provincia.selectedIndex].value;\n" +
-"            buscarServlet(\"Ciudad\",ciudad,res);\n" +
-"        };\n" +
-"        \n" +
-"        //Funcion de cambiar el barrio cuando cambia la ciudad\n" +
-"        ciudad.onchange = function(){            \n" +
-"            barrio.options.length = 0;\n" +
-"            agregarOpcion(barrio);\n" +
-"            var res = ciudad[ciudad.selectedIndex].value;\n" +
-"            buscarServlet(\"Barrio\",barrio,res);\n" +
-"        };\n" +
-"        \n" +
-"        /*\n" +
-"         * Buscar elementos en la base de datos\n" +
-"         * y llenar los campos\n" +
-"         */\n" +
-"        buscarServlet(\"Estados\",document.getElementById(\"estadoAlojamiento\"));\n" +
-"        buscarServlet(\"RegimenAlimentario\",document.getElementById(\"regimenAlimentarioAlojamiento\"));\n" +
-"        buscarServlet(\"Temporadas\",document.getElementById(\"temporadaAlojamiento\"));        \n" +
-"        buscarServlet(\"Pais\",pais);\n" +
-"        buscarServlet(\"Clientes\",document.getElementById(\"clienteAlojamientoSel\"),null,true);        \n" +
-"        buscarServlet(\"TipoContacto\",document.getElementById(\"tipoContacto\"));\n" +
-"        \n" +
-"        //Funcion usada para agregar una opcion ---\n" +
-"        function agregarOpcion(sel){\n" +
-"            var select = document.createElement(\"Select\");\n" +
-"            var option = document.createElement(\"Option\");\n" +
-"            option.setAttribute(\"value\",\"x0\");\n" +
-"            option.innerHTML = \"---\";\n" +
-"            sel.appendChild(option);\n" +
-"        };\n" +
-"    </script>");
+        out.write("<script src=\"js/buscar.js\"></script> <form method=\"POST\" action=\"AltaAlojamiento\" enctype=\"multipart/form-data\" > <table> <thead> <tr> <th>ABM Alojamiento - Alta</th> </tr> </thead> <tbody> <tr> <td><label for=\"nombreAlojamiento\">Nombre: </label></td> <td><input type=\"text\" name=\"nombreAlojamiento\" id=\"nombreAlojamiento\" value=\"\" /></td> </tr> <tr> <td><label for=\"descripcionAlojamiento\">Descripcion: </label></td> <td><textarea name=\"descripcionAlojamiento\" id=\"descripcionAlojamiento\" /></textarea></td> </tr> <tr> <td><label for=\"pririodadAlojamiento\">Prioridad: </label></td> <td><input type=\"number\" name=\"pririodadAlojamiento\" id=\"pririodadAlojamiento\" value=\"\" /></td> </tr> <tr> <td><label for=\"estadoAlojamiento\">Estado: </label></td> <td><select name=\"estadoAlojamiento\" id=\"estadoAlojamiento\"> <option value=\"x0\"> --- </option> </select></td> </tr> <tr> <td><label for=\"clienteAlojamiento\">Id Cliente: </label></td> <td><select name=\"clienteAlojamiento\" id=\"clienteAlojamientoSel\"> <option value=\"x0\"> --- </option> </select> <input type=\"text\" name=\"clienteAlojamientor\" id=\"clienteAlojamiento\" value=\"\" /> </td> </tr> <tr id=\"imagen1\"> <td><label for=\"imagen1\">Imagen: </label></td> <td><input type=\"file\" name=\"imagen1\" id=\"imagenAlojamiento1\" /></td> <td><input type=\"button\" name=\"subirAlojamiento\" id=\"subirAlojamiento\" value=\"Subir Otra Imagen\"/></td> <input style=\"display:none\" name=\"cantidadImagenes\" id=\"cantidadImagenes\" /> </tr> <tr> <td><label for=\"regimenAlimentarioAlojamiento\">Regimen Alimentario: </label></td> <td><select name=\"regimenAlimentarioAlojamiento\" id=\"regimenAlimentarioAlojamiento\"> <option value=\"x0\"> --- </option> </select></td> </tr> <tr> <td><label for=\"temporadaAlojamiento\">Temporada: </label></td> <td><select name=\"temporadaAlojamiento\" id=\"temporadaAlojamiento\"> <option value=\"x0\"> --- </option> </select></td> </tr> <tr><td><br /></td></tr> <tr><td><br /></td></tr> <tr><td><br /></td></tr> <tr> <td><label for=\"Pais\">Pais: </label></td> <td><select name=\"Pais\" id=\"Pais\"> <option value=\"x0\"> --- </option> </select></td> <tr> <td><label for=\"Provincia\">Provincia: </label></td> <td><select name=\"Provincia\" id=\"Provincia\"> <option value=\"x0\"> --- </option> </select></td> </tr> <tr> <td><label for=\"Ciudad\">Ciudad: </label></td> <td><select name=\"Ciudad\" id=\"Ciudad\"> <option value=\"x0\"> --- </option> </select></td> </tr> <tr> <td><label for=\"Barrio\">Barrio: </label></td> <td><select name=\"Barrio\" id=\"Barrio\"> <option value=\"x0\"> --- </option> </select></td> </tr> <tr> <td><label for=\"calleDomicilio\">Calle: </label></td> <td><input type=\"text\" name=\"calleDomicilio\" id=\"calleDomicilio\" /></td> </tr> <tr> <td><label for=\"nroDomicilio\">Número: </label></td> <td><input type=\"text\" name=\"nroDomicilio\" id=\"nroDomicilio\" value=\"\" /></td> </tr> <tr> <td><label for=\"nroPiso\">Piso: </label></td> <td><input type=\"text\" name=\"nroPiso\" id=\"nroPiso\" value=\"\" /></td> </tr> <tr> <td><label for=\"departamentoDomicilio\">Departamento: </label></td> <td><input type=\"text\" name=\"departamentoDomicilio\" id=\"departamentoDomicilio\" value=\"\" /></td> </tr> <tr> <td><label for=\"torreDomicilio\">Torre: </label></td> <td><input type=\"text\" name=\"torreDomicilio\" id=\"torreDomicilio\" value=\"\" /></td> </tr> <tr> <td><label for=\"manzanaDomicilio\">Manzana: </label></td> <td><input type=\"text\" name=\"manzanaDomicilio\" id=\"manzanaDomicilio\" value=\"\" /></td> </tr> <tr> <td><label for=\"loteDomicilio\">Lote: </label></td> <td><input type=\"text\" name=\"loteDomicilio\" id=\"loteDomicilio\" value=\"\" /></td> </tr> <tr> <td><label for=\"codigoPostalDomicilio\">Código Postal: </label></td> <td><input type=\"text\" name=\"codigoPostalDomicilio\" id=\"codigoPostalDomicilio\" value=\"\" /></td> </tr> </tbody> </table> <br /> <br /> <br /> <table> <thead> <tr> <th>ABM Alojamiento - Contactos</th> </tr> </thead> <tbody id=\"contactos\"> <tr> <td><label for=\"tipoContacto1\">Tipo de Contacto: </label></td> <td><select name=\"tipoContacto1\" id=\"tipoContacto\"> <option value=\"x0\"> --- </option> </select></td> <td><input type=\"button\" name=\"+tipoContacto\" id=\"masContacto\" value=\"-\"/></td> </tr> <tr> <td><label for=\"detalleContactos1\">Detalle: </label></td> <td><input type=\"text\" name=\"detalleContactos1\" id=\"detalleContactos\" value=\"\" /></td> </tr> <tr> <td><input type=\"button\" value=\"Agregar Contacto\" name=\"envContacto\" id=\"envContacto\" /> <input style=\"display:none\" id=\"cantidadContactos\" name=\"cantidadContactos\" /></td> </tr> </tbody> </table> <input type=\"submit\" value=\"Enviar\" name=\"envDetalle\" /> </form><script>function agregarOpcion(e){var t=(document.createElement(\"Select\"),document.createElement(\"Option\"));t.setAttribute(\"value\",\"x0\"),t.innerHTML=\"---\",e.appendChild(t)}var pais=document.getElementById(\"Pais\"),provincia=document.getElementById(\"Provincia\"),ciudad=document.getElementById(\"Ciudad\"),barrio=document.getElementById(\"Barrio\"),idCliente=document.getElementById(\"clienteAlojamiento\"),clienteSel=document.getElementById(\"clienteAlojamientoSel\"),cantidadContactos=1,cantidadImagenes=0,camposImagen=1,eliminarCotacto=document.getElementById(\"masContacto\"),subirAlojamiento=document.getElementById(\"subirAlojamiento\"),archivo1=document.getElementById(\"imagenAlojamiento1\");document.getElementById(\"cantidadImagenes\").value=0,archivo1.onchange=function(){null==this.files[0]?cantidadImagenes--:cantidadImagenes++,document.getElementById(\"cantidadImagenes\").value=cantidadImagenes},document.getElementById(\"tipoContacto\").onchange=function(){\"\"===document.getElementById(\"cantidadContactos\").value&&(document.getElementById(\"cantidadContactos\").value=1)},subirAlojamiento.onclick=function(){camposImagen++;var e=document.createElement(\"tr\");e.setAttribute(\"id\",\"imagen\"+camposImagen);var t=e.insertCell(0),n=e.insertCell(1),a=e.insertCell(2),o=document.createElement(\"Label\");o.setAttribute(\"for\",\"imagen\"+camposImagen),o.setAttribute(\"id\",\"labelImagenAlojamiento\"+camposImagen),o.innerHTML=\"Imagen \"+camposImagen+\": \",t.appendChild(o);var i=document.createElement(\"Input\");i.setAttribute(\"type\",\"file\"),i.setAttribute(\"name\",\"imagen\"+camposImagen),i.setAttribute(\"id\",\"imagenAlojamiento\"+camposImagen),i.onchange=function(){null==this.files[0]?cantidadImagenes--:cantidadImagenes++,document.getElementById(\"cantidadImagenes\").value=cantidadImagenes},n.appendChild(i);var d=document.createElement(\"Input\");d.setAttribute(\"type\",\"button\"),d.setAttribute(\"name\",\"sacarImagen\"+camposImagen),d.setAttribute(\"id\",\"sacarImagen\"+camposImagen),d.setAttribute(\"value\",\"-\"),d.onclick=function(){var e=parseInt(this.id[11]);null!=this.parentNode.parentNode.childNodes[1].childNodes[0].files[0]&&(cantidadImagenes--,document.getElementById(\"cantidadImagenes\").value=cantidadImagenes),this.parentNode.parentNode.remove();for(var t=1;camposImagen>=t;t++)if(t>e){var n=t-1,a=document.getElementById(\"labelImagenAlojamiento\"+t),o=document.getElementById(\"imagenAlojamiento\"+t),i=document.getElementById(\"sacarImagen\"+t),d=document.getElementById(\"imagen\"+t);a.attributes[0]=\"imagen\"+n,a.innerHTML=\"Imagen \"+n+\":\",a.id=\"labelImagenAlojamiento\"+n,o.id=\"imagenAlojamiento\"+n,o.name=\"imagen\"+n,i.id=\"sacarImagen\"+n,i.name=\"sacarImagen\"+n,d.id=\"imagen\"+n}camposImagen--},a.appendChild(d);var c=camposImagen-1;insertAfter(document.getElementById(\"imagen\"+c),e)},eliminarCotacto.onclick=function(){this.parentNode.parentNode.nextSibling.nextSibling.remove(),this.parentNode.parentNode.remove(),document.getElementById(\"cantidadContactos\").value=--cantidadContactos},document.getElementById(\"envContacto\").onclick=function(){var e=document.getElementById(\"contactos\"),t=e.insertRow(0),n=e.insertRow(1);e.insertRow(2).appendChild(document.createElement(\"Br\"));var a=n.insertCell(0),o=n.insertCell(1),i=t.insertCell(0),d=t.insertCell(1),c=t.insertCell(2),l=document.createElement(\"Label\");cantidadContactos++,l.setAttribute(\"for\",\"tipoContacto\"+cantidadContactos),l.innerHTML=\"Tipo de Contacto: \",i.appendChild(l);var m=document.createElement(\"Select\"),r=document.createElement(\"Option\");m.setAttribute(\"name\",\"tipoContacto\"+cantidadContactos),m.setAttribute(\"id\",\"tipoContacto\"+cantidadContactos),r.setAttribute(\"value\",\"0\"),r.innerHTML=\"---\",m.appendChild(r),d.appendChild(m),buscarServlet(\"TipoContacto\",document.getElementById(\"tipoContacto\"+cantidadContactos));var s=document.createElement(\"Input\");s.setAttribute(\"type\",\"button\"),s.setAttribute(\"name\",\"+tipoContacto\"+cantidadContactos),s.setAttribute(\"id\",\"+tipoContacto\"+cantidadContactos),s.setAttribute(\"value\",\"-\"),s.onclick=function(){this.parentNode.parentNode.nextSibling.remove(),this.parentNode.parentNode.nextSibling.remove(),this.parentNode.parentNode.remove(),document.getElementById(\"cantidadContactos\").value=--cantidadContactos},c.appendChild(s);var u=document.createElement(\"Label\");u.setAttribute(\"for\",\"detalleContactos\"+cantidadContactos),u.innerHTML=\"Detalle: \",a.appendChild(u);var g=document.createElement(\"Input\");g.setAttribute(\"type\",\"text\"),g.setAttribute(\"name\",\"detalleContactos\"+cantidadContactos),g.setAttribute(\"type\",\"detalleContactos\"+cantidadContactos),o.appendChild(g),document.getElementById(\"cantidadContactos\").value=cantidadContactos},idCliente.onchange=function(){for(var e=0,t=0;t<clienteSel.length;t++)if(clienteSel[t].value==idCliente.value){e=t;break}clienteSel[e].selected=!0},clienteSel.onchange=function(){\"x0\"!=this.value?idCliente.value=clienteSel[clienteSel.selectedIndex].value:idCliente.value=\"\"},pais.onchange=function(){provincia.options.length=0,agregarOpcion(provincia);var e=pais[pais.selectedIndex].value;buscarServlet(\"Provincia\",provincia,e)},provincia.onchange=function(){ciudad.options.length=0,agregarOpcion(ciudad);var e=provincia[provincia.selectedIndex].value;buscarServlet(\"Ciudad\",ciudad,e)},ciudad.onchange=function(){barrio.options.length=0,agregarOpcion(barrio);var e=ciudad[ciudad.selectedIndex].value;buscarServlet(\"Barrio\",barrio,e)},buscarServlet(\"Estados\",document.getElementById(\"estadoAlojamiento\")),buscarServlet(\"RegimenAlimentario\",document.getElementById(\"regimenAlimentarioAlojamiento\")),buscarServlet(\"Temporadas\",document.getElementById(\"temporadaAlojamiento\")),buscarServlet(\"Pais\",pais),buscarServlet(\"Clientes\",document.getElementById(\"clienteAlojamientoSel\"),null,!0),buscarServlet(\"TipoContacto\",document.getElementById(\"tipoContacto\"));</script>");
         imprimirEtiquetasFinal(out);
     }
     
     public static void cargaBarrio(PrintWriter out){
         imprimirEtiquetasIniciales(out,"ABM Barrio - Alta");
-        out.write("<script src=\"js/buscar.js\"></script>\n" +
-"        <form method=\"POST\" action=\"AltaBarrio\">\n" +
-"            <table>\n" +
-"                <thead>\n" +
-"                    <tr>\n" +
-"                        <th>ABM Barrio - Alta </th>\n" +
-"                    </tr>\n" +
-"                </thead>\n" +
-"                <tbody>\n" +
-"                    <tr>\n" +
-"                        <td><label for=\"nombreBarrio\">Nombre: </label></td>\n" +
-"                        <td><input type=\"text\" name=\"nombreBarrio\" id=\"nombreBarrio\" value=\"\" /></td>\n" +
-"                    </tr>\n" +
-"                    <tr>\n" +
-"                        <td><label for=\"Ciudad\">Ciudad: </label></td>\n" +
-"                        <td><select name=\"Ciudad\" id=\"Ciudad\">\n" +
-"                                <option value=\"x0\">---</option>\n" +
-"                            </select></td>\n" +
-"                    </tr>   \n" +
-"                    <tr>\n" +
-"                        <td><label for=\"Observaciones\">Observacion: </label></td>\n" +
-"                        <td><textarea name=\"Observaciones\" rows=\"4\" cols=\"20\">\n" +
-"                            </textarea></td>\n" +
-"                    </tr>\n" +
-"                    <tr>\n" +
-"                        <td><input type=\"submit\" value=\"Enviar\" name=\"envProvincia\" /></td>\n" +
-"                    </tr>       \n" +
-"                </tbody>\n" +
-"            </table>\n" +
-"        </form>\n" +
-"        <script>\n" +
-"            buscarServlet(\"Ciudad\",document.getElementById(\"Ciudad\"));\n" +
-"        </script>");
+        out.write("<script src=\"js/buscar.js\"></script> <form method=\"POST\" action=\"AltaBarrio\"> <table> <thead> <tr> <th>ABM Barrio - Alta </th> </tr> </thead> <tbody> <tr> <td><label for=\"nombreBarrio\">Nombre: </label></td> <td><input type=\"text\" name=\"nombreBarrio\" id=\"nombreBarrio\" value=\"\" /></td> </tr> <tr> <td><label for=\"Ciudad\">Ciudad: </label></td> <td><select name=\"Ciudad\" id=\"Ciudad\"> <option value=\"x0\">---</option> </select></td> </tr> <tr> <td><label for=\"Observaciones\">Observacion: </label></td> <td><textarea name=\"Observaciones\" rows=\"4\" cols=\"20\"> </textarea></td> </tr> <tr> <td><input type=\"submit\" value=\"Enviar\" name=\"envProvincia\" /></td> </tr> </tbody> </table> </form> <script> buscarServlet(\"Ciudad\",document.getElementById(\"Ciudad\")); </script>");
         imprimirEtiquetasFinal(out);
     }
     
     public static void cargaCiudad(PrintWriter out){
         imprimirEtiquetasIniciales(out,"ABM Barrio - Alta");
-        out.write("<script src=\"js/buscar.js\"></script>\n" +
-"        <form method=\"POST\" action=\"AltaCiudad\" enctype=\"multipart/form-data\">\n" +
-"            <table>\n" +
-"                <thead>\n" +
-"                    <tr>\n" +
-"                        <th>ABM Cuidad - Alta </th>\n" +
-"                    </tr>\n" +
-"                </thead>\n" +
-"                <tbody>\n" +
-"                    <tr>\n" +
-"                        <td><label for=\"nombreCuidad\">Nombre: </label></td>\n" +
-"                        <td><input type=\"text\" name=\"nombreCuidad\" id=\"nombreCuidad\" value=\"\" /></td>\n" +
-"                    </tr>\n" +
-"                    <tr>\n" +
-"                        <td><label for=\"Provincia\">Provincia: </label></td>\n" +
-"                        <td><select name=\"Provincia\" id=\"Provincia\">\n" +
-"                                <option value=\"x0\"> --- </option>\n" +
-"                            </select></td>\n" +
-"                    </tr>\n" +
-"                    <tr>\n" +
-"                        <td><label for=\"historiaPais\">Historia: </label></td>\n" +
-"                        <td><textarea name=\"historiaPais\" id=\"historiaPais\" /></textarea></td>\n" +
-"                    </tr> \n" +
-"                    <tr>\n" +
-"                        <td><label for=\"emergenciaPais\">Emergencias: </label></td>\n" +
-"                        <td><textarea name=\"emergenciaPais\" id=\"emergenciaPais\" /></textarea></td>\n" +
-"                    </tr> \n" +
-"                    <tr>\n" +
-"                        <td><label>¿Es Capital?</label></td>\n" +
-"                        <td><label for=\"esCapitalPaisSi\">Si</label>\n" +
-"                        <input type=\"radio\" name=\"capital\" id=\"esCapitalPaisSi\" value=\"1\" />\n" +
-"                        <label for=\"esCapitalPaisNo\">No</label>\n" +
-"                        <input type=\"radio\" name=\"capital\" id=\"esCapitalPaisNo\" value=\"0\" checked=\"checked\" /></td>\n" +
-"                    </tr>\n" +
-"                    <tr>\n" +
-"                        <td><label for=\"clienteCiudad\">Cliente: </label></td>\n" +
-"                        <td><select name=\"clienteCiudad\" id=\"clienteCiudad\">                                \n" +
-"                                <option value=\"x0\"> --- </option>\n" +
-"                            </select>\n" +
-"                            <input type=\"number\" name=\"idClienteCiudad\" id=\"idClienteCiudad\" value=\"\" />\n" +
-"                        </td>\n" +
-"                    </tr>                    \n" +
-"                    <tr>\n" +
-"                        <td><label for=\"pririodadCuidad\">Prioridad: </label></td>\n" +
-"                        <td><input type=\"number\" name=\"pririodadCuidad\" id=\"pririodadCuidad\" value=\"\" /></td>\n" +
-"                    </tr>\n" +
-"                    <tr>\n" +
-"                        <td><label for=\"Observaciones\">Observaciones: </label></td>\n" +
-"                        <td><textarea name=\"Observaciones\" id=\"ciudadObservaciones\" rows=\"4\" cols=\"20\">\n" +
-"                            </textarea></td>\n" +
-"                    </tr>\n" +
-"                    <tr id=\"imagen1\">                        \n" +
-"                        <td><label for=\"imagenCiudad1\" id=\"labelImagenCiudad1\">Imagen: </label></td>\n" +
-"                        <td><input type=\"file\" name=\"imagen1\" id=\"imagenCiudad1\" />\n" +
-"                        <input style=\"display:none\" name=\"cantidadImagenes\" id=\"cantidadImagenes\" /></td>\n" +
-"                        <td><input type=\"button\" name=\"subirImagenCiudad\" id=\"subirImagenCiudad\" value=\"Subir Otra Imagen\"/></td>\n" +
-"                    </tr>\n" +
-"                    <tr>\n" +
-"                        <td><input type=\"submit\" value=\"Enviar\" name=\"envCiudad\" /></td>\n" +
-"                    </tr> \n" +
-"                </tbody>\n" +
-"            </table>\n" +
-"        </form>\n" +
-"        <script>\n" +
-"        //Declaro variables utiles\n" +
-"        var provincia = document.getElementById(\"Provincia\");\n" +
-"        var clientes = document.getElementById(\"clienteCiudad\");\n" +
-"        var idCliente = document.getElementById(\"idClienteCiudad\");\n" +
-"        var cantidadImagenes = 0;\n" +
-"        var camposImagen = 1;\n" +
-"        var subirAlojamiento = document.getElementById(\"subirImagenCiudad\"); \n" +
-"        document.getElementById(\"cantidadImagenes\").value = 0;\n" +
-"        \n" +
-"        \n" +
-"        //Traigo datos\n" +
-"        buscarServlet(\"Provincia\",provincia);\n" +
-"        buscarServlet(\"Clientes\",clientes,null,true);\n" +
-"        \n" +
-"        \n" +
-"        //Manejo eventos\n" +
-"        \n" +
-"               \n" +
-"                \n" +
-"        // Funcion de cambia automaticamente el cliente\n" +
-"        idCliente.onchange = function(){\n" +
-"            var index = 0;\n" +
-"            for(var i = 0;i<clientes.length;i++){\n" +
-"                if(clientes[i].value == idCliente.value){\n" +
-"                    index = i;\n" +
-"                    break;\n" +
-"                }  \n" +
-"            }            \n" +
-"            clientes[index].selected = true;\n" +
-"        };\n" +
-"        clientes.onchange = function(){\n" +
-"            if(this.value != \"x0\")\n" +
-"                idCliente.value = clientes[clientes.selectedIndex].value;\n" +
-"            else\n" +
-"                idCliente.value = \"\";\n" +
-"            \n" +
-"        };\n" +
-"        \n" +
-"        //Aumento el contacdor de imagenes\n" +
-"        document.getElementById(\"imagenCiudad1\").onchange = function(){\n" +
-"            if(this.files[0] == null){\n" +
-"                cantidadImagenes--;\n" +
-"            }else{\n" +
-"                cantidadImagenes++;\n" +
-"            }            \n" +
-"            document.getElementById(\"cantidadImagenes\").value = cantidadImagenes;\n" +
-"        };\n" +
-"        \n" +
-"        //Evento para agregar mas imagenes        \n" +
-"        subirAlojamiento.onclick = function(){\n" +
-"            camposImagen++;\n" +
-"            var fila = document.createElement(\"tr\");\n" +
-"            fila.setAttribute(\"id\",\"imagen\"+camposImagen);\n" +
-"            var campoLabel = fila.insertCell(0);\n" +
-"            var campoFile = fila.insertCell(1);\n" +
-"            var campoBoton = fila.insertCell(2);\n" +
-"            var label = document.createElement(\"Label\");\n" +
-"            label.setAttribute(\"for\",\"imagen\"+camposImagen);\n" +
-"            label.setAttribute(\"id\",\"labelImagenCiudad\"+camposImagen);\n" +
-"            label.innerHTML = \"Imagen \"+camposImagen+\": \";\n" +
-"            campoLabel.appendChild(label);\n" +
-"            var input = document.createElement(\"Input\");\n" +
-"            input.setAttribute(\"type\",\"file\");\n" +
-"            input.setAttribute(\"name\",\"imagen\"+camposImagen);\n" +
-"            input.setAttribute(\"id\",\"imagenCiudad\"+camposImagen);\n" +
-"            input.onchange =  function(){\n" +
-"                if(this.files[0] == null){\n" +
-"                    cantidadImagenes--;\n" +
-"                }else{\n" +
-"                    cantidadImagenes++;\n" +
-"                }            \n" +
-"                document.getElementById(\"cantidadImagenes\").value = cantidadImagenes;\n" +
-"            };\n" +
-"            campoFile.appendChild(input);\n" +
-"            var boton = document.createElement(\"Input\");\n" +
-"            boton.setAttribute(\"type\",\"button\");\n" +
-"            boton.setAttribute(\"name\",\"sacarImagen\"+camposImagen);\n" +
-"            boton.setAttribute(\"id\",\"sacarImagen\"+camposImagen);\n" +
-"            boton.setAttribute(\"value\",\"-\");            \n" +
-"            boton.onclick = function(){                \n" +
-"                var borrar = parseInt(this.id[11]);\n" +
-"                if(this.parentNode.parentNode.childNodes[1].childNodes[0].files[0] != null){\n" +
-"                    cantidadImagenes--;\n" +
-"                    document.getElementById(\"cantidadImagenes\").value = cantidadImagenes;\n" +
-"                }\n" +
-"                this.parentNode.parentNode.remove();                \n" +
-"                for(var i = 1; i <= camposImagen;i++){\n" +
-"                    if(i > borrar){\n" +
-"                        var j = i - 1;\n" +
-"                        var lab = document.getElementById(\"labelImagenCiudad\"+i);\n" +
-"                        var fil = document.getElementById(\"imagenCiudad\"+i);           \n" +
-"                        var bot = document.getElementById(\"sacarImagen\"+i);\n" +
-"                        var fila = document.getElementById(\"imagen\"+i);\n" +
-"                        lab.attributes[0] = \"imagenCiudad\"+j;\n" +
-"                        lab.innerHTML = \"Imagen \"+j+\":\";\n" +
-"                        lab.id = \"labelImagenCiudad\"+j;\n" +
-"                        fil.id = \"imagenCiudad\"+j;\n" +
-"                        fil.name = \"imagen\"+j;\n" +
-"                        bot.id = \"sacarImagen\"+j;\n" +
-"                        bot.name = \"sacarImagen\"+j;\n" +
-"                        fila.id = \"imagen\"+j;\n" +
-"                    }\n" +
-"                    \n" +
-"                }\n" +
-"                camposImagen--;\n" +
-"                \n" +
-"            };\n" +
-"            campoBoton.appendChild(boton);\n" +
-"            var bus = camposImagen - 1;\n" +
-"            insertAfter(document.getElementById(\"imagen\"+bus),fila);\n" +
-"        };\n" +
-"        \n" +
-"    </script>");
+        out.write("<script src=\"js/buscar.js\"></script> <form method=\"POST\" action=\"AltaCiudad\" enctype=\"multipart/form-data\"> <table> <thead> <tr> <th>ABM Cuidad - Alta </th> </tr> </thead> <tbody> <tr> <td><label for=\"nombreCuidad\">Nombre: </label></td> <td><input type=\"text\" name=\"nombreCuidad\" id=\"nombreCuidad\" value=\"\" /></td> </tr> <tr> <td><label for=\"Provincia\">Provincia: </label></td> <td><select name=\"Provincia\" id=\"Provincia\"> <option value=\"x0\"> --- </option> </select></td> </tr> <tr> <td><label for=\"historiaPais\">Historia: </label></td> <td><textarea name=\"historiaPais\" id=\"historiaPais\" /></textarea></td> </tr> <tr> <td><label for=\"emergenciaPais\">Emergencias: </label></td> <td><textarea name=\"emergenciaPais\" id=\"emergenciaPais\" /></textarea></td> </tr> <tr> <td><label>¿Es Capital?</label></td> <td><label for=\"esCapitalPaisSi\">Si</label> <input type=\"radio\" name=\"capital\" id=\"esCapitalPaisSi\" value=\"1\" /> <label for=\"esCapitalPaisNo\">No</label> <input type=\"radio\" name=\"capital\" id=\"esCapitalPaisNo\" value=\"0\" checked=\"checked\" /></td> </tr> <tr> <td><label for=\"clienteCiudad\">Cliente: </label></td> <td><select name=\"clienteCiudad\" id=\"clienteCiudad\"> <option value=\"x0\"> --- </option> </select> <input type=\"number\" name=\"idClienteCiudad\" id=\"idClienteCiudad\" value=\"\" /> </td> </tr> <tr> <td><label for=\"pririodadCuidad\">Prioridad: </label></td> <td><input type=\"number\" name=\"pririodadCuidad\" id=\"pririodadCuidad\" value=\"\" /></td> </tr> <tr> <td><label for=\"Observaciones\">Observaciones: </label></td> <td><textarea name=\"Observaciones\" id=\"ciudadObservaciones\" rows=\"4\" cols=\"20\"> </textarea></td> </tr> <tr id=\"imagen1\"> <td><label for=\"imagenCiudad1\" id=\"labelImagenCiudad1\">Imagen: </label></td> <td><input type=\"file\" name=\"imagen1\" id=\"imagenCiudad1\" /> <input style=\"display:none\" name=\"cantidadImagenes\" id=\"cantidadImagenes\" /></td> <td><input type=\"button\" name=\"subirImagenCiudad\" id=\"subirImagenCiudad\" value=\"Subir Otra Imagen\"/></td> </tr> <tr> <td><input type=\"submit\" value=\"Enviar\" name=\"envCiudad\" /></td> </tr> </tbody> </table> </form> <script>var provincia=document.getElementById(\"Provincia\"),clientes=document.getElementById(\"clienteCiudad\"),idCliente=document.getElementById(\"idClienteCiudad\"),cantidadImagenes=0,camposImagen=1,subirAlojamiento=document.getElementById(\"subirImagenCiudad\");document.getElementById(\"cantidadImagenes\").value=0,buscarServlet(\"Provincia\",provincia),buscarServlet(\"Clientes\",clientes,null,!0),idCliente.onchange=function(){for(var e=0,n=0;n<clientes.length;n++)if(clientes[n].value==idCliente.value){e=n;break}clientes[e].selected=!0},clientes.onchange=function(){\"x0\"!=this.value?idCliente.value=clientes[clientes.selectedIndex].value:idCliente.value=\"\"},document.getElementById(\"imagenCiudad1\").onchange=function(){null==this.files[0]?cantidadImagenes--:cantidadImagenes++,document.getElementById(\"cantidadImagenes\").value=cantidadImagenes},subirAlojamiento.onclick=function(){camposImagen++;var e=document.createElement(\"tr\");e.setAttribute(\"id\",\"imagen\"+camposImagen);var n=e.insertCell(0),a=e.insertCell(1),t=e.insertCell(2),i=document.createElement(\"Label\");i.setAttribute(\"for\",\"imagen\"+camposImagen),i.setAttribute(\"id\",\"labelImagenCiudad\"+camposImagen),i.innerHTML=\"Imagen \"+camposImagen+\": \",n.appendChild(i);var d=document.createElement(\"Input\");d.setAttribute(\"type\",\"file\"),d.setAttribute(\"name\",\"imagen\"+camposImagen),d.setAttribute(\"id\",\"imagenCiudad\"+camposImagen),d.onchange=function(){null==this.files[0]?cantidadImagenes--:cantidadImagenes++,document.getElementById(\"cantidadImagenes\").value=cantidadImagenes},a.appendChild(d);var m=document.createElement(\"Input\");m.setAttribute(\"type\",\"button\"),m.setAttribute(\"name\",\"sacarImagen\"+camposImagen),m.setAttribute(\"id\",\"sacarImagen\"+camposImagen),m.setAttribute(\"value\",\"-\"),m.onclick=function(){var e=parseInt(this.id[11]);null!=this.parentNode.parentNode.childNodes[1].childNodes[0].files[0]&&(cantidadImagenes--,document.getElementById(\"cantidadImagenes\").value=cantidadImagenes),this.parentNode.parentNode.remove();for(var n=1;camposImagen>=n;n++)if(n>e){var a=n-1,t=document.getElementById(\"labelImagenCiudad\"+n),i=document.getElementById(\"imagenCiudad\"+n),d=document.getElementById(\"sacarImagen\"+n),m=document.getElementById(\"imagen\"+n);t.attributes[0]=\"imagenCiudad\"+a,t.innerHTML=\"Imagen \"+a+\":\",t.id=\"labelImagenCiudad\"+a,i.id=\"imagenCiudad\"+a,i.name=\"imagen\"+a,d.id=\"sacarImagen\"+a,d.name=\"sacarImagen\"+a,m.id=\"imagen\"+a}camposImagen--},t.appendChild(m);var c=camposImagen-1;insertAfter(document.getElementById(\"imagen\"+c),e)};</script>");
         imprimirEtiquetasFinal(out);
     }
+    
+    public static void cargaCategoriaRestaurante(PrintWriter out){
+        imprimirEtiquetasIniciales(out,"ABM Categoria Restaurante - Alta");
+        out.write("<form method=\"POST\" action=\"../AltaCategoriaRestaurante\"> <table> <thead> <tr> <th>ABM Categoria Restaurante - Alta</th> </tr> </thead> <tbody> <tr> <td><label for=\"nombreCategoriaRestaurante\">Nombre: </label></td> <td><input type=\"text\" name=\"nombreCategoriaRestaurante\" id=\"nombreCategoriaRestaurante\" value=\"\" /></td> </tr> <tr> <td><label for=\"cantidadTenedoresCategoriaRestaurante\">Cantidad de tenedores: </label></td> <td><input type=\"number\" name=\"cantidadTenedoresCategoriaRestaurante\" id=\"cantidadTenedoresCategoriaRestaurante\" value=\"\" /></td> </tr> <tr> <td><label for=\"descripcionCategoriaRestaurante\">Descripcion: </label></td> <td><textarea name=\"descripcionCategoriaRestaurante\" id=\"descripcionCategoriaRestaurante\" /></textarea></td> </tr> <tr> <td><input type=\"submit\" value=\"Enviar\" name=\"envCategoriaRestaurante\" /></td> </tr> </tbody> </table> </form>");
+        imprimirEtiquetasFinal(out);
+    }
+    
+    public static void cargaClientes(PrintWriter out){
+        imprimirEtiquetasIniciales(out,"ABM Cliente - Alta");
+        out.write("<script src=\"js/buscar.js\"></script> <form method=\"POST\" action=\"AltaCliente\"> <table> <thead> <tr> <th>ABM Clientes - Alta</th> </tr> </thead> <tbody> <tr> <td><label for=\"razonSocialCliente\">Razón social: </label></td> <td><input type=\"text\" name=\"razonSocialCliente\" id=\"razonSocialCliente\" value=\"\" /></td> </tr> <tr> <td><label for=\"nombrePersona\">Primer nombre: </label></td> <td><input type=\"text\" name=\"nombrePersona\" id=\"nombrePersona\" value=\"\" /></td> </tr> <tr> <td><label for=\"segNombrePersona\">Segundo nombre: </label></td> <td><input type=\"text\" name=\"segNombrePersona\" id=\"segNombrePersona\" value=\"\" /></td> </tr> <tr> <td><label for=\"apellidoPersona\">Apellido: </label></td> <td><input type=\"text\" name=\"apellidoPersona\" id=\"apellidoPersona\" value=\"\" /></td> </tr> <tr> <td><label for=\"fechaNacimientoPersona\">Fecha nacimiento: </label></td> <td><input type=\"date\" name=\"fechaNacimientoPersona\" id=\"fechaNacimientoPersona\" value=\"\" /></td> </tr> <tr> <td><label for=\"tipoDocumentoPersona\">Tipo documento: </label></td> <td><select name=\"tipoDocumentoPersona\" id=\"tipoDocumentoPersona\"> <option value=\"x0\">---</option> </select></td> </tr> <tr> <td><label for=\"nroDocumentoPersona\">Número de Documento: </label></td> <td><input type=\"text\" name=\"nroDocumentoPersona\" id=\"nroDocumentoPersona\" value=\"\" /></td> </tr> <tr> <td><label for=\"estadoCliente\">Estado: </label></td> <td><select name=\"estadoCliente\" id=\"estadoCliente\"> <option value=\"x0\"> --- </option> </select></td> </tr> </tbody> </table> <br /> <br /> <table> <thead> <tr> <th>ABM Clientes - Contactos</th> </tr> </thead> <tbody id=\"contactos\"> <tr> <tr> <td><label for=\"tipoContacto1\">Tipo de Contacto: </label></td> <td><select name=\"tipoContacto1\" id=\"tipoContacto\"> <option value=\"x0\">---</option> </select></td> <td><input type=\"button\" name=\"+tipoContacto\" id=\"masContacto\" value=\"-\"/></td> </tr> <tr> <td><label for=\"detalleContacto1\">Detalle: </label></td> <td><input type=\"text\" name=\"detalleContactos1\" id=\"detalleContactos\" value=\"\" /></td> </tr> <tr> <td><input type=\"button\" value=\"Agregar Contacto\" name=\"envContacto\" id=\"envContacto\" /> <input style=\"display:none\" id=\"cantidadContactos\" name=\"cantidadContactos\" /></td> </tr> </tbody> </table> <br /> <br /> <table> <thead> <tr> <th>ABM Clientes - Domicilio</th> </tr> </thead> <tbody> <tr> <td><label for=\"Pais\">Pais: </label></td> <td><select name=\"Pais\" id=\"Pais\"> <option value=\"x0\">---</option> </select></td> <tr> <td><label for=\"Provincia\">Provincia: </label></td> <td><select name=\"Provincia\" id=\"Provincia\"> <option value=\"x0\">---</option> </select></td> </tr> <tr> <td><label for=\"Ciudad\">Cuidad: </label></td> <td><select name=\"Ciudad\" id=\"Ciudad\"> <option value=\"x0\">---</option> </select></td> </tr> <tr> <td><label for=\"Barrio\">Barrio: </label></td> <td><select name=\"Barrio\" id=\"Barrio\"> <option value=\"x0\">---</option> </select></td> </tr> <tr> <td><label for=\"calleDomicilio\">Calle: </label></td> <td><input type=\"text\" name=\"calleDomicilio\" id=\"calleDomicilio\" /></td> </tr> <tr> <td><label for=\"nroDomicilio\">Número: </label></td> <td><input type=\"text\" name=\"nroDomicilio\" id=\"nroDomicilio\" value=\"\" /></td> </tr> <tr> <td><label for=\"nroPiso\">Piso: </label></td> <td><input type=\"text\" name=\"nroPiso\" id=\"nroPiso\" value=\"\" /></td> </tr> <tr> <td><label for=\"departamentoDomicilio\">Departamento: </label></td> <td><input type=\"text\" name=\"departamentoDomicilio\" id=\"departamentoDomicilio\" value=\"\" /></td> </tr> <tr> <td><label for=\"torreDomicilio\">Torre: </label></td> <td><input type=\"text\" name=\"torreDomicilio\" id=\"torreDomicilio\" value=\"\" /></td> </tr> <tr> <td><label for=\"manzanaDomicilio\">Manzana: </label></td> <td><input type=\"text\" name=\"manzanaDomicilio\" id=\"manzanaDomicilio\" value=\"\" /></td> </tr> <tr> <td><label for=\"loteDomicilio\">Lote: </label></td> <td><input type=\"text\" name=\"loteDomicilio\" id=\"loteDomicilio\" value=\"\" /></td> </tr> <tr> <td><label for=\"codigoPostalDomicilio\">Código Postal: </label></td> <td><input type=\"text\" name=\"codigoPostalDomicilio\" id=\"codigoPostalDomicilio\" value=\"\" /></td> </tr> </tbody> </table> <br /> <br /> <table> <thead> <tr> <th>ABM Clientes - Observaciones</th> </tr> </thead> <tbody> <tr> <td><label for=\"Observaciones\">Observacion: </label></td> <td><textarea name=\"Observaciones\" rows=\"4\" cols=\"20\"> </textarea></td> </tr> </tbody> </table> <input type=\"submit\" value=\"Enviar\" name=\"envClientes\" /> </form><script>function agregarOpcion(t){var e=(document.createElement(\"Select\"),document.createElement(\"Option\"));e.setAttribute(\"value\",\"x0\"),e.innerHTML=\"---\",t.appendChild(e)}var tipoDocumento=document.getElementById(\"tipoDocumentoPersona\"),cantidadContactos=1,eliminarCotacto=document.getElementById(\"masContacto\"),pais=document.getElementById(\"Pais\"),provincia=document.getElementById(\"Provincia\"),ciudad=document.getElementById(\"Ciudad\"),barrio=document.getElementById(\"Barrio\");buscarServlet(\"TipoDocumento\",tipoDocumento),buscarServlet(\"Estados\",document.getElementById(\"estadoCliente\")),buscarServlet(\"TipoContacto\",document.getElementById(\"tipoContacto\")),buscarServlet(\"Pais\",pais),document.getElementById(\"tipoContacto\").onchange=function(){\"\"===document.getElementById(\"cantidadContactos\").value&&(document.getElementById(\"cantidadContactos\").value=1)},eliminarCotacto.onclick=function(){this.parentNode.parentNode.nextSibling.nextSibling.remove(),this.parentNode.parentNode.remove(),document.getElementById(\"cantidadContactos\").value=--cantidadContactos},document.getElementById(\"envContacto\").onclick=function(){var t=document.getElementById(\"contactos\"),e=t.insertRow(0),n=t.insertRow(1);t.insertRow(2).appendChild(document.createElement(\"Br\"));var a=n.insertCell(0),o=n.insertCell(1),c=e.insertCell(0),i=e.insertCell(1),d=e.insertCell(2),r=document.createElement(\"Label\");cantidadContactos++,r.setAttribute(\"for\",\"tipoContacto\"+cantidadContactos),r.innerHTML=\"Tipo de Contacto: \",c.appendChild(r);var l=document.createElement(\"Select\"),u=document.createElement(\"Option\");l.setAttribute(\"name\",\"tipoContacto\"+cantidadContactos),l.setAttribute(\"id\",\"tipoContacto\"+cantidadContactos),u.setAttribute(\"value\",\"0\"),u.innerHTML=\"---\",l.appendChild(u),i.appendChild(l),buscarServlet(\"TipoContacto\",document.getElementById(\"tipoContacto\"+cantidadContactos));var s=document.createElement(\"Input\");s.setAttribute(\"type\",\"button\"),s.setAttribute(\"name\",\"+tipoContacto\"+cantidadContactos),s.setAttribute(\"id\",\"+tipoContacto\"+cantidadContactos),s.setAttribute(\"value\",\"-\"),s.onclick=function(){this.parentNode.parentNode.nextSibling.remove(),this.parentNode.parentNode.nextSibling.remove(),this.parentNode.parentNode.remove(),document.getElementById(\"cantidadContactos\").value=--cantidadContactos},d.appendChild(s);var m=document.createElement(\"Label\");m.setAttribute(\"for\",\"detalleContactos\"+cantidadContactos),m.innerHTML=\"Detalle: \",a.appendChild(m);var p=document.createElement(\"Input\");p.setAttribute(\"type\",\"text\"),p.setAttribute(\"name\",\"detalleContactos\"+cantidadContactos),p.setAttribute(\"type\",\"detalleContactos\"+cantidadContactos),o.appendChild(p),document.getElementById(\"cantidadContactos\").value=cantidadContactos},pais.onchange=function(){provincia.options.length=0,agregarOpcion(provincia);var t=pais[pais.selectedIndex].value;buscarServlet(\"Provincia\",provincia,t)},provincia.onchange=function(){ciudad.options.length=0,agregarOpcion(ciudad);var t=provincia[provincia.selectedIndex].value;buscarServlet(\"Ciudad\",ciudad,t)},ciudad.onchange=function(){barrio.options.length=0,agregarOpcion(barrio);var t=ciudad[ciudad.selectedIndex].value;buscarServlet(\"Barrio\",barrio,t)};</script>");
+        imprimirEtiquetasFinal(out);
+    }
+    
+    public static void cargaContactos(PrintWriter out){
+        imprimirEtiquetasIniciales(out,"ABM Contactos - Alta");
+        out.write("<body> <script src=\"js/buscar.js\"></script> <form method=\"POST\" action=\"AltaContacto\"> <table> <thead> <tr> <th>ABM Contactos - Alta</th> </tr> </thead> <tbody> <tr> <tr> <td><label for=\"tipoContacto\">Tipo de Contacto: </label></td> <td><select name=\"tipoContacto\" id=\"tipoContacto\"> <option value=\"0\">---</option> </select></td> </tr> <tr> <td><label for=\"detalleContacto\">Detalle: </label></td> <td><input type=\"text\" name=\"detalleContacto\" id=\"detalleContactos\" value=\"\" /></td> </tr> <tr> <td><label for=\"estado\">Estado: </label></td> <td><select name=\"estado\" id=\"estado\"> <option value=\"x0\"> --- </option> </select></td> </tr> <tr> <td><input type=\"submit\" value=\"Enviar Contacto\" name=\"envContacto\" /></td> </tr> </tbody> </table> </form> </body> <script> buscarServlet(\"TipoContacto\",document.getElementById(\"tipoContacto\")); buscarServlet(\"Estados\",document.getElementById(\"estado\")); </script>");
+        imprimirEtiquetasFinal(out);
+    }
+    
+    public static void cargaDetalleExcursion(PrintWriter out){
+        imprimirEtiquetasIniciales(out,"ABM Contactos - Alta");
+        out.write("<script src=\"js/buscar.js\"></script> <form method=\"POST\" action=\"AltaDetalleExcursion\"> <table> <thead> <tr> <th>ABM Detalle Excursion - Alta</th> </tr> </thead> <tbody> <tr> <td><label for=\"fechaDetalleExcursion\">Fecha: </label></td> <td><input type=\"date\" name=\"fechaDetalleExcursion\" id=\"fechaDetalleExcursion\" value=\"\" /></td> </tr> <tr> <td><label for=\"duracionDetalleExcursion\">Duracion: </label></td> <td><input type=\"text\" name=\"duracionDetalleExcursion\" id=\"duracionDetalleExcursion\" /></td> </tr> <tr> <td><label for=\"Excursion\">Id Excurcion: </label></td> <td><input type=\"text\" name=\"Excursion\" id=\"eExcursion\" value=\"\" /></td> <td><select name=\"nombreExcursion\" id=\"Excursiones\"> <option value=\"x0\">---</option> </select></td> </tr> <tr> <td><label for=\"lugarInteres\">Id Lugar Interes: </label></td> <td><input type=\"text\" name=\"lugarInteres\" id=\"lugarInteres\" value=\"\" /></td> <td><select name=\"nombrelugarInteres\" id=\"lugaresInteres\"> <option value=\"x0\">---</option> </select></td> </tr> </tbody> </table> <br /> <br /> <input type=\"submit\" value=\"Enviar\" name=\"envDetalle\" /> </form> <script>var idExcursion=document.getElementById(\"eExcursion\"),ExcursionSel=document.getElementById(\"Excursiones\"),idLugar=document.getElementById(\"lugarInteres\"),LugarSel=document.getElementById(\"lugaresInteres\");buscarServlet(\"Excursion\",ExcursionSel),buscarServlet(\"LugarDeInteres\",document.getElementById(\"lugaresInteres\")),idExcursion.onchange=function(){for(var e=0,u=0;u<ExcursionSel.length;u++)if(ExcursionSel[u].value==idExcursion.value){e=u;break}ExcursionSel[e].selected=!0},ExcursionSel.onchange=function(){\"x0\"!=this.value?idExcursion.value=ExcursionSel[ExcursionSel.selectedIndex].value:idExcursion.value=\"\"},idLugar.onchange=function(){for(var e=0,u=0;u<LugarSel.length;u++)if(LugarSel[u].value==idLugar.value){e=u;break}LugarSel[e].selected=!0},LugarSel.onchange=function(){\"x0\"!=this.value?idLugar.value=LugarSel[LugarSel.selectedIndex].value:idLugar.value=\"\"};</script>");
+        imprimirEtiquetasFinal(out);
+    }
+    
+    public static void cargaDomicilio(PrintWriter out){
+        imprimirEtiquetasIniciales(out,"ABM Contactos - Alta");
+        out.write("<script src=\"js/buscar.js\"></script> <form method=\"POST\" action=\"AltaDomicilio\"> <table> <thead> <tr> <th>ABM Domicilio - Alta </th> </tr> </thead> <tbody> <tr> <td><label for=\"Pais\">Pais: </label></td> <td><select name=\"Pais\" id=\"Pais\"> <option value=\"x0\">---</option> </select></td> <tr> <td><label for=\"Provincia\">Provincia: </label></td> <td><select name=\"Provincia\" id=\"Provincia\"> <option value=\"x0\">---</option> </select></td> </tr> <tr> <td><label for=\"Ciudad\">Cuidad: </label></td> <td><select name=\"Ciudad\" id=\"Ciudad\"> <option value=\"x0\">---</option> </select></td> </tr> <tr> <td><label for=\"Barrio\">Barrio: </label></td> <td><select name=\"Barrio\" id=\"Barrio\"> <option value=\"x0\">---</option> </select></td> </tr> <tr> <td><label for=\"calleDomicilio\">Calle: </label></td> <td><input type=\"text\" name=\"calleDomicilio\" id=\"calleDomicilio\" /></td> </tr> <tr> <td><label for=\"nroDomicilio\">Número: </label></td> <td><input type=\"text\" name=\"nroDomicilio\" id=\"nroDomicilio\" value=\"\" /></td> </tr> <tr> <td><label for=\"nroPiso\">Piso: </label></td> <td><input type=\"text\" name=\"nroPiso\" id=\"nroPiso\" value=\"\" /></td> </tr> <tr> <td><label for=\"departamentoDomicilio\">Departamento: </label></td> <td><input type=\"text\" name=\"departamentoDomicilio\" id=\"departamentoDomicilio\" value=\"\" /></td> </tr> <tr> <td><label for=\"torreDomicilio\">Torre: </label></td> <td><input type=\"text\" name=\"torreDomicilio\" id=\"torreDomicilio\" value=\"\" /></td> </tr> <tr> <td><label for=\"manzanaDomicilio\">Manzana: </label></td> <td><input type=\"text\" name=\"manzanaDomicilio\" id=\"manzanaDomicilio\" value=\"\" /></td> </tr> <tr> <td><label for=\"loteDomicilio\">Lote: </label></td> <td><input type=\"text\" name=\"loteDomicilio\" id=\"loteDomicilio\" value=\"\" /></td> </tr> <tr> <td><label for=\"codigoPostalDomicilio\">Código Postal: </label></td> <td><input type=\"text\" name=\"codigoPostalDomicilio\" id=\"codigoPostalDomicilio\" value=\"\" /></td> </tr> <tr> <td><input type=\"submit\" value=\"Enviar\" name=\"envFactura\" /></td> </tr> </tbody> </table> </form> <script>function agregarOpcion(a){var e=(document.createElement(\"Select\"),document.createElement(\"Option\"));e.setAttribute(\"value\",\"x0\"),e.innerHTML=\"---\",a.appendChild(e)}var pais=document.getElementById(\"Pais\"),provincia=document.getElementById(\"Provincia\"),ciudad=document.getElementById(\"Ciudad\"),barrio=document.getElementById(\"Barrio\");pais.onchange=function(){provincia.options.length=0,agregarOpcion(provincia);var a=pais[pais.selectedIndex].value;buscarServlet(\"Provincia\",provincia,a)},provincia.onchange=function(){ciudad.options.length=0,agregarOpcion(ciudad);var a=provincia[provincia.selectedIndex].value;buscarServlet(\"Ciudad\",ciudad,a)},ciudad.onchange=function(){barrio.options.length=0,agregarOpcion(barrio);var a=ciudad[ciudad.selectedIndex].value;buscarServlet(\"Barrio\",barrio,a)},buscarServlet(\"Pais\",pais);</script>");
+        imprimirEtiquetasFinal(out);
+    }
+    
+    public static void cargaEmpresaDeTransporte(PrintWriter out){
+        imprimirEtiquetasIniciales(out,"ABM Empresa Transporte - Alta");
+        out.write("<script src=\"js/buscar.js\"></script> <form method=\"POST\" action=\"AltaEmpresaTransporte\" enctype=\"multipart/form-data\"> <table> <thead> <tr> <th>ABM Empresa Transporte - Alta</th> </tr> </thead> <tbody> <tr> <td><label for=\"razonSocialEmpresaTransporte\">Razon Social: </label></td> <td><input type=\"text\" name=\"razonSocialEmpresaTransporte\" id=\"razonSocialEmpresaTransporte\" value=\"\" /></td> </tr> <tr id=\"imagen1\"> <td><label for=\"imagen1\">Imagen: </label></td> <td><input type=\"file\" name=\"imagen1\" id=\"imagenEmpresaTransporte\" /></td> <td><input type=\"button\" name=\"subirImagenEmpresaTransporte\" id=\"subirEmpresaTransporte\" value=\"Subir Otra Imagen\"/> <input style=\"display:none\" name=\"cantidadImagenes\" id=\"cantidadImagenes\" /> </td> </tr> </tbody> </table> <br /> <br /> <br /> <table> <thead> <tr> <th>ABM Empresa Transporte - Contactos</th> </tr> </thead> <tbody id=\"contactos\"> <tr> <tr> <td><label for=\"tipoContacto1\">Tipo de Contacto: </label></td> <td><select name=\"tipoContacto1\" id=\"tipoContacto\"> <option value=\"0\">---</option> </select></td> <td><input type=\"button\" name=\"+tipoContacto\" id=\"masContacto\" value=\"-\"/></td> </tr> <tr> <td><label for=\"detalleContactos1\">Detalle: </label></td> <td><input type=\"text\" name=\"detalleContactos1\" id=\"detalleContactos\" value=\"\" /></td> </tr> <tr> <td> <input type=\"button\" value=\"Agregar Contacto\" name=\"envContacto\" id=\"envContacto\"/> <input style=\"display:none\" id=\"cantidadContactos\" name=\"cantidadContactos\" /> </td> </tr> </tbody> </table> <br /> <br /> <input type=\"submit\" value=\"Enviar\" name=\"envDetalle\" /> </form> <script>function agregarOpcion(e){var t=(document.createElement(\"Select\"),document.createElement(\"Option\"));t.setAttribute(\"value\",\"x0\"),t.innerHTML=\"---\",e.appendChild(t)}var cantidadContactos=1,cantidadImagenes=0,camposImagen=1,eliminarCotacto=document.getElementById(\"masContacto\"),agregarImagen=document.getElementById(\"subirEmpresaTransporte\"),archivo1=document.getElementById(\"imagenEmpresaTransporte\");document.getElementById(\"cantidadImagenes\").value=0,archivo1.onchange=function(){null==this.files[0]?cantidadImagenes--:cantidadImagenes++,document.getElementById(\"cantidadImagenes\").value=cantidadImagenes},document.getElementById(\"tipoContacto\").onchange=function(){\"\"===document.getElementById(\"cantidadContactos\").value&&(document.getElementById(\"cantidadContactos\").value=1)},agregarImagen.onclick=function(){camposImagen++;var e=document.createElement(\"tr\");e.setAttribute(\"id\",\"imagen\"+camposImagen);var t=e.insertCell(0),n=e.insertCell(1),a=e.insertCell(2),o=document.createElement(\"Label\");o.setAttribute(\"for\",\"imagen\"+camposImagen),o.setAttribute(\"id\",\"labelImagenEmpresaTransporte\"+camposImagen),o.innerHTML=\"Imagen \"+camposImagen+\": \",t.appendChild(o);var d=document.createElement(\"Input\");d.setAttribute(\"type\",\"file\"),d.setAttribute(\"name\",\"imagen\"+camposImagen),d.setAttribute(\"id\",\"imagenEmpresaTransporte\"+camposImagen),d.onchange=function(){null==this.files[0]?cantidadImagenes--:cantidadImagenes++,document.getElementById(\"cantidadImagenes\").value=cantidadImagenes},n.appendChild(d);var c=document.createElement(\"Input\");c.setAttribute(\"type\",\"button\"),c.setAttribute(\"name\",\"sacarImagen\"+camposImagen),c.setAttribute(\"id\",\"sacarImagen\"+camposImagen),c.setAttribute(\"value\",\"-\"),c.onclick=function(){var e=parseInt(this.id[11]);null!=this.parentNode.parentNode.childNodes[1].childNodes[0].files[0]&&(cantidadImagenes--,document.getElementById(\"cantidadImagenes\").value=cantidadImagenes),this.parentNode.parentNode.remove();for(var t=1;camposImagen>=t;t++)if(t>e){var n=t-1,a=document.getElementById(\"labelImagenEmpresaTransporte\"+t),o=document.getElementById(\"imagenEmpresaTransporte\"+t),d=document.getElementById(\"sacarImagen\"+t),c=document.getElementById(\"imagen\"+t);a.attributes[0]=\"imagen\"+n,a.innerHTML=\"Imagen \"+n+\":\",a.id=\"labelImagenEmpresaTransporte\"+n,o.id=\"imagenEmpresaTransporte\"+n,o.name=\"imagen\"+n,d.id=\"sacarImagen\"+n,d.name=\"sacarImagen\"+n,c.id=\"imagen\"+n}camposImagen--},a.appendChild(c);var i=camposImagen-1;insertAfter(document.getElementById(\"imagen\"+i),e)},eliminarCotacto.onclick=function(){this.parentNode.parentNode.nextSibling.nextSibling.remove(),this.parentNode.parentNode.remove(),document.getElementById(\"cantidadContactos\").value=--cantidadContactos},document.getElementById(\"envContacto\").onclick=function(){var e=document.getElementById(\"contactos\"),t=e.insertRow(0),n=e.insertRow(1);e.insertRow(2).appendChild(document.createElement(\"Br\"));var a=n.insertCell(0),o=n.insertCell(1),d=t.insertCell(0),c=t.insertCell(1),i=t.insertCell(2),m=document.createElement(\"Label\");cantidadContactos++,m.setAttribute(\"for\",\"tipoContacto\"+cantidadContactos),m.innerHTML=\"Tipo de Contacto: \",d.appendChild(m);var r=document.createElement(\"Select\"),s=document.createElement(\"Option\");r.setAttribute(\"name\",\"tipoContacto\"+cantidadContactos),r.setAttribute(\"id\",\"tipoContacto\"+cantidadContactos),s.setAttribute(\"value\",\"0\"),s.innerHTML=\"---\",r.appendChild(s),c.appendChild(r),buscarServlet(\"TipoContacto\",document.getElementById(\"tipoContacto\"+cantidadContactos));var l=document.createElement(\"Input\");l.setAttribute(\"type\",\"button\"),l.setAttribute(\"name\",\"+tipoContacto\"+cantidadContactos),l.setAttribute(\"id\",\"+tipoContacto\"+cantidadContactos),l.setAttribute(\"value\",\"-\"),l.onclick=function(){this.parentNode.parentNode.nextSibling.remove(),this.parentNode.parentNode.nextSibling.remove(),this.parentNode.parentNode.remove(),document.getElementById(\"cantidadContactos\").value=--cantidadContactos},i.appendChild(l);var u=document.createElement(\"Label\");u.setAttribute(\"for\",\"detalleContactos\"+cantidadContactos),u.innerHTML=\"Detalle: \",a.appendChild(u);var p=document.createElement(\"Input\");p.setAttribute(\"type\",\"text\"),p.setAttribute(\"name\",\"detalleContactos\"+cantidadContactos),p.setAttribute(\"type\",\"detalleContactos\"+cantidadContactos),o.appendChild(p),document.getElementById(\"cantidadContactos\").value=cantidadContactos},buscarServlet(\"TipoContacto\",document.getElementById(\"tipoContacto\"));</script>");
+        imprimirEtiquetasFinal(out);
+    }
+    
+    public static void cargaEstado(PrintWriter out){
+        imprimirEtiquetasIniciales(out,"ABM Estado - Alta");
+        out.write("<form method=\"POST\" action=\"AltaEstado\"> <table> <thead> <tr> <th>ABM Estado - Alta</th> </tr> </thead> <tbody> <tr> <td><label for=\"tipoEstado\">Estado: </label></td> <td><input type=\"text\" name=\"tipoEstado\" id=\"tipoEstado\" value=\"\" /></td> </tr> <tr> <td><label for=\"descripcionEstado\">Descripcion: </label></td> <td><textarea name=\"descripcionEstado\" id=\"descripcionEstado\" /></textarea></td> </tr> <tr> <td><input type=\"submit\" value=\"Enviar\" name=\"envEstado\" /></td> </tr> </tbody> </table> </form>");
+        imprimirEtiquetasFinal(out);
+    }
+    
+    public static void cargaEventos(PrintWriter out){
+        imprimirEtiquetasIniciales(out,"ABM Eventos - Alta");
+        out.write("<script src=\"js/buscar.js\"></script> <form method=\"POST\" action=\"AltaEvento\"> <table> <thead> <tr> <th>ABM Evento - Alta</th> </tr> </thead> <tbody> <tr> <td><label for=\"tituloEvento\">Titulo: </label></td> <td><input type=\"text\" name=\"tituloEvento\" id=\"tituloEvento\" value=\"\" /></td> </tr> <tr> <td><label for=\"precioEvento\">Precio: </label></td> <td><input type=\"text\" name=\"precioEvento\" id=\"precioEvento\" /></td> </tr> <tr> <td><label for=\"descripcionEvento\">Descripcion: </label></td> <td><textarea name=\"descripcionEvento\" id=\"descripcionEvento\" /></textarea></td> </tr> <tr> <td><label for=\"pririodadEvento\">Prioridad: </label></td> <td><input type=\"number\" name=\"pririodadEvento\" id=\"pririodadEvento\" value=\"\" /></td> </tr> <tr> <td><label for=\"fechaInicioEvento\">Fecha inicio: </label></td> <td><input type=\"date\" name=\"fechaInicioEvento\" id=\"fechaInicioEvento\" value=\"\" /></td> </tr> <tr> <td><label for=\"fechaFinalEvento\">Fecha final: </label></td> <td><input type=\"date\" name=\"fechaFinalEvento\" id=\"fechaFinalEvento\" value=\"\" /></td> </tr> <tr> <td><label for=\"estadoSitioParaComer\">Estado: </label></td> <td><select name=\"estadoSitioParaComer\" id=\"estadoSitioParaComer\"> <option value=\"x0\">---</option> </select></td> </tr> <tr> <td><label for=\"clienteSitioParaComer\">Id Cliente: </label></td> <td><select name=\"clienteSitioParaComer\" id=\"clienteSitioParaComer\"> <option value=\"x0\">---</option> </select> </td> <td><input type=\"text\" name=\"clienteSitioParaComer\" id=\"clienteSitioParaComer\" value=\"\" /></td> </tr> <tr id=\"imagen1\"> <td><label for=\"imagen1\">Imagen: </label></td> <td><input type=\"file\" name=\"imagen1\" id=\"imagenSitioParaComer\" /></td> <td> <input type=\"button\" name=\"subirImagenSitioParaComer\" id=\"subirSitioParaComer\" value=\"Subir Otra Imagen\"/> <input style=\"display:none\" name=\"cantidadImagenes\" id=\"cantidadImagenes\" /> </td> </tr> <tr> <td><label for=\"tipoEvento\">Tipo Evento: </label></td> <td><select name=\"tipoEvento\" id=\"tipoEvento\"> <option value=\"x0\">---</option> </select></td> </tr> <tr><td><br /></td></tr> <tr><td><br /></td></tr> <tr><td><br /></td></tr> <tr> <td><label for=\"Pais\">Pais: </label></td> <td><select name=\"Pais\" id=\"Pais\"> <option value=\"x0\">---</option> </select></td> <tr> <td><label for=\"Provincia\">Provincia: </label></td> <td><select name=\"Provincia\" id=\"Provincia\"> <option value=\"x0\">---</option> </select></td> </tr> <tr> <td><label for=\"Ciudad\">Cuidad: </label></td> <td><select name=\"Ciudad\" id=\"Ciudad\"> <option value=\"x0\">---</option> </select></td> </tr> <tr> <td><label for=\"Barrio\">Barrio: </label></td> <td><select name=\"Barrio\" id=\"Barrio\"> <option value=\"x0\">---</option> </select></td> </tr> <tr> <td><label for=\"calleDomicilio\">Calle: </label></td> <td><input type=\"text\" name=\"calleDomicilio\" id=\"calleDomicilio\" /></td> </tr> <tr> <td><label for=\"nroDomicilio\">Número: </label></td> <td><input type=\"text\" name=\"nroDomicilio\" id=\"nroDomicilio\" value=\"\" /></td> </tr> <tr> <td><label for=\"nroPiso\">Piso: </label></td> <td><input type=\"text\" name=\"nroPiso\" id=\"nroPiso\" value=\"\" /></td> </tr> <tr> <td><label for=\"departamentoDomicilio\">Departamento: </label></td> <td><input type=\"text\" name=\"departamentoDomicilio\" id=\"departamentoDomicilio\" value=\"\" /></td> </tr> <tr> <td><label for=\"torreDomicilio\">Torre: </label></td> <td><input type=\"text\" name=\"torreDomicilio\" id=\"torreDomicilio\" value=\"\" /></td> </tr> <tr> <td><label for=\"manzanaDomicilio\">Manzana: </label></td> <td><input type=\"text\" name=\"manzanaDomicilio\" id=\"manzanaDomicilio\" value=\"\" /></td> </tr> <tr> <td><label for=\"loteDomicilio\">Lote: </label></td> <td><input type=\"text\" name=\"loteDomicilio\" id=\"loteDomicilio\" value=\"\" /></td> </tr> <tr> <td><label for=\"codigoPostalDomicilio\">Código Postal: </label></td> <td><input type=\"text\" name=\"codigoPostalDomicilio\" id=\"codigoPostalDomicilio\" value=\"\" /></td> </tr> </tbody> </table> <br /> <br /> <br /> <table> <thead> <tr> <th>ABM Evento - Contactos</th> </tr> </thead> <tbody id=\"contactos\"> <tr> <tr> <td><label for=\"tipoContacto1\">Tipo de Contacto: </label></td> <td> <select name=\"tipoContacto1\" id=\"tipoContacto\"> <option value=\"x0\">---</option> </select> </td> <td><input type=\"button\" name=\"+tipoContacto\" id=\"masContacto\" value=\"-\"/></td> </tr> <tr> <td><label for=\"detalleContactos1\">Detalle: </label></td> <td><input type=\"text\" name=\"detalleContactos1\" id=\"detalleContactos\" value=\"\" /></td> </tr> <tr> <td> <input type=\"button\" value=\"Agregar Contacto\" name=\"envContacto\" id=\"envContacto\"/> <input style=\"display:none\" id=\"cantidadContactos\" name=\"cantidadContactos\" /> </td> </tr> </tbody> </table> <input type=\"submit\" value=\"Enviar\" name=\"envDetalle\" /> </form> <script>function agregarOpcion(e){var t=(document.createElement(\"Select\"),document.createElement(\"Option\"));t.setAttribute(\"value\",\"x0\"),t.innerHTML=\"---\",e.appendChild(t)}var cantidadImagenes=0,camposImagen=1,agregarImagen=document.getElementById(\"subirSitioParaComer\"),archivo1=document.getElementById(\"imagenSitioParaComer\");document.getElementById(\"cantidadImagenes\").value=0;var pais=document.getElementById(\"Pais\"),provincia=document.getElementById(\"Provincia\"),ciudad=document.getElementById(\"Ciudad\"),barrio=document.getElementById(\"Barrio\"),cantidadContactos=1,eliminarCotacto=document.getElementById(\"masContacto\");buscarServlet(\"Estados\",document.getElementById(\"estadoSitioParaComer\")),buscarServlet(\"Clientes\",document.getElementById(\"clienteSitioParaComer\"),null,!0),buscarServlet(\"TipoEvento\",document.getElementById(\"tipoEvento\")),buscarServlet(\"Pais\",pais),buscarServlet(\"TipoContacto\",document.getElementById(\"tipoContacto\")),archivo1.onchange=function(){null==this.files[0]?cantidadImagenes--:cantidadImagenes++,document.getElementById(\"cantidadImagenes\").value=cantidadImagenes},agregarImagen.onclick=function(){camposImagen++;var e=document.createElement(\"tr\");e.setAttribute(\"id\",\"imagen\"+camposImagen);var t=e.insertCell(0),a=e.insertCell(1),n=e.insertCell(2),o=document.createElement(\"Label\");o.setAttribute(\"for\",\"imagen\"+camposImagen),o.setAttribute(\"id\",\"labelSitioParaComer\"+camposImagen),o.innerHTML=\"Imagen \"+camposImagen+\": \",t.appendChild(o);var i=document.createElement(\"Input\");i.setAttribute(\"type\",\"file\"),i.setAttribute(\"name\",\"imagen\"+camposImagen),i.setAttribute(\"id\",\"imagenSitioParaComer\"+camposImagen),i.onchange=function(){null==this.files[0]?cantidadImagenes--:cantidadImagenes++,document.getElementById(\"cantidadImagenes\").value=cantidadImagenes},a.appendChild(i);var d=document.createElement(\"Input\");d.setAttribute(\"type\",\"button\"),d.setAttribute(\"name\",\"sacarImagen\"+camposImagen),d.setAttribute(\"id\",\"sacarImagen\"+camposImagen),d.setAttribute(\"value\",\"-\"),d.onclick=function(){var e=parseInt(this.id[11]);null!=this.parentNode.parentNode.childNodes[1].childNodes[0].files[0]&&(cantidadImagenes--,document.getElementById(\"cantidadImagenes\").value=cantidadImagenes),this.parentNode.parentNode.remove();for(var t=1;camposImagen>=t;t++)if(t>e){var a=t-1,n=document.getElementById(\"labelSitioParaComer\"+t),o=document.getElementById(\"imagenSitioParaComer\"+t),i=document.getElementById(\"sacarImagen\"+t),d=document.getElementById(\"imagen\"+t);n.attributes[0]=\"imagen\"+a,n.innerHTML=\"Imagen \"+a+\":\",n.id=\"labelSitioParaComer\"+a,o.id=\"imagenSitioParaComer\"+a,o.name=\"imagen\"+a,i.id=\"sacarImagen\"+a,i.name=\"sacarImagen\"+a,d.id=\"imagen\"+a}camposImagen--},n.appendChild(d);var c=camposImagen-1;insertAfter(document.getElementById(\"imagen\"+c),e)},pais.onchange=function(){provincia.options.length=0,agregarOpcion(provincia);var e=pais[pais.selectedIndex].value;buscarServlet(\"Provincia\",provincia,e)},provincia.onchange=function(){ciudad.options.length=0,agregarOpcion(ciudad);var e=provincia[provincia.selectedIndex].value;buscarServlet(\"Ciudad\",ciudad,e)},ciudad.onchange=function(){barrio.options.length=0,agregarOpcion(barrio);var e=ciudad[ciudad.selectedIndex].value;buscarServlet(\"Barrio\",barrio,e)},document.getElementById(\"tipoContacto\").onchange=function(){\"\"===document.getElementById(\"cantidadContactos\").value&&(document.getElementById(\"cantidadContactos\").value=1)},eliminarCotacto.onclick=function(){this.parentNode.parentNode.nextSibling.nextSibling.remove(),this.parentNode.parentNode.remove(),document.getElementById(\"cantidadContactos\").value=--cantidadContactos},document.getElementById(\"envContacto\").onclick=function(){var e=document.getElementById(\"contactos\"),t=e.insertRow(0),a=e.insertRow(1);e.insertRow(2).appendChild(document.createElement(\"Br\"));var n=a.insertCell(0),o=a.insertCell(1),i=t.insertCell(0),d=t.insertCell(1),c=t.insertCell(2),r=document.createElement(\"Label\");cantidadContactos++,r.setAttribute(\"for\",\"tipoContacto\"+cantidadContactos),r.innerHTML=\"Tipo de Contacto: \",i.appendChild(r);var m=document.createElement(\"Select\"),l=document.createElement(\"Option\");m.setAttribute(\"name\",\"tipoContacto\"+cantidadContactos),m.setAttribute(\"id\",\"tipoContacto\"+cantidadContactos),l.setAttribute(\"value\",\"0\"),l.innerHTML=\"---\",m.appendChild(l),d.appendChild(m),buscarServlet(\"TipoContacto\",document.getElementById(\"tipoContacto\"+cantidadContactos));var s=document.createElement(\"Input\");s.setAttribute(\"type\",\"button\"),s.setAttribute(\"name\",\"+tipoContacto\"+cantidadContactos),s.setAttribute(\"id\",\"+tipoContacto\"+cantidadContactos),s.setAttribute(\"value\",\"-\"),s.onclick=function(){this.parentNode.parentNode.nextSibling.remove(),this.parentNode.parentNode.nextSibling.remove(),this.parentNode.parentNode.remove(),document.getElementById(\"cantidadContactos\").value=--cantidadContactos},c.appendChild(s);var u=document.createElement(\"Label\");u.setAttribute(\"for\",\"detalleContactos\"+cantidadContactos),u.innerHTML=\"Detalle: \",n.appendChild(u);var g=document.createElement(\"Input\");g.setAttribute(\"type\",\"text\"),g.setAttribute(\"name\",\"detalleContactos\"+cantidadContactos),g.setAttribute(\"type\",\"detalleContactos\"+cantidadContactos),o.appendChild(g),document.getElementById(\"cantidadContactos\").value=cantidadContactos};</script>");
+        imprimirEtiquetasFinal(out);
+    }
+    
+    public static void cargaExcursiones(PrintWriter out){
+        imprimirEtiquetasIniciales(out,"ABM Excursion - Alta");
+        out.write("<script src=\"js/buscar.js\"></script> <form method=\"POST\" action=\"AltaExcursion\" enctype=\"multipart/form-data\"> <table> <thead> <tr> <th>ABM Excursion - Alta</th> </tr> </thead> <tbody> <tr> <td><label for=\"nombreExcursion\">Nombre: </label></td> <td><input type=\"text\" name=\"nombreExcursion\" id=\"nombreExcursion\" value=\"\" /></td> </tr> <tr> <td><label for=\"detalleExcursion\">Detalle: </label></td> <td><textarea name=\"detalleExcursion\" id=\"detalleExcursion\" /></textarea></td> </tr> <tr> <td><label for=\"clienteExcursion\">Id Cliente: </label></td> <td><select name=\"clienteExcursion\" id=\"clienteExcursion\"> <option value=\"x0\">---</option> </select> </td> <td><input type=\"text\" name=\"idClienteExcursion\" id=\"idClienteExcursion\" value=\"\" /></td> </tr> <tr> <td><label for=\"inicioExcursion\">Fecha Inicio: </label></td> <td><input type=\"date\" name=\"inicioExcursion\" id=\"inicioExcursion\" /></td> </tr> <tr> <td><label for=\"finExcursion\">Fecha Fin: </label></td> <td><input type=\"date\" name=\"finExcursion\" id=\"finExcursion\" /></td> </tr> <tr> <td><label for=\"anoExcursion\">Año: </label></td> <td><input type=\"text\" name=\"anoExcursion\" id=\"anoExcursion\" value=\"\" /></td> </tr> <tr> <td><label for=\"visitantesExcursion\">Cantidad de personas: </label></td> <td><input type=\"text\" name=\"visitantesExcursion\" id=\"visitantesExcursion\" value=\"\" /></td> </tr> <tr> <td><label for=\"pririodadExcursion\">Prioridad: </label></td> <td><input type=\"number\" name=\"pririodadExcursion\" id=\"pririodadExcursion\" value=\"\" /></td> </tr> <tr> <td><label for=\"precioExcursion\">Precio: </label></td> <td><input type=\"text\" name=\"precioExcursion\" id=\"precioExcursion\" value=\"\" /></td> </tr> <tr> <td><label for=\"estadoExcursion\">Estado: </label></td> <td><select name=\"estadoExcursion\" id=\"estadoExcursion\"> <option value=\"0\">---</option> </select></td> </tr> <tr> <td><label for=\"temporadaExcursion\">Temporada: </label></td> <td><select name=\"temporadaExcursion\" id=\"temporadaExcursion\"> <option value=\"0\">---</option> </select></td> </tr> <tr id=\"imagen1\"> <td><label for=\"imagenExcursion1\">Imagen: </label></td> <td><input type=\"file\" name=\"imagen1\" id=\"imagenExcursion1\" /></td> <td><input type=\"button\" name=\"subirImagenExcursion\" id=\"subirImagenExcursion\" value=\"Subir Otra Imagen\"/></td> <input style=\"display:none\" name=\"cantidadImagenes\" id=\"cantidadImagenes\" /> </tr> </tbody> </table> <br /> <br /> <table> <thead> <tr> <th>ABM Excursion - Contactos</th> </tr> </thead> <tbody id=\"contactos\"> <tr> <tr> <td><label for=\"tipoContacto1\">Tipo de Contacto: </label></td> <td><select name=\"tipoContacto1\" id=\"tipoContacto\"> <option value=\"x0\">---</option> </select> </td> <td><input type=\"button\" name=\"+tipoContacto\" id=\"masContacto\" value=\"-\"/></td> </tr> <tr> <td><label for=\"detalleContactos1\">Detalle: </label></td> <td><input type=\"text\" name=\"detalleContactos1\" id=\"detalleContactos\" value=\"\" /></td> </tr> <tr> <td><input type=\"button\" value=\"Agregar Contacto\" name=\"envContacto\" id=\"envContacto\"/> <input style=\"display:none\" id=\"cantidadContactos\" name=\"cantidadContactos\" /></td> </tr> </tbody> </table> <br /> <br /> <table> <thead> <tr> <th>ABM Excursion - Domicilio</th> </tr> </thead> <tbody> <tr> <td><label for=\"Pais\">Pais: </label></td> <td><select name=\"Pais\" id=\"Pais\"> <option value=\"x0\">---</option> </select></td> <tr> <td><label for=\"Provincia\">Provincia: </label></td> <td><select name=\"Provincia\" id=\"Provincia\"> <option value=\"x0\">---</option> </select></td> </tr> <tr> <td><label for=\"Ciudad\">Cuidad: </label></td> <td><select name=\"Ciudad\" id=\"Ciudad\"> <option value=\"x0\">---</option> </select></td> </tr> <tr> <td><label for=\"Barrio\">Barrio: </label></td> <td><select name=\"Barrio\" id=\"Barrio\"> <option value=\"x0\">---</option> </select></td> </tr> <tr> <td><label for=\"calleDomicilio\">Calle: </label></td> <td><input type=\"text\" name=\"calleDomicilio\" id=\"calleDomicilio\" /></td> </tr> <tr> <td><label for=\"nroDomicilio\">Número: </label></td> <td><input type=\"text\" name=\"nroDomicilio\" id=\"nroDomicilio\" value=\"\" /></td> </tr> <tr> <td><label for=\"nroPiso\">Piso: </label></td> <td><input type=\"text\" name=\"nroPiso\" id=\"nroPiso\" value=\"\" /></td> </tr> <tr> <td><label for=\"departamentoDomicilio\">Departamento: </label></td> <td><input type=\"text\" name=\"departamentoDomicilio\" id=\"departamentoDomicilio\" value=\"\" /></td> </tr> <tr> <td><label for=\"torreDomicilio\">Torre: </label></td> <td><input type=\"text\" name=\"torreDomicilio\" id=\"torreDomicilio\" value=\"\" /></td> </tr> <tr> <td><label for=\"manzanaDomicilio\">Manzana: </label></td> <td><input type=\"text\" name=\"manzanaDomicilio\" id=\"manzanaDomicilio\" value=\"\" /></td> </tr> <tr> <td><label for=\"loteDomicilio\">Lote: </label></td> <td><input type=\"text\" name=\"loteDomicilio\" id=\"loteDomicilio\" value=\"\" /></td> </tr> <tr> <td><label for=\"codigoPostalDomicilio\">Código Postal: </label></td> <td><input type=\"text\" name=\"codigoPostalDomicilio\" id=\"codigoPostalDomicilio\" value=\"\" /></td> </tr> </tbody> </table> <input type=\"submit\" value=\"Enviar\" name=\"envExcurcion\" /> </form> <script>function agregarOpcion(e){var t=(document.createElement(\"Select\"),document.createElement(\"Option\"));t.setAttribute(\"value\",\"x0\"),t.innerHTML=\"---\",e.appendChild(t)}var pais=document.getElementById(\"Pais\"),provincia=document.getElementById(\"Provincia\"),ciudad=document.getElementById(\"Ciudad\"),barrio=document.getElementById(\"Barrio\"),idCliente=document.getElementById(\"idClienteExcursion\"),clienteSel=document.getElementById(\"clienteExcursion\"),cantidadContactos=1,cantidadImagenes=0,camposImagen=1,eliminarCotacto=document.getElementById(\"masContacto\"),subirAlojamiento=document.getElementById(\"subirImagenExcursion\"),archivo1=document.getElementById(\"imagenExcursion1\");document.getElementById(\"cantidadImagenes\").value=0,archivo1.onchange=function(){null==this.files[0]?cantidadImagenes--:cantidadImagenes++,document.getElementById(\"cantidadImagenes\").value=cantidadImagenes},document.getElementById(\"tipoContacto\").onchange=function(){\"\"===document.getElementById(\"cantidadContactos\").value&&(document.getElementById(\"cantidadContactos\").value=1)},subirAlojamiento.onclick=function(){camposImagen++;var e=document.createElement(\"tr\");e.setAttribute(\"id\",\"imagen\"+camposImagen);var t=e.insertCell(0),n=e.insertCell(1),a=e.insertCell(2),i=document.createElement(\"Label\");i.setAttribute(\"for\",\"imagen\"+camposImagen),i.setAttribute(\"id\",\"labelImagenExcursion\"+camposImagen),i.innerHTML=\"Imagen \"+camposImagen+\": \",t.appendChild(i);var o=document.createElement(\"Input\");o.setAttribute(\"type\",\"file\"),o.setAttribute(\"name\",\"imagen\"+camposImagen),o.setAttribute(\"id\",\"imagenExcursion\"+camposImagen),o.onchange=function(){null==this.files[0]?cantidadImagenes--:cantidadImagenes++,document.getElementById(\"cantidadImagenes\").value=cantidadImagenes},n.appendChild(o);var c=document.createElement(\"Input\");c.setAttribute(\"type\",\"button\"),c.setAttribute(\"name\",\"sacarImagen\"+camposImagen),c.setAttribute(\"id\",\"sacarImagen\"+camposImagen),c.setAttribute(\"value\",\"-\"),c.onclick=function(){var e=parseInt(this.id[11]);null!=this.parentNode.parentNode.childNodes[1].childNodes[0].files[0]&&(cantidadImagenes--,document.getElementById(\"cantidadImagenes\").value=cantidadImagenes),this.parentNode.parentNode.remove();for(var t=1;camposImagen>=t;t++)if(t>e){var n=t-1,a=document.getElementById(\"labelImagenExcursion\"+t),i=document.getElementById(\"imagenExcursion\"+t),o=document.getElementById(\"sacarImagen\"+t),c=document.getElementById(\"imagen\"+t);a.attributes[0]=\"imagen\"+n,a.innerHTML=\"Imagen \"+n+\":\",a.id=\"labelImagenExcursion\"+n,i.id=\"imagenExcursion\"+n,i.name=\"imagen\"+n,o.id=\"sacarImagen\"+n,o.name=\"sacarImagen\"+n,c.id=\"imagen\"+n}camposImagen--},a.appendChild(c);var d=camposImagen-1;insertAfter(document.getElementById(\"imagen\"+d),e)},eliminarCotacto.onclick=function(){this.parentNode.parentNode.nextSibling.nextSibling.remove(),this.parentNode.parentNode.remove(),document.getElementById(\"cantidadContactos\").value=--cantidadContactos},document.getElementById(\"envContacto\").onclick=function(){var e=document.getElementById(\"contactos\"),t=e.insertRow(0),n=e.insertRow(1);e.insertRow(2).appendChild(document.createElement(\"Br\"));var a=n.insertCell(0),i=n.insertCell(1),o=t.insertCell(0),c=t.insertCell(1),d=t.insertCell(2),l=document.createElement(\"Label\");cantidadContactos++,l.setAttribute(\"for\",\"tipoContacto\"+cantidadContactos),l.innerHTML=\"Tipo de Contacto: \",o.appendChild(l);var r=document.createElement(\"Select\"),m=document.createElement(\"Option\");r.setAttribute(\"name\",\"tipoContacto\"+cantidadContactos),r.setAttribute(\"id\",\"tipoContacto\"+cantidadContactos),m.setAttribute(\"value\",\"0\"),m.innerHTML=\"---\",r.appendChild(m),c.appendChild(r),buscarServlet(\"TipoContacto\",document.getElementById(\"tipoContacto\"+cantidadContactos));var s=document.createElement(\"Input\");s.setAttribute(\"type\",\"button\"),s.setAttribute(\"name\",\"+tipoContacto\"+cantidadContactos),s.setAttribute(\"id\",\"+tipoContacto\"+cantidadContactos),s.setAttribute(\"value\",\"-\"),s.onclick=function(){this.parentNode.parentNode.nextSibling.remove(),this.parentNode.parentNode.nextSibling.remove(),this.parentNode.parentNode.remove(),document.getElementById(\"cantidadContactos\").value=--cantidadContactos},d.appendChild(s);var u=document.createElement(\"Label\");u.setAttribute(\"for\",\"detalleContactos\"+cantidadContactos),u.innerHTML=\"Detalle: \",a.appendChild(u);var g=document.createElement(\"Input\");g.setAttribute(\"type\",\"text\"),g.setAttribute(\"name\",\"detalleContactos\"+cantidadContactos),g.setAttribute(\"type\",\"detalleContactos\"+cantidadContactos),i.appendChild(g),document.getElementById(\"cantidadContactos\").value=cantidadContactos},idCliente.onchange=function(){for(var e=0,t=0;t<clienteSel.length;t++)if(clienteSel[t].value==idCliente.value){e=t;break}clienteSel[e].selected=!0},clienteSel.onchange=function(){\"x0\"!=this.value?idCliente.value=clienteSel[clienteSel.selectedIndex].value:idCliente.value=\"\"},pais.onchange=function(){provincia.options.length=0,agregarOpcion(provincia);var e=pais[pais.selectedIndex].value;buscarServlet(\"Provincia\",provincia,e)},provincia.onchange=function(){ciudad.options.length=0,agregarOpcion(ciudad);var e=provincia[provincia.selectedIndex].value;buscarServlet(\"Ciudad\",ciudad,e)},ciudad.onchange=function(){barrio.options.length=0,agregarOpcion(barrio);var e=ciudad[ciudad.selectedIndex].value;buscarServlet(\"Barrio\",barrio,e)},buscarServlet(\"Estados\",document.getElementById(\"estadoExcursion\")),buscarServlet(\"Temporadas\",document.getElementById(\"temporadaExcursion\")),buscarServlet(\"Pais\",pais),buscarServlet(\"Clientes\",clienteSel,null,!0),buscarServlet(\"TipoContacto\",document.getElementById(\"tipoContacto\"));</script>");
+        imprimirEtiquetasFinal(out);
+    }
+    
+    public static void cargaFacturas(PrintWriter out){
+        imprimirEtiquetasIniciales(out,"ABM Excursion - Alta");
+        out.write("<script src=\"js/buscar.js\"></script> <form method=\"POST\" action=\"AltaFactura\"> <table> <thead> <tr> <th>ABM Factura - Alta </th> </tr> </thead> <tbody> <tr> <td><label for=\"conceptoFactura\">Concepto: </label></td> <td><textarea name=\"conceptoFactura\" id=\"conceptoFactura\" value=\"\"></textarea></td> </tr> <tr> <td><label for=\"precioFactura\">Precio: </label></td> <td><input type=\"text\" name=\"precioFactura\" id=\"precioFactura\" value=\"\" /></td> </tr> <tr> <td><label for=\"clienteFactura\">Cliente: </label></td> <td> <select name=\"clienteFactura\" id=\"clienteFactura\"> <option value=\"x0\">---</option> </select> <input type=\"number\" name=\"idClienteFactura\" id=\"idClienteFactura\" value=\"\" /> </td> </tr> <tr> <td><label for=\"fechaVencimiento\">Fecha Vencimiento: </label></td> <td><input type=\"date\" name=\"fechaVencimiento\" id=\"fechaVencimiento\" value=\"\" /></td> </tr> <tr> <td><label for=\"estadoFactura\">Estado: </label></td> <td><select name=\"estadoFactura\" id=\"estadoFactura\"> <option value=\"x0\">---</option> </select> </td> </tr> <tr> <td><label for=\"tipoFactura\">Tipo Factura: </label></td> <td><select name=\"tipoFactura\" id=\"tipoFactura\"> <option value=\"x0\">---</option> </select> </td> </tr> <tr> <td><label for=\"tipoVencimientoFactura\">Tipo Vencimiento: </label></td> <td><select name=\"tipoVencimientoFactura\" id=\"tipoVencimientoFactura\"> <option value=\"x0\">---</option> </select> </td> </tr> </tbody> </table> <br/> <br/> <input type=\"submit\" value=\"Enviar\" name=\"envFactura\" /> </form> <script>var idCliente=document.getElementById(\"idClienteFactura\"),clienteSel=document.getElementById(\"clienteFactura\");buscarServlet(\"Estados\",document.getElementById(\"estadoFactura\")),buscarServlet(\"Clientes\",document.getElementById(\"clienteFactura\"),null,!0),buscarServlet(\"TipoFactura\",document.getElementById(\"tipoFactura\")),buscarServlet(\"TipoVencimiento\",document.getElementById(\"tipoVencimientoFactura\")),idCliente.onchange=function(){for(var e=0,t=0;t<clienteSel.length;t++)if(clienteSel[t].value==idCliente.value){e=t;break}clienteSel[e].selected=!0},clienteSel.onchange=function(){\"x0\"!=this.value?idCliente.value=clienteSel[clienteSel.selectedIndex].value:idCliente.value=\"\"};</script>");
+        imprimirEtiquetasFinal(out);
+    }
+    
+    public static void cargaHabitacion(PrintWriter out){
+        imprimirEtiquetasIniciales(out,"ABM Habitacion - Alta");
+        out.write("<script src=\"js/buscar.js\"></script> <form method=\"POST\" action=\"AltaHabitacion\"> <table> <thead> <tr> <th>ABM Habitacion - Alta</th> </tr> </thead> <tbody> <tr> <td><label for=\"tipoHabitacion\">Tipo Habitacion: </label></td> <td><select name=\"tipoHabitacion\" id=\"tipoHabitacion\"> <option value=\"0\">---</option> </select></td> </tr> <tr> <td><label for=\"precioHabitacion\">Precio: </label></td> <td><input type=\"text\" name=\"precioHabitacion\" id=\"precioHabitacion\" value=\"\" /></td> </tr> <tr> <td><label for=\"descripcionHabitacion\">Descripcion: </label></td> <td><textarea name=\"detalleHabitacion\" id=\"detalleHabitacion\" /></textarea></td> </tr> <tr> <td><label for=\"prioridadHabitacion\">Prioridad: </label></td> <td><input type=\"number\" name=\"prioridadHabitacion\" id=\"prioridadHabitacionn\" value=\"\" /></td> </tr> <tr> <td><label for=\"estadoHabitacion\">Estado: </label></td> <td><select name=\"estadoHabitacion\" id=\"estadoHabitacion\"> <option value=\"0\">---</option> </select></td> </tr> <tr> <td><label for=\"alojamientoHabitacion\">Alojamiento: </label></td> <td> <select name=\"alojamientoHabitacion\" id=\"alojamientoHabitacion\"> <option value=\"0\">---</option> </select> <input type=\"text\" name=\"idAlojamientoHabitacion\" id=\"idAlojamientoHabitacion\" value=\"\" /> </td> </tr> <tr id=\"imagen1\"> <td><label for=\"imagenExcursion\">Imagen: </label></td> <td><input type=\"file\" name=\"imagenExcursion\" id=\"imagenExcursion\" /></td> <td><input type=\"button\" name=\"subirImagenExcursion\" id=\"subirImagenExcursion\" value=\"Subir Otra Imagen\"/></td> <input style=\"display:none\" name=\"cantidadImagenes\" id=\"cantidadImagenes\" /> </tr> </tbody> </table> <br/> <br/> <input type=\"submit\" value=\"Enviar\" name=\"envExcurcion\" /> </form> <script>function agregarOpcion(e){var n=(document.createElement(\"Select\"),document.createElement(\"Option\"));n.setAttribute(\"value\",\"x0\"),n.innerHTML=\"---\",e.appendChild(n)}var idAlojamientos=document.getElementById(\"idAlojamientoHabitacion\"),AlojamientosSel=document.getElementById(\"alojamientoHabitacion\"),cantidadImagenes=0,camposImagen=1,subirAlojamiento=document.getElementById(\"subirImagenExcursion\"),archivo1=document.getElementById(\"imagenExcursion\");document.getElementById(\"cantidadImagenes\").value=0,buscarServlet(\"Estados\",document.getElementById(\"estadoHabitacion\")),buscarServlet(\"TipoHabitacion\",document.getElementById(\"tipoHabitacion\")),buscarServlet(\"Alojamientos\",document.getElementById(\"alojamientoHabitacion\")),idAlojamientos.onchange=function(){for(var e=0,n=0;n<AlojamientosSel.length;n++)if(AlojamientosSel[n].value==idAlojamientos.value){e=n;break}AlojamientosSel[e].selected=!0},AlojamientosSel.onchange=function(){\"x0\"!=this.value?idAlojamientos.value=AlojamientosSel[AlojamientosSel.selectedIndex].value:idAlojamientos.value=\"\"},archivo1.onchange=function(){null==this.files[0]?cantidadImagenes--:cantidadImagenes++,document.getElementById(\"cantidadImagenes\").value=cantidadImagenes},subirAlojamiento.onclick=function(){camposImagen++;var e=document.createElement(\"tr\");e.setAttribute(\"id\",\"imagen\"+camposImagen);var n=e.insertCell(0),a=e.insertCell(1),t=e.insertCell(2),i=document.createElement(\"Label\");i.setAttribute(\"for\",\"imagen\"+camposImagen),i.setAttribute(\"id\",\"labelImagenExcursion\"+camposImagen),i.innerHTML=\"Imagen \"+camposImagen+\": \",n.appendChild(i);var m=document.createElement(\"Input\");m.setAttribute(\"type\",\"file\"),m.setAttribute(\"name\",\"imagen\"+camposImagen),m.setAttribute(\"id\",\"imagenExcursion\"+camposImagen),m.onchange=function(){null==this.files[0]?cantidadImagenes--:cantidadImagenes++,document.getElementById(\"cantidadImagenes\").value=cantidadImagenes},a.appendChild(m);var o=document.createElement(\"Input\");o.setAttribute(\"type\",\"button\"),o.setAttribute(\"name\",\"sacarImagen\"+camposImagen),o.setAttribute(\"id\",\"sacarImagen\"+camposImagen),o.setAttribute(\"value\",\"-\"),o.onclick=function(){var e=parseInt(this.id[11]);null!=this.parentNode.parentNode.childNodes[1].childNodes[0].files[0]&&(cantidadImagenes--,document.getElementById(\"cantidadImagenes\").value=cantidadImagenes),this.parentNode.parentNode.remove();for(var n=1;camposImagen>=n;n++)if(n>e){var a=n-1,t=document.getElementById(\"labelImagenExcursion\"+n),i=document.getElementById(\"imagenExcursion\"+n),m=document.getElementById(\"sacarImagen\"+n),o=document.getElementById(\"imagen\"+n);t.attributes[0]=\"imagen\"+a,t.innerHTML=\"Imagen \"+a+\":\",t.id=\"labelImagenExcursion\"+a,i.id=\"imagenExcursion\"+a,i.name=\"imagen\"+a,m.id=\"sacarImagen\"+a,m.name=\"sacarImagen\"+a,o.id=\"imagen\"+a}camposImagen--},t.appendChild(o);var d=camposImagen-1;insertAfter(document.getElementById(\"imagen\"+d),e)};</script>");
+        imprimirEtiquetasFinal(out);
+    }    
+      
+    public static void cargaLugaresdeInteres(PrintWriter out){
+        imprimirEtiquetasIniciales(out,"ABM Lugar de Interes - Alta");
+        out.write("<script src=\"js/buscar.js\"></script> <form method=\"POST\" action=\"AltaLugarDeInteres\" enctype=\"multipart/form-data\"> <table> <thead> <tr> <th>ABM Lugar de Interes - Alta</th> </tr> </thead> <tbody> <tr> <td><label for=\"nombreLugarInteres\">Nombre: </label></td> <td><input type=\"text\" name=\"nombreLugarInteres\" id=\"nombreLugarInteres\" value=\"\" /></td> </tr> <tr> <td><label for=\"precioLugarInteres\">Precio: </label></td> <td><textarea name=\"precioLugarInteres\" id=\"precioLugarInteres\" /></textarea></td> </tr> <tr> <td><label for=\"descripcionLugarInteres\">Descripcion: </label></td> <td><textarea name=\"descripcionLugarInteres\" id=\"descripcionLugarInteres\" /></textarea></td> </tr> <tr> <td><label for=\"pririodadLugarInteres\">Prioridad: </label></td> <td><input type=\"number\" name=\"pririodadLugarInteres\" id=\"pririodadLugarInteres\" value=\"\" /></td> </tr> <tr> <td><label for=\"estadoLugarInteres\">Estado: </label></td> <td><select name=\"estadoLugarInteres\" id=\"estadoLugarInteres\"> <option value=\"x0\">---</option> </select></td> </tr> <tr> <td><label for=\"clienteLugarInteres\">Id Cliente: </label></td> <td><select name=\"clienteLugarInteres\" id=\"clienteLugarInteres\"> <option value=\"0\">---</option> </select> </td> <td><input type=\"text\" name=\"idClienteLugarInteres\" id=\"idClienteLugarInteres\" value=\"\" /></td> </tr> <tr id=\"imagen1\"> <td><label for=\"imagen1\">Imagen: </label></td> <td><input type=\"file\" name=\"imagen1\" id=\"imagenLugarInteres\" /></td> <td><input type=\"button\" name=\"subirImagenLugarInteres\" id=\"subirImagenLugarInteres\" value=\"Subir Otra Imagen\"/> <input style=\"display:none\" name=\"cantidadImagenes\" id=\"cantidadImagenes\" /></td> </tbody> <tr><td><br /></td></tr> <tr><td><br /></td></tr> <tr><td><br /></td></tr> <tr> <td><label for=\"Pais\">Pais: </label></td> <td><select name=\"Pais\" id=\"Pais\"> <option value=\"x0\">---</option> </select></td> <tr> <td><label for=\"Provincia\">Provincia: </label></td> <td><select name=\"Provincia\" id=\"Provincia\"> <option value=\"x0\">---</option> </select></td> </tr> <tr> <td><label for=\"Ciudad\">Cuidad: </label></td> <td><select name=\"Ciudad\" id=\"Ciudad\"> <option value=\"x0\">---</option> </select></td> </tr> <tr> <td><label for=\"Barrio\">Barrio: </label></td> <td><select name=\"Barrio\" id=\"Barrio\"> <option value=\"x0\">---</option> </select></td> </tr> <tr> <td><label for=\"calleDomicilio\">Calle: </label></td> <td><input type=\"text\" name=\"calleDomicilio\" id=\"calleDomicilio\" /></td> </tr> <tr> <td><label for=\"nroDomicilio\">Número: </label></td> <td><input type=\"text\" name=\"nroDomicilio\" id=\"nroDomicilio\" value=\"\" /></td> </tr> <tr> <td><label for=\"nroPiso\">Piso: </label></td> <td><input type=\"text\" name=\"nroPiso\" id=\"nroPiso\" value=\"\" /></td> </tr> <tr> <td><label for=\"departamentoDomicilio\">Departamento: </label></td> <td><input type=\"text\" name=\"departamentoDomicilio\" id=\"departamentoDomicilio\" value=\"\" /></td> </tr> <tr> <td><label for=\"torreDomicilio\">Torre: </label></td> <td><input type=\"text\" name=\"torreDomicilio\" id=\"torreDomicilio\" value=\"\" /></td> </tr> <tr> <td><label for=\"manzanaDomicilio\">Manzana: </label></td> <td><input type=\"text\" name=\"manzanaDomicilio\" id=\"manzanaDomicilio\" value=\"\" /></td> </tr> <tr> <td><label for=\"loteDomicilio\">Lote: </label></td> <td><input type=\"text\" name=\"loteDomicilio\" id=\"loteDomicilio\" value=\"\" /></td> </tr> <tr> <td><label for=\"codigoPostalDomicilio\">Código Postal: </label></td> <td><input type=\"text\" name=\"codigoPostalDomicilio\" id=\"codigoPostalDomicilio\" value=\"\" /></td> </tr> </table> <br /> <br /> <br /> <table> <thead> <tr> <th>ABM Alojamiento - Contactos</th> </tr> </thead> <tbody id=\"contactos\"> <tr> <td><label for=\"tipoContacto1\">Tipo de Contacto: </label></td> <td><select name=\"tipoContacto1\" id=\"tipoContacto\"> <option value=\"x0\"> --- </option> </select></td> <td><input type=\"button\" name=\"+tipoContacto\" id=\"masContacto\" value=\"-\"/></td> </tr> <tr> <td><label for=\"detalleContactos1\">Detalle: </label></td> <td><input type=\"text\" name=\"detalleContactos1\" id=\"detalleContactos\" value=\"\" /></td> </tr> <tr> <td><input type=\"button\" value=\"Agregar Contacto\" name=\"envContacto\" id=\"envContacto\" /> <input style=\"display:none\" id=\"cantidadContactos\" name=\"cantidadContactos\" /></td> </tr> </tbody> </table> <br /> <br /> <input type=\"submit\" value=\"Enviar\" name=\"envDetalle\" /> </form> <script>function agregarOpcion(e){var t=(document.createElement(\"Select\"),document.createElement(\"Option\"));t.setAttribute(\"value\",\"x0\"),t.innerHTML=\"---\",e.appendChild(t)}var idCliente=document.getElementById(\"idClienteLugarInteres\"),clienteSel=document.getElementById(\"clienteLugarInteres\"),pais=document.getElementById(\"Pais\"),provincia=document.getElementById(\"Provincia\"),ciudad=document.getElementById(\"Ciudad\"),barrio=document.getElementById(\"Barrio\"),agregarImagen=document.getElementById(\"subirImagenLugarInteres\"),archivo1=document.getElementById(\"imagenLugarInteres\");document.getElementById(\"cantidadImagenes\").value=0;var cantidadImagenes=0,camposImagen=1,cantidadContactos=1,eliminarCotacto=document.getElementById(\"masContacto\");buscarServlet(\"Estados\",document.getElementById(\"estadoLugarInteres\")),buscarServlet(\"Clientes\",clienteSel,null,!0),buscarServlet(\"Pais\",pais),buscarServlet(\"TipoContacto\",document.getElementById(\"tipoContacto\")),idCliente.onchange=function(){for(var e=0,t=0;t<clienteSel.length;t++)if(clienteSel[t].value==idCliente.value){e=t;break}clienteSel[e].selected=!0},clienteSel.onchange=function(){\"x0\"!=this.value?idCliente.value=clienteSel[clienteSel.selectedIndex].value:idCliente.value=\"\"},pais.onchange=function(){provincia.options.length=0,agregarOpcion(provincia);var e=pais[pais.selectedIndex].value;buscarServlet(\"Provincia\",provincia,e)},provincia.onchange=function(){ciudad.options.length=0,agregarOpcion(ciudad);var e=provincia[provincia.selectedIndex].value;buscarServlet(\"Ciudad\",ciudad,e)},ciudad.onchange=function(){barrio.options.length=0,agregarOpcion(barrio);var e=ciudad[ciudad.selectedIndex].value;buscarServlet(\"Barrio\",barrio,e)},archivo1.onchange=function(){null==this.files[0]?cantidadImagenes--:cantidadImagenes++,document.getElementById(\"cantidadImagenes\").value=cantidadImagenes},agregarImagen.onclick=function(){camposImagen++;var e=document.createElement(\"tr\");e.setAttribute(\"id\",\"imagen\"+camposImagen);var t=e.insertCell(0),n=e.insertCell(1),a=e.insertCell(2),i=document.createElement(\"Label\");i.setAttribute(\"for\",\"imagen\"+camposImagen),i.setAttribute(\"id\",\"labelImagenLugarInteres\"+camposImagen),i.innerHTML=\"Imagen \"+camposImagen+\": \",t.appendChild(i);var o=document.createElement(\"Input\");o.setAttribute(\"type\",\"file\"),o.setAttribute(\"name\",\"imagen\"+camposImagen),o.setAttribute(\"id\",\"imagenLugarInteres\"+camposImagen),o.onchange=function(){null==this.files[0]?cantidadImagenes--:cantidadImagenes++,document.getElementById(\"cantidadImagenes\").value=cantidadImagenes},n.appendChild(o);var d=document.createElement(\"Input\");d.setAttribute(\"type\",\"button\"),d.setAttribute(\"name\",\"sacarImagen\"+camposImagen),d.setAttribute(\"id\",\"sacarImagen\"+camposImagen),d.setAttribute(\"value\",\"-\"),d.onclick=function(){var e=parseInt(this.id[11]);null!=this.parentNode.parentNode.childNodes[1].childNodes[0].files[0]&&(cantidadImagenes--,document.getElementById(\"cantidadImagenes\").value=cantidadImagenes),this.parentNode.parentNode.remove();for(var t=1;camposImagen>=t;t++)if(t>e){var n=t-1,a=document.getElementById(\"labelImagenLugarInteres\"+t),i=document.getElementById(\"imagenLugarInteres\"+t),o=document.getElementById(\"sacarImagen\"+t),d=document.getElementById(\"imagen\"+t);a.attributes[0]=\"imagen\"+n,a.innerHTML=\"Imagen \"+n+\":\",a.id=\"labelImagenLugarInteres\"+n,i.id=\"imagenLugarInteres\"+n,i.name=\"imagen\"+n,o.id=\"sacarImagen\"+n,o.name=\"sacarImagen\"+n,d.id=\"imagen\"+n}camposImagen--},a.appendChild(d);var c=camposImagen-1;insertAfter(document.getElementById(\"imagen\"+c),e)},document.getElementById(\"tipoContacto\").onchange=function(){\"\"===document.getElementById(\"cantidadContactos\").value&&(document.getElementById(\"cantidadContactos\").value=1)},eliminarCotacto.onclick=function(){this.parentNode.parentNode.nextSibling.nextSibling.remove(),this.parentNode.parentNode.remove(),document.getElementById(\"cantidadContactos\").value=--cantidadContactos},document.getElementById(\"envContacto\").onclick=function(){var e=document.getElementById(\"contactos\"),t=e.insertRow(0),n=e.insertRow(1);e.insertRow(2).appendChild(document.createElement(\"Br\"));var a=n.insertCell(0),i=n.insertCell(1),o=t.insertCell(0),d=t.insertCell(1),c=t.insertCell(2),r=document.createElement(\"Label\");cantidadContactos++,r.setAttribute(\"for\",\"tipoContacto\"+cantidadContactos),r.innerHTML=\"Tipo de Contacto: \",o.appendChild(r);var l=document.createElement(\"Select\"),m=document.createElement(\"Option\");l.setAttribute(\"name\",\"tipoContacto\"+cantidadContactos),l.setAttribute(\"id\",\"tipoContacto\"+cantidadContactos),m.setAttribute(\"value\",\"0\"),m.innerHTML=\"---\",l.appendChild(m),d.appendChild(l),buscarServlet(\"TipoContacto\",document.getElementById(\"tipoContacto\"+cantidadContactos));var s=document.createElement(\"Input\");s.setAttribute(\"type\",\"button\"),s.setAttribute(\"name\",\"+tipoContacto\"+cantidadContactos),s.setAttribute(\"id\",\"+tipoContacto\"+cantidadContactos),s.setAttribute(\"value\",\"-\"),s.onclick=function(){this.parentNode.parentNode.nextSibling.remove(),this.parentNode.parentNode.nextSibling.remove(),this.parentNode.parentNode.remove(),document.getElementById(\"cantidadContactos\").value=--cantidadContactos},c.appendChild(s);var u=document.createElement(\"Label\");u.setAttribute(\"for\",\"detalleContactos\"+cantidadContactos),u.innerHTML=\"Detalle: \",a.appendChild(u);var g=document.createElement(\"Input\");g.setAttribute(\"type\",\"text\"),g.setAttribute(\"name\",\"detalleContactos\"+cantidadContactos),g.setAttribute(\"type\",\"detalleContactos\"+cantidadContactos),i.appendChild(g),document.getElementById(\"cantidadContactos\").value=cantidadContactos};</script>");
+        imprimirEtiquetasFinal(out);
+    }
+    
     
 }

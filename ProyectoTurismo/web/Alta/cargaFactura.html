@@ -1,4 +1,4 @@
-                                                                                                                                        <!DOCTYPE html>
+<!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
@@ -9,9 +9,10 @@ and open the template in the editor.
         <title>ABM Factura - Alta</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="../js/buscar.js"></script>
+
     </head>
     <body>
+        <script src="../js/buscar.js"></script>
         <form method="POST" action="../AltaFactura">
             <table>
                 <thead>
@@ -68,36 +69,37 @@ and open the template in the editor.
             <br/>
             <input type="submit" value="Enviar" name="envFactura" />  
         </form>
-    </body>
-    <script>
-        var idCliente = document.getElementById("idClienteFactura");
-        var clienteSel = document.getElementById("clienteFactura");
-    
-        /*
-         * Buscar elementos en la base de datos
-         * y llenar los campos
-         */
-        buscar("Estados",document.getElementById("estadoFactura"));
-        buscar("Clientes",document.getElementById("clienteFactura"),null,true);
-        buscar("TipoFactura",document.getElementById("tipoFactura"));
-        buscar("TipoVencimiento",document.getElementById("tipoVencimientoFactura"));
-        
-        // Funcion de cambia automaticamente el cliente
-        idCliente.onchange = function(){
-            var index = 0;
-            for(var i = 0;i<clienteSel.length;i++){
-                if(clienteSel[i].value == idCliente.value){
-                    index = i;
-                    break;
+        <script>
+            var idCliente = document.getElementById("idClienteFactura");
+            var clienteSel = document.getElementById("clienteFactura");
+
+            /*
+             * Buscar elementos en la base de datos
+             * y llenar los campos
+             */
+            buscar("Estados", document.getElementById("estadoFactura"));
+            buscar("Clientes", document.getElementById("clienteFactura"), null, true);
+            buscar("TipoFactura", document.getElementById("tipoFactura"));
+            buscar("TipoVencimiento", document.getElementById("tipoVencimientoFactura"));
+
+            // Funcion de cambia automaticamente el cliente
+            idCliente.onchange = function () {
+                var index = 0;
+                for (var i = 0; i < clienteSel.length; i++) {
+                    if (clienteSel[i].value == idCliente.value) {
+                        index = i;
+                        break;
+                    }
                 }
-            }            
-            clienteSel[index].selected = true;
-        };
-        clienteSel.onchange = function(){
-            if(this.value != "x0")
-                idCliente.value = clienteSel[clienteSel.selectedIndex].value;
-            else
-                idCliente.value = "";
-        };
-    </script>
+                clienteSel[index].selected = true;
+            };
+            clienteSel.onchange = function () {
+                if (this.value != "x0")
+                    idCliente.value = clienteSel[clienteSel.selectedIndex].value;
+                else
+                    idCliente.value = "";
+            };
+        </script>
+    </body>
+
 </html>

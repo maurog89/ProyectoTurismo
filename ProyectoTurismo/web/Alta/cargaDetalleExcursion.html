@@ -8,10 +8,10 @@ and open the template in the editor.
     <head>
         <title>ABM Detalle Excursion - Alta</title>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="../js/buscar.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">        
     </head>
     <body>
+        <script src="../js/buscar.js"></script>
         <form method="POST" action="../AltaDetalleExcursion">
             <table>
                 <thead>
@@ -48,51 +48,52 @@ and open the template in the editor.
             <br />
             <input type="submit" value="Enviar" name="envDetalle" />
         </form>
-    </body>
-    <script>
-        var idExcursion = document.getElementById("eExcursion");
-        var ExcursionSel = document.getElementById("Excursiones");
-        
-        var idLugar = document.getElementById("lugarInteres");
-        var LugarSel = document.getElementById("lugaresInteres");
-        
-        buscar("Excursion",ExcursionSel);
-        buscar("LugarDeInteres",document.getElementById("lugaresInteres"));
-        
-        // Funcion de cambia automaticamente el excursion
-        idExcursion.onchange = function(){
-            var index = 0;
-            for(var i = 0;i<ExcursionSel.length;i++){
-                if(ExcursionSel[i].value == idExcursion.value){
-                    index = i;
-                    break;
+        <script>
+            var idExcursion = document.getElementById("eExcursion");
+            var ExcursionSel = document.getElementById("Excursiones");
+
+            var idLugar = document.getElementById("lugarInteres");
+            var LugarSel = document.getElementById("lugaresInteres");
+
+            buscar("Excursion", ExcursionSel);
+            buscar("LugarDeInteres", document.getElementById("lugaresInteres"));
+
+            // Funcion de cambia automaticamente el excursion
+            idExcursion.onchange = function () {
+                var index = 0;
+                for (var i = 0; i < ExcursionSel.length; i++) {
+                    if (ExcursionSel[i].value == idExcursion.value) {
+                        index = i;
+                        break;
+                    }
                 }
-            }            
-            ExcursionSel[index].selected = true;
-        };
-        ExcursionSel.onchange = function(){
-            if(this.value != "x0")
-                idExcursion.value = ExcursionSel[ExcursionSel.selectedIndex].value;
-            else
-                idExcursion.value = "";
-        };
-        
-        // Funcion de cambia automaticamente el lugar de interes
-        idLugar.onchange = function(){
-            var index = 0;
-            for(var i = 0;i<LugarSel.length;i++){
-                if(LugarSel[i].value == idLugar.value){
-                    index = i;
-                    break;
-                }   
-            }            
-            LugarSel[index].selected = true;
-        };
-        LugarSel.onchange = function(){
-            if(this.value != "x0")
-                idLugar.value = LugarSel[LugarSel.selectedIndex].value;
-            else
-                idLugar.value = "";
-        };
-    </script>
+                ExcursionSel[index].selected = true;
+            };
+            ExcursionSel.onchange = function () {
+                if (this.value != "x0")
+                    idExcursion.value = ExcursionSel[ExcursionSel.selectedIndex].value;
+                else
+                    idExcursion.value = "";
+            };
+
+            // Funcion de cambia automaticamente el lugar de interes
+            idLugar.onchange = function () {
+                var index = 0;
+                for (var i = 0; i < LugarSel.length; i++) {
+                    if (LugarSel[i].value == idLugar.value) {
+                        index = i;
+                        break;
+                    }
+                }
+                LugarSel[index].selected = true;
+            };
+            LugarSel.onchange = function () {
+                if (this.value != "x0")
+                    idLugar.value = LugarSel[LugarSel.selectedIndex].value;
+                else
+                    idLugar.value = "";
+            };
+        </script>
+    </body>
+
 </html>

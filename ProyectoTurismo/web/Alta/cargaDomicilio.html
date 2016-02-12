@@ -8,10 +8,10 @@ and open the template in the editor.
     <head>
         <title>ABM Domicilio - Alta</title>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="../js/buscar.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">        
     </head>
     <body>
+        <script src="../js/buscar.js"></script>
         <form method="POST" action="../AltaDomicilio">
             <table>
                 <thead>
@@ -81,52 +81,54 @@ and open the template in the editor.
                 </tbody>
             </table>
         </form>
+        <script>
+            // Guardo en variables los elementos que necesito del DOM
+            var pais = document.getElementById("Pais");
+            var provincia = document.getElementById("Provincia");
+            var ciudad = document.getElementById("Ciudad");
+            var barrio = document.getElementById("Barrio");
+
+            //Funcion de cambiar provincia cuando cambia el pais
+            pais.onchange = function () {
+                provincia.options.length = 0;
+                agregarOpcion(provincia);
+                var res = pais[pais.selectedIndex].value;
+                buscar("Provincia", provincia, res);
+            };
+
+            //Funcion de cambiar ciudad cuando cambia la provincia
+            provincia.onchange = function () {
+                ciudad.options.length = 0;
+                agregarOpcion(ciudad);
+                var res = provincia[provincia.selectedIndex].value;
+                buscar("Ciudad", ciudad, res);
+            };
+
+            //Funcion de cambiar el barrio cuando cambia la ciudad
+            ciudad.onchange = function () {
+                barrio.options.length = 0;
+                agregarOpcion(barrio);
+                var res = ciudad[ciudad.selectedIndex].value;
+                buscar("Barrio", barrio, res);
+            };
+
+            /*
+             * Buscar elementos en la base de datos
+             * y llenar los campos
+             */
+            buscar("Pais", pais);
+
+            //Funcion usada para agregar una opcion ---
+            function agregarOpcion(sel) {
+                var select = document.createElement("Select");
+                var option = document.createElement("Option");
+                option.setAttribute("value", "x0");
+                option.innerHTML = "---";
+                sel.appendChild(option);
+            }
+            ;
+
+        </script>
     </body>
-    <script>
-        // Guardo en variables los elementos que necesito del DOM
-        var pais = document.getElementById("Pais");
-        var provincia = document.getElementById("Provincia");
-        var ciudad = document.getElementById("Ciudad");
-        var barrio = document.getElementById("Barrio");
-        
-        //Funcion de cambiar provincia cuando cambia el pais
-        pais.onchange = function(){            
-            provincia.options.length = 0;
-            agregarOpcion(provincia);
-            var res = pais[pais.selectedIndex].value;
-            buscar("Provincia",provincia,res);
-        };
-        
-        //Funcion de cambiar ciudad cuando cambia la provincia
-        provincia.onchange = function(){            
-            ciudad.options.length = 0;
-            agregarOpcion(ciudad);
-            var res = provincia[provincia.selectedIndex].value;
-            buscar("Ciudad",ciudad,res);
-        };
-        
-        //Funcion de cambiar el barrio cuando cambia la ciudad
-        ciudad.onchange = function(){            
-            barrio.options.length = 0;
-            agregarOpcion(barrio);
-            var res = ciudad[ciudad.selectedIndex].value;
-            buscar("Barrio",barrio,res);
-        };
-        
-        /*
-         * Buscar elementos en la base de datos
-         * y llenar los campos
-         */
-        buscar("Pais",pais);
-        
-        //Funcion usada para agregar una opcion ---
-        function agregarOpcion(sel){
-            var select = document.createElement("Select");
-            var option = document.createElement("Option");
-            option.setAttribute("value","x0");
-            option.innerHTML = "---";
-            sel.appendChild(option);
-        };
-        
-    </script>
+
 </html>

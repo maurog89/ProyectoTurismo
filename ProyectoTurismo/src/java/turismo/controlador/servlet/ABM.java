@@ -7,17 +7,12 @@ package turismo.controlador.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import turismo.entidades.ImprimirHTML;
 import turismo.entidades.ValidadorDeSession;
-import turismo.entidades.ValidadorDeUsuario;
 
 /**
  *
@@ -53,13 +48,8 @@ public class ABM extends HttpServlet {
             }
         }else{
             ImprimirHTML.InterfaceDeGestionError(out,"Debe estar logeado para ingresar a esta página.");                
-        }
+        }        
         
-        if(ValidadorDeSession.validarSession(request)){
-            
-        }else{
-            ImprimirHTML.InterfaceDeGestionError(out,"Debe estar logeado para ingresar a esta página.");                
-        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -113,6 +103,42 @@ public class ABM extends HttpServlet {
                 break;
             case "Ciudad":
                 ImprimirHTML.cargaCiudad(out);
+                break;
+            case "Categoria Restaurante":
+                ImprimirHTML.cargaCategoriaRestaurante(out);
+                break;
+            case "Clientes":
+                ImprimirHTML.cargaClientes(out);
+                break;
+            case "Contactos":
+                ImprimirHTML.cargaContactos(out);
+                break;
+            case "Detalle Excursión":
+                ImprimirHTML.cargaDetalleExcursion(out);
+                break;
+            case "Domicilio":
+                ImprimirHTML.cargaDomicilio(out);
+                break;
+            case "Empresa De Transporte":
+                ImprimirHTML.cargaEmpresaDeTransporte(out);
+                break;
+            case "Estado":
+                ImprimirHTML.cargaEstado(out);
+                break;
+            case "Eventos":
+                ImprimirHTML.cargaEventos(out);
+                break;
+            case "Excursiones":
+                ImprimirHTML.cargaExcursiones(out);
+                break;
+            case "Facturas":
+                ImprimirHTML.cargaFacturas(out);
+                break;
+            case "Habitación":
+                ImprimirHTML.cargaHabitacion(out);
+                break;
+            case "Lugares de Interes":
+                ImprimirHTML.cargaLugaresdeInteres(out);
                 break;
         }
     }
