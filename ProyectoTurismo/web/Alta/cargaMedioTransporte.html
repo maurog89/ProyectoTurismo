@@ -9,9 +9,10 @@ and open the template in the editor.
         <title>ABM Medio Transporte - Alta</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="../js/buscar.js"></script>
+
     </head>
     <body>
+        <script src="../js/buscar.js"></script>
         <form method="POST" action="../AltaMedioTransporte">
             <table>
                 <thead>
@@ -49,34 +50,35 @@ and open the template in the editor.
                 </tbody>
             </table>
         </form>
-    </body>
-    <script>
-        var idEmpresaTransporte = document.getElementById("idEmpresaTransporte");
-        var EmpresaTransporte = document.getElementById("EmpresaTransporte");
-        /*
-         * Buscar elementos en la base de datos
-         * y llenar los campos
-         */
-        buscar("Estados",document.getElementById("estadoMedioTransporte"));
-        buscar("EmpresaTransporte",document.getElementById("EmpresaTransporte"));
-        
-        //Manejo de eventos
-        // Funcion de cambia automaticamente la empresa de transporte
-        idEmpresaTransporte.onchange = function(){
-            var index = 0;
-            for(var i = 0;i<EmpresaTransporte.length;i++){
-                if(EmpresaTransporte[i].value == idEmpresaTransporte.value){
-                    index = i;
-                    break;
+        <script>
+            var idEmpresaTransporte = document.getElementById("idEmpresaTransporte");
+            var EmpresaTransporte = document.getElementById("EmpresaTransporte");
+            /*
+             * Buscar elementos en la base de datos
+             * y llenar los campos
+             */
+            buscar("Estados", document.getElementById("estadoMedioTransporte"));
+            buscar("EmpresaTransporte", document.getElementById("EmpresaTransporte"));
+
+            //Manejo de eventos
+            // Funcion de cambia automaticamente la empresa de transporte
+            idEmpresaTransporte.onchange = function () {
+                var index = 0;
+                for (var i = 0; i < EmpresaTransporte.length; i++) {
+                    if (EmpresaTransporte[i].value == idEmpresaTransporte.value) {
+                        index = i;
+                        break;
+                    }
                 }
-            }            
-            EmpresaTransporte[index].selected = true;
-        };
-        EmpresaTransporte.onchange = function(){
-            if(this.value != "x0")
-                idEmpresaTransporte.value = EmpresaTransporte[EmpresaTransporte.selectedIndex].value;
-            else
-                idEmpresaTransporte.value = "";
-        };
-    </script>
+                EmpresaTransporte[index].selected = true;
+            };
+            EmpresaTransporte.onchange = function () {
+                if (this.value != "x0")
+                    idEmpresaTransporte.value = EmpresaTransporte[EmpresaTransporte.selectedIndex].value;
+                else
+                    idEmpresaTransporte.value = "";
+            };
+        </script>
+    </body>
+
 </html>

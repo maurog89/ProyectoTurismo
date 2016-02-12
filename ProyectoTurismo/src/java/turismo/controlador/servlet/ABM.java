@@ -140,6 +140,63 @@ public class ABM extends HttpServlet {
             case "Lugares de Interes":
                 ImprimirHTML.cargaLugaresdeInteres(out);
                 break;
+            case "Mapa":
+                ImprimirHTML.cargaMapa(out);
+                break;
+            case "Medio de Transporte":
+                ImprimirHTML.cargaMediodeTransporte(out);
+                break;
+            case "Noticias":
+                ImprimirHTML.cargaNoticias(out);
+                break;
+            case "Observaciones":
+                ImprimirHTML.cargaObservaciones(out);
+                break;
+            case "Paises":
+                ImprimirHTML.cargaPaises(out);
+                break;
+            case "Permisos":
+                ImprimirHTML.cargaPermisos(out);
+                break;
+            case "Provincias":
+                ImprimirHTML.cargaProvincias(out);
+                break;
+            case "Regimenes Alimentarios":
+                ImprimirHTML.cargaRegimenesAlimentarios(out);
+                break;
+            case "Sitios para comer":
+                ImprimirHTML.cargaSitiosparacomer(out);
+                break;
+            case "Temporadas":
+                ImprimirHTML.cargaTemporadas(out);
+                break;
+            case "Tipos de Comida":
+                ImprimirHTML.cargaTiposdeComida(out);
+                break;
+            case "Tipos de Contacto":
+                ImprimirHTML.cargaTiposdeContacto(out);
+                break;
+            case "Tipos de Eventos":
+                ImprimirHTML.cargaTiposdeEventos(out);
+                break;
+            case "Tipos de Documento":
+                ImprimirHTML.cargaTiposdeDocumento(out);
+                break;
+            case "Tipos de Factura":
+                ImprimirHTML.cargaTiposdeFactura(out);
+                break;
+            case "Tipos de Habitación":
+                ImprimirHTML.cargaTiposdeHabitacion(out);
+                break;
+            case "Tipos de Permiso":
+                ImprimirHTML.cargaTiposdePermiso(out);
+                break;
+            case "Tipos de Vencimiento":
+                ImprimirHTML.cargaTiposdeVencimiento(out);
+                break;
+            case "Usuarios":
+                ImprimirHTML.cargaUsuarios(out);
+                break;
         }
     }
 }

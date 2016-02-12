@@ -179,11 +179,12 @@
                 </tr>
                 <tr>
                     <td>
-                        <p>Tipos de Comida</p>
+                        <p>Lugares de Interes</p>
                         <input type="submit" value="Alta" onclick="procesarSolicitud(this);" />
                         <input type="submit" value="Modificación" onclick="procesarSolicitud(this);" />
                         <input type="submit" value="Baja" onclick="procesarSolicitud(this);" />
                     </td>
+
                     <td>
                         <p>Tipos de Contacto</p>
                         <input type="submit" value="Alta" onclick="procesarSolicitud(this);" />
@@ -192,8 +193,8 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        <p>Tipos de Contacto</p>
+                    <td>                        
+                        <p>Tipos de Comida</p>
                         <input type="submit" value="Alta" onclick="procesarSolicitud(this);" />
                         <input type="submit" value="Modificación" onclick="procesarSolicitud(this);" />
                         <input type="submit" value="Baja" onclick="procesarSolicitud(this);" />
@@ -247,14 +248,6 @@
                         <input type="submit" value="Baja" onclick="procesarSolicitud(this);" />
                     </td>
                 </tr>
-                <tr>                    
-                    <td>
-                        <p>Lugares de Interes</p>
-                        <input type="submit" value="Alta" onclick="procesarSolicitud(this);" />
-                        <input type="submit" value="Modificación" onclick="procesarSolicitud(this);" />
-                        <input type="submit" value="Baja" onclick="procesarSolicitud(this);" />
-                    </td>
-                </tr>
             </table>
             <br/>
             <br/>
@@ -263,13 +256,14 @@
             <input type="text" name="boton" style="display:none;" id="boton"/>
         </form>
         <script type="text/javascript">
-            document.getElementById("cerrarSesion").onclick = function(){
+            document.getElementById("cerrarSesion").onclick = function () {
                 location.href = "cerrarSesion";
             };
-            function procesarSolicitud(botonPresionado){
+            function procesarSolicitud(botonPresionado) {
                 document.getElementById("bot").value = botonPresionado.parentNode.childNodes[1].innerHTML;
                 document.getElementById("boton").value = botonPresionado.value;
-            };
+            }
+            ;
         </script>
     </body>    
 </html>

@@ -9,17 +9,18 @@ and open the template in the editor.
         <title>ABM Noticia - Alta</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="../js/buscar.js"></script>
+
     </head>
     <body>
+        <script src="../js/buscar.js"></script>
         <form method="POST" action="../AltaNoticia" enctype="multipart/form-data">
             <table>
-                    <thead>
-                        <tr>
-                            <th>ABM Noticia - Alta</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                <thead>
+                    <tr>
+                        <th>ABM Noticia - Alta</th>
+                    </tr>
+                </thead>
+                <tbody>
                     <tr>
                         <td><label for="tituloNoticia">Titulo: </label></td>
                         <td><input type="text" name="tituloNoticia" id="tituloNoticia" value="" /></td>
@@ -58,107 +59,108 @@ and open the template in the editor.
                         <td><label for="imagen1">Imagen: </label></td>
                         <td><input type="file" name="imagen1" id="imagenSitioParaComer" /></td>
                         <td><input type="button" name="subirImagenSitioParaComer" id="subirSitioParaComer" value="Subir Otra Imagen"/></td>
-                        <input style="display:none" name="cantidadImagenes" id="cantidadImagenes" />
-                    </tr>
-                    <tr>
-                        <td><label for="Observaciones">Observaciones: </label></td>
-                        <td><textarea name="Observaciones" id="observacionesNoticia" /></textarea></td>
-                    </tr>
-                    </tbody>
-                </table>                
+                <input style="display:none" name="cantidadImagenes" id="cantidadImagenes" />
+                </tr>
+                <tr>
+                    <td><label for="Observaciones">Observaciones: </label></td>
+                    <td><textarea name="Observaciones" id="observacionesNoticia" /></textarea></td>
+                </tr>
+                </tbody>
+            </table>                
             <input type="submit" value="Enviar" name="envDetalle" />
         </form>
-    </body>
-    <script>
-        var cantidadImagenes = 0;
-        var camposImagen = 1;
-        var subirAlojamiento = document.getElementById("subirSitioParaComer"); 
-        var archivo1 = document.getElementById("imagenSitioParaComer");
-        document.getElementById("cantidadImagenes").value = 0;
-    
-        /*
-         * Buscar elementos en la base de datos
-         * y llenar los campos
-         */
-        buscar("Estados",document.getElementById("estadoSitioParaComer"));
-        
-        /* 
-         * Manejo los eventos        
-        */
-        
-        
-        //Aumento el contacdor de imagenes
-        archivo1.onchange = function(){
-            if(this.files[0] == null){
-                cantidadImagenes--;
-            }else{
-                cantidadImagenes++;
-            }            
-            document.getElementById("cantidadImagenes").value = cantidadImagenes;
-        };
-        
-        //Evento para agregar mas imagenes        
-        subirAlojamiento.onclick = function(){
-            camposImagen++;
-            var fila = document.createElement("tr");
-            fila.setAttribute("id","imagen"+camposImagen);
-            var campoLabel = fila.insertCell(0);
-            var campoFile = fila.insertCell(1);
-            var campoBoton = fila.insertCell(2);
-            var label = document.createElement("Label");
-            label.setAttribute("for","imagen"+camposImagen);
-            label.setAttribute("id","labelImagenSitioParaComer"+camposImagen);
-            label.innerHTML = "Imagen "+camposImagen+": ";
-            campoLabel.appendChild(label);
-            var input = document.createElement("Input");
-            input.setAttribute("type","file");
-            input.setAttribute("name","imagen"+camposImagen);
-            input.setAttribute("id","imagenSitioParaComer"+camposImagen);
-            input.onchange =  function(){
-                if(this.files[0] == null){
+        <script>
+            var cantidadImagenes = 0;
+            var camposImagen = 1;
+            var subirAlojamiento = document.getElementById("subirSitioParaComer");
+            var archivo1 = document.getElementById("imagenSitioParaComer");
+            document.getElementById("cantidadImagenes").value = 0;
+
+            /*
+             * Buscar elementos en la base de datos
+             * y llenar los campos
+             */
+            buscar("Estados", document.getElementById("estadoSitioParaComer"));
+
+            /* 
+             * Manejo los eventos        
+             */
+
+
+            //Aumento el contacdor de imagenes
+            archivo1.onchange = function () {
+                if (this.files[0] == null) {
                     cantidadImagenes--;
-                }else{
+                } else {
                     cantidadImagenes++;
-                }            
+                }
                 document.getElementById("cantidadImagenes").value = cantidadImagenes;
             };
-            campoFile.appendChild(input);
-            var boton = document.createElement("Input");
-            boton.setAttribute("type","button");
-            boton.setAttribute("name","sacarImagen"+camposImagen);
-            boton.setAttribute("id","sacarImagen"+camposImagen);
-            boton.setAttribute("value","-");
-            boton.onclick = function(){                
-                var borrar = parseInt(this.id[11]);
-                if(this.parentNode.parentNode.childNodes[1].childNodes[0].files[0] != null){
-                    cantidadImagenes--;
-                    document.getElementById("cantidadImagenes").value = cantidadImagenes;
-                }
-                this.parentNode.parentNode.remove();                
-                for(var i = 1; i <= camposImagen;i++){
-                    if(i > borrar){
-                        var j = i - 1;
-                        var lab = document.getElementById("labelImagenSitioParaComer"+i);
-                        var fil = document.getElementById("imagenSitioParaComer"+i);           
-                        var bot = document.getElementById("sacarImagen"+i);
-                        var fila = document.getElementById("imagen"+i);
-                        lab.attributes[0] = "imagen"+j;
-                        lab.innerHTML = "Imagen "+j+":";
-                        lab.id = "labelImagenSitioParaComer"+j;
-                        fil.id = "imagenSitioParaComer"+j;
-                        fil.name = "imagen"+j;
-                        bot.id = "sacarImagen"+j;
-                        bot.name = "sacarImagen"+j;
-                        fila.id = "imagen"+j;
+
+            //Evento para agregar mas imagenes        
+            subirAlojamiento.onclick = function () {
+                camposImagen++;
+                var fila = document.createElement("tr");
+                fila.setAttribute("id", "imagen" + camposImagen);
+                var campoLabel = fila.insertCell(0);
+                var campoFile = fila.insertCell(1);
+                var campoBoton = fila.insertCell(2);
+                var label = document.createElement("Label");
+                label.setAttribute("for", "imagen" + camposImagen);
+                label.setAttribute("id", "labelImagenSitioParaComer" + camposImagen);
+                label.innerHTML = "Imagen " + camposImagen + ": ";
+                campoLabel.appendChild(label);
+                var input = document.createElement("Input");
+                input.setAttribute("type", "file");
+                input.setAttribute("name", "imagen" + camposImagen);
+                input.setAttribute("id", "imagenSitioParaComer" + camposImagen);
+                input.onchange = function () {
+                    if (this.files[0] == null) {
+                        cantidadImagenes--;
+                    } else {
+                        cantidadImagenes++;
                     }
-                    
-                }
-                camposImagen--;
-                
+                    document.getElementById("cantidadImagenes").value = cantidadImagenes;
+                };
+                campoFile.appendChild(input);
+                var boton = document.createElement("Input");
+                boton.setAttribute("type", "button");
+                boton.setAttribute("name", "sacarImagen" + camposImagen);
+                boton.setAttribute("id", "sacarImagen" + camposImagen);
+                boton.setAttribute("value", "-");
+                boton.onclick = function () {
+                    var borrar = parseInt(this.id[11]);
+                    if (this.parentNode.parentNode.childNodes[1].childNodes[0].files[0] != null) {
+                        cantidadImagenes--;
+                        document.getElementById("cantidadImagenes").value = cantidadImagenes;
+                    }
+                    this.parentNode.parentNode.remove();
+                    for (var i = 1; i <= camposImagen; i++) {
+                        if (i > borrar) {
+                            var j = i - 1;
+                            var lab = document.getElementById("labelImagenSitioParaComer" + i);
+                            var fil = document.getElementById("imagenSitioParaComer" + i);
+                            var bot = document.getElementById("sacarImagen" + i);
+                            var fila = document.getElementById("imagen" + i);
+                            lab.attributes[0] = "imagen" + j;
+                            lab.innerHTML = "Imagen " + j + ":";
+                            lab.id = "labelImagenSitioParaComer" + j;
+                            fil.id = "imagenSitioParaComer" + j;
+                            fil.name = "imagen" + j;
+                            bot.id = "sacarImagen" + j;
+                            bot.name = "sacarImagen" + j;
+                            fila.id = "imagen" + j;
+                        }
+
+                    }
+                    camposImagen--;
+
+                };
+                campoBoton.appendChild(boton);
+                var bus = camposImagen - 1;
+                insertAfter(document.getElementById("imagen" + bus), fila);
             };
-            campoBoton.appendChild(boton);
-            var bus = camposImagen - 1;
-            insertAfter(document.getElementById("imagen"+bus),fila);
-        };
-    </script>
+        </script>
+    </body>
+
 </html>
