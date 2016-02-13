@@ -172,6 +172,14 @@
         <servlet-name>ABM</servlet-name>
         <servlet-class>turismo.controlador.servlet.ABM</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>busquedaParcal</servlet-name>
+        <servlet-class>turismo.controlador.servlet.busquedaParcal</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>busquedaParcial</servlet-name>
+        <servlet-class>turismo.controlador.servlet.busquedaParcial</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AltaNoticia</servlet-name>
         <url-pattern>/AltaNoticia</url-pattern>
@@ -343,6 +351,14 @@
     <servlet-mapping>
         <servlet-name>ABM</servlet-name>
         <url-pattern>/ABM</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>busquedaParcal</servlet-name>
+        <url-pattern>/busquedaParcal</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>busquedaParcial</servlet-name>
+        <url-pattern>/busquedaParcial</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

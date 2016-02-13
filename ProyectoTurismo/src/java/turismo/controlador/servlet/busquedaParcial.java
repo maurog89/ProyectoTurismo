@@ -13,15 +13,17 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import turismo.conexion.Conexion;
 import turismo.entidades.ImprimirHTML;
 import turismo.entidades.JSON;
+import turismo.entidades.ValidadorDeSession;
 
 /**
  *
  * @author matiascanodesarrollos
  */
-public class buscar extends HttpServlet {
+public class busquedaParcial extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,31 +37,24 @@ public class buscar extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("application/json");
-        request.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
-
-        try {
-            /* TODO output your page here. You may use following sample code. */
-
-            String objeto = request.getParameter("key");
-            String id = request.getParameter("id");
-            ArrayList ls = null;
-            Conexion con = new Conexion();
-            if (objeto != null) {
-                if (id != null) {
-                    ls = con.traerTodos(objeto, Integer.parseInt(id));
-                } else {
-                    ls = con.traerTodos(objeto, 1);
-                }
+        String valor = request.getParameter("valor");
+        if (ValidadorDeSession.validarSession(request)) {
+            try {
+                HttpSession sesion = request.getSession();
+                Conexion con = new Conexion();
+                ArrayList ls = con.buscarSimilares((String)sesion.getAttribute("tablaBusquedaParcial"), (String)sesion.getAttribute("nombreBusquedaParcial") , (String[])sesion.getAttribute("parametrosBusquedaParcial") , valor);
+                
+                
+                out.write(JSON.generarJSON(ls));
+                
+                con.cerrarConexion();
+            } catch (SQLException ex) {
+                System.out.println(ex.toString());
             }
-            out.println(JSON.generarJSON(ls));
-            con.cerrarConexion();
-        } catch (SQLException ex) {
-            out.println(ex.getMessage());
-        } finally {
-            out.close();
+        } else {
+            ImprimirHTML.InterfaceDeGestionError(out, "Debe estar logeado para ingresar a esta página.");
         }
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -74,7 +69,6 @@ public class buscar extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         ImprimirHTML.imprimirErrorDeMetodo(out);
