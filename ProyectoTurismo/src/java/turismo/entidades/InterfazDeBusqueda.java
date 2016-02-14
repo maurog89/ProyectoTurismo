@@ -12,4 +12,5 @@ package turismo.entidades;
 public interface InterfazDeBusqueda {
     public void modifarRegistroBD();
     public void borrarRegistroBD();
+    public String toJSON();
 }

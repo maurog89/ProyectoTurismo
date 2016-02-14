@@ -180,6 +180,10 @@
         <servlet-name>busquedaParcial</servlet-name>
         <servlet-class>turismo.controlador.servlet.busquedaParcial</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>busquedaPorNombre</servlet-name>
+        <servlet-class>turismo.controlador.servlet.busquedaPorNombre</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AltaNoticia</servlet-name>
         <url-pattern>/AltaNoticia</url-pattern>
@@ -359,6 +363,10 @@
     <servlet-mapping>
         <servlet-name>busquedaParcial</servlet-name>
         <url-pattern>/busquedaParcial</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>busquedaPorNombre</servlet-name>
+        <url-pattern>/busquedaPorNombre</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
