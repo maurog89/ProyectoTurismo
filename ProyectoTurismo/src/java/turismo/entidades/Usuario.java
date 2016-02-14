@@ -13,7 +13,7 @@ import turismo.conexion.Conexion;
  *
  * @author matiascanodesarrollos
  */
-public class Usuario extends Persona{
+public class Usuario extends Persona implements InterfazDeBusqueda{
     private int id,observacion;
     private String nombreUsuario,password,link,preguntaSecreta,respuesta;
 
@@ -43,5 +43,15 @@ public class Usuario extends Persona{
     @Override
     public String toString(){
         return "{\"id\":\""+id+"\",\"nombre\":\""+nombreUsuario+"\"}";    
+    }
+
+    @Override
+    public void modifarRegistroBD() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void borrarRegistroBD() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

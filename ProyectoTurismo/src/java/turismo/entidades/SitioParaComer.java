@@ -12,7 +12,7 @@ import turismo.conexion.Conexion;
  *
  * @author matiascanodesarrollos
  */
-public class SitioParaComer extends Lugar{
+public class SitioParaComer extends Lugar implements InterfazDeBusqueda{
     private int id;
     private String nombre;
     private String precio;
@@ -33,6 +33,16 @@ public class SitioParaComer extends Lugar{
         Conexion con = new Conexion();
         con.getSql().execute("INSERT INTO Turismo.SitioParaComer (idCliente,nombre,precio,idCategoriaRestaurante,IdContacto,idDomicilio,idEstado,IdImagen,IdObservacion,IdTipoDeComida,fechaAlta,idObjetoPuntuable) values ('" + cliente +"','" + nombre + "','" + precio +"','" + categoriaRestaurante +"','" + contacto +  "','" + domicilio + "','" + estado + "','" + imagen + "','" + observacion + "','" + tipoDeComida + "','" + fechaAlta + "','" + getIdObjeto()+"')");
         con.cerrarConexion();
+    }
+
+    @Override
+    public void modifarRegistroBD() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void borrarRegistroBD() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     

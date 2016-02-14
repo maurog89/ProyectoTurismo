@@ -13,7 +13,7 @@ import turismo.conexion.Conexion;
  *
  * @author matiascanodesarrollos
  */
-public class Pais {
+public class Pais  implements InterfazDeBusqueda{
     private int id;
     private String Nombre;
     private String Descripcion;
@@ -71,5 +71,15 @@ public class Pais {
     @Override
     public String toString(){
         return "{\"id\":\""+id+"\",\"nombre\":\""+Nombre+"\",\"descripcion\":\""+Descripcion+"\"}";    
+    }
+
+    @Override
+    public void modifarRegistroBD() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void borrarRegistroBD() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

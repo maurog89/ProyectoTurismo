@@ -13,7 +13,7 @@ import turismo.conexion.Conexion;
  *
  * @author matiascanodesarrollos
  */
-public class Contacto {
+public class Contacto implements InterfazDeBusqueda{
     private int id;
     private int estado;
     private String Detalle;
@@ -83,6 +83,16 @@ public class Contacto {
         this.contactoAnterior = contactoAnterior;
         Conexion con = new Conexion();
         con.getSql().execute("UPDATE Turismo.Contacto SET idContactoAnterior = " + contactoAnterior + " WHERE idContacto = " + id);
+    }
+
+    @Override
+    public void modifarRegistroBD() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void borrarRegistroBD() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     

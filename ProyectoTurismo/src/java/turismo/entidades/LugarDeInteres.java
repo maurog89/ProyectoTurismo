@@ -11,7 +11,7 @@ import java.sql.SQLException;
  *
  * @author matiascanodesarrollos
  */
-public class LugarDeInteres extends Lugar{
+public class LugarDeInteres extends Lugar  implements InterfazDeBusqueda{
     private int id;
     private String descripcion;
     private String nombre;
@@ -38,5 +38,15 @@ public class LugarDeInteres extends Lugar{
     @Override
     public String toString(){
         return "{\"id\":\""+id+"\",\"nombre\":\""+nombre+"\",\"descripcion\":\""+descripcion+"\",\"precio\":\""+precio+"\",\"fechaAlta\":\""+fechaAlta+"\",\"cliente\":\""+cliente+"\",\"contacto\":\""+contacto+"\",\"domicilio\":\""+domicilio+"\",\"estado\":\""+estado+"\",\"imagen\":\""+imagen+"\",\"prioridad\":\""+getPrioridad()+"\"}";    
+    }
+
+    @Override
+    public void modifarRegistroBD() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void borrarRegistroBD() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

@@ -12,7 +12,7 @@ import turismo.conexion.Conexion;
  *
  * @author matiascanodesarrollos
  */
-public class Puntaje {
+public class Puntaje  implements InterfazDeBusqueda {
     private int id;
     private int putaje;
     private int usuario;
@@ -31,6 +31,16 @@ public class Puntaje {
             con.getSql().executeUpdate("INSERT INTO Turismo.Puntaje (putaje,idUsuario,idObjetoPuntuable) values ('" + putaje +"','" + usuario + "','" + objeto + "')");        
         con.getSql().executeUpdate("UPDATE Turismo.ObjetoPuntuable SET puntajeTotal = puntajeTotal + " + putaje + ", cantidadVeces = cantidadVeces + 1 WHERE idObjetoPuntuable = " + objeto);
         con.cerrarConexion();
+    }
+
+    @Override
+    public void modifarRegistroBD() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void borrarRegistroBD() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     

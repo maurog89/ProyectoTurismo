@@ -5,7 +5,6 @@
  */
 package turismo.entidades;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import turismo.conexion.Conexion;
 
@@ -13,7 +12,7 @@ import turismo.conexion.Conexion;
  *
  * @author matiascanodesarrollos
  */
-public class CategoriaRestaurante {
+public class CategoriaRestaurante implements InterfazDeBusqueda{
     private int id, cantidadDeTenedores;
     private String nombre,descripcion;
 
@@ -34,5 +33,15 @@ public class CategoriaRestaurante {
     @Override
     public String toString(){
         return "{\"id\":\""+id+"\",\"nombre\":\""+nombre+"\"}";    
+    }
+
+    @Override
+    public void modifarRegistroBD() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void borrarRegistroBD() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

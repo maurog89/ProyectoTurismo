@@ -13,7 +13,7 @@ import turismo.conexion.Conexion;
  *
  * @author matiascanodesarrollos
  */
-public class Observacion {
+public class Observacion  implements InterfazDeBusqueda{
     private int id;
     private String observacion;
 
@@ -30,5 +30,15 @@ public class Observacion {
 
     public int getId() {
         return id;
+    }
+
+    @Override
+    public void modifarRegistroBD() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void borrarRegistroBD() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

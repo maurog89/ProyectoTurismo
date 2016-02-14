@@ -12,7 +12,7 @@ import turismo.conexion.Conexion;
  *
  * @author matiascanodesarrollos
  */
-public class RegimenAlimentario {
+public class RegimenAlimentario  implements InterfazDeBusqueda {
     private int id;
     private String nombre;
     private String descripcion;
@@ -35,6 +35,16 @@ public class RegimenAlimentario {
     @Override
     public String toString(){
         return "{\"id\":\""+id+"\",\"nombre\":\""+nombre+"\",\"descripcion\":\""+descripcion+"\"}";    
+    }
+
+    @Override
+    public void modifarRegistroBD() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void borrarRegistroBD() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

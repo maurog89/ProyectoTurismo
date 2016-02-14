@@ -10,7 +10,7 @@ import java.sql.SQLException;
  *
  * @author matiascanodesarrollos
  */
-public class Noticia extends ObjetoPuntuable implements IEntidades {
+public class Noticia extends ObjetoPuntuable implements IEntidades, InterfazDeBusqueda {
 
     private final int id;
     private String titulo;
@@ -135,6 +135,16 @@ public class Noticia extends ObjetoPuntuable implements IEntidades {
     public boolean guardarEnBD() throws Exception {
 
         return true;
+    }
+
+    @Override
+    public void modifarRegistroBD() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void borrarRegistroBD() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

@@ -11,7 +11,7 @@ import java.sql.SQLException;
  *
  * @author matiascanodesarrollos
  */
-public class Visita extends ObjetoPuntuable {
+public class Visita extends ObjetoPuntuable  implements InterfazDeBusqueda{
     private int id;
     private String fecha;
     private String hora;
@@ -30,6 +30,16 @@ public class Visita extends ObjetoPuntuable {
         generarObjetoParaBD();
         getCon().getSql().executeUpdate("INSERT INTO Turismo.Visita (fecha,hora,fechaCarga,IdViaje,IdEstado,idObjetoPuntuable) values ('" + fecha +"','" + hora + "','" + fechaCarga + "','" + viaje + "','" + estado + getIdObjeto()+"')");
         cerrarConexion();
+    }
+
+    @Override
+    public void modifarRegistroBD() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void borrarRegistroBD() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

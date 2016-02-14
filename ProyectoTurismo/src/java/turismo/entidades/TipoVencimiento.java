@@ -12,7 +12,7 @@ import turismo.conexion.Conexion;
  *
  * @author matiascanodesarrollos
  */
-public class TipoVencimiento {
+public class TipoVencimiento  implements InterfazDeBusqueda{
     private int id;
     private String nombre;
 
@@ -31,5 +31,15 @@ public class TipoVencimiento {
     @Override
     public String toString(){
         return "{\"id\":\""+id+"\",\"nombre\":\""+nombre+"\"}";    
+    }
+
+    @Override
+    public void modifarRegistroBD() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void borrarRegistroBD() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

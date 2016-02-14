@@ -35,12 +35,15 @@ public class ABM extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         response.setContentType("text/html;charset=UTF-8");
+       
         if (ValidadorDeSession.validarSession(request)) {
+            
             switch (request.getParameter("boton")) {
                 case "Alta":
                     cargarAltas(request, out);
                     break;
                 case "Modificación":
+                    System.out.println("Hola");
                     cargarModificacion(request, out);
                     break;
                 case "Baja":
@@ -211,7 +214,10 @@ public class ABM extends HttpServlet {
                 ImprimirHTML.modificacionAlojamiento(out);
                 break;
             case "Barrio":
-                ImprimirHTML.cargaBarrio(out);
+                sesion.setAttribute("tablaBusquedaParcial", "Barrio");
+                sesion.setAttribute("nombreBusquedaParcial", "nombre");
+                sesion.setAttribute("parametrosBusquedaParcial", new String[]{"nombre"});
+                ImprimirHTML.modificacionBarrio(out);
                 break;
             case "Ciudad":
                 ImprimirHTML.cargaCiudad(out);

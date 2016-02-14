@@ -9,7 +9,7 @@ package turismo.entidades;
  *
  * @author matiascanodesarrollos
  */
-public class Imagen {
+public class Imagen  implements InterfazDeBusqueda{
     private int id;
 
     public Imagen(int id) {
@@ -20,6 +20,16 @@ public class Imagen {
 
     public int getId() {
         return id;
+    }
+
+    @Override
+    public void modifarRegistroBD() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void borrarRegistroBD() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     

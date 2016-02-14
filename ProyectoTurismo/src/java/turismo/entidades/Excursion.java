@@ -11,7 +11,7 @@ import java.sql.SQLException;
  *
  * @author matiascanodesarrollos
  */
-public class Excursion extends Lugar{
+public class Excursion extends Lugar  implements InterfazDeBusqueda{
     public int id;
     public String nombre,detalle,fechaInicio,fechaFin,ano,personas,precio;    
     public int temporada;
@@ -119,6 +119,16 @@ public class Excursion extends Lugar{
     @Override
     public String toString(){
         return "{\"id\":\""+id+"\",\"nombre\":\""+nombre+"\",\"detalle\":\""+detalle+"\",\"precio\":\""+precio+"\",\"fechaInicio\":\""+fechaInicio+"\",\"fechaFin\":\""+fechaFin+"\",\"ano\":\""+ano+"\",\"personas\":\""+personas+"\",\"temporada\":\""+temporada+"\",\"fechaAlta\":\""+fechaAlta+"\",\"cliente\":\""+cliente+"\",\"contacto\":\""+contacto+"\",\"domicilio\":\""+domicilio+"\",\"estado\":\""+estado+"\",\"imagen\":\""+imagen+"\",\"prioridad\":\""+getPrioridad()+"\"}";    
+    }
+
+    @Override
+    public void modifarRegistroBD() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void borrarRegistroBD() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

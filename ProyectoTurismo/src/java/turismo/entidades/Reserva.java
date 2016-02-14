@@ -12,7 +12,7 @@ import turismo.conexion.Conexion;
  *
  * @author matiascanodesarrollos
  */
-public class Reserva {
+public class Reserva  implements InterfazDeBusqueda{
     private int id;
     private int usuario;
     private String fecha;
@@ -27,6 +27,16 @@ public class Reserva {
         Conexion con = new Conexion();
         con.getSql().executeUpdate("INSERT INTO Turismo.Reserva (idUsuario,fechaReserva,idObjetoPuntuable) values ('" + usuario + "','" + fecha + "','" + objeto + "')");
         con.cerrarConexion();
+    }
+
+    @Override
+    public void modifarRegistroBD() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void borrarRegistroBD() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

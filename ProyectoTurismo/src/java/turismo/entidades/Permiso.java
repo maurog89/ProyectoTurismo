@@ -12,7 +12,7 @@ import turismo.conexion.Conexion;
  *
  * @author matiascanodesarrollos
  */
-public class Permiso {
+public class Permiso  implements InterfazDeBusqueda{
     private int id,idTipoPermiso,idUsuario;
     private String descripcion;
 
@@ -23,6 +23,16 @@ public class Permiso {
         Conexion con = new Conexion();
         con.getSql().execute("INSERT INTO Turismo.Permisos (idTipoPermiso,descripcion,idUsuario) values (" + idTipoPermiso + ",'" + descripcion + "'," + idUsuario + ")");
         con.cerrarConexion();
+    }
+
+    @Override
+    public void modifarRegistroBD() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void borrarRegistroBD() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     

@@ -13,7 +13,7 @@ import turismo.conexion.Conexion;
  *
  * @author matiascanodesarrollos
  */
-public class Domicilio {
+public class Domicilio  implements InterfazDeBusqueda{
     private int id;
     private String calle;
     private String numeroCalle;
@@ -147,6 +147,16 @@ public class Domicilio {
 
     public void setObservacion(int observacion) {
         this.observacion = observacion;
+    }
+
+    @Override
+    public void modifarRegistroBD() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void borrarRegistroBD() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     

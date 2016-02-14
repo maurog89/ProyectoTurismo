@@ -12,7 +12,7 @@ import turismo.conexion.Conexion;
  *
  * @author matiascanodesarrollos
  */
-public class EmpresaTransporte {
+public class EmpresaTransporte  implements InterfazDeBusqueda{
     private int id,contacto,imagen;
     private String razonSocial;
 
@@ -33,5 +33,15 @@ public class EmpresaTransporte {
     @Override
     public String toString(){
         return "{\"id\":\""+id+"\",\"nombre\":\""+razonSocial+"\"}";    
+    }
+
+    @Override
+    public void modifarRegistroBD() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void borrarRegistroBD() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

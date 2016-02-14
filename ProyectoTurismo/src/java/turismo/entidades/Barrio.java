@@ -13,7 +13,7 @@ import turismo.conexion.Conexion;
  *
  * @author matiascanodesarrollos
  */
-public class Barrio {
+public class Barrio implements InterfazDeBusqueda{
     private int id;
     private final String nombre;
     private final int idCiudad;
@@ -41,5 +41,15 @@ public class Barrio {
     @Override
     public String toString(){
         return "{\"id\":\""+id+"\",\"nombre\":\""+nombre+"\",\"idCiudad\":\""+idCiudad+"\",\"idObservacion\":\""+idObservacion+"\"}";    
+    }
+
+    @Override
+    public void modifarRegistroBD() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void borrarRegistroBD() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

@@ -10,75 +10,85 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
-    <body>
-        <style>
+    <style>
             .busquedas{
                 width: 100%;
-            }
+            };
+            .busquedas:hover {
+                background-color: yellow;
+            };
         </style>
+    <body>
+        
         <h3>Modificacion: </h3>
         <table>
             <tr>
-                <td style="width: 90%; display: inline-block;">
+                <td style="width: 400px; display: inline-block;">
                     <input style="width: 100%" type="text" name="value" id="value"/>
                 </td>
                 <td  style="position: relative;">
-                    <input type="submit" value="Buscar" style="position: absolute; top: 0px;"/>
+                    <input type="button" value="Buscar" style="position: absolute; top: 1px; left: 5px;" id="buscar"/>
                 </td>
             </tr>
         </table>
-
+        <div id="contenido"></div>
     </body>
-        <script type="text/javascript">
-            var texto = document.getElementById("value");
-
-            function insertAfter(e, i) {
-                if (e.nextSibling) {
-                    e.parentNode.insertBefore(i, e.nextSibling);
-                } else {
-                    e.parentNode.appendChild(i);
-                }
-            }
-            ;
-
-            function agregarOpcionEncontrada(opcion) {
-                var opcionEncontrada = document.createElement("div");
-                opcionEncontrada.setAttribute("class", "busquedas");
-                opcionEncontrada.innerHTML = opcion;
-                insertAfter(document.getElementById("value"), opcionEncontrada);
-            }
-            ;
-
-            function borrarOpciones() {
-                var borrar = document.getElementsByClassName("busquedas");
-                var limite = borrar.length;
-                for (var i = 0; i < limite; i++) {
-                    borrar.item(0).remove();
-                }
-                ;
-            }
-            ;
-
-            texto.oninput = function () {
-                if (texto.value == "") {
-                    borrarOpciones();
-                } else {
-                    var http = new XMLHttpRequest();
-                    http.open("POST", "busquedaParcial", true);
-                    http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                    http.send("valor=" + texto.value);
-                    var json;
-                    http.onload = function () {
-                        borrarOpciones();
-                        if (http.response != "") {
-                            json = JSON.parse(http.response);
-                            for (var i = 0; i < json.length; i++) {
-                                agregarOpcionEncontrada(json[i].nombre);
-                            }
-                        }
+    <script type="text/javascript">
+        var texto = document.getElementById("value");
+        var buscar = document.getElementById("buscar");
+        
+        buscar.onclick = function(){
+            
+        };
+        
+        function insertAfter(e, i) { 
+            if (e.nextSibling) { 
+                e.parentNode.insertBefore(i, e.nextSibling); 
+            } else { e.parentNode.appendChild(i); } 
+        } ; 
+        
+        function agregarOpcionEncontrada(opcion) { 
+            var opcionEncontrada = document.createElement("div"); 
+            opcionEncontrada.setAttribute("class", "busquedas");
+            opcionEncontrada.innerHTML = opcion; insertAfter(document.getElementById("value"), opcionEncontrada);
+            opcionEncontrada.onmouseenter = function(){
+                opcionEncontrada.style = "background: #B8B1B1;";
+            };
+            opcionEncontrada.onmouseout = function(){
+                opcionEncontrada.style = "background: default;";
+            };
+            opcionEncontrada.onclick = function(){
+                
+            };
+        }; 
+        
+        function borrarOpciones() { 
+            var borrar = document.getElementsByClassName("busquedas"); 
+            var limite = borrar.length; 
+            for (var i = 0; i < limite; i++) { 
+                borrar.item(0).remove(); } ; 
+        } ; 
+        
+        texto.oninput = function () { 
+            if (texto.value == "") 
+                borrarOpciones(); 
+            else { 
+                var http = new XMLHttpRequest();
+            } 
+            http.open("POST", "busquedaParcial", true);
+            http.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
+            http.send("valor=" + texto.value); 
+            var json; 
+            http.onload = function () { 
+                borrarOpciones();
+                if (http.response != "") { 
+                json = JSON.parse(http.response); 
+                    for (var i = 0; i < json.length; i++) { 
+                        agregarOpcionEncontrada(json[i].nombre); 
                     }
                 }
+            }
+        }; 
+    </script>
 
-            };
-        </script>
 </html>

@@ -12,7 +12,7 @@ import turismo.conexion.Conexion;
  *
  * @author matiascanodesarrollos
  */
-public class DetalleExcursion {
+public class DetalleExcursion  implements InterfazDeBusqueda{
     private int id,lugarDeInteres,Excursion;
     private String fecha,duracion;
 
@@ -24,6 +24,16 @@ public class DetalleExcursion {
         Conexion con = new Conexion();
         con.getSql().execute("INSERT INTO Turismo.DetalleExcursion (idLugarDeInteres,Fecha,duracion,idExcursion) values(" + lugarDeInteres + ",'" + fecha + "','" + duracion + "'," + Excursion + ")");
         con.cerrarConexion();
+    }
+
+    @Override
+    public void modifarRegistroBD() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void borrarRegistroBD() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     

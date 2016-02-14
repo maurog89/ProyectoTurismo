@@ -251,6 +251,18 @@ public class Conexion {
         return result;
     }
     
-    
+    public InterfazDeBusqueda buscarPorNombre(String tabla,String nombre) throws SQLException{
+        ResultSet rs;
+        InterfazDeBusqueda resultado = null;
+        switch(tabla){
+            case "Alojamiento":
+                rs = sql.executeQuery("SELECT * FROM Turismo.Alojamiento INNER JOIN Turismo.ObjetoPuntuable ON Turismo.Alojamiento.idObjetoPuntuable = Turismo.ObjetoPuntuable.idObjetoPuntuable WHERE nombre = " + nombre);
+                if(rs.next()){
+                    resultado = new Alojamiento(rs.getInt("idAlojamiento"),rs.getString("nombre"),rs.getString("descripcion"),rs.getInt("IdRegimenAlimentario"),rs.getInt("IdTemporada"),rs.getString("fechaAlta"),rs.getInt("idCliente"),rs.getInt("idContacto"),rs.getInt("idDomiciio"),rs.getInt("IdEstado"),rs.getInt("idImagen"),rs.getInt("prioridad"));
+                }
+                break;
+        }
+        return resultado;
+    }
     
 }

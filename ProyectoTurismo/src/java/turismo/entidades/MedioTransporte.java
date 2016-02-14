@@ -12,7 +12,7 @@ import turismo.conexion.Conexion;
  *
  * @author matiascanodesarrollos
  */
-public class MedioTransporte {
+public class MedioTransporte  implements InterfazDeBusqueda{
     private int id,estado,empresaTransporte;
     private String tipo,detalle;
 
@@ -24,6 +24,16 @@ public class MedioTransporte {
         Conexion con = new Conexion();
         con.getSql().execute("INSERT INTO Turismo.MedioTransporte (Detalle,TipoTrasporte,IdEmpresaTrasporte,IdEstado) values ('" + detalle + "','" + tipo + "'," + empresaTransporte + "," + estado + ")");
         con.cerrarConexion();
+    }
+
+    @Override
+    public void modifarRegistroBD() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void borrarRegistroBD() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     

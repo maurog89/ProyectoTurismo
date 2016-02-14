@@ -9,7 +9,7 @@ import java.sql.SQLException;
  *
  * @author matiascanodesarrollos
  */
-public class Evento extends Lugar {
+public class Evento extends Lugar  implements InterfazDeBusqueda{
     public int id;
     public String titulo;
     public String descripcion;
@@ -139,6 +139,16 @@ public class Evento extends Lugar {
 
     public void setTipoEvento(int tipoEvento) {
         this.tipoEvento = tipoEvento;
+    }
+
+    @Override
+    public void modifarRegistroBD() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void borrarRegistroBD() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     

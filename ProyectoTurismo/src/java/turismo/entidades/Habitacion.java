@@ -11,7 +11,7 @@ import java.sql.SQLException;
  *
  * @author matiascanodesarrollos
  */
-public class Habitacion extends ObjetoPuntuable {
+public class Habitacion extends ObjetoPuntuable  implements InterfazDeBusqueda{
     private int id;
     private String descripcion;
     private String precio;
@@ -104,6 +104,16 @@ public class Habitacion extends ObjetoPuntuable {
 
     public void setFechaAlta(String fechaAlta) {
         this.fechaAlta = fechaAlta;
+    }
+
+    @Override
+    public void modifarRegistroBD() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void borrarRegistroBD() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
