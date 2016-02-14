@@ -121,11 +121,7 @@ public class Excursion extends Lugar  implements InterfazDeBusqueda{
         return "{\"id\":\""+id+"\",\"nombre\":\""+nombre+"\",\"detalle\":\""+detalle+"\",\"precio\":\""+precio+"\",\"fechaInicio\":\""+fechaInicio+"\",\"fechaFin\":\""+fechaFin+"\",\"ano\":\""+ano+"\",\"personas\":\""+personas+"\",\"temporada\":\""+temporada+"\",\"fechaAlta\":\""+fechaAlta+"\",\"cliente\":\""+cliente+"\",\"contacto\":\""+contacto+"\",\"domicilio\":\""+domicilio+"\",\"estado\":\""+estado+"\",\"imagen\":\""+imagen+"\",\"prioridad\":\""+getPrioridad()+"\"}";    
     }
 
-    @Override
-    public void modifarRegistroBD() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+    
     @Override
     public void borrarRegistroBD() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -133,6 +129,11 @@ public class Excursion extends Lugar  implements InterfazDeBusqueda{
 
     @Override
     public String toJSON() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void modificarRegistroBD() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

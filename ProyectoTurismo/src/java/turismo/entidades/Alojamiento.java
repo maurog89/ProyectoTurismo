@@ -45,17 +45,17 @@ public class Alojamiento extends Lugar implements InterfazDeBusqueda{
     
 
     @Override
-    public void modifarRegistroBD() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
     public void borrarRegistroBD() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public String toJSON() {
+        return "{\"idAlojamiento\":\"" + id + "\",\"nombre\":\"" + nombre + "\",\"idRegimenAlimentario\":\"" + regimenAlimentario + "\",\"idTemporada\":\"" + temporada + "\",\"fechaAlta\":\"" + fechaAlta + "\",\"idCliente\":\"" + cliente + "\",\"idContacto\":\"" + contacto + "\",\"idDomicilio\":\"" + domicilio + "\",\"idEstado\":\"" + estado + "\",\"idImagen\":\"" + imagen + "\",\"prioridad\":\"" + getPrioridad() + "\",\"cantidadDeVeces\":\"" + getCantidadDeVeces() + "\",\"puntajeTotal\":\"" + getPuntajeTotal() + "\"}";
+    }
+
+    @Override
+    public void modificarRegistroBD() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

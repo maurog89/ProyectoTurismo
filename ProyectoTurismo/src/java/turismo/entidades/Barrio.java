@@ -43,10 +43,7 @@ public class Barrio implements InterfazDeBusqueda{
         return "{\"id\":\""+id+"\",\"nombre\":\""+nombre+"\",\"idCiudad\":\""+idCiudad+"\",\"idObservacion\":\""+idObservacion+"\"}";    
     }
 
-    @Override
-    public void modifarRegistroBD() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 
     @Override
     public void borrarRegistroBD() {
@@ -55,6 +52,11 @@ public class Barrio implements InterfazDeBusqueda{
 
     @Override
     public String toJSON() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void modificarRegistroBD() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

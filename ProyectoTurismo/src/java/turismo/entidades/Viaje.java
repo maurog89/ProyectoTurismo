@@ -43,7 +43,7 @@ public class Viaje extends ObjetoPuntuable implements InterfazDeBusqueda{
     }
 
     @Override
-    public void modifarRegistroBD() {
+    public void modificarRegistroBD() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

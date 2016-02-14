@@ -8,13 +8,13 @@ package turismo.controlador.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import turismo.conexion.Conexion;
+import turismo.entidades.Alojamiento;
 import turismo.entidades.ImprimirHTML;
 import turismo.entidades.InterfazDeBusqueda;
 import turismo.entidades.ValidadorDeSession;
@@ -42,9 +42,15 @@ public class busquedaPorNombre extends HttpServlet {
         if (ValidadorDeSession.validarSession(request)) {
             try {
                 HttpSession sesion = request.getSession();
+                String tabla = (String)sesion.getAttribute("tablaBusquedaParcial");
                 Conexion con = new Conexion();
-                InterfazDeBusqueda ls = con.buscarPorNombre((String)sesion.getAttribute("tablaBusquedaParcial"), valor);             
-                out.write(ls.toJSON());                
+                InterfazDeBusqueda ls = con.buscarPorNombre(tabla, valor);             
+                switch(tabla){
+                    case "Alojamiento":
+                        sesion.setAttribute("Objeto", (Alojamiento)ls);
+                        break;
+                }
+                
                 con.cerrarConexion();
             } catch (SQLException ex) {
                 System.out.println(ex.toString());

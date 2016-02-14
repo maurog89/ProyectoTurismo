@@ -10,7 +10,7 @@ package turismo.entidades;
  * @author matiascanodesarrollos
  */
 public interface InterfazDeBusqueda {
-    public void modifarRegistroBD();
     public void borrarRegistroBD();
+    public void modificarRegistroBD();
     public String toJSON();
 }
