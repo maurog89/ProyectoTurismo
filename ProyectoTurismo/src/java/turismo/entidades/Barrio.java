@@ -16,21 +16,18 @@ import turismo.conexion.Conexion;
 public class Barrio implements InterfazDeBusqueda{
     private int id;
     private final String nombre;
-    private final int idCiudad;
-    private int idObservacion;
+    private Ciudad idCiudad;
+    private Observacion idObservacion;
 
     public Barrio(int id, String nombre, int idCiudad) {
         this.id = id;
         this.nombre = nombre;
-        this.idCiudad = idCiudad;
     }
     
     
 
     public Barrio(String nombre, int idCiudad,int idObservacion) throws SQLException {        
         this.nombre = nombre;
-        this.idCiudad = idCiudad;
-        this.idObservacion = idObservacion;
         Conexion con = new Conexion();
         ResultSet rss = con.getSql().executeQuery("CALL Turismo.cargaBarrio('" + nombre + "',"+ idCiudad + ","+idObservacion+")");
         rss.next();

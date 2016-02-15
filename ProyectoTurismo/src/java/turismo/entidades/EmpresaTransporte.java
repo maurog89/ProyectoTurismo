@@ -13,13 +13,12 @@ import turismo.conexion.Conexion;
  * @author matiascanodesarrollos
  */
 public class EmpresaTransporte  implements InterfazDeBusqueda{
-    private int id,contacto,imagen;
+    private int id;
+    private Contacto contacto;
+    private Imagen imagen;
     private String razonSocial;
 
     public EmpresaTransporte(int contacto, int imagen, String razonSocial) throws SQLException {
-        this.contacto = contacto;
-        this.imagen = imagen;
-        this.razonSocial = razonSocial;
         Conexion con = new Conexion();
         con.getSql().execute("INSERT INTO Turismo.EmpresaTransporte (RazonSocial,IdContacto,IdImagen) values('" + razonSocial + "'," + contacto + "," + imagen + ")");
         con.cerrarConexion();

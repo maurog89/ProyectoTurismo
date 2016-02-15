@@ -1,5 +1,6 @@
+var contador = 0;
 //Funcion para llenar selects
-function buscar(key,sel,id,cliente){    
+function buscar(key,sel,id,cliente,escuchador){    
         var http = new XMLHttpRequest();
         http.open("POST","../buscar",true);
         http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -20,12 +21,13 @@ function buscar(key,sel,id,cliente){
                     var opcion = new Option(json[i].nombre,json[i].id);
                     sel.add(opcion);
                 }
-            }
+            }           
+                
             };      
             
 }
 //Igual a la anterior pero utilizada en servlets
-function buscarServlet(key,sel,id,cliente){    
+function buscarServlet(key,sel,id,cliente,escuchador){    
         var http = new XMLHttpRequest();
         http.open("POST","buscar",true);
         http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -47,6 +49,8 @@ function buscarServlet(key,sel,id,cliente){
                     sel.add(opcion);
                 }
             }
+            if(contador == cantidadDeSelects)
+                escuchador.funcion();
             };      
             
 }
@@ -59,3 +63,4 @@ function insertAfter(e,i){
             e.parentNode.appendChild(i); 
         }
     }
+

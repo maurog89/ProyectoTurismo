@@ -13,13 +13,12 @@ import turismo.conexion.Conexion;
  * @author matiascanodesarrollos
  */
 public class Permiso  implements InterfazDeBusqueda{
-    private int id,idTipoPermiso,idUsuario;
+    private int id;
+    private TipoPermiso tipoPermiso;
+    private Usuario usuario;
     private String descripcion;
 
     public Permiso(int idTipoPermiso, int idUsuario, String descripcion) throws SQLException {
-        this.idTipoPermiso = idTipoPermiso;
-        this.idUsuario = idUsuario;
-        this.descripcion = descripcion;
         Conexion con = new Conexion();
         con.getSql().execute("INSERT INTO Turismo.Permisos (idTipoPermiso,descripcion,idUsuario) values (" + idTipoPermiso + ",'" + descripcion + "'," + idUsuario + ")");
         con.cerrarConexion();

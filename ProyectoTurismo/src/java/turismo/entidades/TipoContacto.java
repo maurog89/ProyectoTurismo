@@ -15,7 +15,7 @@ import turismo.conexion.Conexion;
 public class TipoContacto  implements InterfazDeBusqueda{
     private int id;
     private String Nombre;
-    private int idObservacion;
+    private Observacion observacion;
 
     public TipoContacto(int id, String Nombre) {
         this.id = id;
@@ -24,7 +24,6 @@ public class TipoContacto  implements InterfazDeBusqueda{
 
     public TipoContacto(String Nombre, int idObservacion) throws SQLException {
         this.Nombre = Nombre;
-        this.idObservacion = idObservacion;
         Conexion con = new Conexion();
         con.getSql().execute("INSERT INTO Turismo.TipoContacto (Nombre,IdObservacion) values ('" + Nombre + "'," + idObservacion + ")");
         con.cerrarConexion();
@@ -34,7 +33,7 @@ public class TipoContacto  implements InterfazDeBusqueda{
     
     @Override
     public String toString(){
-        return "{\"id\":\""+id+"\",\"nombre\":\""+Nombre+"\",\"idObservacion\":\""+idObservacion+"\"}";    
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates. 
     }
 
     @Override

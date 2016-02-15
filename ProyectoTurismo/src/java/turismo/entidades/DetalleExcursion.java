@@ -13,14 +13,12 @@ import turismo.conexion.Conexion;
  * @author matiascanodesarrollos
  */
 public class DetalleExcursion  implements InterfazDeBusqueda{
-    private int id,lugarDeInteres,Excursion;
+    private int id;
+    private LugarDeInteres lugarDeInteres;
+    private Excursion excursion;
     private String fecha,duracion;
 
     public DetalleExcursion(int lugarDeInteres, int Excursion, String fecha, String duracion) throws SQLException {
-        this.lugarDeInteres = lugarDeInteres;
-        this.Excursion = Excursion;
-        this.fecha = fecha;
-        this.duracion = duracion;
         Conexion con = new Conexion();
         con.getSql().execute("INSERT INTO Turismo.DetalleExcursion (idLugarDeInteres,Fecha,duracion,idExcursion) values(" + lugarDeInteres + ",'" + fecha + "','" + duracion + "'," + Excursion + ")");
         con.cerrarConexion();

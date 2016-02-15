@@ -13,19 +13,15 @@ import turismo.conexion.Conexion;
  * @author matiascanodesarrollos
  */
 public class Factura  implements InterfazDeBusqueda{
-    private int id,cliente,estado,tipoFactura,tipoVencimiento;
+    private int id;
+    private Cliente cliente;
+    private Estado estado;
+    private TipoFactura tipoFactura;
+    private TipoVencimiento tipoVencimiento;
     private String concepto,fecha,fechaVencimiento;
     private float precio;
 
     public Factura(int cliente, int estado, int tipoFactura, int tipoVencimiento, String concepto, String fechaVencimiento, float precio,String fecha) throws SQLException {
-        this.cliente = cliente;
-        this.estado = estado;
-        this.tipoFactura = tipoFactura;
-        this.tipoVencimiento = tipoVencimiento;
-        this.concepto = concepto;
-        this.fecha = fecha;
-        this.fechaVencimiento = fechaVencimiento;
-        this.precio = precio;
         Conexion con = new Conexion();
         con.getSql().execute("INSERT INTO Turismo.Factura (concepto,precio,Fecha,FechaVencimiento,IdCliente,IdEstado,IdTipoFactura,IdTipoVencimiento) values('" + concepto + "'," + precio + ",'" + fecha + "','" + fechaVencimiento + "'," + cliente + "," + estado + "," + tipoFactura + "," + tipoVencimiento + ")");
         con.cerrarConexion();

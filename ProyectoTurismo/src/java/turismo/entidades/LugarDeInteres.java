@@ -37,7 +37,7 @@ public class LugarDeInteres extends Lugar  implements InterfazDeBusqueda{
     
     @Override
     public String toString(){
-        return "{\"id\":\""+id+"\",\"nombre\":\""+nombre+"\",\"descripcion\":\""+descripcion+"\",\"precio\":\""+precio+"\",\"fechaAlta\":\""+fechaAlta+"\",\"cliente\":\""+cliente+"\",\"contacto\":\""+contacto+"\",\"domicilio\":\""+domicilio+"\",\"estado\":\""+estado+"\",\"imagen\":\""+imagen+"\",\"prioridad\":\""+getPrioridad()+"\"}";    
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override

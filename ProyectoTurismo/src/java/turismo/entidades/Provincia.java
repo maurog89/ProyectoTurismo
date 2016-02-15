@@ -16,18 +16,16 @@ import turismo.conexion.Conexion;
 public class Provincia  implements InterfazDeBusqueda{
     private int id;
     private final String nombre;
-    private final int idPais;
+    private Pais pais;
     private String descripcion;
 
     public Provincia(int id, String nombre, int idPais) {
         this.id = id;
         this.nombre = nombre;
-        this.idPais = idPais;
     }
     
     public Provincia(String nombre, int idPais, String descripcion) throws SQLException {        
         this.nombre = nombre;
-        this.idPais = idPais;
         this.descripcion = descripcion;
         Conexion con = new Conexion();
         ResultSet rss = con.getSql().executeQuery("CALL Turismo.cargaProvinciaConDescripcion('" + nombre + "'," + idPais + ",'" + descripcion + "')");
@@ -39,7 +37,6 @@ public class Provincia  implements InterfazDeBusqueda{
     
     public Provincia(String nombre, int idPais) throws SQLException {        
         this.nombre = nombre;
-        this.idPais = idPais;
         Conexion con = new Conexion();
         ResultSet rss = con.getSql().executeQuery("CALL Turismo.cargaProvinciaSinDescripcion('" + nombre + "'," + idPais +")" );
         rss.next();
@@ -68,7 +65,7 @@ public class Provincia  implements InterfazDeBusqueda{
     
     @Override
     public String toString(){
-        return "{\"id\":\""+id+"\",\"nombre\":\""+nombre+"\",\"idPais\":\""+idPais+"\",\"descripcion\":\""+descripcion+"\"}";    
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override

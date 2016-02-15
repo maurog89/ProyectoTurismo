@@ -14,8 +14,8 @@ public class Alojamiento extends Lugar implements InterfazDeBusqueda{
     private final int id;
     private final String nombre;
     private final String descripcion;
-    private final int regimenAlimentario;
-    private final int temporada;
+    private RegimenAlimentario regimenAlimentario;
+    private Temporada temporada;
 
     /*
     * Constructor para nuevos alojamientos    
@@ -24,8 +24,6 @@ public class Alojamiento extends Lugar implements InterfazDeBusqueda{
         super(fechaAlta,cliente,contacto,domicilio,estado,imagen,prioridad);
         this.nombre = nombre;
         this.descripcion = descripcion;
-        this.regimenAlimentario = regimenAlimentario;
-        this.temporada = temporada;
         generarObjetoParaBD();      
         ResultSet rss = getCon().getSql().executeQuery("CALL Turismo.cargaAlojamiento('" + nombre + "','" + descripcion + "','" + cliente + "','" + contacto + "','" + domicilio + "','" + estado + "','" + imagen + "','" + regimenAlimentario + "','" + temporada + "','" + fechaAlta + "','" + getIdObjeto()+"')");
         rss.next();
@@ -38,8 +36,6 @@ public class Alojamiento extends Lugar implements InterfazDeBusqueda{
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
-        this.regimenAlimentario = regimenAlimentario;
-        this.temporada = temporada;
     }
     
     
@@ -51,7 +47,7 @@ public class Alojamiento extends Lugar implements InterfazDeBusqueda{
 
     @Override
     public String toJSON() {
-        return "{\"idAlojamiento\":\"" + id + "\",\"nombre\":\"" + nombre + "\",\"idRegimenAlimentario\":\"" + regimenAlimentario + "\",\"idTemporada\":\"" + temporada + "\",\"fechaAlta\":\"" + fechaAlta + "\",\"idCliente\":\"" + cliente + "\",\"idContacto\":\"" + contacto + "\",\"idDomicilio\":\"" + domicilio + "\",\"idEstado\":\"" + estado + "\",\"idImagen\":\"" + imagen + "\",\"prioridad\":\"" + getPrioridad() + "\",\"cantidadDeVeces\":\"" + getCantidadDeVeces() + "\",\"puntajeTotal\":\"" + getPuntajeTotal() + "\"}";
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
@@ -59,7 +55,26 @@ public class Alojamiento extends Lugar implements InterfazDeBusqueda{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    
+    public int getId() {
+        return id;
+    }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    
+    public String getFechaAlta() {
+        return fechaAlta;
+    }
+
+    public Domicilio getDomicilio() {
+        return domicilio;
+    }
+    
     
 }

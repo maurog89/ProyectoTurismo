@@ -13,13 +13,11 @@ import turismo.conexion.Conexion;
  * @author matiascanodesarrollos
  */
 public class Mapa  implements InterfazDeBusqueda{
-    private int id,observacion;
+    private int id;
+    private Observacion observacion;
     private float longitud,latitud;
 
     public Mapa(int observacion, float longitud, float latitud) throws SQLException {
-        this.observacion = observacion;
-        this.longitud = longitud;
-        this.latitud = latitud;
         Conexion con = new Conexion();
         con.getSql().execute("INSERT INTO Turismo.Mapa (longitud,latitud,idObservacion) values(" + longitud + "," + latitud + "," + observacion + ")");
         con.cerrarConexion();

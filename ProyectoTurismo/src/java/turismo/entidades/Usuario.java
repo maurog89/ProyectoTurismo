@@ -14,7 +14,8 @@ import turismo.conexion.Conexion;
  * @author matiascanodesarrollos
  */
 public class Usuario extends Persona implements InterfazDeBusqueda{
-    private int id,observacion;
+    private int id;
+    private Observacion observacion; 
     private String nombreUsuario,password,link,preguntaSecreta,respuesta;
 
     public Usuario(int id, String nombreUsuario) {
@@ -28,12 +29,7 @@ public class Usuario extends Persona implements InterfazDeBusqueda{
         ResultSet rs = con.getSql().executeQuery("CALL Turismo.cargaPersona('" + nombre + "','" + segundoNombre+ "','" + apellido + "','" + fechaCreacion + "','" + fechaNacimiento + "'," + idTipoDocumento + ",'" + nroDocumento + "'," + idContacto + "," + idDomicilio + "," + idEstado + ")");
         rs.next(); 
         this.idPersona = rs.getInt("LAST_INSERT_ID()");
-        this.observacion = observacion;
         this.nombreUsuario = nombreUsuario;
-        this.password = password;
-        this.link = link;
-        this.preguntaSecreta = preguntaSecreta;
-        this.respuesta = respuesta;
         con.getSql().execute("INSERT INTO Turismo.Usuario (nombre,pasword,link,idObservacion,idPersona,preguntaSecreta,respuesta) values('" + nombreUsuario + "','" + password + "','" + link + "'," + observacion + "," + this.idPersona + ",'" + preguntaSecreta + "','" + respuesta + "')");
         con.cerrarConexion();
     }

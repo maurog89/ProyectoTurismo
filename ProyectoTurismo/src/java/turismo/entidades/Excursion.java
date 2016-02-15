@@ -14,19 +14,11 @@ import java.sql.SQLException;
 public class Excursion extends Lugar  implements InterfazDeBusqueda{
     public int id;
     public String nombre,detalle,fechaInicio,fechaFin,ano,personas,precio;    
-    public int temporada;
+    public Temporada temporada;
     
     // Costructor
     public Excursion(String nombre, String detalle, String precio, String fechaInicio, String fechaFin, String ano, String personas, int temporada, int cliente, int contacto, int estado, int imagen, int prioridad, int domicilio, String fechaAlta) throws SQLException {
         super(fechaAlta, cliente, contacto, domicilio, estado, imagen, prioridad);
-        this.nombre = nombre;
-        this.detalle = detalle;
-        this.precio = precio;
-        this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
-        this.ano = ano;
-        this.personas = personas;
-        this.temporada = temporada;
         generarObjetoParaBD();
         getCon().getSql().execute("INSERT INTO Turismo.Excursion (nombre,detalle,inicioPeriodo,finPeriodo,año,cantidadVisitantes,precio,idDomicilio,idEstado,idImagen,idTemporada,fechaAlta,idContacto,idObjetoPuntuable,idCliente) values ('" + nombre +"','" + detalle + "','" + fechaInicio + "','" + fechaFin + "','" + ano + "','" + personas + "','" + precio + "'," + domicilio +"," + estado +  "," + imagen + "," + temporada + ",'" + fechaAlta + "'," + contacto + "," + getIdObjeto() + "," + cliente +")");
         cerrarConexion();
@@ -108,17 +100,10 @@ public class Excursion extends Lugar  implements InterfazDeBusqueda{
         this.personas = personas;
     }
 
-    public int getTemporada() {
-        return temporada;
-    }
-
-    public void setTemporada(int temporada) {
-        this.temporada = temporada;
-    }
     
     @Override
     public String toString(){
-        return "{\"id\":\""+id+"\",\"nombre\":\""+nombre+"\",\"detalle\":\""+detalle+"\",\"precio\":\""+precio+"\",\"fechaInicio\":\""+fechaInicio+"\",\"fechaFin\":\""+fechaFin+"\",\"ano\":\""+ano+"\",\"personas\":\""+personas+"\",\"temporada\":\""+temporada+"\",\"fechaAlta\":\""+fechaAlta+"\",\"cliente\":\""+cliente+"\",\"contacto\":\""+contacto+"\",\"domicilio\":\""+domicilio+"\",\"estado\":\""+estado+"\",\"imagen\":\""+imagen+"\",\"prioridad\":\""+getPrioridad()+"\"}";    
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     

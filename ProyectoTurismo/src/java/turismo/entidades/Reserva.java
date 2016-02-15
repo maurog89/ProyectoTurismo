@@ -14,16 +14,13 @@ import turismo.conexion.Conexion;
  */
 public class Reserva  implements InterfazDeBusqueda{
     private int id;
-    private int usuario;
+    private Usuario usuario;
     private String fecha;
-    private int objeto;
+    private ObjetoPuntuable objeto;
     
     //Constructor
 
     public Reserva(int usuario, String fecha, int objeto) throws SQLException {
-        this.usuario = usuario;
-        this.fecha = fecha;
-        this.objeto = objeto;
         Conexion con = new Conexion();
         con.getSql().executeUpdate("INSERT INTO Turismo.Reserva (idUsuario,fechaReserva,idObjetoPuntuable) values ('" + usuario + "','" + fecha + "','" + objeto + "')");
         con.cerrarConexion();

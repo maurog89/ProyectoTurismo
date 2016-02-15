@@ -6,6 +6,7 @@
 package turismo.entidades;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,10 +16,10 @@ public class Habitacion extends ObjetoPuntuable  implements InterfazDeBusqueda{
     private int id;
     private String descripcion;
     private String precio;
-    private int imagen;
-    private int tipoHabitacion;
-    private int alojamiento;
-    private int estado;
+    private ArrayList<Imagen> imagen;
+    private TipoHabitacion tipoHabitacion;
+    private Alojamiento alojamiento;
+    private Estado estado;
     private String fechaAlta;
 
         
@@ -26,13 +27,6 @@ public class Habitacion extends ObjetoPuntuable  implements InterfazDeBusqueda{
 
     public Habitacion(String descripcion, String precio, int imagen, int tipoHabitacion, int alojamiento, int estado, int prioridad, String fechaAlta) throws SQLException {
         super(prioridad);
-        this.descripcion = descripcion;
-        this.precio = precio;
-        this.imagen = imagen;
-        this.tipoHabitacion = tipoHabitacion;
-        this.alojamiento = alojamiento;
-        this.estado = estado;
-        this.fechaAlta = fechaAlta;
         generarObjetoParaBD();
         getCon().getSql().executeUpdate("INSERT INTO Turismo.Habitacion (descripcion,precio,idImagen,IdTipoHabitacion,idAlojamiento,idEstado,fechaAlta,idObjetoPuntuable) values ('" + descripcion + "','" + precio +"','" + imagen + "','" + tipoHabitacion +"','" + alojamiento + "','" + estado + "','" + fechaAlta + "','" + getIdObjeto()+"')");
         cerrarConexion();
@@ -66,37 +60,6 @@ public class Habitacion extends ObjetoPuntuable  implements InterfazDeBusqueda{
         this.precio = precio;
     }
 
-    public int getImagen() {
-        return imagen;
-    }
-
-    public void setImagen(int imagen) {
-        this.imagen = imagen;
-    }
-
-    public int getTipoHabitacion() {
-        return tipoHabitacion;
-    }
-
-    public void setTipoHabitacion(int tipoHabitacion) {
-        this.tipoHabitacion = tipoHabitacion;
-    }
-
-    public int getAlojamiento() {
-        return alojamiento;
-    }
-
-    public void setAlojamiento(int alojamiento) {
-        this.alojamiento = alojamiento;
-    }
-
-    public int getEstado() {
-        return estado;
-    }
-
-    public void setEstado(int estado) {
-        this.estado = estado;
-    }
 
     public String getFechaAlta() {
         return fechaAlta;

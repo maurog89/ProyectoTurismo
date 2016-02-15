@@ -11,15 +11,15 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <style>
-            .busquedas{
-                width: 100%;
-            };
-            .busquedas:hover {
-                background-color: yellow;
-            };
-        </style>
+        .busquedas{
+            width: 100%;
+        };
+        .busquedas:hover {
+            background-color: yellow;
+        };
+    </style>
     <body>
-        
+
         <h3>Modificacion: </h3>
         <table>
             <tr>
@@ -31,64 +31,78 @@ and open the template in the editor.
                 </td>
             </tr>
         </table>
-        <div id="contenido"></div>
     </body>
     <script type="text/javascript">
         var texto = document.getElementById("value");
         var buscar = document.getElementById("buscar");
-        
-        buscar.onclick = function(){
+
+        function buscarDatos(val) {
+            var ventana = window.open("busquedaPorNombre?valor="+val,"Modificacion","fullscreen=yes, scrollbars=yes");
             
+
         };
-        
-        function insertAfter(e, i) { 
-            if (e.nextSibling) { 
-                e.parentNode.insertBefore(i, e.nextSibling); 
-            } else { e.parentNode.appendChild(i); } 
-        } ; 
-        
-        function agregarOpcionEncontrada(opcion) { 
-            var opcionEncontrada = document.createElement("div"); 
+
+        buscar.onclick = function(){            
+            buscarDatos(texto.value);
+        };
+
+        function insertAfter(e, i) {
+            if (e.nextSibling) {
+                e.parentNode.insertBefore(i, e.nextSibling);
+            } else {
+                e.parentNode.appendChild(i);
+            }
+        }
+        ;
+
+        function agregarOpcionEncontrada(opcion) {
+            var opcionEncontrada = document.createElement("div");
             opcionEncontrada.setAttribute("class", "busquedas");
-            opcionEncontrada.innerHTML = opcion; insertAfter(document.getElementById("value"), opcionEncontrada);
-            opcionEncontrada.onmouseenter = function(){
+            opcionEncontrada.innerHTML = opcion;
+            insertAfter(document.getElementById("value"), opcionEncontrada);
+            opcionEncontrada.onmouseenter = function () {
                 opcionEncontrada.style = "background: #B8B1B1;";
             };
-            opcionEncontrada.onmouseout = function(){
+            opcionEncontrada.onmouseout = function () {
                 opcionEncontrada.style = "background: default;";
             };
             opcionEncontrada.onclick = function(){
-                
-            };
-        }; 
-        
-        function borrarOpciones() { 
-            var borrar = document.getElementsByClassName("busquedas"); 
-            var limite = borrar.length; 
-            for (var i = 0; i < limite; i++) { 
-                borrar.item(0).remove(); } ; 
-        } ; 
-        
-        texto.oninput = function () { 
-            if (texto.value == "") 
-                borrarOpciones(); 
-            else { 
-                var http = new XMLHttpRequest();
-            } 
-            http.open("POST", "busquedaParcial", true);
-            http.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
-            http.send("valor=" + texto.value); 
-            var json; 
-            http.onload = function () { 
                 borrarOpciones();
-                if (http.response != "") { 
-                json = JSON.parse(http.response); 
-                    for (var i = 0; i < json.length; i++) { 
-                        agregarOpcionEncontrada(json[i].nombre); 
+                buscarDatos(opcionEncontrada.innerHTML);
+            };
+        }
+        ;
+
+        function borrarOpciones() {
+            var borrar = document.getElementsByClassName("busquedas");
+            var limite = borrar.length;
+            for (var i = 0; i < limite; i++) {
+                borrar.item(0).remove();
+            }
+            ;
+        }
+        ;
+
+        texto.oninput = function () {
+            if (texto.value == "")
+                borrarOpciones();
+            else {
+                var http = new XMLHttpRequest();
+            }
+            http.open("POST", "busquedaParcial", true);
+            http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            http.send("valor=" + texto.value);
+            var json;
+            http.onload = function () {
+                borrarOpciones();
+                if (http.response != "") {
+                    json = JSON.parse(http.response);
+                    for (var i = 0; i < json.length; i++) {
+                        agregarOpcionEncontrada(json[i].nombre);
                     }
                 }
             }
-        }; 
+        };
     </script>
 
 </html>

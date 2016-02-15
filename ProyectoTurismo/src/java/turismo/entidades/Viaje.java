@@ -6,6 +6,7 @@
 package turismo.entidades;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -18,22 +19,13 @@ public class Viaje extends ObjetoPuntuable implements InterfazDeBusqueda{
     private String FechaAlta;
     private String FechaDesde;
     private String FechaHasta;
-    private int alojamiento;
-    private int ciudad;
-    private int estado;
-    private int usuario;
+    private ArrayList<Alojamiento> alojamientos;
+    private ArrayList<Ciudad> ciudades;
+    private Estado estado;
+    private Usuario usuario;
     
     // Constructor para cargar viaje con todos los datos 
     public Viaje(String PrecioFinalAprox, String Comentarios, String FechaAlta, String FechaDesde, String FechaHasta, int alojamiento, int ciudad, int estado, int usuario,String opcionales) throws SQLException {
-        this.PrecioFinalAprox = Float.parseFloat(PrecioFinalAprox);
-        this.Comentarios = Comentarios;
-        this.FechaAlta = FechaAlta;
-        this.FechaDesde = FechaDesde;
-        this.FechaHasta = FechaHasta;
-        this.alojamiento = alojamiento;
-        this.ciudad = ciudad;
-        this.estado = estado;
-        this.usuario = usuario;
         generarObjetoParaBD();
         if(opcionales.equals("Completo"))
             getCon().getSql().executeUpdate("INSERT INTO Turismo.Viaje (PrecioFinalAprox,Comentarios,FechaAlta,FechaDesde,FechaHasta,IdAlojamiento,IdCuidad,IdEstado,IdUsuario,idObjetoPuntuable) values ('" + PrecioFinalAprox +"','" + Comentarios + "','" + FechaAlta +"','" + FechaDesde + "','" + FechaHasta + "','" + alojamiento + "','" + ciudad + "','" + estado + "','" + usuario + "','" + getIdObjeto()+"')");

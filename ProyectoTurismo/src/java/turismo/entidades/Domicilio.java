@@ -24,20 +24,11 @@ public class Domicilio  implements InterfazDeBusqueda{
     private String nroLote;
     private String codPostal;
     private String descripcion;
-    private int barrio;
-    private int mapa;
-    private int observacion;
+    private Barrio barrio;
+    private Mapa mapa;
+    private Observacion observacion;
 
     public Domicilio(String calle, String numeroCalle, String nroPiso, String dpto, String nroTorre, String nroManzana, String nroLote, String codPostal, int barrio) throws SQLException {
-        this.calle = calle;
-        this.numeroCalle = numeroCalle;
-        this.nroPiso = nroPiso;
-        this.dpto = dpto;
-        this.nroTorre = nroTorre;
-        this.nroManzana = nroManzana;
-        this.nroLote = nroLote;
-        this.codPostal = codPostal;
-        this.barrio = barrio;
         Conexion con = new Conexion();
         ResultSet rs = con.getSql().executeQuery("CALL Turismo.cargaDomicilioMinimo('" + calle + "','" + numeroCalle + "','" + nroPiso +"','" + dpto +"','" + nroTorre + "','" + nroManzana + "','" + nroLote + "','" + codPostal + "'," + barrio + ",1)");
         rs.next();
@@ -123,30 +114,6 @@ public class Domicilio  implements InterfazDeBusqueda{
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
-    }
-
-    public int getBarrio() {
-        return barrio;
-    }
-
-    public void setBarrio(int barrio) {
-        this.barrio = barrio;
-    }
-
-    public int getMapa() {
-        return mapa;
-    }
-
-    public void setMapa(int mapa) {
-        this.mapa = mapa;
-    }
-
-    public int getObservacion() {
-        return observacion;
-    }
-
-    public void setObservacion(int observacion) {
-        this.observacion = observacion;
     }
 
     

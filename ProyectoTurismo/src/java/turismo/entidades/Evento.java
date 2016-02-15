@@ -16,7 +16,7 @@ public class Evento extends Lugar  implements InterfazDeBusqueda{
     public String precio;
     public String fechaInicio;
     public String fechaFin;
-    public int tipoEvento;
+    public TipoEvento tipoEvento;
     
     
     
@@ -29,7 +29,6 @@ public class Evento extends Lugar  implements InterfazDeBusqueda{
         this.precio = precio;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
-        this.tipoEvento = tipoEvento;
         generarObjetoParaBD();
         getCon().getSql().executeUpdate("INSERT INTO Turismo.Evento (titulo,descripcion,precio,fechaAlta,fechaInicio,fechaFin,IdCliente,IdContacto,IdDomicilio,IdEstado,IdImagen,IdTipoEvento,idObjetoPuntuable) values ('" + titulo +"','" + descripcion + "','" + precio + "','" + fechaAlta +"','" + fechaInicio + "','" + fechaFin + "','" + cliente + "','" + contacto + "','" + domicilio +"','" + estado +  "','" + imagen + "','" + tipoEvento + "','" + getIdObjeto()+"')");
         cerrarConexion();
@@ -91,54 +90,6 @@ public class Evento extends Lugar  implements InterfazDeBusqueda{
 
     public void setFechaFin(String fechaFin) {
         this.fechaFin = fechaFin;
-    }
-
-    public int getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(int cliente) {
-        this.cliente = cliente;
-    }
-
-    public int getContacto() {
-        return contacto;
-    }
-
-    public void setContacto(int contacto) {
-        this.contacto = contacto;
-    }
-
-    public int getDomicilio() {
-        return domicilio;
-    }
-
-    public void setDomicilio(int domicilio) {
-        this.domicilio = domicilio;
-    }
-
-    public int getEstado() {
-        return estado;
-    }
-
-    public void setEstado(int estado) {
-        this.estado = estado;
-    }
-
-    public int getImagen() {
-        return imagen;
-    }
-
-    public void setImagen(int imagen) {
-        this.imagen = imagen;
-    }
-
-    public int getTipoEvento() {
-        return tipoEvento;
-    }
-
-    public void setTipoEvento(int tipoEvento) {
-        this.tipoEvento = tipoEvento;
     }
 
     

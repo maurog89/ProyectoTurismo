@@ -16,7 +16,7 @@ import turismo.conexion.Conexion;
 public class Cliente extends Persona implements InterfazDeBusqueda{
     private int id;
     private String razonSocial;
-    private int idObservacion;
+    private Observacion observacion;
 
     public Cliente(int id, String razonSocial) {
         this.id = id;
@@ -29,8 +29,7 @@ public class Cliente extends Persona implements InterfazDeBusqueda{
         ResultSet rs = con.getSql().executeQuery("CALL Turismo.cargaPersona('" + nombre + "','" + segundoNombre+ "','" + apellido + "','" + fechaCreacion + "','" + fechaNacimiento + "'," + idTipoDocumento + ",'" + nroDocumento + "'," + idContacto + "," + idDomicilio + "," + idEstado + ")");
         rs.next(); 
         this.idPersona = rs.getInt("LAST_INSERT_ID()");
-        this.razonSocial = razonSocial;
-        this.idObservacion = idObservacion;        
+        this.razonSocial = razonSocial;       
         ResultSet rss = con.getSql().executeQuery("CALL Turismo.cargaCliente('" + razonSocial + "',"+ this.idPersona + ","+idObservacion+")");
         rss.next();
         this.id = rss.getInt("LAST_INSERT_ID()");
@@ -43,7 +42,7 @@ public class Cliente extends Persona implements InterfazDeBusqueda{
     
     @Override
     public String toString(){
-        return "{\"id\":\""+id+"\",\"razonSocial\":\""+razonSocial+"\",\"idObservacion\":\""+idObservacion+"\"}";    
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     

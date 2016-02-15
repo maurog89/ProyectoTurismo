@@ -43,7 +43,6 @@ public class ABM extends HttpServlet {
                     cargarAltas(request, out);
                     break;
                 case "Modificación":
-                    System.out.println("Hola");
                     cargarModificacion(request, out);
                     break;
                 case "Baja":

@@ -15,20 +15,13 @@ import turismo.conexion.Conexion;
 public class Puntaje  implements InterfazDeBusqueda {
     private int id;
     private int putaje;
-    private int usuario;
-    private int objeto;
+    private Usuario usuario;
+    private ObjetoPuntuable objeto;
     private String comentario;
 
     public Puntaje(int putaje, int usuario, int objeto, String comentario,String opcionales) throws SQLException {
-        this.putaje = putaje;
-        this.usuario = usuario;
-        this.objeto = objeto;
-        this.comentario = comentario;
         Conexion con = new Conexion();
-        if(opcionales.equals("Completa"))
-            con.getSql().executeUpdate("INSERT INTO Turismo.Puntaje (putaje,idUsuario,idObjetoPuntuable,comentario) values ('" + putaje +"','" + usuario + "','" + objeto + "','" + comentario + "')");
-        if(opcionales.equals("SinComentario"))
-            con.getSql().executeUpdate("INSERT INTO Turismo.Puntaje (putaje,idUsuario,idObjetoPuntuable) values ('" + putaje +"','" + usuario + "','" + objeto + "')");        
+        con.getSql().executeUpdate("INSERT INTO Turismo.Puntaje (putaje,idUsuario,idObjetoPuntuable,comentario) values ('" + putaje +"','" + usuario + "','" + objeto + "','" + comentario + "')");
         con.getSql().executeUpdate("UPDATE Turismo.ObjetoPuntuable SET puntajeTotal = puntajeTotal + " + putaje + ", cantidadVeces = cantidadVeces + 1 WHERE idObjetoPuntuable = " + objeto);
         con.cerrarConexion();
     }

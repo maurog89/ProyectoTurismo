@@ -5,6 +5,7 @@ package turismo.entidades;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -20,25 +21,15 @@ public class Noticia extends ObjetoPuntuable implements IEntidades, InterfazDeBu
     private String fechaAlta;
     private String fechaInicio;
     private String fechaFin;
-    private int estado;
-    private int imagen;
-    private int observacion;
+    private Estado estado;
+    private ArrayList<Imagen> imagen;
+    private Observacion observacion;
 
     /*
     * Constructor para nuevas noticas
      */
     public Noticia(int estado, int imagen, int observacion, int prioridad,String titulo, String resumen, String cuerpo, String link, String fechaInicio, String fechaFin, String fechaAlta) throws SQLException {
         super(prioridad);
-        this.titulo = titulo;
-        this.resumen = resumen;
-        this.cuerpo = cuerpo;
-        this.link = link;
-        this.fechaAlta = fechaAlta;
-        this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
-        this.estado = estado;
-        this.imagen = imagen;
-        this.observacion = observacion;
         generarObjetoParaBD();        
         ResultSet rss = getCon().getSql().executeQuery("CALL Turismo.cargaNoticia('" + titulo + "','" + resumen + "','" + cuerpo + "','" + link + "','" + fechaAlta + "','" + fechaInicio + "','" + fechaFin + "','" + estado + "','" + imagen + "','" + observacion + "','"+ getIdObjeto()+"')");
         rss.next();
@@ -106,30 +97,6 @@ public class Noticia extends ObjetoPuntuable implements IEntidades, InterfazDeBu
         this.fechaFin = fechaFin;
     }
 
-    public int getEstado() {
-        return estado;
-    }
-
-    public void setEstado(int estado) {
-        this.estado = estado;
-    }
-
-    public int getImagen() {
-        return imagen;
-    }
-
-    public void setImagen(int imagen) {
-        this.imagen = imagen;
-    }
-
-    public int getObservacion() {
-        return observacion;
-    }
-
-    public void setObservacion(int observacion) {
-        this.observacion = observacion;
-    }
-    
     
     @Override
     public boolean guardarEnBD() throws Exception {

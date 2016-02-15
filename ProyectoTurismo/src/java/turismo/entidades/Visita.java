@@ -16,17 +16,12 @@ public class Visita extends ObjetoPuntuable  implements InterfazDeBusqueda{
     private String fecha;
     private String hora;
     private String fechaCarga;
-    private int viaje;
-    private int estado;
+    private Viaje viaje;
+    private Estado estado;
     
     //Constructor
 
     public Visita(String fecha, String hora, String fechaCarga, int viaje, int estado) throws SQLException {
-        this.fecha = fecha;
-        this.hora = hora;
-        this.fechaCarga = fechaCarga;
-        this.viaje = viaje;
-        this.estado = estado;
         generarObjetoParaBD();
         getCon().getSql().executeUpdate("INSERT INTO Turismo.Visita (fecha,hora,fechaCarga,IdViaje,IdEstado,idObjetoPuntuable) values ('" + fecha +"','" + hora + "','" + fechaCarga + "','" + viaje + "','" + estado + getIdObjeto()+"')");
         cerrarConexion();

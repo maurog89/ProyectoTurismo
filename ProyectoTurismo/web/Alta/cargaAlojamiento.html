@@ -14,13 +14,13 @@ and open the template in the editor.
         <script src="../js/buscar.js"></script>
         <form method="POST" action="../AltaAlojamiento" enctype="multipart/form-data" accept-charset="utf-8">
             <table>
-                    <thead>
-                        <tr>
-                            <th>ABM Alojamiento - Alta</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
+                <thead>
+                    <tr>
+                        <th>ABM Alojamiento - Alta</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
                         <td><label for="nombreAlojamiento">Nombre: </label></td>
                         <td><input type="text" name="nombreAlojamiento" id="nombreAlojamiento" value="" /></td>
                     </tr>
@@ -50,330 +50,342 @@ and open the template in the editor.
                         <td><label for="imagen1">Imagen: </label></td>
                         <td><input type="file" name="imagen1" id="imagenAlojamiento1" /></td>
                         <td><input type="button" name="subirAlojamiento" id="subirAlojamiento" value="Subir Otra Imagen"/></td>
-                        <input style="display:none" name="cantidadImagenes" id="cantidadImagenes" />
-                    </tr>
+                <input style="display:none" name="cantidadImagenes" id="cantidadImagenes" />
+                </tr>
+                <tr>
+                    <td><label for="regimenAlimentarioAlojamiento">Regimen Alimentario: </label></td>
+                    <td><select name="regimenAlimentarioAlojamiento" id="regimenAlimentarioAlojamiento">
+                            <option value="x0"> --- </option>
+                        </select></td>                        
+                </tr>
+                <tr>
+                    <td><label for="temporadaAlojamiento">Temporada: </label></td>
+                    <td><select name="temporadaAlojamiento" id="temporadaAlojamiento">
+                            <option value="x0"> --- </option>
+                        </select></td>
+                </tr>
+                <tr><td><br /></td></tr>
+                <tr><td><br /></td></tr>
+                <tr><td><br /></td></tr>
+                <tr>
+                    <td><label for="Pais">Pais: </label></td>
+                    <td><select name="Pais" id="Pais">
+                            <option value="x0"> --- </option>
+                        </select></td>
+                <tr>
+                    <td><label for="Provincia">Provincia: </label></td>
+                    <td><select name="Provincia" id="Provincia">
+                            <option value="x0"> --- </option>
+                        </select></td>
+                </tr>
+                <tr>
+                    <td><label for="Ciudad">Ciudad: </label></td>
+                    <td><select name="Ciudad" id="Ciudad">
+                            <option value="x0"> --- </option>
+                        </select></td>
+                </tr>
+                <tr>
+                    <td><label for="Barrio">Barrio: </label></td>
+                    <td><select name="Barrio" id="Barrio">
+                            <option value="x0"> --- </option>
+                        </select></td>
+                </tr>
+                <tr>
+                    <td><label for="calleDomicilio">Calle: </label></td>
+                    <td><input type="text" name="calleDomicilio" id="calleDomicilio" /></td>
+                </tr>
+                <tr>
+                    <td><label for="nroDomicilio">Número: </label></td>
+                    <td><input type="text" name="nroDomicilio" id="nroDomicilio" value="" /></td>
+                </tr>
+                <tr>
+                    <td><label for="nroPiso">Piso: </label></td>
+                    <td><input type="text" name="nroPiso" id="nroPiso" value="" /></td>
+                </tr>                    
+                <tr>
+                    <td><label for="departamentoDomicilio">Departamento: </label></td>
+                    <td><input type="text" name="departamentoDomicilio" id="departamentoDomicilio" value="" /></td>
+                </tr>
+                <tr>
+                    <td><label for="torreDomicilio">Torre: </label></td>
+                    <td><input type="text" name="torreDomicilio" id="torreDomicilio" value="" /></td>
+                </tr>
+                <tr>
+                    <td><label for="manzanaDomicilio">Manzana: </label></td>
+                    <td><input type="text" name="manzanaDomicilio" id="manzanaDomicilio" value="" /></td>
+                </tr>
+                <tr>
+                    <td><label for="loteDomicilio">Lote: </label></td>
+                    <td><input type="text" name="loteDomicilio" id="loteDomicilio" value="" /></td>
+                </tr>
+                <tr>
+                    <td><label for="codigoPostalDomicilio">Código Postal: </label></td>
+                    <td><input type="text" name="codigoPostalDomicilio" id="codigoPostalDomicilio" value="" /></td>
+                </tr>
+                </tbody>
+            </table>
+            <br />
+            <br />
+            <br />
+            <table>
+                <thead>
                     <tr>
-                        <td><label for="regimenAlimentarioAlojamiento">Regimen Alimentario: </label></td>
-                        <td><select name="regimenAlimentarioAlojamiento" id="regimenAlimentarioAlojamiento">
-                                <option value="x0"> --- </option>
-                            </select></td>                        
+                        <th>ABM Alojamiento - Contactos</th>
                     </tr>
+                </thead>
+                <tbody id="contactos">
                     <tr>
-                        <td><label for="temporadaAlojamiento">Temporada: </label></td>
-                        <td><select name="temporadaAlojamiento" id="temporadaAlojamiento">
+                        <td><label for="tipoContacto1">Tipo de Contacto: </label></td>
+                        <td><select name="tipoContacto1" id="tipoContacto">
                                 <option value="x0"> --- </option>
                             </select></td>
-                    </tr>
-                    <tr><td><br /></td></tr>
-                    <tr><td><br /></td></tr>
-                    <tr><td><br /></td></tr>
-                    <tr>
-                        <td><label for="Pais">Pais: </label></td>
-                        <td><select name="Pais" id="Pais">
-                                <option value="x0"> --- </option>
-                            </select></td>
-                    <tr>
-                        <td><label for="Provincia">Provincia: </label></td>
-                        <td><select name="Provincia" id="Provincia">
-                                <option value="x0"> --- </option>
-                            </select></td>
+                        <td><input type="button" name="+tipoContacto" id="masContacto" value="-"/></td>
                     </tr>
                     <tr>
-                        <td><label for="Ciudad">Ciudad: </label></td>
-                        <td><select name="Ciudad" id="Ciudad">
-                                <option value="x0"> --- </option>
-                            </select></td>
+                        <td><label for="detalleContactos1">Detalle: </label></td>
+                        <td><input type="text" name="detalleContactos1" id="detalleContactos" value="" /></td>
                     </tr>
                     <tr>
-                        <td><label for="Barrio">Barrio: </label></td>
-                        <td><select name="Barrio" id="Barrio">
-                                <option value="x0"> --- </option>
-                            </select></td>
-                    </tr>
-                    <tr>
-                        <td><label for="calleDomicilio">Calle: </label></td>
-                        <td><input type="text" name="calleDomicilio" id="calleDomicilio" /></td>
-                    </tr>
-                    <tr>
-                        <td><label for="nroDomicilio">Número: </label></td>
-                        <td><input type="text" name="nroDomicilio" id="nroDomicilio" value="" /></td>
-                    </tr>
-                    <tr>
-                        <td><label for="nroPiso">Piso: </label></td>
-                        <td><input type="text" name="nroPiso" id="nroPiso" value="" /></td>
-                    </tr>                    
-                    <tr>
-                        <td><label for="departamentoDomicilio">Departamento: </label></td>
-                        <td><input type="text" name="departamentoDomicilio" id="departamentoDomicilio" value="" /></td>
-                    </tr>
-                    <tr>
-                        <td><label for="torreDomicilio">Torre: </label></td>
-                        <td><input type="text" name="torreDomicilio" id="torreDomicilio" value="" /></td>
-                    </tr>
-                    <tr>
-                        <td><label for="manzanaDomicilio">Manzana: </label></td>
-                        <td><input type="text" name="manzanaDomicilio" id="manzanaDomicilio" value="" /></td>
-                    </tr>
-                    <tr>
-                        <td><label for="loteDomicilio">Lote: </label></td>
-                        <td><input type="text" name="loteDomicilio" id="loteDomicilio" value="" /></td>
-                    </tr>
-                    <tr>
-                        <td><label for="codigoPostalDomicilio">Código Postal: </label></td>
-                        <td><input type="text" name="codigoPostalDomicilio" id="codigoPostalDomicilio" value="" /></td>
-                    </tr>
-                    </tbody>
-                </table>
-                <br />
-                <br />
-                <br />
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ABM Alojamiento - Contactos</th>
-                        </tr>
-                    </thead>
-                    <tbody id="contactos">
-                        <tr>
-                            <td><label for="tipoContacto1">Tipo de Contacto: </label></td>
-                            <td><select name="tipoContacto1" id="tipoContacto">
-                                    <option value="x0"> --- </option>
-                                </select></td>
-                            <td><input type="button" name="+tipoContacto" id="masContacto" value="-"/></td>
-                        </tr>
-                        <tr>
-                            <td><label for="detalleContactos1">Detalle: </label></td>
-                            <td><input type="text" name="detalleContactos1" id="detalleContactos" value="" /></td>
-                        </tr>
-                        <tr>
-                            <td><input type="button" value="Agregar Contacto" name="envContacto" id="envContacto" />
-                                <input style="display:none" id="cantidadContactos" name="cantidadContactos" /></td>
-                        </tr>       
-                    </tbody>
-                </table>
+                        <td><input type="button" value="Agregar Contacto" name="envContacto" id="envContacto" />
+                            <input style="display:none" id="cantidadContactos" name="cantidadContactos" /></td>
+                    </tr>       
+                </tbody>
+            </table>
             <input type="submit" value="Enviar" name="envDetalle" />
         </form>
         <script>
-        // Guardo en variables los elementos que necesito del DOM
-        var pais = document.getElementById("Pais");
-        var provincia = document.getElementById("Provincia");
-        var ciudad = document.getElementById("Ciudad");
-        var barrio = document.getElementById("Barrio");
-        var idCliente = document.getElementById("clienteAlojamiento");
-        var clienteSel = document.getElementById("clienteAlojamientoSel");
-        var cantidadContactos = 1;
-        var cantidadImagenes = 0;
-        var camposImagen = 1;
-        var eliminarCotacto = document.getElementById("masContacto");
-        var subirAlojamiento = document.getElementById("subirAlojamiento"); 
-        var archivo1 = document.getElementById("imagenAlojamiento1");
-        document.getElementById("cantidadImagenes").value = 0;
-        /* 
-         * Manejo los eventos        
-        */
-        
-        
-        //Aumento el contacdor de imagenes
-        archivo1.onchange = function(){
-            if(this.files[0] == null){
-                cantidadImagenes--;
-            }else{
-                cantidadImagenes++;
-            }            
-            document.getElementById("cantidadImagenes").value = cantidadImagenes;
-        };
-        
-        //Evento utilizado para saber si se cargo algun contacto
-        document.getElementById("tipoContacto").onchange = function(){
-            if(document.getElementById("cantidadContactos").value === "") 
-                document.getElementById("cantidadContactos").value = 1;
-        };
-        
-        
-        //Evento para agregar mas imagenes        
-        subirAlojamiento.onclick = function(){
-            camposImagen++;
-            var fila = document.createElement("tr");
-            fila.setAttribute("id","imagen"+camposImagen);
-            var campoLabel = fila.insertCell(0);
-            var campoFile = fila.insertCell(1);
-            var campoBoton = fila.insertCell(2);
-            var label = document.createElement("Label");
-            label.setAttribute("for","imagen"+camposImagen);
-            label.setAttribute("id","labelImagenAlojamiento"+camposImagen);
-            label.innerHTML = "Imagen "+camposImagen+": ";
-            campoLabel.appendChild(label);
-            var input = document.createElement("Input");
-            input.setAttribute("type","file");
-            input.setAttribute("name","imagen"+camposImagen);
-            input.setAttribute("id","imagenAlojamiento"+camposImagen);
-            input.onchange =  function(){
-                if(this.files[0] == null){
+            // Guardo en variables los elementos que necesito del DOM
+            var pais = document.getElementById("Pais");
+            var provincia = document.getElementById("Provincia");
+            var ciudad = document.getElementById("Ciudad");
+            var barrio = document.getElementById("Barrio");
+            var idCliente = document.getElementById("clienteAlojamiento");
+            var clienteSel = document.getElementById("clienteAlojamientoSel");
+            var cantidadContactos = 1;
+            var cantidadImagenes = 0;
+            var camposImagen = 1;
+            var eliminarCotacto = document.getElementById("masContacto");
+            var subirAlojamiento = document.getElementById("subirAlojamiento");
+            var archivo1 = document.getElementById("imagenAlojamiento1");
+            document.getElementById("cantidadImagenes").value = 0;
+            
+            
+            
+            /* 
+             * Manejo los eventos        
+             */
+
+
+            //Aumento el contacdor de imagenes
+            archivo1.onchange = function () {
+                if (this.files[0] == null) {
                     cantidadImagenes--;
-                }else{
+                } else {
                     cantidadImagenes++;
-                }            
+                }
                 document.getElementById("cantidadImagenes").value = cantidadImagenes;
             };
-            campoFile.appendChild(input);
-            var boton = document.createElement("Input");
-            boton.setAttribute("type","button");
-            boton.setAttribute("name","sacarImagen"+camposImagen);
-            boton.setAttribute("id","sacarImagen"+camposImagen);
-            boton.setAttribute("value","-");
-            boton.onclick = function(){                
-                var borrar = parseInt(this.id[11]);
-                if(this.parentNode.parentNode.childNodes[1].childNodes[0].files[0] != null){
-                    cantidadImagenes--;
-                    document.getElementById("cantidadImagenes").value = cantidadImagenes;
-                }
-                this.parentNode.parentNode.remove();                
-                for(var i = 1; i <= camposImagen;i++){
-                    if(i > borrar){
-                        var j = i - 1;
-                        var lab = document.getElementById("labelImagenAlojamiento"+i);
-                        var fil = document.getElementById("imagenAlojamiento"+i);           
-                        var bot = document.getElementById("sacarImagen"+i);
-                        var fila = document.getElementById("imagen"+i);
-                        lab.attributes[0] = "imagen"+j;
-                        lab.innerHTML = "Imagen "+j+":";
-                        lab.id = "labelImagenAlojamiento"+j;
-                        fil.id = "imagenAlojamiento"+j;
-                        fil.name = "imagen"+j;
-                        bot.id = "sacarImagen"+j;
-                        bot.name = "sacarImagen"+j;
-                        fila.id = "imagen"+j;
-                    }
-                    
-                }
-                camposImagen--;
-                
+
+            //Evento utilizado para saber si se cargo algun contacto
+            document.getElementById("tipoContacto").onchange = function () {
+                if (document.getElementById("cantidadContactos").value === "")
+                    document.getElementById("cantidadContactos").value = 1;
             };
-            campoBoton.appendChild(boton);
-            var bus = camposImagen - 1;
-            insertAfter(document.getElementById("imagen"+bus),fila);
-        };
-                
-        //Eliminar Contacto
-        eliminarCotacto.onclick = function(){
-            this.parentNode.parentNode.nextSibling.nextSibling.remove();
-            this.parentNode.parentNode.remove();
-            document.getElementById("cantidadContactos").value = --cantidadContactos;
-        };
-        
-        // Agregar contacto
-        document.getElementById("envContacto").onclick = function(){
-            var tabla = document.getElementById("contactos");
-            var filaTipoContacto = tabla.insertRow(0);
-            var filaDetalle = tabla.insertRow(1);
-            tabla.insertRow(2).appendChild(document.createElement("Br"));
-            var labelDetalle = filaDetalle.insertCell(0);
-            var inputDetalle = filaDetalle.insertCell(1);
-            var labelTipoContacto = filaTipoContacto.insertCell(0);
-            var selectTipoContacto = filaTipoContacto.insertCell(1);
-            var buttonTipoContacto = filaTipoContacto.insertCell(2);
-            var label = document.createElement("Label");            
-            cantidadContactos++;
-            label.setAttribute("for","tipoContacto"+cantidadContactos);
-            label.innerHTML = "Tipo de Contacto: ";
-            labelTipoContacto.appendChild(label);
-            var select = document.createElement("Select");
-            var option = document.createElement("Option");
-            select.setAttribute("name","tipoContacto"+cantidadContactos);
-            select.setAttribute("id","tipoContacto"+cantidadContactos);
-            option.setAttribute("value","0");
-            option.innerHTML = "---";
-            select.appendChild(option);
-            selectTipoContacto.appendChild(select);
-            buscar("TipoContacto",document.getElementById("tipoContacto"+cantidadContactos));
-            var boton = document.createElement("Input");
-            boton.setAttribute("type","button");
-            boton.setAttribute("name","+tipoContacto"+cantidadContactos);
-            boton.setAttribute("id","+tipoContacto"+cantidadContactos);
-            boton.setAttribute("value","-");
-            boton.onclick = function(){
-                this.parentNode.parentNode.nextSibling.remove();
-                this.parentNode.parentNode.nextSibling.remove();
+
+
+            //Evento para agregar mas imagenes        
+            subirAlojamiento.onclick = function () {
+                camposImagen++;
+                var fila = document.createElement("tr");
+                fila.setAttribute("id", "imagen" + camposImagen);
+                var campoLabel = fila.insertCell(0);
+                var campoFile = fila.insertCell(1);
+                var campoBoton = fila.insertCell(2);
+                var label = document.createElement("Label");
+                label.setAttribute("for", "imagen" + camposImagen);
+                label.setAttribute("id", "labelImagenAlojamiento" + camposImagen);
+                label.innerHTML = "Imagen " + camposImagen + ": ";
+                campoLabel.appendChild(label);
+                var input = document.createElement("Input");
+                input.setAttribute("type", "file");
+                input.setAttribute("name", "imagen" + camposImagen);
+                input.setAttribute("id", "imagenAlojamiento" + camposImagen);
+                input.onchange = function () {
+                    if (this.files[0] == null) {
+                        cantidadImagenes--;
+                    } else {
+                        cantidadImagenes++;
+                    }
+                    document.getElementById("cantidadImagenes").value = cantidadImagenes;
+                };
+                campoFile.appendChild(input);
+                var boton = document.createElement("Input");
+                boton.setAttribute("type", "button");
+                boton.setAttribute("name", "sacarImagen" + camposImagen);
+                boton.setAttribute("id", "sacarImagen" + camposImagen);
+                boton.setAttribute("value", "-");
+                boton.onclick = function () {
+                    var borrar = parseInt(this.id[11]);
+                    if (this.parentNode.parentNode.childNodes[1].childNodes[0].files[0] != null) {
+                        cantidadImagenes--;
+                        document.getElementById("cantidadImagenes").value = cantidadImagenes;
+                    }
+                    this.parentNode.parentNode.remove();
+                    for (var i = 1; i <= camposImagen; i++) {
+                        if (i > borrar) {
+                            var j = i - 1;
+                            var lab = document.getElementById("labelImagenAlojamiento" + i);
+                            var fil = document.getElementById("imagenAlojamiento" + i);
+                            var bot = document.getElementById("sacarImagen" + i);
+                            var fila = document.getElementById("imagen" + i);
+                            lab.attributes[0] = "imagen" + j;
+                            lab.innerHTML = "Imagen " + j + ":";
+                            lab.id = "labelImagenAlojamiento" + j;
+                            fil.id = "imagenAlojamiento" + j;
+                            fil.name = "imagen" + j;
+                            bot.id = "sacarImagen" + j;
+                            bot.name = "sacarImagen" + j;
+                            fila.id = "imagen" + j;
+                        }
+
+                    }
+                    camposImagen--;
+
+                };
+                campoBoton.appendChild(boton);
+                var bus = camposImagen - 1;
+                insertAfter(document.getElementById("imagen" + bus), fila);
+            };
+
+            //Eliminar Contacto
+            eliminarCotacto.onclick = function () {
+                this.parentNode.parentNode.nextSibling.nextSibling.remove();
                 this.parentNode.parentNode.remove();
                 document.getElementById("cantidadContactos").value = --cantidadContactos;
             };
-            buttonTipoContacto.appendChild(boton);
-            var label2 = document.createElement("Label");
-            label2.setAttribute("for","detalleContactos"+cantidadContactos);
-            label2.innerHTML = "Detalle: ";
-            labelDetalle.appendChild(label2);
-            var input = document.createElement("Input");
-            input.setAttribute("type","text");
-            input.setAttribute("name","detalleContactos"+cantidadContactos);
-            input.setAttribute("type","detalleContactos"+cantidadContactos);
-            inputDetalle.appendChild(input);                
-            document.getElementById("cantidadContactos").value = cantidadContactos;
-        };
-        
-        // Funcion de cambia automaticamente el cliente
-        idCliente.onchange = function(){
-            var index = 0;
-            for(var i = 0;i<clienteSel.length;i++){
-                if(clienteSel[i].value == idCliente.value){
-                    index = i;
-                    break;
+
+            // Agregar contacto
+            document.getElementById("envContacto").onclick = function () {
+                var tabla = document.getElementById("contactos");
+                var filaTipoContacto = tabla.insertRow(0);
+                var filaDetalle = tabla.insertRow(1);
+                tabla.insertRow(2).appendChild(document.createElement("Br"));
+                var labelDetalle = filaDetalle.insertCell(0);
+                var inputDetalle = filaDetalle.insertCell(1);
+                var labelTipoContacto = filaTipoContacto.insertCell(0);
+                var selectTipoContacto = filaTipoContacto.insertCell(1);
+                var buttonTipoContacto = filaTipoContacto.insertCell(2);
+                var label = document.createElement("Label");
+                cantidadContactos++;
+                label.setAttribute("for", "tipoContacto" + cantidadContactos);
+                label.innerHTML = "Tipo de Contacto: ";
+                labelTipoContacto.appendChild(label);
+                var select = document.createElement("Select");
+                var option = document.createElement("Option");
+                select.setAttribute("name", "tipoContacto" + cantidadContactos);
+                select.setAttribute("id", "tipoContacto" + cantidadContactos);
+                option.setAttribute("value", "0");
+                option.innerHTML = "---";
+                select.appendChild(option);
+                selectTipoContacto.appendChild(select);
+                buscar("TipoContacto", document.getElementById("tipoContacto" + cantidadContactos));
+                var boton = document.createElement("Input");
+                boton.setAttribute("type", "button");
+                boton.setAttribute("name", "+tipoContacto" + cantidadContactos);
+                boton.setAttribute("id", "+tipoContacto" + cantidadContactos);
+                boton.setAttribute("value", "-");
+                boton.onclick = function () {
+                    this.parentNode.parentNode.nextSibling.remove();
+                    this.parentNode.parentNode.nextSibling.remove();
+                    this.parentNode.parentNode.remove();
+                    document.getElementById("cantidadContactos").value = --cantidadContactos;
+                };
+                buttonTipoContacto.appendChild(boton);
+                var label2 = document.createElement("Label");
+                label2.setAttribute("for", "detalleContactos" + cantidadContactos);
+                label2.innerHTML = "Detalle: ";
+                labelDetalle.appendChild(label2);
+                var input = document.createElement("Input");
+                input.setAttribute("type", "text");
+                input.setAttribute("name", "detalleContactos" + cantidadContactos);
+                input.setAttribute("type", "detalleContactos" + cantidadContactos);
+                inputDetalle.appendChild(input);
+                document.getElementById("cantidadContactos").value = cantidadContactos;
+            };
+
+
+            // Funcion de cambia automaticamente el cliente
+            idCliente.onchange = function () {
+                var index = 0;
+                for (var i = 0; i < clienteSel.length; i++) {
+                    if (clienteSel[i].value == idCliente.value) {
+                        index = i;
+                        break;
+                    }
                 }
-            }            
-            clienteSel[index].selected = true;
+                clienteSel[index].selected = true;
+
+            };
+            clienteSel.onchange = function () {
+                if (this.value != "x0")
+                    idCliente.value = clienteSel[clienteSel.selectedIndex].value;
+                else
+                    idCliente.value = "";
+            };
+
+
+            //Funcion de cambiar provincia cuando cambia el pais
+            pais.onchange = function () {
+                provincia.options.length = 0;
+                agregarOpcion(provincia);
+                var res = pais[pais.selectedIndex].value;
+                buscar("Provincia", provincia, res,false);
+            };
+
+            //Funcion de cambiar ciudad cuando cambia la provincia
+            provincia.onchange = function () {
+                ciudad.options.length = 0;
+                agregarOpcion(ciudad);
+                var res = provincia[provincia.selectedIndex].value;
+                buscar("Ciudad", ciudad, res);
+            };
+
+            //Funcion de cambiar el barrio cuando cambia la ciudad
+            ciudad.onchange = function () {
+                barrio.options.length = 0;
+                agregarOpcion(barrio);
+                var res = ciudad[ciudad.selectedIndex].value;
+                buscar("Barrio", barrio, res,false);
+            };
             
-        };
-        clienteSel.onchange = function(){
-            if(this.value != "x0")
-                idCliente.value = clienteSel[clienteSel.selectedIndex].value;
-            else
-                idCliente.value = "";
-        };
-        
-               
-        //Funcion de cambiar provincia cuando cambia el pais
-        pais.onchange = function(){            
-            provincia.options.length = 0;
-            agregarOpcion(provincia);
-            var res = pais[pais.selectedIndex].value;
-            buscar("Provincia",provincia,res);
-        };
-        
-        //Funcion de cambiar ciudad cuando cambia la provincia
-        provincia.onchange = function(){            
-            ciudad.options.length = 0;
-            agregarOpcion(ciudad);
-            var res = provincia[provincia.selectedIndex].value;
-            buscar("Ciudad",ciudad,res);
-        };
-        
-        //Funcion de cambiar el barrio cuando cambia la ciudad
-        ciudad.onchange = function(){            
-            barrio.options.length = 0;
-            agregarOpcion(barrio);
-            var res = ciudad[ciudad.selectedIndex].value;
-            buscar("Barrio",barrio,res);
-        };
-        
-        /*
-         * Buscar elementos en la base de datos
-         * y llenar los campos
-         */
-        buscar("Estados",document.getElementById("estadoAlojamiento"));
-        buscar("RegimenAlimentario",document.getElementById("regimenAlimentarioAlojamiento"));
-        buscar("Temporadas",document.getElementById("temporadaAlojamiento"));        
-        buscar("Pais",pais);
-        buscar("Clientes",document.getElementById("clienteAlojamientoSel"),null,true);        
-        buscar("TipoContacto",document.getElementById("tipoContacto"));
-        
-        //Funcion usada para agregar una opcion ---
-        function agregarOpcion(sel){
-            var select = document.createElement("Select");
-            var option = document.createElement("Option");
-            option.setAttribute("value","x0");
-            option.innerHTML = "---";
-            sel.appendChild(option);
-        };
-    </script>
+            
+
+            
+           
+            /*
+             * Buscar elementos en la base de datos
+             * y llenar los campos
+             */
+            buscar("Estados", document.getElementById("estadoAlojamiento"));
+            buscar("RegimenAlimentario", document.getElementById("regimenAlimentarioAlojamiento"));
+            buscar("Temporadas", document.getElementById("temporadaAlojamiento"));
+            buscar("Pais", pais);
+            buscar("Clientes", document.getElementById("clienteAlojamientoSel"), null, true);
+            buscar("TipoContacto", document.getElementById("tipoContacto"));
+
+            //Funcion usada para agregar una opcion ---
+            function agregarOpcion(sel) {   
+                var select = document.createElement("Select");
+                var option = document.createElement("Option");
+                option.setAttribute("value", "x0");
+                option.innerHTML = "---";
+                sel.appendChild(option);
+            }
+            ;
+
+            
+
+        </script>
     </body>
-    
+
 </html>

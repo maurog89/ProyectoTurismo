@@ -7,6 +7,7 @@ package turismo.controlador.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -14,10 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import turismo.conexion.Conexion;
-import turismo.entidades.Alojamiento;
-import turismo.entidades.ImprimirHTML;
-import turismo.entidades.InterfazDeBusqueda;
-import turismo.entidades.ValidadorDeSession;
+import turismo.entidades.*;
 
 /**
  *
@@ -36,9 +34,11 @@ public class busquedaPorNombre extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("application/json");
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
         String valor = request.getParameter("valor");
+        
         if (ValidadorDeSession.validarSession(request)) {
             try {
                 HttpSession sesion = request.getSession();
@@ -47,10 +47,15 @@ public class busquedaPorNombre extends HttpServlet {
                 InterfazDeBusqueda ls = con.buscarPorNombre(tabla, valor);             
                 switch(tabla){
                     case "Alojamiento":
-                        sesion.setAttribute("Objeto", (Alojamiento)ls);
+                        Alojamiento alo = (Alojamiento)ls;
+                        sesion.setAttribute("Objeto", alo);
+                        ResultSet rs = con.getSql().executeQuery("SELECT t1.idBarrio AS barrio, t2.idCiudad AS ciudad, t3.idProvincia AS provincia, t4.idPais AS pais FROM Turismo.Domicilio AS dom INNER JOIN Turismo.Barrio AS t1 ON dom.idBarrio=t1.idBarrio INNER JOIN Turismo.Ciudad AS t2 ON t1.idCiudad=t2.idCiudad INNER JOIN Turismo.Provincia AS t3 ON t2.idProvincia=t3.idProvincia INNER JOIN Turismo.Pais AS t4 ON t3.idPais=t4.idPais WHERE dom.idDomicilio="+alo.getDomicilio().getId());
+                        if(rs.next())
+                            ImprimirHTML.modificarAlojamiento(out, alo, rs.getInt("barrio"), rs.getInt("ciudad"), rs.getInt("provincia"), rs.getInt("pais"));
+                        else
+                            out.println("<h4>El domicilio de " + alo.getNombre() + " se encuentra cargado incorrectamente.</h4>");
                         break;
                 }
-                
                 con.cerrarConexion();
             } catch (SQLException ex) {
                 System.out.println(ex.toString());
@@ -72,9 +77,7 @@ public class busquedaPorNombre extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        ImprimirHTML.imprimirErrorDeMetodo(out);
+        processRequest(request, response);
     }
 
     /**

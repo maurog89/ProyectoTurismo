@@ -7,6 +7,7 @@ package turismo.entidades;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -18,11 +19,11 @@ public class Ciudad extends ObjetoPuntuable implements InterfazDeBusqueda{
     private String historia;
     private String emergencia;
     private boolean esCapital;
-    private int observacion;
-    private int provincia;
+    private Observacion observacion;
+    private Provincia provincia;
     private String fechaAlta;
-    private int cliente;
-    private int imagen;
+    private Cliente cliente;
+    private ArrayList<Imagen> imagen;
 
     
     /*
@@ -30,15 +31,6 @@ public class Ciudad extends ObjetoPuntuable implements InterfazDeBusqueda{
     */  
     public Ciudad(String nombre, String historia, String emergencia, boolean esCapital, int observacion, int provincia, int cliente, int imagen, int prioridad, String fechaAlta) throws SQLException {
         super(prioridad);
-        this.nombre = nombre;
-        this.historia = historia;
-        this.emergencia = emergencia;
-        this.esCapital = esCapital;
-        this.observacion = observacion;
-        this.provincia = provincia;
-        this.fechaAlta = fechaAlta;
-        this.cliente = cliente;
-        this.imagen = imagen;
         generarObjetoParaBD();
         ResultSet rss = getCon().getSql().executeQuery("CALL Turismo.cargaCiudadCompleta('" + nombre + "','" + historia + "','" + emergencia + "'," + esCapital +",'" + observacion  + "','" + provincia + "','" + fechaAlta + "','" + cliente + "','" + imagen + "','" + getIdObjeto()+"')");
         rss.next();
@@ -50,7 +42,6 @@ public class Ciudad extends ObjetoPuntuable implements InterfazDeBusqueda{
     public Ciudad(int id, String nombre, int provincia) {
         this.id = id;
         this.nombre = nombre;
-        this.provincia = provincia;
     }
    
     @Override
